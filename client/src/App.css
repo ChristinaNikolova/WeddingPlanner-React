@@ -22,4 +22,32 @@ h4,
 h5,
 h6 {
   color: var(--clr-gold);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.btn {
+  padding: 10px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: 0.9px;
+  color: var(--clr-gold);
+  background-color: transparent;
+  border: 0.5px solid var(--clr-gold);
+  transition: all 600ms ease-in-out;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: var(--clr-white);
+  background-color: var(--clr-gold);
+  border: none;
+  transition: all 600ms ease-in-out;
+}
+
+span {
+  color: var(--clr-black);
 }
