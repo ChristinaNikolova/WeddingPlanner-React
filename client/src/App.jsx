@@ -1,6 +1,20 @@
+import * as authService from './services/auth';
 import './App.css';
 
 function App() {
+  const onRegisterSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const firstName = 'plamen';
+    const lastName = 'nikolov';
+    const email = 'plamen@abv.bg';
+    const password = '123456';
+    //const rePassword = e.target.repeatPassword.value;
+
+    authService
+      .register(firstName, lastName, email, password)
+      .then((res) => console.log(res));
+  };
   return (
     <div>
       {/* <header className='header'>
@@ -24,7 +38,7 @@ function App() {
           </ul>
         </nav>
       </header> */}
-      <form action="">
+      <form onSubmit={onRegisterSubmitHandler}>
         <input type="text" name="firstName" />
         <input type="text" name="lastName" />
         <input type="email" name="email" />

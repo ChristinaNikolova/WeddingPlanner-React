@@ -1,5 +1,7 @@
-const home = require('../controllers/home');
+const homeController = require('../controllers/home');
+const authController = require('../controllers/auth');
 
 module.exports = (app) => {
-    app.use(home);
+    app.use(homeController);
+    app.use('/auth', authController);
 }
