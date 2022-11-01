@@ -1,20 +1,17 @@
-const { Schema, model, Types: { ObjectId } } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const { category } = require('../utils/constants/model');
 
 const categorySchema = new Schema({
     name: {
         type: String,
         required: [true, 'Name is required'],
-        minlength: [3, 'Name should be at least 3 characters long'],
-        maxlength: [30, 'Name should be maximal 30 characters long'],
+        minlength: [category.NAME_MIN_LEN, `Name should be at least ${category.NAME_MIN_LEN} characters long`],
+        maxlength: [category.NAME_MAX_LEN, `Name should be maximal ${category.NAME_MAX_LEN} characters long`],
+        unique: true,
     },
     image: {
         type: String,
         required: [true, 'Image is required'],
-    },
-    costs: {
-        type: [ObjectId],
-        ref: 'Cost',
-        default: [],
     },
 });
 

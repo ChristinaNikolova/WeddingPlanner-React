@@ -1,19 +1,22 @@
 const { Schema, model } = require('mongoose');
+const { cost } = require('../utils/constants/model');
 
 const costSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required'],
-        minlength: [3, 'Title should be at least 3 characters long'],
-        maxlength: [30, 'Title should be maximal 30 characters long'],
+        minlength: [cost.TITLE_MIN_LEN, `Title should be at least ${cost.TITLE_MIN_LEN} characters long`],
+        maxlength: [cost.TITLE_MAX_LEN, `Title should be maximal ${cost.TITLE_MAX_LEN} characters long`],
     },
     price: {
         type: Number,
         required: [true, 'Price is required'],
+        min: [0, 'Price should be a positive number'],
     },
     description: {
         type: String,
-        maxlength: [100, 'Description should be maximal 100 characters long'],
+        maxlength: [cost.DESC_MAX_LEN, `Description should be maximal ${cost.DESC_MAX_LEN} characters long`],
+        default: '',
     },
 });
 

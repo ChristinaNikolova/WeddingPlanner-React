@@ -1,11 +1,12 @@
-const { Schema, model, Types: { ObjectId } } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const { event } = require('../utils/constants/model');
 
 const eventSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required'],
-        minlength: [5, 'Title should be at least 5 characters long'],
-        maxlength: [50, 'Title should be maximal 50 characters long'],
+        minlength: [event.TITLE_MIN_LEN, `Title should be at least ${event.TITLE_MIN_LEN} characters long`],
+        maxlength: [event.TITLE_MAX_LEN, `Title should be maximal ${event.TITLE_MAX_LEN} characters long`],
     },
     image: {
         type: String,
@@ -13,7 +14,7 @@ const eventSchema = new Schema({
     },
     description: {
         type: String,
-        maxlength: [500, 'Description should be maximal 500 characters long'],
+        maxlength: [event.DESC_MAX_LEN, `Description should be maximal ${event.DESC_MAX_LEN} characters long`],
         default: '',
     },
     startTime: {
@@ -30,17 +31,12 @@ const eventSchema = new Schema({
     },
     address: {
         type: String,
-        maxlength: [100, 'Address should be maximal 100 characters long'],
+        maxlength: [event.ADDRESS_MAX_LEN, `Address should be maximal ${event.ADDRESS_MAX_LEN} characters long`],
         default: '',
     },
     isHighlighted: {
         type: Boolean,
         default: false,
-    },
-    planner: {
-        type: ObjectId,
-        ref: 'Planner',
-        required: true,
     },
 });
 

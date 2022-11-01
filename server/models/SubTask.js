@@ -1,11 +1,12 @@
 const { Schema, model } = require('mongoose');
+const { subTask } = require('../utils/constants/model');
 
 const subTaskSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required'],
-        minlength: [5, 'Title should be at least 5 characters long'],
-        maxlength: [50, 'Title should be maximal 50 characters long'],
+        minlength: [subTask.TITLE_MIN_LEN, `Title should be at least ${subTask.TITLE_MIN_LEN} characters long`],
+        maxlength: [subTask.TITLE_MAX_LEN, `Title should be maximal ${subTask.TITLE_MAX_LEN} characters long`],
     },
     isDone: {
         type: Boolean,

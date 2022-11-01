@@ -1,5 +1,7 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
+const { planner } = require('../utils/constants/model');
 
+//TODO Check if utils.validators????
 const DATE_PATTERN = /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/;
 
 const plannerSchema = new Schema({
@@ -9,7 +11,7 @@ const plannerSchema = new Schema({
     },
     description: {
         type: String,
-        maxlength: [500, 'Description should be maximal 500 characters long'],
+        maxlength: [planner.DESC_MAX_LEN, `Description should be maximal ${planner.DESC_MAX_LEN} characters long`],
         default: '',
     },
     date: {
@@ -19,11 +21,12 @@ const plannerSchema = new Schema({
     },
     budget: {
         type: Number,
+        required: [true, 'Budget is required'],
         min: [0, 'Budget should be a positive number'],
     },
     location: {
         type: String,
-        maxlength: [100, 'Location should be maximal 100 characters long'],
+        maxlength: [planner.LOCATION_MAX_LEN, `Location should be maximal ${planner.LOCATION_MAX_LEN} characters long`],
         default: '',
     },
     bride: {
@@ -44,6 +47,26 @@ const plannerSchema = new Schema({
     notes: {
         type: [ObjectId],
         ref: 'Note',
+        default: [],
+    },
+    guests: {
+        type: [ObjectId],
+        ref: 'Guest',
+        default: [],
+    },
+    tasks: {
+        type: [ObjectId],
+        ref: 'Task',
+        default: [],
+    },
+    costs: {
+        type: [ObjectId],
+        ref: 'Cost',
+        default: [],
+    },
+    events: {
+        type: [ObjectId],
+        ref: 'Event',
         default: [],
     },
 });

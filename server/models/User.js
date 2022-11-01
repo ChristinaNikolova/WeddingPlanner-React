@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { user } = require('../utils/constants/model');
 
 const userSchema = new Schema({
     email: {
@@ -10,14 +11,14 @@ const userSchema = new Schema({
     firstName: {
         type: String,
         required: [true, 'First name is required'],
-        minlength: [1, 'First name should be at least 1 character long'],
-        maxlength: [30, 'First name should be maximal 30 character long'],
+        minlength: [user.NAME_MIN_LEN, `First name should be at least ${user.NAME_MIN_LEN} character long`],
+        maxlength: [user.NAME_MAX_LEN, `First name should be maximal ${user.NAME_MAX_LEN} character long`],
     },
     lastName: {
         type: String,
         required: [true, 'Last name is required'],
-        minlength: [1, 'Last name should be at least 1 character long'],
-        maxlength: [30, 'Last name should be maximal 30 character long'],
+        minlength: [user.NAME_MIN_LEN, `Last name should be at least ${user.NAME_MIN_LEN} character long`],
+        maxlength: [user.NAME_MAX_LEN, `Last name should be maximal ${user.NAME_MAX_LEN} character long`],
     },
     hashedPassword: {
         type: String,
