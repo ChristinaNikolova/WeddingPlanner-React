@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('./middlewares/cors');
 
-// const cors = require('./middlewares/cors');
 // const authController = require('./controllers/authController');
 // const dataController = require('./controllers/dataController');
 // const trimBody = require('./middlewares/trimBody');
@@ -16,6 +16,9 @@ async function start() {
     console.log('Database connected');
 
     const app = express();
+
+    app.use(express.json());
+    app.use(cors());
 
     app.get('/', (req, res) => {
         res.json({ message: 'REST service operational' });
