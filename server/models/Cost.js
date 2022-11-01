@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types: { ObjectId } } = require('mongoose');
 const { cost } = require('../utils/constants/model');
 
 const costSchema = new Schema({
@@ -17,6 +17,11 @@ const costSchema = new Schema({
         type: String,
         maxlength: [cost.DESC_MAX_LEN, `Description should be maximal ${cost.DESC_MAX_LEN} characters long`],
         default: '',
+    },
+    category: {
+        type: ObjectId,
+        ref: 'Category',
+        required: true,
     },
 });
 

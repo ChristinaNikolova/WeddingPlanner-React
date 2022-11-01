@@ -1,6 +1,18 @@
+const article = {
+    TITLE_MIN_LEN: 5,
+    TITLE_MAX_LEN: 100,
+    CONTENT_MIN_LEN: 100,
+    CONTENT_MAX_LEN: 3000,
+};
+
 const category = {
     NAME_MIN_LEN: 3,
     NAME_MAX_LEN: 30,
+};
+
+const comment = {
+    CONTENT_MIN_LEN: 20,
+    CONTENT_MAX_LEN: 500,
 };
 
 const cost = {
@@ -49,7 +61,9 @@ const user = {
 };
 
 module.exports = {
+    article,
     category,
+    comment,
     cost,
     event,
     guest,
