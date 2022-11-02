@@ -1,5 +1,7 @@
 #footer {
   height: 10vh;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .footer-nav .footer-nav-ul:nth-child(2) {
@@ -25,4 +27,8 @@
 .footer-nav-li a:hover {
   color: #956428;
   font-weight: 800;
+}
+
+#footer .logo a {
+  font-size: 26px;
 }
