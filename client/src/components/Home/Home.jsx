@@ -10,7 +10,7 @@ function Home() {
                 <span className="home-content">
                     Because planning the biggest day of your life is only the beginning of your adventure
                 </span>
-                <button className='btn'>Start planning</button>
+                <a className='btn'>Start planning</a>
             </div>
         </section>
     );
