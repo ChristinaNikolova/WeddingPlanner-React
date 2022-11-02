@@ -1,0 +1,28 @@
+#footer {
+  height: 10vh;
+}
+
+.footer-nav .footer-nav-ul:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer-nav {
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.footer-nav-li a {
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  transition: all 200ms ease-in-out;
+}
+
+.footer-nav-li a:hover {
+  color: #956428;
+  font-weight: 800;
+}

@@ -13,6 +13,8 @@ html {
   max-width: 1920px;
   margin: 0 auto;
   font-family: "Cormorant Garamond", serif;
+  color: var(--clr-black);
+  line-height: 1.5;
 }
 
 h1,
@@ -47,6 +49,25 @@ h6 {
   border: none;
 }
 
-span {
+a {
   color: var(--clr-black);
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.gold-underline {
+  border-bottom: 1px solid var(--clr-gold);
+}
+
+li.logo a {
+  color: var(--clr-gold);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+li.logo a:hover {
+  font-weight: 400;
 }

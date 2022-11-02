@@ -6,21 +6,19 @@ function Header() {
             <nav className="header-nav">
                 <ul className="header-nav-ul">
                     <li className="header-nav-li">
-                        <a href="">Plan your wedding</a>
+                        <a href="/">Plan your wedding</a>
                     </li>
                     <li className="header-nav-li">
-                        <a href="">Wedding's blog</a>
+                        <a href="/">Wedding's blog</a>
                     </li>
-                    <li className="header-nav-li logo">
-                        <a href="">
-                            Wedding Planner
-                        </a>
+                    <li className="header-nav-li logo gold-underline">
+                        <a href="/">Wedding Planner</a>
                     </li>
                     <li className="header-nav-li">
-                        <a href="">Login</a>
+                        <a href="/">Login</a>
                     </li>
                     <li className="header-nav-li">
-                        <a href="">Register</a>
+                        <a href="/">Register</a>
                     </li>
                 </ul>
             </nav>
