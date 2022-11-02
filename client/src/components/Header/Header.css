@@ -1,0 +1,46 @@
+#header {
+  height: 8vh;
+}
+
+.header-nav-ul {
+  height: 8vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.header-nav-ul a {
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+  color: #4c4c4c;
+  transition: all 200ms ease-in-out;
+}
+
+.header-nav-ul a:hover {
+  color: #956428;
+  font-weight: 800;
+}
+
+.logo a {
+  color: #956428;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.logo a:hover {
+  font-weight: 400;
+}
+
+.logo a::after {
+  position: absolute;
+  top: 26px;
+  left: 10px;
+  content: "";
+  width: 294px;
+  height: 20px;
+  border-bottom: 1px solid #956428;
+}
