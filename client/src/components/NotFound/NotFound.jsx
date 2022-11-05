@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './NotFound.module.css';
 
-
-
-//className={styles["header"]}
-//{`${styles["header-nav-li"]} logo gold-underline`}
-
 function NotFound() {
     return (
         <section className={`${styles["not-found"]} section`}>
