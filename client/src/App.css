@@ -41,6 +41,19 @@ h6 {
   border: none;
 }
 
+button:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+  background-color: var(--clr-grey);
+  color: var(--clr-creme);
+}
+button:disabled:hover {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+  background-color: var(--clr-grey);
+  color: var(--clr-creme);
+}
+
 button:hover {
   transition: all 800ms ease-in-out;
 }
