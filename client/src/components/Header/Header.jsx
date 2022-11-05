@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 function Header() {
@@ -6,19 +7,19 @@ function Header() {
             <nav className={styles["header-nav"]}>
                 <ul className={styles["header-nav-ul"]}>
                     <li className={styles["header-nav-li"]}>
-                        <a href="/">Plan your wedding</a>
+                        <Link to="/">Plan your wedding</Link>
                     </li>
                     <li className={styles["header-nav-li"]}>
-                        <a href="/">Wedding's blog</a>
+                        <Link to="/">Wedding's blog</Link>
                     </li>
                     <li className={`${styles["header-nav-li"]} logo gold-underline`}>
-                        <a href="/">Wedding Planner</a>
+                        <Link to="/">Wedding Planner</Link>
                     </li>
                     <li className={styles["header-nav-li"]}>
-                        <a href="/">Login</a>
+                        <Link to="/login">Login</Link>
                     </li>
                     <li className={styles["header-nav-li"]}>
-                        <a href="/">Register</a>
+                        <Link to="/register">Register</Link>
                     </li>
                 </ul>
             </nav>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 function Footer() {
@@ -6,26 +7,26 @@ function Footer() {
             <nav className={styles["footer-nav"]}>
                 <ul className={styles["footer-nav-ul"]}>
                     <li className={`${styles["footer-nav-li"]} logo`}>
-                        <a href="/">Wedding Planner</a>
+                        <Link to="/">Wedding Planner</Link>
                     </li>
                 </ul>
                 <ul className={`${styles["footer-nav-ul"]} gold-underline`}>
                     <li className={styles["footer-nav-li"]}>
-                        <a href="/">Plan your wedding</a>
+                        <Link to="/">Plan your wedding</Link>
                     </li>
                     <li className={styles["footer-nav-li"]}>
-                        <a href="/">Wedding's blog</a>
+                        <Link to="/">Wedding's blog</Link>
                     </li>
                     <li className={styles["footer-nav-li"]}>
-                        <a href="/">Login</a>
+                        <Link to="/login">Login</Link>
                     </li>
                     <li className={styles["footer-nav-li"]}>
-                        <a href="/">Register</a>
+                        <Link to="/register">Register</Link>
                     </li>
                 </ul>
                 <ul className={styles["footer-nav-ul"]}>
                     <li className={styles["footer-nav-li"]}>
-                        <a href="https://github.com/ChristinaNikolova/WeddingPlanner" target="_blank">WeddingPlanner&copy;</a> - {new Date().getFullYear()}
+                        <a href="https://github.com/ChristinaNikolova/WeddingPlanner" rel="noreferrer" target="_blank">WeddingPlanner&copy;</a> - {new Date().getFullYear()}
                     </li>
                 </ul>
             </nav>

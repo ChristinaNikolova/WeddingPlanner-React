@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Jumbotron from './Jumbotron/Jumbotron';
 import styles from './Home.module.css';
 
@@ -10,7 +11,7 @@ function Home() {
                 <p className={styles["home-content"]}>
                     Because planning the biggest day of your life is only the beginning of your adventure
                 </p>
-                <a href="/" className='btn'>Start planning</a>
+                <Link to="/" className='btn'>Start planning</Link>
             </div>
         </section>
     );
