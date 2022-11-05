@@ -57,6 +57,8 @@ a:hover {
   cursor: pointer;
 }
 
+/* Header & Footer */
+
 .gold-underline {
   border-bottom: 1px solid var(--clr-gold);
 }

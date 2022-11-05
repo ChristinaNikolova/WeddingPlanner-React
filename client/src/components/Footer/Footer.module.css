@@ -1,4 +1,4 @@
-#footer {
+.footer {
   height: 10vh;
   margin-top: 6px;
   margin-bottom: 6px;
@@ -29,6 +29,6 @@
   font-weight: 800;
 }
 
-#footer .logo a {
+.footer .logo a {
   font-size: 26px;
 }

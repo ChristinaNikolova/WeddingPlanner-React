@@ -1,8 +1,7 @@
-#header {
+.header {
   height: 16vh;
   margin-bottom: 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .header-nav-ul {

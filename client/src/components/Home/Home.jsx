@@ -1,13 +1,13 @@
-import './Home.css';
 import Jumbotron from './Jumbotron/Jumbotron';
+import styles from './Home.module.css';
 
 function Home() {
     return (
-        <section id="home" className="section">
+        <section className={styles.home}>
             <Jumbotron />
-            <div className="home-content-wrapper">
-                <h2 className="home-title">ELEGANTLY DESIGNED · ECLECTICALLY CURATED · IMPECCABLY PLANNED</h2>
-                <p className="home-content">
+            <div className={styles["home-content-wrapper"]}>
+                <h2 className={styles["home-title"]}>ELEGANTLY DESIGNED · ECLECTICALLY CURATED · IMPECCABLY PLANNED</h2>
+                <p className={styles["home-content"]}>
                     Because planning the biggest day of your life is only the beginning of your adventure
                 </p>
                 <a href="/" className='btn'>Start planning</a>
