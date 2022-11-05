@@ -1,0 +1,70 @@
+@import "../../../styles/constants.css";
+
+.register {
+  background-color: var(--clr-light-creme);
+}
+
+.register-title-wrapper {
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 40px;
+}
+
+.register-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.register-content {
+  font-size: 22px;
+}
+
+.register-content-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.register-img {
+  max-width: 30%;
+  max-height: 50%;
+  object-fit: cover;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.06);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.06);
+}
+
+.register-form {
+  width: 30%;
+}
+
+.register-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.register-form-wrapper label {
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.register-form-wrapper input {
+  border: unset;
+  border-radius: unset;
+  height: 42px;
+  font-size: 20px;
+  color: var(--clr-black);
+}
+
+.register-form-wrapper input:focus {
+  outline: none !important;
+  border: 1px solid var(--clr-gold);
+}
+
+.register-form-wrapper:last-of-type {
+  margin-bottom: 60px;
+}

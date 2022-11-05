@@ -41,6 +41,10 @@ h6 {
   border: none;
 }
 
+button:hover {
+  transition: all 800ms ease-in-out;
+}
+
 a {
   color: var(--clr-black);
 }
