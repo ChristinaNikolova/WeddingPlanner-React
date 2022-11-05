@@ -1,3 +1,5 @@
+@import "../../styles/constants.css";
+
 .header {
   height: 16vh;
   margin-bottom: 10px;
@@ -19,6 +21,11 @@
 }
 
 .header-nav-li a:hover {
-  color: #956428;
+  color: var(--clr-gold);
   font-weight: 800;
+}
+
+.header-active-li {
+  color: var(--clr-gold);
+  border-bottom: 0.2px solid var(--clr-gold);
 }

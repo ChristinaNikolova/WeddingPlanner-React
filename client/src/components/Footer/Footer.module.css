@@ -1,3 +1,5 @@
+@import "../../styles/constants.css";
+
 .footer {
   height: 10vh;
   margin-top: 6px;
@@ -25,7 +27,7 @@
 }
 
 .footer-nav-li a:hover {
-  color: #956428;
+  color: var(--clr-gold);
   font-weight: 800;
 }
 
