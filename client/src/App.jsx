@@ -1,28 +1,22 @@
-import * as authService from './services/auth';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Login from './components/Auth/Login/Login';
+import Register from './components/Auth/Register/Register';
+import './App.css';
 
 function App() {
-  const onRegisterSubmitHandler = (e) => {
-    e.preventDefault();
-
-    const firstName = 'plamen';
-    const lastName = 'nikolov';
-    const email = 'plamen@abv.bg';
-    const password = '123456';
-
-    authService
-      .register(firstName, lastName, email, password)
-      .then((res) => console.log(res));
-  };
-  return (<>
-    <Header />
-    <Home />
-    <Footer />
-  </>
-
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 

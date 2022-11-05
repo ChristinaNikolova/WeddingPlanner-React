@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 
 function Home() {
     return (
-        <section className={styles.home}>
+        <section className={`${styles.home} section`}>
             <Jumbotron />
             <div className={styles["home-content-wrapper"]}>
                 <h2 className={styles["home-title"]}>ELEGANTLY DESIGNED · ECLECTICALLY CURATED · IMPECCABLY PLANNED</h2>

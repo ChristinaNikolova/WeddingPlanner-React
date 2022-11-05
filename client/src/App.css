@@ -11,7 +11,7 @@
 
 html {
   max-width: 1920px;
-  margin: 0 auto;
+  margin: 0 auto !important;
   font-family: "Cormorant Garamond", serif;
   color: var(--clr-black);
   line-height: 1.5;
@@ -72,4 +72,8 @@ li.logo a {
 
 li.logo a:hover {
   font-weight: 400;
+}
+
+.section {
+  height: 100vh;
 }
