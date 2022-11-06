@@ -53,7 +53,6 @@ function Register() {
                 sessionStorage.setItem('authToken', data.accessToken);
                 sessionStorage.setItem('userId', data._id);
                 navigate('/');
-                //TODO Success Notification!!!
             })
             .catch((err) => {
                 console.error(err);
