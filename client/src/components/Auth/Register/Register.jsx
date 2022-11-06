@@ -20,10 +20,11 @@ function Register() {
     const [lastNameError, setLastNameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [repassError, setRepassError] = useState('');
+    const [serverError, setServerError] = useState('');
 
     useEffect(() => {
         checkDisabled();
-    }, [values, emailError, firstNameError, lastNameError, passwordError, repassError]);
+    }, [values, emailError, firstNameError, lastNameError, passwordError, repassError, serverError]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -40,8 +41,17 @@ function Register() {
 
         authService.register(values.firstName, values.lastName, values.email, values.password)
             .then((data) => {
-                console.log(data);
-                // TODO finish logic
+                if (!data.accessToken) {
+                    setServerError(data.message.map((e) => e.msg).join('\n'));
+                    return;
+                }
+
+                sessionStorage.setItem('email', data.email);
+                sessionStorage.setItem('authToken', data.accessToken);
+                sessionStorage.setItem('userId', data._id);
+            })
+            .catch((err) => {
+                console.error(err);
             });
     }
 
@@ -78,6 +88,13 @@ function Register() {
 
     return (
         <section className={`${styles.register} section`}>
+            {serverError &&
+                <div className={styles["server-error-wrapper"]}>
+                    <div className={styles["server-error"]}>
+                        {serverError}
+                    </div>
+                </div>
+            }
             <div className={styles["register-title-wrapper"]}>
                 <h2 className={styles["register-title"]}>Register</h2>
                 <p className={styles["register-content"]}>
