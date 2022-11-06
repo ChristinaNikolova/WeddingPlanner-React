@@ -1,11 +1,9 @@
 import styles from './ServerError.module.css';
 
-function ServerError({ error }) {
+function ServerError({ errors }) {
     return (
         <div className={styles["server-error-wrapper"]} >
-            <div className={styles["server-error"]}>
-                {error}
-            </div>
+            {errors.map(e => <div className={styles["server-error"]}>{e.msg}</div>)}
         </div>
     );
 }

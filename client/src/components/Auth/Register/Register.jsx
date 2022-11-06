@@ -45,7 +45,7 @@ function Register() {
         authService.register(values.firstName, values.lastName, values.email, values.password)
             .then((data) => {
                 if (!data.accessToken) {
-                    setServerError(data.message.map((e) => e.msg).join('\n'));
+                    setServerError(data.message);
                     return;
                 }
 
@@ -92,7 +92,7 @@ function Register() {
 
     return (
         <section className={`${styles.register} section`}>
-            {serverError && <ServerError error={serverError} />}
+            {serverError && <ServerError errors={serverError} />}
             <div className={styles["register-title-wrapper"]}>
                 <h2 className={styles["register-title"]}>Register</h2>
                 <p className={styles["register-content"]}>

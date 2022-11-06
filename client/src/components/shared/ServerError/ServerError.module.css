@@ -1,6 +1,8 @@
 .server-error-wrapper {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
   padding-top: 8px;
   padding-right: 20px;
 }
