@@ -6,7 +6,6 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Email is required'],
         unique: true,
-        //TODO: Validate email,
     },
     firstName: {
         type: String,
