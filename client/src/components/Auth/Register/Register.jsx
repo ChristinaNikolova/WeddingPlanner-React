@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
-import './Register.css';
+import styles from './Register.module.css';
 
 function Register() {
-    //TODO CSS MOdule
     const [values, setValues] = useState({
         email: '',
         firstName: '',
@@ -75,17 +74,17 @@ function Register() {
     }
 
     return (
-        <section className="register section">
-            <div className="register-title-wrapper">
-                <h2 className="register-title">Register</h2>
-                <p className="register-content">
+        <section className={`${styles.register} section`}>
+            <div className={styles["register-title-wrapper"]}>
+                <h2 className={styles["register-title"]}>Register</h2>
+                <p className={styles["register-content"]}>
                     Please complete the register form to start planning you wedding day
                 </p>
             </div>
-            <div className="register-content-wrapper">
-                <img className="register-img" src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
-                <form onSubmit={submitHandler} className="register-form">
-                    <div className="register-form-wrapper">
+            <div className={styles["register-content-wrapper"]}>
+                <img className={styles["register-img"]} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
+                <form className={styles["register-form"]} onSubmit={submitHandler} >
+                    <div className={styles["register-form-wrapper"]}>
                         <label htmlFor="email">Email</label>
                         <input
                             id="email"
@@ -95,9 +94,9 @@ function Register() {
                             onBlur={validateEmail}
                             value={values.email}
                         />
-                        {emailError && <p className="client-error">{emailError}</p>}
+                        {emailError && <p className={styles["client-error"]}>{emailError}</p>}
                     </div>
-                    <div className="register-form-wrapper">
+                    <div className={styles["register-form-wrapper"]}>
                         <label htmlFor="firstName">First Name</label>
                         <input
                             id="firstName"
@@ -107,9 +106,9 @@ function Register() {
                             onBlur={validateFirstName}
                             value={values.firstName}
                         />
-                        {firstNameError && <p className="client-error">{firstNameError}</p>}
+                        {firstNameError && <p className={styles["client-error"]}>{firstNameError}</p>}
                     </div>
-                    <div className="register-form-wrapper">
+                    <div className={styles["register-form-wrapper"]}>
                         <label htmlFor="lastName">Last Name</label>
                         <input
                             id="lastName"
@@ -119,9 +118,9 @@ function Register() {
                             onBlur={validateLastName}
                             value={values.lastName}
                         />
-                        {lastNameError && <p className="client-error">{lastNameError}</p>}
+                        {lastNameError && <p className={styles["client-error"]}>{lastNameError}</p>}
                     </div>
-                    <div className="register-form-wrapper">
+                    <div className={styles["register-form-wrapper"]}>
                         <label htmlFor="password">Password</label>
                         <input
                             id="password"
@@ -131,9 +130,9 @@ function Register() {
                             onBlur={validatePassword}
                             value={values.password}
                         />
-                        {passwordError && <p className="client-error">{passwordError}</p>}
+                        {passwordError && <p className={styles["client-error"]}>{passwordError}</p>}
                     </div>
-                    <div className="register-form-wrapper">
+                    <div className={styles["register-form-wrapper"]}>
                         <label htmlFor="repass">Repeat Password</label>
                         <input
                             id="repass"
@@ -143,7 +142,7 @@ function Register() {
                             onBlur={validateRepass}
                             value={values.repass}
                         />
-                        {repassError && <p className="client-error">{repassError}</p>}
+                        {repassError && <p className={styles["client-error"]}>{repassError}</p>}
                     </div>
                     <button className="btn" disabled={isDisabled}>Register</button>
                 </form>
