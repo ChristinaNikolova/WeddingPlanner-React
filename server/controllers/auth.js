@@ -13,7 +13,7 @@ router.post('/register',
             const errors = validationResult(req);
 
             if (errors.length > 0) {
-                throw errors;
+                throw mapErrors(errors);
             }
 
             const token = await register(req.body.firstName, req.body.lastName, req.body.email, req.body.password);

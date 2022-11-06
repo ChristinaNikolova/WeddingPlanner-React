@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
 import Input from '../../shared/Input/Input';
 import ClientError from '../../shared/ClientError/ClientError';
+import ServerError from '../../shared/ServerError/ServerError';
 import styles from './Register.module.css';
 
 function Register() {
+    const navigate = useNavigate();
     const [values, setValues] = useState({
         email: '',
         firstName: '',
@@ -49,6 +52,8 @@ function Register() {
                 sessionStorage.setItem('email', data.email);
                 sessionStorage.setItem('authToken', data.accessToken);
                 sessionStorage.setItem('userId', data._id);
+                navigate('/');
+                //TODO Success Notification!!!
             })
             .catch((err) => {
                 console.error(err);
@@ -88,13 +93,7 @@ function Register() {
 
     return (
         <section className={`${styles.register} section`}>
-            {serverError &&
-                <div className={styles["server-error-wrapper"]}>
-                    <div className={styles["server-error"]}>
-                        {serverError}
-                    </div>
-                </div>
-            }
+            {serverError && <ServerError error={serverError} />}
             <div className={styles["register-title-wrapper"]}>
                 <h2 className={styles["register-title"]}>Register</h2>
                 <p className={styles["register-content"]}>

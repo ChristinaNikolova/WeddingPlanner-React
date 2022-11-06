@@ -46,23 +46,3 @@
 .register-form-wrapper:last-of-type {
   margin-bottom: 60px;
 }
-
-.server-error-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 8px;
-  padding-right: 20px;
-}
-
-.server-error {
-  text-align: center;
-  background-color: var(--clr-creme);
-  color: var(--clr-gold);
-  font-weight: 600;
-  font-size: 22px;
-  width: 30%;
-  padding: 8px;
-  -webkit-box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.22);
-  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.22);
-  border-radius: 8px;
-}
