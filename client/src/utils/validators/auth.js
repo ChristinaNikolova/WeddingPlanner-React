@@ -1,4 +1,3 @@
-//TODO TRIM!!!!!
 import * as constants from '../constants/auth';
 
 export const validEmail = (email) => {

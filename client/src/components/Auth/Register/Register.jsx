@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
+import * as helpers from '../../../utils/helpers/form';
 import './Register.css';
 
 function Register() {
@@ -19,10 +20,9 @@ function Register() {
     const [passwordError, setPasswordError] = useState('');
     const [repassError, setRepassError] = useState('');
 
-
     useEffect(() => {
         checkDisabled();
-    }, [values]);
+    }, [values, emailError, firstNameError, lastNameError, passwordError, repassError]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -34,7 +34,6 @@ function Register() {
         setRepassError(validator.validPasswordMatch(values.password, values.repass));
 
         if (emailError || firstNameError || lastNameError || passwordError || repassError) {
-            setIsDisabled(true);
             return;
         }
 
@@ -71,11 +70,8 @@ function Register() {
         setRepassError(validator.validPasswordMatch(values.password, values.repass));
     }
 
-    //TODO extract helper!!!
     const checkDisabled = () => {
-        values.email && values.firstName && values.lastName && values.password && values.repass
-            ? setIsDisabled(false)
-            : setIsDisabled(true);
+        setIsDisabled(helpers.isButtonDisabled(values, [emailError, firstNameError, lastNameError, passwordError, repassError]));
     }
 
     return (
