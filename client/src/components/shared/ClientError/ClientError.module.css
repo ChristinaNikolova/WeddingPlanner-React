@@ -1,0 +1,7 @@
+@import "../../../styles/constants.css";
+
+.client-error {
+  color: var(--clr-gold);
+  font-weight: 600;
+  font-size: 20px;
+}

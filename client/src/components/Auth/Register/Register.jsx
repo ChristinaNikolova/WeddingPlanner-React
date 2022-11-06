@@ -3,6 +3,7 @@ import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
 import Input from '../../shared/Input/Input';
+import ClientError from '../../shared/ClientError/ClientError';
 import styles from './Register.module.css';
 
 function Register() {
@@ -40,6 +41,7 @@ function Register() {
         authService.register(values.firstName, values.lastName, values.email, values.password)
             .then((data) => {
                 console.log(data);
+                // TODO finish logic
             });
     }
 
@@ -94,7 +96,7 @@ function Register() {
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateEmail}
                         />
-                        {emailError && <p className={styles["client-error"]}>{emailError}</p>}
+                        {emailError && <ClientError error={emailError} />}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
                         <Input
@@ -105,7 +107,7 @@ function Register() {
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateFirstName}
                         />
-                        {firstNameError && <p className={styles["client-error"]}>{firstNameError}</p>}
+                        {firstNameError && <ClientError error={firstNameError} />}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
                         <Input
@@ -116,7 +118,7 @@ function Register() {
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateLastName}
                         />
-                        {lastNameError && <p className={styles["client-error"]}>{lastNameError}</p>}
+                        {lastNameError && <ClientError error={lastNameError} />}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
                         <Input
@@ -127,7 +129,7 @@ function Register() {
                             onChangeHandler={changeHandler}
                             onBlurHandler={validatePassword}
                         />
-                        {passwordError && <p className={styles["client-error"]}>{passwordError}</p>}
+                        {passwordError && <ClientError error={passwordError} />}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
                         <Input
@@ -138,7 +140,7 @@ function Register() {
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateRepass}
                         />
-                        {repassError && <p className={styles["client-error"]}>{repassError}</p>}
+                        {repassError && <ClientError error={repassError} />}
                     </div>
                     <button className="btn" disabled={isDisabled}>Register</button>
                 </form>
