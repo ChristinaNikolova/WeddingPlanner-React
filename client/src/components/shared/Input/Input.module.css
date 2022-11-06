@@ -1,0 +1,23 @@
+@import "../../../styles/constants.css";
+
+.label {
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.input {
+  border: unset;
+  border-radius: unset;
+  height: 42px;
+  font-size: 20px;
+  color: var(--clr-black) !important;
+}
+
+.input:focus {
+  outline: none !important;
+  border: 1px solid var(--clr-gold);
+}

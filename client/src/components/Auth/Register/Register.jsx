@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
+import Input from '../../shared/Input/Input';
 import styles from './Register.module.css';
 
 function Register() {
@@ -85,62 +86,57 @@ function Register() {
                 <img className={styles["register-img"]} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
                 <form className={styles["register-form"]} onSubmit={submitHandler} >
                     <div className={styles["register-form-wrapper"]}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
+                        <Input
                             name="email"
-                            onChange={changeHandler}
-                            onBlur={validateEmail}
+                            type="email"
+                            label="Email"
                             value={values.email}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validateEmail}
                         />
                         {emailError && <p className={styles["client-error"]}>{emailError}</p>}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
-                        <label htmlFor="firstName">First Name</label>
-                        <input
-                            id="firstName"
-                            type="text"
+                        <Input
                             name="firstName"
-                            onChange={changeHandler}
-                            onBlur={validateFirstName}
+                            type="text"
+                            label="First Name"
                             value={values.firstName}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validateFirstName}
                         />
                         {firstNameError && <p className={styles["client-error"]}>{firstNameError}</p>}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
-                        <label htmlFor="lastName">Last Name</label>
-                        <input
-                            id="lastName"
-                            type="text"
+                        <Input
                             name="lastName"
-                            onChange={changeHandler}
-                            onBlur={validateLastName}
+                            type="text"
+                            label="Last Name"
                             value={values.lastName}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validateLastName}
                         />
                         {lastNameError && <p className={styles["client-error"]}>{lastNameError}</p>}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            id="password"
-                            type="password"
+                        <Input
                             name="password"
-                            onChange={changeHandler}
-                            onBlur={validatePassword}
+                            type="password"
+                            label="Password"
                             value={values.password}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validatePassword}
                         />
                         {passwordError && <p className={styles["client-error"]}>{passwordError}</p>}
                     </div>
                     <div className={styles["register-form-wrapper"]}>
-                        <label htmlFor="repass">Repeat Password</label>
-                        <input
-                            id="repass"
-                            type="password"
+                        <Input
                             name="repass"
-                            onChange={changeHandler}
-                            onBlur={validateRepass}
+                            type="password"
+                            label="Repeat Password"
                             value={values.repass}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validateRepass}
                         />
                         {repassError && <p className={styles["client-error"]}>{repassError}</p>}
                     </div>
