@@ -68,3 +68,9 @@
 .register-form-wrapper:last-of-type {
   margin-bottom: 60px;
 }
+
+.client-error {
+  color: var(--clr-gold);
+  font-weight: 600;
+  font-size: 20px;
+}

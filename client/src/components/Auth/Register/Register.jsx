@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as authService from '../../../services/auth';
+import * as validator from '../../../utils/validators/auth';
 import './Register.css';
 
 function Register() {
+    //TODO CSS MOdule
     const [values, setValues] = useState({
         email: '',
         firstName: '',
@@ -9,21 +12,70 @@ function Register() {
         password: '',
         repass: '',
     });
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [emailError, setEmailError] = useState('');
+    const [firstNameError, setFirstNameError] = useState('');
+    const [lastNameError, setLastNameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [repassError, setRepassError] = useState('');
+
+
+    useEffect(() => {
+        checkDisabled();
+    }, [values]);
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(values);
+
+        setEmailError(validator.validEmail(values.email));
+        setFirstNameError(validator.validName(values.firstName));
+        setLastNameError(validator.validName(values.lastName));
+        setPasswordError(validator.validPassword(values.password));
+        setRepassError(validator.validPasswordMatch(values.password, values.repass));
+
+        if (emailError || firstNameError || lastNameError || passwordError || repassError) {
+            setIsDisabled(true);
+            return;
+        }
+
+        authService.register(values.firstName, values.lastName, values.email, values.password)
+            .then((data) => {
+                console.log(data);
+            });
     }
 
     const changeHandler = (e) => {
         setValues((state) => ({
             ...state,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value.trim(),
         }));
     }
 
-    const blurHandler = (e) => {
-        console.log('blur');
+    const validateEmail = () => {
+        setEmailError(validator.validEmail(values.email));
+    }
+
+    const validateFirstName = () => {
+        setFirstNameError(validator.validName(values.firstName));
+    }
+
+    const validateLastName = () => {
+        setLastNameError(validator.validName(values.lastName));
+    }
+
+    const validatePassword = () => {
+        setPasswordError(validator.validPassword(values.password));
+    }
+
+    const validateRepass = () => {
+        setRepassError(validator.validPasswordMatch(values.password, values.repass));
+    }
+
+    //TODO extract helper!!!
+    const checkDisabled = () => {
+        values.email && values.firstName && values.lastName && values.password && values.repass
+            ? setIsDisabled(false)
+            : setIsDisabled(true);
     }
 
     return (
@@ -44,8 +96,10 @@ function Register() {
                             type="email"
                             name="email"
                             onChange={changeHandler}
+                            onBlur={validateEmail}
                             value={values.email}
                         />
+                        {emailError && <p className="client-error">{emailError}</p>}
                     </div>
                     <div className="register-form-wrapper">
                         <label htmlFor="firstName">First Name</label>
@@ -54,8 +108,10 @@ function Register() {
                             type="text"
                             name="firstName"
                             onChange={changeHandler}
+                            onBlur={validateFirstName}
                             value={values.firstName}
                         />
+                        {firstNameError && <p className="client-error">{firstNameError}</p>}
                     </div>
                     <div className="register-form-wrapper">
                         <label htmlFor="lastName">Last Name</label>
@@ -64,8 +120,10 @@ function Register() {
                             type="text"
                             name="lastName"
                             onChange={changeHandler}
+                            onBlur={validateLastName}
                             value={values.lastName}
                         />
+                        {lastNameError && <p className="client-error">{lastNameError}</p>}
                     </div>
                     <div className="register-form-wrapper">
                         <label htmlFor="password">Password</label>
@@ -74,8 +132,10 @@ function Register() {
                             type="password"
                             name="password"
                             onChange={changeHandler}
+                            onBlur={validatePassword}
                             value={values.password}
                         />
+                        {passwordError && <p className="client-error">{passwordError}</p>}
                     </div>
                     <div className="register-form-wrapper">
                         <label htmlFor="repass">Repeat Password</label>
@@ -84,10 +144,12 @@ function Register() {
                             type="password"
                             name="repass"
                             onChange={changeHandler}
+                            onBlur={validateRepass}
                             value={values.repass}
                         />
+                        {repassError && <p className="client-error">{repassError}</p>}
                     </div>
-                    <button className="btn" disabled={values}>Register</button>
+                    <button className="btn" disabled={isDisabled}>Register</button>
                 </form>
             </div>
         </section>
