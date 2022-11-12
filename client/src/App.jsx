@@ -17,7 +17,6 @@ function App() {
   const [auth, setAuth] = useState({});
 
   const userLogin = (data) => {
-    console.log(12);
     setAuth(data);
   }
 

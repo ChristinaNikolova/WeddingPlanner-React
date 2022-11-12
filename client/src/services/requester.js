@@ -1,7 +1,6 @@
 import { getToken } from "./auth";
 
 export const requester = (url, method, data) => {
-    console.log(getToken());
     return fetch(url, {
         method,
         headers: {

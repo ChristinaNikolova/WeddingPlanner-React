@@ -27,7 +27,7 @@ export const login = (email, password) => {
 
 export const logout = () => {
     return requester(api.logout, 'GET')
-        .then((res) => console.log(res))
+        .then(() => console.log('success'))
         .catch((err) => console.error(err));
 }
 
