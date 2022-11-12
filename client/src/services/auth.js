@@ -25,11 +25,23 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
+    const token = getToken();
+
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userId');
+    
+    return fetch(api.logout, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token })
+    })
+        .then((res) => console.log(res))
+        .catch((err) => console.error('in ' + err));
 }
 
 export const getToken = () => {
-    return sessionStorage.getItem('accessToken');
+    return sessionStorage.getItem('authToken');
 }

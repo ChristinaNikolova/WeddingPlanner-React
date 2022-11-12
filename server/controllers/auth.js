@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { register, login } = require('../services/auth');
+const { register, login, logout } = require('../services/auth');
 const { user } = require('../utils/constants/model');
 const { mapErrors } = require('../utils/parser');
 
@@ -31,6 +31,17 @@ router.post('/login', async (req, res) => {
     } catch (error) {
         const message = mapErrors(error);
         res.status(401).json({ message });
+    }
+});
+
+router.post('/logout', async (req, res) => {
+    try {
+        const token = req.body.token;
+        await logout(token);
+        res.status(204).end();
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
     }
 });
 

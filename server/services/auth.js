@@ -42,6 +42,14 @@ async function login(email, password) {
     return createToken(user);
 }
 
+async function logout(token) {
+    const result = new TokenBlacklist({
+        token,
+    });
+
+    await result.save();
+}
+
 function createToken(user) {
     const payload = {
         _id: user._id,
@@ -59,9 +67,9 @@ function createToken(user) {
     };
 }
 
-function parseToken(token) {
-    //TODO check if works
-    if (TokenBlacklist.find({}).some((t) => t.tokens === token)) {
+async function parseToken(token) {
+    // TODO check this!!!!
+    if (await TokenBlacklist.find({ token: token })) {
         throw new Error('Token is blacklisted');
     }
 
@@ -75,5 +83,6 @@ async function getUserByEmail(email) {
 module.exports = {
     register,
     login,
+    logout,
     parseToken,
 }

@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const tokenBlacklistSchema = new Schema({
-    tokens: {
-        type: [String],
-        default: [],
+    token: {
+        type: String,
+        default: '',
     },
 });
 

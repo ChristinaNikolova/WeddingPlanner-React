@@ -1,10 +1,20 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import * as authService from '../../services/auth';
 import styles from './Header.module.css';
 
 function Header() {
+    const nagivate = useNavigate();
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
     }
+
+    const logout = () => {
+        authService.logout()
+            .then(() => {
+                nagivate('/');
+            })
+            .catch((err) => console.error(err));
+    };
 
     return (
         <header className={styles.header}>
@@ -24,6 +34,9 @@ function Header() {
                     </li>
                     <li className={styles["header-nav-li"]}>
                         <NavLink className={setNavStyle} to="/register">Register</NavLink>
+                    </li>
+                    <li className={styles["header-nav-li"]}>
+                        <NavLink className={setNavStyle} onClick={logout}>Logout</NavLink>
                     </li>
                 </ul>
             </nav>
