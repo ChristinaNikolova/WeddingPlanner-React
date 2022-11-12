@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
@@ -96,7 +96,8 @@ function Register() {
             <div className={styles["register-title-wrapper"]}>
                 <h2 className={styles["register-title"]}>Register</h2>
                 <p className={styles["register-content"]}>
-                    Please complete the register form to start planning you wedding day
+                    Please complete the register form to start planning you wedding day.
+                    You already have an account go to <Link to="/login">Login</Link>
                 </p>
             </div>
             <div className={styles["register-content-wrapper"]}>

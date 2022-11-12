@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { register } = require('../services/auth');
+const { register, login } = require('../services/auth');
 const { user } = require('../utils/constants/model');
 const { mapErrors } = require('../utils/parser');
 
@@ -23,5 +23,15 @@ router.post('/register',
             res.status(400).json({ message });
         }
     });
+
+router.post('/login', async (req, res) => {
+    try {
+        const token = await login(req.body.email, req.body.password);
+        res.json(token);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(401).json({ message });
+    }
+});
 
 module.exports = router;

@@ -1,9 +1,9 @@
 const { hash, compare } = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const TokenBlacklist = require("../models/TokenBlacklist");
 const User = require("../models/User");
 
 const secret = 'my-very-secret';
-const tokenBlacklist = new Set();
 
 async function register(firstName, lastName, email, password) {
     let user = await getUserByEmail(email);
@@ -26,8 +26,20 @@ async function register(firstName, lastName, email, password) {
     return createToken(user);
 }
 
-async function getUserByEmail(email) {
-    return await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+async function login(email, password) {
+    let user = await getUserByEmail(email);
+
+    if (!user) {
+        throw new Error('Incorrect email or password');
+    }
+
+    const match = await compare(password, user.hashedPassword);
+
+    if (!match) {
+        throw new Error('Incorrect email or password');
+    }
+
+    return createToken(user);
 }
 
 function createToken(user) {
@@ -48,14 +60,20 @@ function createToken(user) {
 }
 
 function parseToken(token) {
-    if (tokenBlacklist.has(token)) {
+    //TODO check if works
+    if (TokenBlacklist.find({}).some((t) => t.tokens === token)) {
         throw new Error('Token is blacklisted');
     }
 
     return jwt.verify(token, secret);
 }
 
+async function getUserByEmail(email) {
+    return await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+}
+
 module.exports = {
     register,
+    login,
     parseToken,
 }

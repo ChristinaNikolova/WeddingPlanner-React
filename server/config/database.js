@@ -9,6 +9,7 @@ require('../models/Note');
 require('../models/Planner');
 require('../models/SubTask');
 require('../models/Task');
+require('../models/TokenBlacklist');
 require('../models/User');
 
 const connectionString = 'mongodb://localhost:27017/weddingplanner';
