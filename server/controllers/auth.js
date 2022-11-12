@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
     try {
-        const token = req.token;
+        const token = req.headers['x-authorization'].split(' ')[1];
         await logout(token);
         res.status(204).end();
     } catch (error) {
