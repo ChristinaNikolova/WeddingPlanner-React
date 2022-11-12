@@ -69,7 +69,9 @@ function createToken(user) {
 
 async function parseToken(token) {
     // TODO check this!!!!
-    if (await TokenBlacklist.find({ token: token })) {
+    const result = await TokenBlacklist.find({ token: token });
+
+    if (result) {
         throw new Error('Token is blacklisted');
     }
 

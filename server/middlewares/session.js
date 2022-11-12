@@ -1,9 +1,9 @@
 const { parseToken } = require("../services/auth");
 
 module.exports = () => (req, res, next) => {
-    const token = req.headers['x-authorization'];
+    const token = (req.headers['x-authorization'])?.split(' ')[1];
 
-    if (token) {
+    if (token && req.url !== '/auth/logout') {
         try {
             const payload = parseToken(token);
             req.user = payload;

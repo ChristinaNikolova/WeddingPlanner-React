@@ -34,9 +34,9 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/logout', async (req, res) => {
+router.get('/logout', async (req, res) => {
     try {
-        const token = req.body.token;
+        const token = req.token;
         await logout(token);
         res.status(204).end();
     } catch (error) {

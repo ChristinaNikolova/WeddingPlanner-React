@@ -1,14 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../../contexts/authContext';
 import * as helpers from '../../../utils/helpers/form';
 import * as authService from '../../../services/auth';
+
 import ClientError from '../../shared/ClientError/ClientError';
 import Input from '../../shared/Input/Input';
 import ServerError from '../../shared/ServerError/ServerError';
+
 import './Login.css';
 
 function Login() {
+    const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -44,6 +50,7 @@ function Login() {
                     return;
                 }
 
+                userLogin(data);
                 sessionStorage.setItem('email', data.email);
                 sessionStorage.setItem('authToken', data.accessToken);
                 sessionStorage.setItem('userId', data._id);

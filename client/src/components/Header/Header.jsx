@@ -1,20 +1,16 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import * as authService from '../../services/auth';
+import { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/authContext';
+
 import styles from './Header.module.css';
 
 function Header() {
-    const nagivate = useNavigate();
+    const { auth } = useContext(AuthContext);
+
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
     }
-
-    const logout = () => {
-        authService.logout()
-            .then(() => {
-                nagivate('/');
-            })
-            .catch((err) => console.error(err));
-    };
 
     return (
         <header className={styles.header}>
@@ -29,15 +25,26 @@ function Header() {
                     <li className={`${styles["header-nav-li"]} logo gold-underline`}>
                         <Link to="/">Wedding Planner</Link>
                     </li>
-                    <li className={styles["header-nav-li"]}>
-                        <NavLink className={setNavStyle} to="/login">Login</NavLink>
-                    </li>
-                    <li className={styles["header-nav-li"]}>
-                        <NavLink className={setNavStyle} to="/register">Register</NavLink>
-                    </li>
-                    <li className={styles["header-nav-li"]}>
-                        <NavLink className={setNavStyle} onClick={logout}>Logout</NavLink>
-                    </li>
+                    {/* {auth
+                        ? */}
+                        <>
+                            <li className={styles["header-nav-li"]}>
+                                <NavLink className={setNavStyle} to="/profile">Profile</NavLink>
+                            </li>
+                            <li className={styles["header-nav-li"]}>
+                                <NavLink className={setNavStyle} to="/logout">Logout</NavLink>
+                            </li>
+                        </>
+                        {/* : */}
+                        <>
+                            <li className={styles["header-nav-li"]}>
+                                <NavLink className={setNavStyle} to="/login">Login</NavLink>
+                            </li>
+                            <li className={styles["header-nav-li"]}>
+                                <NavLink className={setNavStyle} to="/register">Register</NavLink>
+                            </li>
+                        </>
+                    {/* } */}
                 </ul>
             </nav>
         </header>

@@ -1,4 +1,5 @@
 import { api } from './api';
+import { requester } from './requester';
 
 export const register = (firstName, lastName, email, password) => {
     return fetch(api.register, {
@@ -25,21 +26,9 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
-    const token = getToken();
-
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('userId');
-    
-    return fetch(api.logout, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token })
-    })
+    return requester(api.logout, 'GET')
         .then((res) => console.log(res))
-        .catch((err) => console.error('in ' + err));
+        .catch((err) => console.error(err));
 }
 
 export const getToken = () => {
