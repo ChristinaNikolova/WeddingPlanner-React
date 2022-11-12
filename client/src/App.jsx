@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContext } from './contexts/authContext';
+import { AuthProvider } from './contexts/authContext';
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -14,14 +13,8 @@ import NotFound from './components/NotFound/NotFound';
 import './App.css';
 
 function App() {
-  const [auth, setAuth] = useState({});
-
-  const userLogin = (data) => {
-    setAuth(data);
-  }
-
   return (
-    <AuthContext.Provider value={{ auth, userLogin }}>
+    <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,7 +24,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

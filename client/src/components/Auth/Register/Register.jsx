@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../../contexts/authContext';
 import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
+
 import Input from '../../shared/Input/Input';
 import ClientError from '../../shared/ClientError/ClientError';
 import ServerError from '../../shared/ServerError/ServerError';
+
 import styles from './Register.module.css';
 
 function Register() {
+    const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+
     const [values, setValues] = useState({
         email: '',
         firstName: '',
@@ -49,9 +55,7 @@ function Register() {
                     return;
                 }
 
-                sessionStorage.setItem('email', data.email);
-                sessionStorage.setItem('authToken', data.accessToken);
-                sessionStorage.setItem('userId', data._id);
+                userLogin(data);
                 navigate('/');
             })
             .catch((err) => {

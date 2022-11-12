@@ -51,9 +51,6 @@ function Login() {
                 }
 
                 userLogin(data);
-                sessionStorage.setItem('email', data.email);
-                sessionStorage.setItem('authToken', data.accessToken);
-                sessionStorage.setItem('userId', data._id);
                 navigate('/');
             })
             .catch((err) => {
