@@ -27,9 +27,8 @@ export const AuthProvider = ({
         <AuthContext.Provider value={{
             userLogin,
             userLogout,
-            // TODO test this!!!!
             isAuthenticated: !!authToken,
-            isAdmin: !!email === 'weddingplanner@admin.com',
+            isAdmin: email === 'weddingplanner@admin.com',
         }}>
             {children}
         </AuthContext.Provider>

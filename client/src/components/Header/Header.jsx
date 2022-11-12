@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from './Header.module.css';
 
 function Header() {
-    const { auth } = useContext(AuthContext);
+    const { isAuthenticated, isAdmin } = useContext(AuthContext);
 
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
@@ -25,17 +25,22 @@ function Header() {
                     <li className={`${styles["header-nav-li"]} logo gold-underline`}>
                         <Link to="/">Wedding Planner</Link>
                     </li>
-                    {/* {auth
-                        ? */}
+                    {isAuthenticated
+                        ?
                         <>
                             <li className={styles["header-nav-li"]}>
                                 <NavLink className={setNavStyle} to="/profile">Profile</NavLink>
                             </li>
+                            {isAdmin &&
+                                <li className={styles["header-nav-li"]}>
+                                    <NavLink className={setNavStyle} to="/profile">Administration</NavLink>
+                                </li>
+                            }
                             <li className={styles["header-nav-li"]}>
                                 <NavLink className={setNavStyle} to="/logout">Logout</NavLink>
                             </li>
                         </>
-                        {/* : */}
+                        :
                         <>
                             <li className={styles["header-nav-li"]}>
                                 <NavLink className={setNavStyle} to="/login">Login</NavLink>
@@ -44,7 +49,7 @@ function Header() {
                                 <NavLink className={setNavStyle} to="/register">Register</NavLink>
                             </li>
                         </>
-                    {/* } */}
+                    }
                 </ul>
             </nav>
         </header>
