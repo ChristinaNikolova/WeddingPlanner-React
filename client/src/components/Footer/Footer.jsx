@@ -1,7 +1,13 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/authContext';
+
 import styles from './Footer.module.css';
 
 function Footer() {
+    const { isAuthenticated } = useContext(AuthContext);
+
     return (
         <footer className={styles.footer}>
             <nav className={styles["footer-nav"]}>
@@ -12,17 +18,32 @@ function Footer() {
                 </ul>
                 <ul className={`${styles["footer-nav-ul"]} gold-underline`}>
                     <li className={styles["footer-nav-li"]}>
-                        <Link to="/">Plan your wedding</Link>
+                        <Link to="/plan">Plan your wedding</Link>
                     </li>
                     <li className={styles["footer-nav-li"]}>
-                        <Link to="/">Wedding's blog</Link>
+                        <Link to="/blog">Wedding's blog</Link>
                     </li>
-                    <li className={styles["footer-nav-li"]}>
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li className={styles["footer-nav-li"]}>
-                        <Link to="/register">Register</Link>
-                    </li>
+                    {isAuthenticated
+                        ?
+                        <>
+                            <li className={styles["footer-nav-li"]}>
+                                <Link to="/profile">Profile</Link>
+                            </li>
+                            <li className={styles["footer-nav-li"]}>
+                                <Link to="/logout">Logout</Link>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li className={styles["footer-nav-li"]}>
+                                <Link to="/login">Login</Link>
+                            </li>
+                            <li className={styles["footer-nav-li"]}>
+                                <Link to="/register">Register</Link>
+                            </li>
+                        </>
+                    }
+
                 </ul>
                 <ul className={styles["footer-nav-ul"]}>
                     <li className={styles["footer-nav-li"]}>
