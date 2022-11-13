@@ -33,7 +33,7 @@ function Header() {
                             </li>
                             {isAdmin &&
                                 <li className={styles["header-nav-li"]}>
-                                    <NavLink className={setNavStyle} to="/profile">Administration</NavLink>
+                                    <NavLink className={setNavStyle} to="/administration">Administration</NavLink>
                                 </li>
                             }
                             <li className={styles["header-nav-li"]}>

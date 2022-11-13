@@ -1,0 +1,13 @@
+.dashboard-content-wrapper {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.dashboard-img {
+  max-width: 30%;
+  height: 700px;
+  object-fit: cover;
+}

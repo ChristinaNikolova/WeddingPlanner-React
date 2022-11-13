@@ -117,6 +117,17 @@ li.logo a:hover {
   height: 100vh;
 }
 
+.section-title-wrapper {
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
 .section-background {
   background-color: var(--clr-light-creme);
 }

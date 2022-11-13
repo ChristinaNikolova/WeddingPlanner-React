@@ -75,17 +75,17 @@ function Login() {
     };
 
     return (
-        <section className={`${styles.login} section section-background`}>
+        <section className="section section-background">
             {serverError && <ServerError errors={serverError} />}
-            <div className={styles["login-title-wrapper"]}>
-                <h2 className={styles["login-title"]}>Login</h2>
+            <div className="section-title-wrapper">
+                <h2 className="section-title">Login</h2>
                 <p className={styles["login-content"]}>
                     Please complete the login. You don't have an account? Go to <Link className="navigation-link" to="/register">Register</Link>
                 </p>
             </div>
             <div className={styles["login-content-wrapper"]}>
-                <form className={`${styles["login-form"]} auth-form`} onSubmit={submitHandler}>
-                    <div className={`${styles["login-form-wrapper"]} auth-form-wrapper`}>
+                <form className="auth-form" onSubmit={submitHandler}>
+                    <div className="auth-form-wrapper">
                         <Input
                             name="email"
                             type="email"
@@ -96,7 +96,7 @@ function Login() {
                         />
                         {emailError && <ClientError error={emailError} />}
                     </div>
-                    <div className={`${styles["login-form-wrapper"]} auth-form-wrapper`}>
+                    <div className="auth-form-wrapper">
                         <Input
                             name="password"
                             type="password"

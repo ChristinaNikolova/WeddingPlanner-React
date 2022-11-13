@@ -8,6 +8,7 @@ import Home from './components/Home/Home';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Logout from './components/Auth/Logout/Logout';
+import Dashboard from './components/Administration/Dashboard/Dashboard';
 import NotFound from './components/NotFound/NotFound';
 
 import './App.css';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/administration" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
