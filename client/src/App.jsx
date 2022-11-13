@@ -10,6 +10,7 @@ import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Logout from './components/Auth/Logout/Logout';
 import NotFound from './components/NotFound/NotFound';
+import Loading from './components/shared/Loading/Loading';
 
 import './App.css';
 
@@ -27,12 +28,12 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/administration" element={
-          <Suspense fallback={<span>Loading &hellip;</span>}>
+          <Suspense fallback={<Loading />}>
             <Dashboard />
           </Suspense>
         } />
         <Route path="/administration/articles/create" element={
-          <Suspense fallback={<span>Loading &hellip;</span>}>
+          <Suspense fallback={<Loading />}>
             <CreateArticle />
           </Suspense>
         } />
