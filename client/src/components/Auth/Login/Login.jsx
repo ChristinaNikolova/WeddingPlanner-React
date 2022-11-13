@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../../contexts/authContext';
 import * as helpers from '../../../utils/helpers/form';
+import * as validator from '../../../utils/validators/auth';
 import * as authService from '../../../services/auth';
 
 import ClientError from '../../shared/ClientError/ClientError';
 import Input from '../../shared/Input/Input';
 import ServerError from '../../shared/ServerError/ServerError';
 
-import './Login.css';
+import styles from './Login.module.css';
 
 function Login() {
     const { userLogin } = useContext(AuthContext);
@@ -29,15 +30,11 @@ function Login() {
         checkDisabled();
     }, [values, emailError, passwordError]);
 
-    const changeHandler = (e) => {
-        setValues((state) => ({
-            ...state,
-            [e.target.name]: e.target.value.trim(),
-        }));
-    }
-
     const submitHandler = (e) => {
         e.preventDefault();
+
+        setEmailError(validator.validEmail(values.email));
+        setPasswordError(validator.validPassword(values.password));
 
         if (emailError || passwordError) {
             return;
@@ -58,54 +55,61 @@ function Login() {
             });
     }
 
-    // const validateEmail = () => {
-    //     setEmailError(validator.validEmail(values.email));
-    // }
+    const changeHandler = (e) => {
+        setValues((state) => ({
+            ...state,
+            [e.target.name]: e.target.value.trim(),
+        }));
+    }
 
-    // const validatePassword = () => {
-    //     setPasswordError(validator.validPassword(values.password));
-    // }
+    const validateEmail = () => {
+        setEmailError(validator.validEmail(values.email));
+    }
+
+    const validatePassword = () => {
+        setPasswordError(validator.validPassword(values.password));
+    }
 
     const checkDisabled = () => {
         setIsDisabled(helpers.isButtonDisabled(values, [emailError, passwordError]));
     };
 
     return (
-        <section className="login section">
+        <section className={`${styles.login} section section-background`}>
             {serverError && <ServerError errors={serverError} />}
-            <div className="login-title-wrapper">
-                <h2 className="login-title">Login</h2>
-                <p className="login-content">
-                    Please complete the login. You don't have an account? Go to <Link to="/register">Register</Link>
+            <div className={styles["login-title-wrapper"]}>
+                <h2 className={styles["login-title"]}>Login</h2>
+                <p className={styles["login-content"]}>
+                    Please complete the login. You don't have an account? Go to <Link className="navigation-link" to="/register">Register</Link>
                 </p>
             </div>
-            <div className="login-content-wrapper">
-                <form className="login-form" onSubmit={submitHandler}>
-                    <div className="login-form-wrapper">
+            <div className={styles["login-content-wrapper"]}>
+                <form className={`${styles["login-form"]} auth-form`} onSubmit={submitHandler}>
+                    <div className={`${styles["login-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="email"
                             type="email"
                             label="Email"
                             value={values.email}
                             onChangeHandler={changeHandler}
-                            onBlurHandler={null}
+                            onBlurHandler={validateEmail}
                         />
                         {emailError && <ClientError error={emailError} />}
                     </div>
-                    <div className="login-form-wrapper">
+                    <div className={`${styles["login-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="password"
                             type="password"
                             label="Password"
                             value={values.password}
                             onChangeHandler={changeHandler}
-                            onBlurHandler={null}
+                            onBlurHandler={validatePassword}
                         />
                         {passwordError && <ClientError error={passwordError} />}
                     </div>
-                    <button className="btn">Login</button>
+                    <button className="btn" disabled={isDisabled}>Login</button>
                 </form>
-                <img className="login-img" src="./img/flowers-3992893_1920.jpg" alt="wedding_accessories" />
+                <img className={styles["login-img"]} src="./img/flowers-3992893_1920.jpg" alt="wedding_accessories" />
             </div>
         </section>
     );

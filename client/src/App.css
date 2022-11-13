@@ -20,6 +20,8 @@ h6 {
   text-transform: uppercase;
 }
 
+/* Button & Link */
+
 .btn {
   padding: 12px 30px;
   text-align: center;
@@ -66,6 +68,32 @@ a:hover {
   cursor: pointer;
 }
 
+.navigation-link {
+  color: var(--clr-gold);
+  font-weight: 600;
+  font-size: 24px;
+  transition: all 600ms ease-in-out;
+}
+
+.navigation-link:hover {
+  font-weight: 200;
+}
+
+/* Form */
+.auth-form {
+  width: 30%;
+}
+
+.auth-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.auth-form-wrapper:last-of-type {
+  margin-bottom: 60px;
+}
+
 /* Header & Footer */
 
 .gold-underline {
@@ -87,4 +115,8 @@ li.logo a:hover {
 
 .section {
   height: 100vh;
+}
+
+.section-background {
+  background-color: var(--clr-light-creme);
 }

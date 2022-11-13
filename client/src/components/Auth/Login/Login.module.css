@@ -1,25 +1,25 @@
-.register-title-wrapper {
+.login-title-wrapper {
   text-align: center;
   padding-top: 30px;
   margin-bottom: 40px;
 }
 
-.register-title {
+.login-title {
   font-size: 60px;
   margin-bottom: 20px;
 }
 
-.register-content {
+.login-content {
   font-size: 22px;
 }
 
-.register-content-wrapper {
+.login-content-wrapper {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.register-img {
+.login-img {
   max-width: 30%;
   max-height: 50%;
   object-fit: cover;

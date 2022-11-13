@@ -23,6 +23,7 @@ function Register() {
         password: '',
         repass: '',
     });
+
     const [isDisabled, setIsDisabled] = useState(true);
     const [emailError, setEmailError] = useState('');
     const [firstNameError, setFirstNameError] = useState('');
@@ -95,19 +96,19 @@ function Register() {
     }
 
     return (
-        <section className={`${styles.register} section`}>
+        <section className={`${styles.register} section section-background`}>
             {serverError && <ServerError errors={serverError} />}
             <div className={styles["register-title-wrapper"]}>
                 <h2 className={styles["register-title"]}>Register</h2>
                 <p className={styles["register-content"]}>
                     Please complete the register form to start planning you wedding day.
-                    You already have an account go to <Link to="/login">Login</Link>
+                    You already have an account? Go to <Link className="navigation-link" to="/login">Login</Link>
                 </p>
             </div>
             <div className={styles["register-content-wrapper"]}>
                 <img className={styles["register-img"]} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
-                <form className={styles["register-form"]} onSubmit={submitHandler} >
-                    <div className={styles["register-form-wrapper"]}>
+                <form className={`${styles["register-form"]} auth-form`} onSubmit={submitHandler} >
+                    <div className={`${styles["register-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="email"
                             type="email"
@@ -118,7 +119,7 @@ function Register() {
                         />
                         {emailError && <ClientError error={emailError} />}
                     </div>
-                    <div className={styles["register-form-wrapper"]}>
+                    <div className={`${styles["register-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="firstName"
                             type="text"
@@ -129,7 +130,7 @@ function Register() {
                         />
                         {firstNameError && <ClientError error={firstNameError} />}
                     </div>
-                    <div className={styles["register-form-wrapper"]}>
+                    <div className={`${styles["register-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="lastName"
                             type="text"
@@ -140,7 +141,7 @@ function Register() {
                         />
                         {lastNameError && <ClientError error={lastNameError} />}
                     </div>
-                    <div className={styles["register-form-wrapper"]}>
+                    <div className={`${styles["register-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="password"
                             type="password"
@@ -151,7 +152,7 @@ function Register() {
                         />
                         {passwordError && <ClientError error={passwordError} />}
                     </div>
-                    <div className={styles["register-form-wrapper"]}>
+                    <div className={`${styles["register-form-wrapper"]} auth-form-wrapper`}>
                         <Input
                             name="repass"
                             type="password"
