@@ -1,0 +1,23 @@
+.create-category-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-category-form {
+  width: 80%;
+  margin-bottom: 120px;
+}
+
+.create-category-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.create-category-img {
+  width: 30%;
+  height: 20%;
+}

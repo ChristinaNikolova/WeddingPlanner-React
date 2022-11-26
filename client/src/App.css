@@ -43,6 +43,11 @@ h6 {
   border: none;
 }
 
+.btn-center {
+  display: block;
+  margin: 0 auto;
+}
+
 button:disabled {
   cursor: not-allowed !important;
   pointer-events: all !important;
@@ -79,18 +84,28 @@ a:hover {
   font-weight: 200;
 }
 
+/* Image */
+img {
+  object-fit: cover;
+}
+
+.img-shadow {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.06);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.06);
+}
+
 /* Form */
 .auth-form {
   width: 30%;
 }
 
-.auth-form-wrapper {
+.form-wrapper {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.auth-form-wrapper:last-of-type {
+.form-wrapper:last-of-type {
   margin-bottom: 60px;
 }
 

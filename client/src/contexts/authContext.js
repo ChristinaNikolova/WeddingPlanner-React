@@ -28,7 +28,7 @@ export const AuthProvider = ({
             userLogin,
             userLogout,
             isAuthenticated: !!authToken,
-            isAdmin: email === 'weddingplanner@admin.com',
+            isAdmin: email === 'admin@weddingplanner.com',
         }}>
             {children}
         </AuthContext.Provider>
