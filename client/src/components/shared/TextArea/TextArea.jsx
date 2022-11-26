@@ -1,17 +1,18 @@
-function Input({ name, type, label, value, onChangeHandler, onBlurHandler }) {
+function TextArea({ name, label, value, cols, rows, onChangeHandler, onBlurHandler }) {
     return (
         <>
             <label className="label" htmlFor={name}>{label}</label>
-            <input className="input"
+            <textarea className="input"
                 id={name}
                 name={name}
-                type={type}
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
+                cols={cols}
+                rows={rows}
                 value={value}
             />
         </>
     )
 }
 
-export default Input;
+export default TextArea;

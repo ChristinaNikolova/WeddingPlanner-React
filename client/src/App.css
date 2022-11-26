@@ -109,6 +109,33 @@ img {
   margin-bottom: 60px;
 }
 
+/* Label */
+.label {
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* Input & TextArea */
+.input {
+  border: unset;
+  border-radius: unset;
+  font-size: 20px;
+  color: var(--clr-black) !important;
+}
+
+input.input {
+  height: 42px;
+}
+
+.input:focus {
+  outline: none !important;
+  border: 1px solid var(--clr-gold);
+}
+
 /* Header & Footer */
 
 .gold-underline {
