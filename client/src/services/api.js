@@ -4,7 +4,8 @@ const api = {
     register: `${baseUrl}/auth/register`,
     login: `${baseUrl}/auth/login`,
     logout: `${baseUrl}/auth/logout`,
-    createCategory: `${baseUrl}/admin/categories/create`
+    createArticle: `${baseUrl}/admin/articles/create`,
+    createCategory: `${baseUrl}/admin/categories/create`,
 }
 
 module.exports = {

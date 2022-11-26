@@ -1,0 +1,10 @@
+.create-article-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-article-form {
+  width: 80%;
+}
