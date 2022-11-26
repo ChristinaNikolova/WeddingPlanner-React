@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as helpers from '../../../../utils/helpers/form';
-import * as validator from '../../../../utils/validators/category'
+import * as validator from '../../../../utils/validators/category';
+import * as categoriesService from '../../../../services/admin/categories';
 
 import Input from "../../../shared/Input/Input";
 import ClientError from '../../../shared/ClientError/ClientError';
@@ -37,19 +38,19 @@ function CreateCategory() {
             return;
         }
 
-        // authService.login(values.email, values.password)
-        //     .then((data) => {
-        //         if (!data.accessToken) {
-        //             setServerError(data.message);
-        //             return;
-        //         }
+        categoriesService.create(values.name, values.image)
+            .then((data) => {
+                console.log(data);
+                // if (data.message) {
+                //     setServerError(data);
+                //     return;
+                // }
 
-        //         userLogin(data);
-        //         navigate('/');
-        //     })
-        //     .catch((err) => {
-        //         console.error(err);
-        //     });
+                navigate('/');
+            })
+            .catch((err) => {
+                console.error(err)
+            });
     }
 
     const changeHandler = (e) => {
@@ -78,7 +79,7 @@ function CreateCategory() {
                 <h2 className="section-title">Create Category</h2>
             </div>
             <div className={styles["create-category-content-wrapper"]}>
-                <form className={styles["create-category-form"]}>
+                <form className={styles["create-category-form"]} onSubmit={submitHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="name"
