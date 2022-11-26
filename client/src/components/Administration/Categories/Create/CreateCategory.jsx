@@ -13,7 +13,7 @@ import styles from './CreateCategory.module.css'
 
 function CreateCategory() {
     const navigate = useNavigate();
-
+    
     const [values, setValues] = useState({
         name: '',
         image: '',
@@ -47,15 +47,13 @@ function CreateCategory() {
 
                 navigate('/');
             })
-            .catch((err) => {
-                console.error(err)
-            });
+            .catch((err) => console.error(err));
     }
 
     const changeHandler = (e) => {
         setValues((state) => ({
             ...state,
-            [e.target.name]: e.target.value.trim(),
+            [e.target.name]: e.target.value,
         }));
     }
 

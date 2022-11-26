@@ -59,15 +59,13 @@ function Register() {
                 userLogin(data);
                 navigate('/');
             })
-            .catch((err) => {
-                console.error(err);
-            });
+            .catch((err) => console.error(err));
     }
 
     const changeHandler = (e) => {
         setValues((state) => ({
             ...state,
-            [e.target.name]: e.target.value.trim(),
+            [e.target.name]: e.target.value,
         }));
     }
 
