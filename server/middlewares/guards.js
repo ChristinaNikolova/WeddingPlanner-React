@@ -1,11 +1,12 @@
+const { mapErrors } = require("../utils/parser");
+
 function isAdmin() {
     return (req, res, next) => {
         if (req.user && req.user.email === 'admin@weddingplanner.com') {
-            console.log('admin')
             next();
         } else {
-            console.log('no admin')
-            res.status(401).json([{ msg: 'Please log in' }]);
+            const message = mapErrors({ message: 'Please log in' });
+            res.status(401).json({ message });
         }
     }
 }

@@ -40,11 +40,10 @@ function CreateCategory() {
 
         categoriesService.create(values.name, values.image)
             .then((data) => {
-                console.log(data);
-                // if (data.message) {
-                //     setServerError(data);
-                //     return;
-                // }
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
 
                 navigate('/');
             })
