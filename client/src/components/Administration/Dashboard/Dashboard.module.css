@@ -6,8 +6,11 @@
   align-items: flex-start;
 }
 
+.dashboard-li {
+  margin-bottom: 50px;
+}
+
 .dashboard-img {
   max-width: 30%;
   height: 700px;
-  object-fit: cover;
 }

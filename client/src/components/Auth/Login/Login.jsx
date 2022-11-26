@@ -85,7 +85,7 @@ function Login() {
             </div>
             <div className={styles["login-content-wrapper"]}>
                 <form className="auth-form" onSubmit={submitHandler}>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="email"
                             type="email"
@@ -96,7 +96,7 @@ function Login() {
                         />
                         {emailError && <ClientError error={emailError} />}
                     </div>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="password"
                             type="password"
@@ -109,7 +109,7 @@ function Login() {
                     </div>
                     <button className="btn" disabled={isDisabled}>Login</button>
                 </form>
-                <img className={styles["login-img"]} src="./img/flowers-3992893_1920.jpg" alt="wedding_accessories" />
+                <img className={`${styles["login-img"]} img-shadow`} src="./img/flowers-3992893_1920.jpg" alt="wedding_accessories" />
             </div>
         </section>
     );

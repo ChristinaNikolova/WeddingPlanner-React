@@ -9,13 +9,16 @@ function Dashboard() {
                 <h2 className="section-title">Administration</h2>
             </div>
             <div className={styles["dashboard-content-wrapper"]}>
-                <img className={styles["dashboard-img"]} src="./img/groom-505683_1920.jpg" alt="groom" />
+                <img className={`${styles["dashboard-img"]} img-shadow`} src="./img/groom-505683_1920.jpg" alt="groom" />
                 <ul className="dashboard-ul">
-                    <li className="dashboard-li">
+                    <li className={styles["dashboard-li"]}>
                         <Link className="navigation-link btn" to="/administration/articles/create">Create Article</Link>
                     </li>
+                    <li className={styles["dashboard-li"]}>
+                        <Link className="navigation-link btn" to="/administration/categories/create">Create Category</Link>
+                    </li>
                 </ul>
-                <img className={styles["dashboard-img"]} src="./img/bride-428105_1920.jpg" alt="bride" />
+                <img className={`${styles["dashboard-img"]} img-shadow`} src="./img/bride-428105_1920.jpg" alt="bride" />
             </div>
         </section>
     );

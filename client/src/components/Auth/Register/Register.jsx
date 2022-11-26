@@ -106,9 +106,9 @@ function Register() {
                 </p>
             </div>
             <div className={styles["register-content-wrapper"]}>
-                <img className={styles["register-img"]} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
+                <img className={`${styles["register-img"]} img-shadow`} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
                 <form className="auth-form" onSubmit={submitHandler} >
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="email"
                             type="email"
@@ -119,7 +119,7 @@ function Register() {
                         />
                         {emailError && <ClientError error={emailError} />}
                     </div>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="firstName"
                             type="text"
@@ -130,7 +130,7 @@ function Register() {
                         />
                         {firstNameError && <ClientError error={firstNameError} />}
                     </div>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="lastName"
                             type="text"
@@ -141,7 +141,7 @@ function Register() {
                         />
                         {lastNameError && <ClientError error={lastNameError} />}
                     </div>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="password"
                             type="password"
@@ -152,7 +152,7 @@ function Register() {
                         />
                         {passwordError && <ClientError error={passwordError} />}
                     </div>
-                    <div className="auth-form-wrapper">
+                    <div className="form-wrapper">
                         <Input
                             name="repass"
                             type="password"
