@@ -1,4 +1,4 @@
-const Category = require("../../models/Category");
+const Category = require("../models/Category");
 
 async function create(name, image) {
     let category = await getCategoryByName(name);

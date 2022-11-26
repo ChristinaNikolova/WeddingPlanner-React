@@ -1,5 +1,5 @@
-import { api } from '../api';
-import { requester } from '../requester';
+import { api } from './api';
+import { requester } from './requester';
 
 export const create = (name, image) => {
     return requester(api.createCategory, 'POST', { name, image })

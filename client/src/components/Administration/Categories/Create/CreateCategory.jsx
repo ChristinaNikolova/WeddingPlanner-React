@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/category';
-import * as categoriesService from '../../../../services/admin/categories';
+import * as categoriesService from '../../../../services/categories';
 
 import Input from "../../../shared/Input/Input";
 import ClientError from '../../../shared/ClientError/ClientError';

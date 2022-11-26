@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { isAdmin } = require('../../middlewares/guards');
-const { create } = require('../../services/admin/categories');
+const { create } = require('../../services/categories');
 const { mapErrors } = require('../../utils/parser');
 
 router.post('/create', isAdmin(), async (req, res) => {
