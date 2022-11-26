@@ -70,11 +70,11 @@ function createToken(user) {
 async function parseToken(token) {
     const result = await TokenBlacklist.find({ token: token });
 
-    if (result) {
+    if (result.token) {
         throw new Error('Token is blacklisted');
     }
 
-    return jwt.verify(token, secret);
+    return jwt.verify(JSON.parse(token), secret);
 }
 
 async function getUserByEmail(email) {

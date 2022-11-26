@@ -1,11 +1,11 @@
 const { parseToken } = require("../services/auth");
 
-module.exports = () => (req, res, next) => {
+module.exports = () => async (req, res, next) => {
     const token = (req.headers['x-authorization'])?.split(' ')[1];
 
-    if (token && req.url !== '/auth/logout') {
+    if (token) {
         try {
-            const payload = parseToken(token);
+            const payload = await parseToken(token);
             req.user = payload;
             req.token = token;
         } catch (err) {
