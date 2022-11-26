@@ -13,7 +13,7 @@ import styles from './CreateCategory.module.css'
 
 function CreateCategory() {
     const navigate = useNavigate();
-    
+
     const [values, setValues] = useState({
         name: '',
         image: '',
@@ -45,6 +45,7 @@ function CreateCategory() {
                     return;
                 }
 
+                //todo change navigate
                 navigate('/');
             })
             .catch((err) => console.error(err));

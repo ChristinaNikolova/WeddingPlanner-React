@@ -9,7 +9,7 @@ router.post('/create', isAdmin(), async (req, res) => {
         res.json(category);
     } catch (error) {
         const message = mapErrors(error);
-        res.status(401).json({ message });
+        res.status(400).json({ message });
     }
 });
 

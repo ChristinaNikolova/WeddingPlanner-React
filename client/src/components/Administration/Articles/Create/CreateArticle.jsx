@@ -45,23 +45,19 @@ function CreateArticle() {
             return;
         }
 
-        // todo validate url
         // todo refactor css
 
         articlesService.create(values.title, values.content, values.image, values.category)
-            .then((data) => console.log(data))
+            .then((data) => {
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
+
+                //todo change navigate
+                navigate('/');
+            })
             .catch((err) => console.error(err));
-
-        // categoriesService.create(values.name, values.image)
-        //     .then((data) => {
-        //         if (data.message) {
-        //             setServerError(data.message);
-        //             return;
-        //         }
-
-        //         navigate('/');
-        //     })
-        //     .catch((err) => console.error(err));
     }
 
     const changeHandler = (e) => {
