@@ -4,7 +4,7 @@ const { isAdmin } = require('../../middlewares/guards');
 const { create } = require('../../services/articles');
 const { mapErrors } = require('../../utils/parser');
 
-router.post('/create', isAdmin(),
+router.post('/', isAdmin(),
     body('image').isURL().withMessage('Invalid url'),
     async (req, res) => {
         try {
