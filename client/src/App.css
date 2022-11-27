@@ -175,3 +175,15 @@ li.logo a:hover {
 .section-background {
   background-color: var(--clr-light-creme);
 }
+
+/* Font Awesome */
+i:hover {
+  cursor: pointer;
+}
+.fa-pen {
+  color: orange;
+}
+
+.fa-trash {
+  color: red;
+}

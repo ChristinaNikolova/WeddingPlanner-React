@@ -16,6 +16,7 @@ import './App.css';
 
 const Dashboard = lazy(() => import('./components/Administration/Dashboard/Dashboard'));
 const CreateArticle = lazy(() => import('./components/Administration/Articles/Create/CreateArticle'));
+const AllCategories = lazy(() => import('./components/Administration/Categories/All/AllCategories'));
 const CreateCategory = lazy(() => import('./components/Administration/Categories/Create/CreateCategory'));
 
 function App() {
@@ -36,6 +37,11 @@ function App() {
         <Route path="/administration/articles/create" element={
           <Suspense fallback={<Loading />}>
             <CreateArticle />
+          </Suspense>
+        } />
+        <Route path="/administration/categories" element={
+          <Suspense fallback={<Loading />}>
+            <AllCategories />
           </Suspense>
         } />
         <Route path="/administration/categories/create" element={

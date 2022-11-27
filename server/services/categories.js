@@ -19,7 +19,7 @@ async function create(name, image) {
 }
 
 async function all() {
-    return (await Category.find({})).map(categorieViewModel);
+    return (await Category.find({}).sort({ name: 1 })).map(categorieViewModel);
 }
 
 async function getCategoryByName(name) {

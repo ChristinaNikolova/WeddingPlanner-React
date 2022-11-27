@@ -9,11 +9,11 @@ import * as categoriesService from '../../../../services/categories';
 
 import Input from '../../../shared/Tags/Input/Input';
 import TextArea from '../../../shared/Tags/TextArea/TextArea';
+import Select from '../../../shared/Tags/Select/Select';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
 import styles from './CreateArticle.module.css';
-import Select from '../../../shared/Tags/Select/Select';
 
 function CreateArticle() {
     const navigate = useNavigate();

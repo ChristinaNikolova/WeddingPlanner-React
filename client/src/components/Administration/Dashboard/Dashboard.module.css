@@ -10,6 +10,12 @@
   margin-bottom: 50px;
 }
 
+.title-li {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 24px !important;
+}
+
 .dashboard-img {
   max-width: 30%;
   height: 700px;

@@ -45,8 +45,7 @@ function CreateCategory() {
                     return;
                 }
 
-                //todo change navigate
-                navigate('/');
+                navigate('/administration/categories');
             })
             .catch((err) => console.error(err));
     }
