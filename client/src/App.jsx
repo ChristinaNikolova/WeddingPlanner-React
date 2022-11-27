@@ -18,6 +18,7 @@ const Dashboard = lazy(() => import('./components/Administration/Dashboard/Dashb
 const CreateArticle = lazy(() => import('./components/Administration/Articles/Create/CreateArticle'));
 const AllCategories = lazy(() => import('./components/Administration/Categories/All/AllCategories'));
 const CreateCategory = lazy(() => import('./components/Administration/Categories/Create/CreateCategory'));
+const UpdateCategory = lazy(() => import('./components/Administration/Categories/Update/UpdateCategory'));
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
         <Route path="/administration/categories/create" element={
           <Suspense fallback={<Loading />}>
             <CreateCategory />
+          </Suspense>
+        } />
+        <Route path="/administration/categories/edit/:id" element={
+          <Suspense fallback={<Loading />}>
+            <UpdateCategory />
           </Suspense>
         } />
 
