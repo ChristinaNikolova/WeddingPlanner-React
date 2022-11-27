@@ -26,7 +26,12 @@ async function getCategoryByName(name) {
     return await Category.findOne({ name }).collation({ locale: 'en', strength: 2 });
 }
 
+async function deleteById(id) {
+    return Category.findByIdAndDelete(id);
+}
+
 module.exports = {
     create,
     all,
+    deleteById,
 }

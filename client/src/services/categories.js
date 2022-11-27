@@ -12,3 +12,13 @@ export const all = () => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.deleteCategory}/${id}`, 'DELETE')
+        .then((res) => {
+            if (res.status !== 204) {
+                return res.json();
+            }
+        })
+        .catch((err) => console.error(err));
+}
