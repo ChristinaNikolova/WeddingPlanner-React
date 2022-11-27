@@ -119,15 +119,17 @@ img {
   margin-bottom: 14px;
 }
 
-/* Input & TextArea */
+/* Input & TextArea & Select */
 .input {
   border: unset;
   border-radius: unset;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--clr-black) !important;
+  font-family: "Cormorant Garamond", serif;
 }
 
-input.input {
+input.input,
+select.input {
   height: 42px;
 }
 

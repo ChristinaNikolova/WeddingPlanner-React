@@ -1,5 +1,4 @@
 function Select({ name, label, value, onChangeHandler, onBlurHandler, categories }) {
-    console.log(categories);
     return (
         <>
             <label className="label" htmlFor={name}>{label}</label>
@@ -9,12 +8,7 @@ function Select({ name, label, value, onChangeHandler, onBlurHandler, categories
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
             >
-                {categories.map(c => <option
-                    key={c.id}
-                    value={c.id}
-                >
-                    {c.name}
-                </option>)}
+                {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
         </>
     );
