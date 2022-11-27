@@ -14,7 +14,7 @@ router.post('/create', isAdmin(),
                 throw mapErrors(errors);
             }
 
-            const article = await create(req.body.title, req.body.content, req.body.image, '63821b8fb2a4c8a3c80eda01');
+            const article = await create(req.body.title, req.body.content, req.body.image, req.body.category);
             res.json(article);
         } catch (error) {
             const message = mapErrors(error);
