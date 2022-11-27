@@ -1,4 +1,4 @@
-@import "../../../styles/constants.css";
+@import "../../../../styles/constants.css";
 
 .client-error {
   color: var(--clr-gold);

@@ -6,9 +6,9 @@ import * as authService from '../../../services/auth';
 import * as validator from '../../../utils/validators/auth';
 import * as helpers from '../../../utils/helpers/form';
 
-import Input from '../../shared/Input/Input';
-import ClientError from '../../shared/ClientError/ClientError';
-import ServerError from '../../shared/ServerError/ServerError';
+import Input from '../../shared/Tags/Input/Input';
+import ClientError from '../../shared/Errors/ClientError/ClientError';
+import ServerError from '../../shared/Errors/ServerError/ServerError';
 
 import styles from './Register.module.css';
 
