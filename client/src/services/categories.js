@@ -23,8 +23,8 @@ export const deleteById = (id) => {
         .catch((err) => console.error(err));
 }
 
-// export const getById = (id) => {
-//     return requester()
-//         .then((res) => res.json())
-//         .catch((err) => console.error(err));
-// }
+export const getById = (id) => {
+    return requester(`${api.adminCategory}/${id}`, 'GET')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
