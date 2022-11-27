@@ -3,4 +3,5 @@ export const article = {
     TITLE_MAX_LEN: 100,
     CONTENT_MIN_LEN: 100,
     CONTENT_MAX_LEN: 3000,
+    DEFAUL_CATEGORY_SELECTED_ID: '63830c07bdd58333840dcbba',
 }

@@ -5,9 +5,9 @@ import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/category';
 import * as categoriesService from '../../../../services/categories';
 
-import Input from "../../../shared/Input/Input";
-import ClientError from '../../../shared/ClientError/ClientError';
-import ServerError from '../../../shared/ServerError/ServerError';
+import Input from "../../../shared/Tags/Input/Input";
+import ClientError from '../../../shared/Errors/ClientError/ClientError';
+import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
 import styles from './CreateCategory.module.css'
 

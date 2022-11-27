@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import * as constants from '../../../../utils/constants/article';
 import * as helpers from '../../../../utils/helpers/form';
-import * as validator from '../../../../utils/validators/article'
+import * as validator from '../../../../utils/validators/article';
 import * as articlesService from '../../../../services/articles';
+import * as categoriesService from '../../../../services/categories';
 
-import Input from '../../../shared/Input/Input';
-import TextArea from '../../../shared/TextArea/TextArea';
-import ClientError from '../../../shared/ClientError/ClientError';
-import ServerError from '../../../shared/ServerError/ServerError';
+import Input from '../../../shared/Tags/Input/Input';
+import TextArea from '../../../shared/Tags/TextArea/TextArea';
+import ClientError from '../../../shared/Errors/ClientError/ClientError';
+import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
 import styles from './CreateArticle.module.css';
+import Select from '../../../shared/Tags/Select/Select';
 
 function CreateArticle() {
     const navigate = useNavigate();
@@ -19,15 +22,23 @@ function CreateArticle() {
         title: '',
         content: '',
         image: '',
-        category: '',
+        category: constants.article.DEFAUL_CATEGORY_SELECTED_ID,
     });
 
+    const [categories, setCategories] = useState([]);
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [contentError, setContentError] = useState('');
     const [imageError, setImageError] = useState('');
     const [categoryError, setCategoryError] = useState('');
     const [serverError, setServerError] = useState('');
+
+    useEffect(() => {
+        categoriesService
+            .all()
+            .then((res) => setCategories(res))
+            .catch((err) => console.error(err));
+    }, []);
 
     useEffect(() => {
         checkDisabled();
@@ -130,16 +141,17 @@ function CreateArticle() {
                         {imageError && <ClientError error={imageError} />}
                     </div>
                     <div className="form-wrapper">
-                        <Input
+                        <Select
                             name="category"
-                            type="text"
                             label="Category"
                             value={values.category}
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateCatagory}
+                            categories={categories}
                         />
                         {categoryError && <ClientError error={categoryError} />}
                     </div>
+
                     <button className="btn btn-center" disabled={isDisabled}>Create</button>
                 </form>
             </div>

@@ -17,5 +17,5 @@ export const validImage = (image) => {
 }
 
 export const validCategory = (category) => {
-    return category ? '' : 'Category is required';
+    return category !== constants.article.DEFAUL_CATEGORY_SELECTED_ID ? '' : 'Please select category';
 }
