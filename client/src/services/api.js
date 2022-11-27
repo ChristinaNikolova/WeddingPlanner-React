@@ -6,9 +6,8 @@ const api = {
     login: `${baseUrl}/auth/login`,
     logout: `${baseUrl}/auth/logout`,
     createArticle: `${baseUrl}/admin/articles`,
-    createCategory: `${baseUrl}/admin/categories`,
-    deleteCategory: `${baseUrl}/admin/categories`,
-    getAllCategories: `${baseUrl}/categories`,
+    adminCategory: `${baseUrl}/admin/categories`,
+    categories: `${baseUrl}/categories`,
 }
 
 module.exports = {
