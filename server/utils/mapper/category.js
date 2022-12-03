@@ -1,11 +1,19 @@
-function categorieViewModel(categorie) {
+function categoryViewModel(category) {
     return {
-        id: categorie._id,
-        name: categorie.name,
-        image: categorie.image,
+        id: category._id,
+        name: category.name,
+        image: category.image,
+    }
+}
+
+function categoryNameViewModel(category) {
+    return {
+        id: category._id,
+        name: category.name,
     }
 }
 
 module.exports = {
-    categorieViewModel,
+    categoryViewModel,
+    categoryNameViewModel
 }
