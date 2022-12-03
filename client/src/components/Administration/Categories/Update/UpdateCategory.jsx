@@ -15,7 +15,7 @@ function UpdateCategory() {
     useEffect(() => {
         categoriesService
             .getById(id)
-            .then((res) => setCategory(res))
+            .then((data) => setCategory(data))
             .catch((err) => console.error(err));
     }, []);
 

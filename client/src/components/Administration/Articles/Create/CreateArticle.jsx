@@ -36,7 +36,7 @@ function CreateArticle() {
     useEffect(() => {
         categoriesService
             .all()
-            .then((res) => setCategories(res))
+            .then((data) => setCategories(data))
             .catch((err) => console.error(err));
     }, []);
 

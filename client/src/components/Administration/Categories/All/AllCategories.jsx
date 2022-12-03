@@ -32,7 +32,7 @@ function AllCategories() {
     const loadCategories = () => {
         categoriesService
             .all()
-            .then((res) => setCategories(res))
+            .then((data) => setCategories(data))
             .catch((err) => console.error(err));
     }
 
