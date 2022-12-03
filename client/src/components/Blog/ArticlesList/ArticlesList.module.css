@@ -1,0 +1,39 @@
+.articles-list {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.articles-list-title-wrapper {
+  text-align: center;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.articles-list-title {
+  font-size: 46px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  margin-bottom: 34px;
+}
+
+.article-list-content-text {
+  font-size: 33px;
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 120px;
+}
+
+.articles-list-categories-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.articles-list-categories-wrapper {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+}

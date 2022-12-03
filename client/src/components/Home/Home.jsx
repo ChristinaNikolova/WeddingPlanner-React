@@ -9,7 +9,10 @@ import styles from './Home.module.css';
 function Home() {
     return (
         <section className={`${styles.home} section`}>
-            <Jumbotron pathToImage={constants.paths.JUMBO_HOME} />
+            <Jumbotron
+                pathToImage={constants.paths.JUMBO_HOME}
+                isHomePage={true}
+            />
             <div className={styles["home-content-wrapper"]}>
                 <h2 className={styles["home-title"]}>ELEGANTLY DESIGNED · ECLECTICALLY CURATED · IMPECCABLY PLANNED</h2>
                 <p className={styles["home-content"]}>
