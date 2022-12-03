@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
-import Jumbotron from './Jumbotron/Jumbotron';
+
+import * as constants from '../../utils/constants/paths';
+
+import Jumbotron from '../shared/Jumbotron/Jumbotron';
+
 import styles from './Home.module.css';
 
 function Home() {
     return (
         <section className={`${styles.home} section`}>
-            <Jumbotron />
+            <Jumbotron pathToImage={constants.paths.JUMBO_HOME} />
             <div className={styles["home-content-wrapper"]}>
                 <h2 className={styles["home-title"]}>ELEGANTLY DESIGNED · ECLECTICALLY CURATED · IMPECCABLY PLANNED</h2>
                 <p className={styles["home-content"]}>
