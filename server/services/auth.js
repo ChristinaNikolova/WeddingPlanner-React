@@ -78,7 +78,9 @@ async function parseToken(token) {
 }
 
 async function getUserByEmail(email) {
-    return await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+    return await User
+        .findOne({ email })
+        .collation({ locale: 'en', strength: 2 });
 }
 
 module.exports = {

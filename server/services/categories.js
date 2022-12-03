@@ -19,7 +19,10 @@ async function create(name, image) {
 }
 
 async function all() {
-    return (await Category.find({}).sort({ name: 1 })).map(categorieViewModel);
+    return (await Category
+        .find({})
+        .sort({ name: 1 }))
+        .map(categorieViewModel);
 }
 
 async function deleteById(id) {
@@ -50,7 +53,9 @@ async function getById(id) {
 }
 
 async function getByName(name) {
-    return await Category.findOne({ name }).collation({ locale: 'en', strength: 2 });
+    return await Category
+        .findOne({ name })
+        .collation({ locale: 'en', strength: 2 });
 }
 
 module.exports = {

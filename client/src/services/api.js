@@ -7,6 +7,7 @@ const api = {
     logout: `${baseUrl}/auth/logout`,
     createArticle: `${baseUrl}/admin/articles`,
     adminCategory: `${baseUrl}/admin/categories`,
+    articles: `${baseUrl}/articles`,
     categories: `${baseUrl}/categories`,
 }
 

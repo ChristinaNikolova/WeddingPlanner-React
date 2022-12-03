@@ -6,3 +6,9 @@ export const create = (title, content, image, category) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const all = () => {
+    return requester(api.articles, 'GET')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
