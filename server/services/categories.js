@@ -26,6 +26,25 @@ async function deleteById(id) {
     return Category.findByIdAndDelete(id);
 }
 
+async function update(id, name, image) {
+    const category = await getById(id);
+
+    if (category.name.toLowerCase() !== name.toLowerCase()) {
+        const result = await getByName(name);
+
+        if (result) {
+            throw new Error('Name is already taken');
+        }
+    }
+
+    category.name = name;
+    category.image = image;
+
+    await category.save();
+
+    return category;
+}
+
 async function getById(id) {
     return Category.findById(id);
 }
@@ -39,4 +58,5 @@ module.exports = {
     all,
     deleteById,
     getById,
+    update,
 }

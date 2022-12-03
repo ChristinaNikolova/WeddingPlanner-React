@@ -23,16 +23,16 @@ function UpdateCategory() {
     }, [serverError]);
 
     const submitHandler = (name, image) => {
-        // categoriesService.create(name, image)
-        //     .then((data) => {
-        //         if (data.message) {
-        //             setServerError(data.message);
-        //             return;
-        //         }
+        categoriesService.update(id, name, image)
+            .then((data) => {
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
 
-        // navigate('/administration/categories');
-        //     })
-        //     .catch((err) => console.error(err));
+                navigate('/administration/categories');
+            })
+            .catch((err) => console.error(err));
     };
 
     if (!category.name || !category.image) {

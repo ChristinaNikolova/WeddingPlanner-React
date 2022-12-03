@@ -28,3 +28,9 @@ export const getById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const update = (id, name, image) => {
+    return requester(`${api.adminCategory}/${id}`, 'PUT', { name, image })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
