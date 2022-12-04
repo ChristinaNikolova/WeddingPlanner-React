@@ -20,7 +20,7 @@ function Header() {
                         <NavLink className={setNavStyle} to="/plan">Plan your wedding</NavLink>
                     </li>
                     <li className={styles["header-nav-li"]}>
-                        <NavLink className={setNavStyle} to="/blog/1">Wedding's blog</NavLink>
+                        <NavLink className={setNavStyle} to="/blog?page=1">Wedding's blog</NavLink>
                     </li>
                     <li className={`${styles["header-nav-li"]} logo gold-underline`}>
                         <Link to="/">Wedding Planner</Link>
