@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './ArticleSingle.module.css'
 
 function ArticleSingle({ id, className, title, image, shortContent, createdAt, categoryName }) {
-    console.log(className);
     return (
         <article className={styles["article-single"]} style={{ flexDirection: className === 'left' ? 'row-reverse' : 'row' }}>
             <div className={styles["article-single-content-wrapper"]}>

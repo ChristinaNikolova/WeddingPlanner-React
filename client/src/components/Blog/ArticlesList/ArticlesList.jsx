@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 
 import * as articlesService from '../../../services/articles';
+import { directions } from '../../../utils/constants/global';
 
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
+import Pagination from "../../shared/Pagination/Pagination";
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
 
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
+
     const [articles, setArticles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
@@ -19,9 +22,15 @@ function ArticlesList({ pathToImage }) {
                 setArticles(data.articles);
                 setCurrentPage(Number(data.currentPage));
                 setPagesCount(data.pagesCount);
+                window.scrollTo(0, 0);
             })
             .catch((err) => console.error(err));
     }, [currentPage]);
+
+    const onClickHandler = (direction) => {
+        const value = direction === directions.PREV ? -1 : 1;
+        setCurrentPage(currentPage + value);
+    }
 
     return (
         <section className={styles["articles-list"]}>
@@ -59,10 +68,11 @@ function ArticlesList({ pathToImage }) {
                 </div>
                 : <p className={styles["articles-list-empty"]}>No Articles Yet</p>
             }
-            <div className={styles["test"]}>
-                {currentPage !== 1 && <p>Pres</p>}
-                {currentPage !== pagesCount && <p>Next</p>}
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                pagesCount={pagesCount}
+                onClickHandler={onClickHandler}
+            />
         </section>
     );
 }

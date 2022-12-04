@@ -51,9 +51,3 @@
   color: var(--clr-gold);
   margin-bottom: 200px;
 }
-
-.test {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}

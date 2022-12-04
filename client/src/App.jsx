@@ -33,7 +33,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/blog" element={<ArticlesList pathToImage={constants.paths.JUMBO_BLOG} />} />
+        <Route path="/blog/:page" element={<ArticlesList pathToImage={constants.paths.JUMBO_BLOG} />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>
