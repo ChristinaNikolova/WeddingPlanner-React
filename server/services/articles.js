@@ -20,13 +20,20 @@ async function create(title, content, image, category) {
     return article;
 }
 
-async function all() {
+async function all(take, skip) {
     return (await Article
         .find({})
         .populate('category', 'name')
-        .sort({ createdAt: -1 }))
+        .sort({ createdAt: -1, title: 1 })
+        .skip(skip)
+        .limit(take))
         .map(articleViewModel);
 }
+
+async function getTotalCount() {
+    return (await Article.find({})).length;
+}
+
 
 async function getArticleByTitle(title) {
     return await Article
@@ -37,4 +44,5 @@ async function getArticleByTitle(title) {
 module.exports = {
     create,
     all,
+    getTotalCount,
 }

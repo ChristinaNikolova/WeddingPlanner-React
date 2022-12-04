@@ -7,16 +7,21 @@ import ArticleSingle from "../ArticleSingle/ArticleSingle";
 
 import styles from './ArticlesList.module.css';
 
-
 function ArticlesList({ pathToImage }) {
     const [articles, setArticles] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pagesCount, setPagesCount] = useState(1);
 
     useEffect(() => {
         articlesService
-            .all()
-            .then((data) => setArticles(data))
+            .all(currentPage)
+            .then((data) => {
+                setArticles(data.articles);
+                setCurrentPage(Number(data.currentPage));
+                setPagesCount(data.pagesCount);
+            })
             .catch((err) => console.error(err));
-    }, []);
+    }, [currentPage]);
 
     return (
         <section className={styles["articles-list"]}>
@@ -54,6 +59,10 @@ function ArticlesList({ pathToImage }) {
                 </div>
                 : <p className={styles["articles-list-empty"]}>No Articles Yet</p>
             }
+            <div className={styles["test"]}>
+                {currentPage !== 1 && <p>Pres</p>}
+                {currentPage !== pagesCount && <p>Next</p>}
+            </div>
         </section>
     );
 }
