@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import * as articlesService from '../../../services/articles';
+import * as categoriesService from '../../../services/categories';
 import { directions } from '../../../utils/constants/global';
 
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
@@ -12,6 +13,7 @@ import styles from './ArticlesList.module.css';
 function ArticlesList({ pathToImage }) {
 
     const [articles, setArticles] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
 
@@ -26,6 +28,25 @@ function ArticlesList({ pathToImage }) {
             })
             .catch((err) => console.error(err));
     }, [currentPage]);
+
+    useEffect(() => {
+        categoriesService
+            .all()
+            .then((res) => setCategories(res))
+            .catch((err) => console.error(err));
+    }, []);
+
+    const onToogleHandler = (e) => {
+        const dropdownElement = e.target.nextElementSibling;
+
+        if (dropdownElement.classList.contains('show')) {
+            dropdownElement.classList.remove('show');
+            dropdownElement.classList.add('hide');
+        } else {
+            dropdownElement.classList.remove('hide');
+            dropdownElement.classList.add('show');
+        }
+    }
 
     const onClickHandler = (direction) => {
         const value = direction === directions.PREV ? -1 : 1;
@@ -45,9 +66,19 @@ function ArticlesList({ pathToImage }) {
             {!!articles.length &&
                 <div className={styles["articles-list-categories-wrapper"]}>
                     <span className={styles["articles-list-blog-title"]}>Blog</span>
-                    <div>
-                        <span className="articles-list-categories">Category:</span>
-                        <span className="articles-list-categories-drop-down"></span>
+                    <div className={styles["article-list-drop-down-wrapper"]}>
+                        <span className={styles["articles-list-categories"]}>Category:</span>
+                        <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>All</button>
+                        <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
+                            {categories.map((c) =>
+                                <li
+                                    key={c.id}
+                                    id={c.id}
+                                    className={styles["articles-list-categories-drop-down-li"]}>
+                                    {c.name}
+                                </li>)
+                            }
+                        </ul>
                     </div>
                 </div>
             }

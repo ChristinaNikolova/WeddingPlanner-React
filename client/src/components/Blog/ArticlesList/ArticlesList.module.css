@@ -28,16 +28,52 @@
 .articles-list-categories-wrapper {
   display: flex;
   justify-content: space-between;
-  padding-left: 80px;
-  padding-right: 80px;
-}
-
-.articles-list-categories-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 34px;
   font-weight: 300;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-bottom: 100px;
+}
+
+.articles-list-categories {
+  margin-right: 20px;
+}
+
+.articles-list-categories-drop-down-btn {
+  border: unset;
+  background-color: unset;
+  font-size: 30px;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--clr-black);
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  transition: all 200ms ease-in-out;
+}
+
+.articles-list-categories-drop-down-btn:hover {
+  cursor: pointer;
+  color: var(--clr-gold);
+  font-weight: 600;
+}
+
+.articles-list-categories-drop-down-ul {
+  -webkit-box-shadow: 5px 5px 20px 5px rgba(223, 223, 223, 0.3);
+  box-shadow: 5px 5px 20px 5px rgba(223, 223, 223, 0.3);
+  max-width: 320px;
+}
+
+.articles-list-categories-drop-down-li {
+  transition: all 200ms ease-in-out;
+  font-size: 26px;
+  padding: 10px;
+}
+
+.articles-list-categories-drop-down-li:hover {
+  color: var(--clr-gold);
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .articles-list-blog {
