@@ -188,10 +188,3 @@ i:hover {
 .fa-trash {
   color: red;
 }
-
-.fa-chevron-right,
-.fa-chevron-down {
-  color: var(--clr-black);
-  font-weight: 600;
-  font-size: 16px;
-}

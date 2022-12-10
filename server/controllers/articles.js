@@ -5,7 +5,7 @@ const { mapErrors } = require('../utils/parser');
 
 router.get('/:page/:category?', async (req, res) => {
     try {
-        let currentPage = req.params.page;
+        const currentPage = req.params.page;
         const selectedCategory = req.params.category || '';
 
         const skip = (currentPage - 1) * pagination.ARTICLES_PER_PAGE;

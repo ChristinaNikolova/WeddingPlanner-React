@@ -15,14 +15,16 @@ function ArticlesList({ pathToImage }) {
     const navigate = useNavigate();
     const [articles, setArticles] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [iconDirection, setIconDirection] = useState('right');
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState({
+        id: '',
+        name: 'All',
+    });
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
 
     useEffect(() => {
         articlesService
-            .all(currentPage, selectedCategory)
+            .all(currentPage, selectedCategory.id)
             .then((data) => {
                 setArticles(data.articles);
                 setCurrentPage(Number(data.currentPage));
@@ -42,15 +44,9 @@ function ArticlesList({ pathToImage }) {
     const onToogleHandler = (e) => {
         const dropdownElement = e.target.nextElementSibling;
 
-        if (dropdownElement.classList.contains('show')) {
-            dropdownElement.classList.remove('show');
-            dropdownElement.classList.add('hide');
-            setIconDirection('right');
-        } else {
-            dropdownElement.classList.remove('hide');
-            dropdownElement.classList.add('show');
-            setIconDirection('down');
-        }
+        dropdownElement.classList.contains('show')
+            ? toogleHelper(dropdownElement, 'show', 'hide')
+            : toogleHelper(dropdownElement, 'hide', 'show');
     }
 
     const onClickPaginationHandler = (direction) => {
@@ -61,7 +57,16 @@ function ArticlesList({ pathToImage }) {
     const onClickCategoryHandler = (e) => {
         navigate('/blog?page=1');
         setCurrentPage(1);
-        setSelectedCategory(e.target.id);
+        setSelectedCategory({
+            id: e.target.id,
+            name: e.target.innerHTML,
+        });
+        toogleHelper(e.target.parentElement, 'show', 'hide')
+    }
+
+    const toogleHelper = (element, remove, add) => {
+        element.classList.remove(remove);
+        element.classList.add(add);
     }
 
     return (
@@ -80,11 +85,7 @@ function ArticlesList({ pathToImage }) {
                     <div className={styles["article-list-drop-down-wrapper"]}>
                         <span className={styles["articles-list-categories"]}>Category:</span>
                         <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
-                            All
-                            {iconDirection === 'right'
-                                ? <i className="fa-solid fa-chevron-right"></i>
-                                : <i className="fa-solid fa-chevron-down"></i>
-                            }
+                            {selectedCategory.name}
                         </button>
                         <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
                             {categories.map((c) =>
