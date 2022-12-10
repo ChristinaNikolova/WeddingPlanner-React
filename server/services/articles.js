@@ -1,5 +1,6 @@
 const Article = require("../models/Article");
 const { articleViewModel } = require("../utils/mapper/article");
+const { Types: { ObjectId } } = require('mongoose');
 
 async function create(title, content, image, category) {
     let article = await getArticleByTitle(title);
@@ -20,9 +21,9 @@ async function create(title, content, image, category) {
     return article;
 }
 
-async function all(take, skip) {
+async function all(take, skip, selectedCategory) {
     return (await Article
-        .find({})
+        .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {})
         .populate('category', 'name')
         .sort({ createdAt: -1, title: 1 })
         .skip(skip)
@@ -30,10 +31,11 @@ async function all(take, skip) {
         .map(articleViewModel);
 }
 
-async function getTotalCount() {
-    return (await Article.find({})).length;
+async function getTotalCount(selectedCategory) {
+    return (await Article
+        .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {}))
+        .length;
 }
-
 
 async function getArticleByTitle(title) {
     return await Article

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import * as categoriesService from '../../../services/categories';
@@ -11,15 +12,17 @@ import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
-
+    const navigate = useNavigate();
     const [articles, setArticles] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [iconDirection, setIconDirection] = useState('right');
+    const [selectedCategory, setSelectedCategory] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
 
     useEffect(() => {
         articlesService
-            .all(currentPage)
+            .all(currentPage, selectedCategory)
             .then((data) => {
                 setArticles(data.articles);
                 setCurrentPage(Number(data.currentPage));
@@ -27,7 +30,7 @@ function ArticlesList({ pathToImage }) {
                 window.scrollTo(0, 0);
             })
             .catch((err) => console.error(err));
-    }, [currentPage]);
+    }, [currentPage, selectedCategory]);
 
     useEffect(() => {
         categoriesService
@@ -42,15 +45,23 @@ function ArticlesList({ pathToImage }) {
         if (dropdownElement.classList.contains('show')) {
             dropdownElement.classList.remove('show');
             dropdownElement.classList.add('hide');
+            setIconDirection('right');
         } else {
             dropdownElement.classList.remove('hide');
             dropdownElement.classList.add('show');
+            setIconDirection('down');
         }
     }
 
-    const onClickHandler = (direction) => {
+    const onClickPaginationHandler = (direction) => {
         const value = direction === directions.PREV ? -1 : 1;
         setCurrentPage(currentPage + value);
+    }
+
+    const onClickCategoryHandler = (e) => {
+        navigate('/blog?page=1');
+        setCurrentPage(1);
+        setSelectedCategory(e.target.id);
     }
 
     return (
@@ -68,13 +79,20 @@ function ArticlesList({ pathToImage }) {
                     <span className={styles["articles-list-blog-title"]}>Blog</span>
                     <div className={styles["article-list-drop-down-wrapper"]}>
                         <span className={styles["articles-list-categories"]}>Category:</span>
-                        <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>All</button>
+                        <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
+                            All
+                            {iconDirection === 'right'
+                                ? <i className="fa-solid fa-chevron-right"></i>
+                                : <i className="fa-solid fa-chevron-down"></i>
+                            }
+                        </button>
                         <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
                             {categories.map((c) =>
                                 <li
                                     key={c.id}
                                     id={c.id}
-                                    className={styles["articles-list-categories-drop-down-li"]}>
+                                    className={styles["articles-list-categories-drop-down-li"]}
+                                    onClick={onClickCategoryHandler}>
                                     {c.name}
                                 </li>)
                             }
@@ -82,29 +100,30 @@ function ArticlesList({ pathToImage }) {
                     </div>
                 </div>
             }
-            {articles.length
-                ? <div className={styles["articles-list-blog"]}>
-                    {articles.map((a, i) =>
-                        <ArticleSingle
-                            key={a.id}
-                            id={a.id}
-                            className={i % 2 === 0 ? 'left' : 'right'}
-                            title={a.title}
-                            image={a.image}
-                            shortContent={a.shortContent}
-                            createdAt={a.createdAt}
-                            categoryName={a.category.name}
-                        />)
-                    }
-                </div>
-                : <p className={styles["articles-list-empty"]}>No Articles Yet</p>
+            {
+                articles.length
+                    ? <div className={styles["articles-list-blog"]}>
+                        {articles.map((a, i) =>
+                            <ArticleSingle
+                                key={a.id}
+                                id={a.id}
+                                className={i % 2 === 0 ? 'left' : 'right'}
+                                title={a.title}
+                                image={a.image}
+                                shortContent={a.shortContent}
+                                createdAt={a.createdAt}
+                                categoryName={a.category.name}
+                            />)
+                        }
+                    </div>
+                    : <p className={styles["articles-list-empty"]}>No Articles Yet</p>
             }
             <Pagination
                 currentPage={currentPage}
                 pagesCount={pagesCount}
-                onClickHandler={onClickHandler}
+                onClickHandler={onClickPaginationHandler}
             />
-        </section>
+        </section >
     );
 }
 

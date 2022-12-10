@@ -7,8 +7,8 @@ export const create = (title, content, image, category) => {
         .catch((err) => console.error(err));
 }
 
-export const all = (currentPage = 1) => {
-    return requester(`${api.articles}/${currentPage}`, 'GET')
+export const all = (currentPage = 1, selectedCategory = '') => {
+    return requester(`${api.articles}/${currentPage}/${selectedCategory}`, 'GET')
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }

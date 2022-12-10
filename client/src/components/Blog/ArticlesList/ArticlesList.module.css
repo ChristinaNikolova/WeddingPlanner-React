@@ -50,12 +50,20 @@
   text-transform: uppercase;
   letter-spacing: 1.7px;
   transition: all 200ms ease-in-out;
+  position: relative;
 }
 
 .articles-list-categories-drop-down-btn:hover {
   cursor: pointer;
   color: var(--clr-gold);
   font-weight: 600;
+}
+
+.articles-list-categories-drop-down-btn i {
+  position: absolute;
+  top: 50%;
+  left: 66px;
+  transform: translateY(-50%);
 }
 
 .articles-list-categories-drop-down-ul {
