@@ -21,9 +21,10 @@ async function create(title, content, image, category) {
     return article;
 }
 
-async function all(take, skip, selectedCategory) {
+async function all(take, skip, selectedCategory, searchedQuery) {
     return (await Article
         .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {})
+        .find(searchedQuery ? { title: { "$regex": searchedQuery, "$options": "i" } } : {})
         .populate('category', 'name')
         .sort({ createdAt: -1, title: 1 })
         .skip(skip)
@@ -31,9 +32,10 @@ async function all(take, skip, selectedCategory) {
         .map(articleViewModel);
 }
 
-async function getTotalCount(selectedCategory) {
+async function getTotalCount(selectedCategory, searchedQuery) {
     return (await Article
-        .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {}))
+        .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {})
+        .find(searchedQuery ? { title: { "$regex": searchedQuery, "$options": "i" } } : {}))
         .length;
 }
 

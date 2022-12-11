@@ -9,31 +9,41 @@ import { toogle } from "../../../utils/helpers/dropdown";
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
+import Input from '../../shared/Tags/Input/Input';
 
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
+    //TODO refactor
+    //TODO change names ->  handlers
+    //TODO test no article -> category/query
+    //TODO need a form???
     const navigate = useNavigate();
     const [articles, setArticles] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({
-        id: '',
+        id: 'default',
         name: 'all',
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
 
+    const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
+    const [query, setQuery] = useState('');
+    const [isSearched, setIsSearched] = useState(false);
+
     useEffect(() => {
         articlesService
-            .all(currentPage, selectedCategory.id)
+            .all(currentPage, selectedCategory.id, query)
             .then((data) => {
                 setArticles(data.articles);
                 setCurrentPage(Number(data.currentPage));
                 setPagesCount(data.pagesCount);
+                setIsSearched(false);
                 window.scrollTo(0, 0);
             })
             .catch((err) => console.error(err));
-    }, [currentPage, selectedCategory]);
+    }, [currentPage, selectedCategory, isSearched, isSearchIconClicked]);
 
     useEffect(() => {
         categoriesService
@@ -55,6 +65,21 @@ function ArticlesList({ pathToImage }) {
         setCurrentPage(currentPage + value);
     }
 
+    const onClickShowSearchForm = () => {
+        setIsSearchIconClicked(!isSearchIconClicked);
+        setIsSearched(false);
+        setQuery('');
+    }
+
+    const onClickSearch = () => {
+        setIsSearched(true);
+        startPageHelper();
+    }
+
+    const changeHandler = (e) => {
+        setQuery(e.target.value);
+    }
+
     const onClickCategoryHandler = (e) => {
         startPageHelper();
         setSelectedCategory({
@@ -68,7 +93,7 @@ function ArticlesList({ pathToImage }) {
         e.stopPropagation();
         startPageHelper();
         setSelectedCategory({
-            id: '',
+            id: 'default',
             name: 'all',
         });
     }
@@ -88,29 +113,45 @@ function ArticlesList({ pathToImage }) {
                 <h4 className={styles["articles-list-title"]}>Wedding Blog</h4>
                 <p className={styles["article-list-content-text"]}>You don't marry the person you can live with, you marry the person you can't live without.</p>
             </div>
-            {!!articles.length &&
-                <div className={styles["articles-list-categories-wrapper"]}>
-                    <span className={styles["articles-list-blog-title"]}>Blog</span>
-                    <div className={styles["article-list-drop-down-wrapper"]}>
-                        <span className={styles["articles-list-categories"]}>Category:</span>
-                        <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
-                            {selectedCategory.name}
-                            {selectedCategory.name !== 'all' && <i onClick={(e) => onClickRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
-                        </button>
-                        <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
-                            {categories.map((c) =>
-                                <li
-                                    key={c.id}
-                                    id={c.id}
-                                    className={styles["articles-list-categories-drop-down-li"]}
-                                    onClick={onClickCategoryHandler}>
-                                    {c.name}
-                                </li>)
-                            }
-                        </ul>
-                    </div>
+            <div className={styles["articles-list-categories-wrapper"]}>
+                <span className={styles["articles-list-blog-title"]}>
+                    Search
+                    {isSearchIconClicked
+                        ? <>
+                            <Input
+                                name="search"
+                                type="text"
+                                label=""
+                                value={query}
+                                onChangeHandler={changeHandler} />
+                            <i onClick={onClickSearch} className="fa-solid fa-magnifying-glass"></i>
+                            <i onClick={onClickShowSearchForm} className="fa-solid fa-xmark"></i>
+                        </>
+                        : <i onClick={onClickShowSearchForm} className="fa-solid fa-magnifying-glass" style={{
+                            position: "absolute",
+                            top: "18px"
+                        }}></i>
+                    }
+                </span>
+                <div className={styles["article-list-drop-down-wrapper"]}>
+                    <span className={styles["articles-list-categories"]}>Category:</span>
+                    <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
+                        {selectedCategory.name}
+                        {selectedCategory.name !== 'all' && <i onClick={(e) => onClickRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
+                    </button>
+                    <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
+                        {categories.map((c) =>
+                            <li
+                                key={c.id}
+                                id={c.id}
+                                className={styles["articles-list-categories-drop-down-li"]}
+                                onClick={onClickCategoryHandler}>
+                                {c.name}
+                            </li>)
+                        }
+                    </ul>
                 </div>
-            }
+            </div>
             {
                 articles.length
                     ? <div className={styles["articles-list-blog"]}>

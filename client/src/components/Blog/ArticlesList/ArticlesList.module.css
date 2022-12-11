@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+.articles-list i {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.articles-list i:hover {
+  color: var(--clr-gold);
+}
+
 .articles-list-title-wrapper {
   text-align: center;
   width: 700px;
@@ -37,6 +46,16 @@
   margin-bottom: 100px;
 }
 
+.articles-list-blog-title {
+  position: relative;
+}
+
+.articles-list-blog-title input {
+  border: 1px solid var(--clr-gold);
+  width: 500px;
+  margin-left: 10px;
+}
+
 .articles-list-categories {
   margin-right: 10px;
 }
@@ -61,10 +80,7 @@
 
 .articles-list-categories-drop-down-btn i {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  margin-left: 10px;
+  top: 14px;
 }
 
 .articles-list-categories-drop-down-ul {
