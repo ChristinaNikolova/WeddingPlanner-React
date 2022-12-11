@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as articlesService from '../../../services/articles';
 import * as categoriesService from '../../../services/categories';
 import { directions } from '../../../utils/constants/global';
+import { toogle } from "../../../utils/helpers/dropdown";
 
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
@@ -17,7 +18,7 @@ function ArticlesList({ pathToImage }) {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({
         id: '',
-        name: 'All',
+        name: 'all',
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
@@ -45,8 +46,8 @@ function ArticlesList({ pathToImage }) {
         const dropdownElement = e.target.nextElementSibling;
 
         dropdownElement.classList.contains('show')
-            ? toogleHelper(dropdownElement, 'show', 'hide')
-            : toogleHelper(dropdownElement, 'hide', 'show');
+            ? toogle(dropdownElement, 'show', 'hide')
+            : toogle(dropdownElement, 'hide', 'show');
     }
 
     const onClickPaginationHandler = (direction) => {
@@ -55,18 +56,26 @@ function ArticlesList({ pathToImage }) {
     }
 
     const onClickCategoryHandler = (e) => {
-        navigate('/blog?page=1');
-        setCurrentPage(1);
+        startPageHelper();
         setSelectedCategory({
             id: e.target.id,
-            name: e.target.innerHTML,
+            name: e.target.innerText,
         });
-        toogleHelper(e.target.parentElement, 'show', 'hide')
+        toogle(e.target.parentElement, 'show', 'hide')
     }
 
-    const toogleHelper = (element, remove, add) => {
-        element.classList.remove(remove);
-        element.classList.add(add);
+    const onClickRemoveCategotyHandler = (e) => {
+        e.stopPropagation();
+        startPageHelper();
+        setSelectedCategory({
+            id: '',
+            name: 'all',
+        });
+    }
+
+    const startPageHelper = () => {
+        navigate('/blog?page=1');
+        setCurrentPage(1);
     }
 
     return (
@@ -86,6 +95,7 @@ function ArticlesList({ pathToImage }) {
                         <span className={styles["articles-list-categories"]}>Category:</span>
                         <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
                             {selectedCategory.name}
+                            {selectedCategory.name !== 'all' && <i onClick={(e) => onClickRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
                         </button>
                         <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
                             {categories.map((c) =>

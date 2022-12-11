@@ -38,13 +38,13 @@
 }
 
 .articles-list-categories {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .articles-list-categories-drop-down-btn {
   border: unset;
   background-color: unset;
-  font-size: 30px;
+  font-size: 34px;
   font-family: "Cormorant Garamond", serif;
   color: var(--clr-black);
   text-transform: uppercase;
@@ -62,8 +62,9 @@
 .articles-list-categories-drop-down-btn i {
   position: absolute;
   top: 50%;
-  left: 66px;
   transform: translateY(-50%);
+  font-size: 18px;
+  margin-left: 10px;
 }
 
 .articles-list-categories-drop-down-ul {

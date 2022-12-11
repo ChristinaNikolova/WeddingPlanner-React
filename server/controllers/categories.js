@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { all } = require('../services/categories');
+const { mapErrors } = require('../utils/parser');
 
 router.get('/', async (req, res) => {
     try {

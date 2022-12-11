@@ -1,5 +1,6 @@
 const Category = require("../models/Category");
 const { categoryViewModel } = require("../utils/mapper/category");
+const { category } = require('../utils/constants/global');
 
 async function create(name, image) {
     let category = await getByName(name);
@@ -20,7 +21,7 @@ async function create(name, image) {
 
 async function all() {
     return (await Category
-        .find({})
+        .find({ _id: { $ne: category.DEFAUL_CATEGORY_SELECTED_ID } })
         .sort({ name: 1 }))
         .map(categoryViewModel);
 }
