@@ -15,7 +15,6 @@ import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
     //TODO refactor
-    //TODO change names ->  handlers
     //TODO test no article -> category/query
     //TODO need a form???
     const navigate = useNavigate();
@@ -27,6 +26,7 @@ function ArticlesList({ pathToImage }) {
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [pagesCount, setPagesCount] = useState(1);
+    const [hasToScroll, setHasToScroll] = useState(false);
 
     const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
     const [query, setQuery] = useState('');
@@ -40,7 +40,11 @@ function ArticlesList({ pathToImage }) {
                 setCurrentPage(Number(data.currentPage));
                 setPagesCount(data.pagesCount);
                 setIsSearched(false);
-                window.scrollTo(0, 0);
+
+                if (hasToScroll) {
+                    window.scrollTo(0, 0);
+                    setHasToScroll(false);
+                }
             })
             .catch((err) => console.error(err));
     }, [currentPage, selectedCategory, isSearched, isSearchIconClicked]);
@@ -60,18 +64,19 @@ function ArticlesList({ pathToImage }) {
             : toogle(dropdownElement, 'hide', 'show');
     }
 
-    const onClickPaginationHandler = (direction) => {
+    const onPaginationHandler = (direction) => {
         const value = direction === directions.PREV ? -1 : 1;
         setCurrentPage(currentPage + value);
+        setHasToScroll(true);
     }
 
-    const onClickShowSearchForm = () => {
+    const onShowSearchForm = () => {
         setIsSearchIconClicked(!isSearchIconClicked);
         setIsSearched(false);
         setQuery('');
     }
 
-    const onClickSearch = () => {
+    const onSearch = () => {
         setIsSearched(true);
         startPageHelper();
     }
@@ -80,7 +85,7 @@ function ArticlesList({ pathToImage }) {
         setQuery(e.target.value);
     }
 
-    const onClickCategoryHandler = (e) => {
+    const onCategoryHandler = (e) => {
         startPageHelper();
         setSelectedCategory({
             id: e.target.id,
@@ -89,7 +94,7 @@ function ArticlesList({ pathToImage }) {
         toogle(e.target.parentElement, 'show', 'hide')
     }
 
-    const onClickRemoveCategotyHandler = (e) => {
+    const onRemoveCategotyHandler = (e) => {
         e.stopPropagation();
         startPageHelper();
         setSelectedCategory({
@@ -124,10 +129,10 @@ function ArticlesList({ pathToImage }) {
                                 label=""
                                 value={query}
                                 onChangeHandler={changeHandler} />
-                            <i onClick={onClickSearch} className="fa-solid fa-magnifying-glass"></i>
-                            <i onClick={onClickShowSearchForm} className="fa-solid fa-xmark"></i>
+                            <i onClick={onSearch} className="fa-solid fa-magnifying-glass"></i>
+                            <i onClick={onShowSearchForm} className="fa-solid fa-xmark"></i>
                         </>
-                        : <i onClick={onClickShowSearchForm} className="fa-solid fa-magnifying-glass" style={{
+                        : <i onClick={onShowSearchForm} className="fa-solid fa-magnifying-glass" style={{
                             position: "absolute",
                             top: "18px"
                         }}></i>
@@ -137,7 +142,7 @@ function ArticlesList({ pathToImage }) {
                     <span className={styles["articles-list-categories"]}>Category:</span>
                     <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
                         {selectedCategory.name}
-                        {selectedCategory.name !== 'all' && <i onClick={(e) => onClickRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
+                        {selectedCategory.name !== 'all' && <i onClick={(e) => onRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
                     </button>
                     <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
                         {categories.map((c) =>
@@ -145,7 +150,7 @@ function ArticlesList({ pathToImage }) {
                                 key={c.id}
                                 id={c.id}
                                 className={styles["articles-list-categories-drop-down-li"]}
-                                onClick={onClickCategoryHandler}>
+                                onClick={onCategoryHandler}>
                                 {c.name}
                             </li>)
                         }
@@ -173,7 +178,7 @@ function ArticlesList({ pathToImage }) {
             <Pagination
                 currentPage={currentPage}
                 pagesCount={pagesCount}
-                onClickHandler={onClickPaginationHandler}
+                onClickHandler={onPaginationHandler}
             />
         </section >
     );
