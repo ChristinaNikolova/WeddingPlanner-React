@@ -61,7 +61,7 @@ function ArticlesList({ pathToImage }) {
         startPageHelper();
     }
 
-    const changeHandler = (e) => {
+    const onChangeHandler = (e) => {
         setQuery(e.target.value);
     }
 
@@ -103,7 +103,7 @@ function ArticlesList({ pathToImage }) {
                     query={query}
                     onShowSearchForm={onShowSearchForm}
                     onSearch={onSearch}
-                    changeHandler={changeHandler}
+                    changeHandler={onChangeHandler}
                 />
 
                 <ArticlesListCategoryDropDown

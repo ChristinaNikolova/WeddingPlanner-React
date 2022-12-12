@@ -2,7 +2,7 @@ import Input from '../../shared/Tags/Input/Input';
 
 import styles from './ArticlesListSearch.module.css';
 
-function ArticlesListSearch({ isSearchIconClicked, query, onShowSearchForm, onSearch, changeHandler }) {
+function ArticlesListSearch({ isSearchIconClicked, query, onShowSearchForm, onSearch, onChangeHandler }) {
     return (
         <span className={styles["articles-list-search-title"]}>
             Search
@@ -13,7 +13,7 @@ function ArticlesListSearch({ isSearchIconClicked, query, onShowSearchForm, onSe
                         type="text"
                         label=""
                         value={query}
-                        onChangeHandler={changeHandler} />
+                        onChangeHandler={onChangeHandler} />
                     <i onClick={onSearch} className="fa-solid fa-magnifying-glass"></i>
                     <i onClick={onShowSearchForm} className="fa-solid fa-xmark"></i>
                 </>
