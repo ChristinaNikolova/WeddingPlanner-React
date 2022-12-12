@@ -14,7 +14,7 @@ function ArticleSingle({ id, className, title, image, shortContent, createdAt, c
             </div>
             <img className={`${styles["article-single-image"]} img img-shadow`} src={image} alt={title} />
         </article >
-    )
+    );
 }
 
 export default ArticleSingle;

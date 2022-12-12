@@ -12,7 +12,7 @@ function TextArea({ name, label, value, cols, rows, onChangeHandler, onBlurHandl
                 value={value}
             />
         </>
-    )
+    );
 }
 
 export default TextArea;

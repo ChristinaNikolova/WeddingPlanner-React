@@ -103,7 +103,7 @@ function ArticlesList({ pathToImage }) {
                     query={query}
                     onShowSearchForm={onShowSearchForm}
                     onSearch={onSearch}
-                    changeHandler={onChangeHandler}
+                    onChangeHandler={onChangeHandler}
                 />
 
                 <ArticlesListCategoryDropDown

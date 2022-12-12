@@ -11,7 +11,7 @@ function Input({ name, type, label, value, onChangeHandler, onBlurHandler }) {
                 value={value}
             />
         </>
-    )
+    );
 }
 
 export default Input;
