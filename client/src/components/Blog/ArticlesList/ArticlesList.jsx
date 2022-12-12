@@ -8,7 +8,7 @@ import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
 import ArticlesListCategoryDropDown from '../ArticlesListCategoryDropDown/ArticlesListCategoryDropDown';
-import Input from '../../shared/Tags/Input/Input';
+import ArticlesListSearch from '../ArticlesListSearch/ArticlesListSearch';
 
 import styles from './ArticlesList.module.css';
 
@@ -98,25 +98,14 @@ function ArticlesList({ pathToImage }) {
                 <p className={styles["article-list-content-text"]}>You don't marry the person you can live with, you marry the person you can't live without.</p>
             </div>
             <div className={styles["articles-list-forms-wrapper"]}>
-                <span className={styles["articles-list-search-title"]}>
-                    Search
-                    {isSearchIconClicked
-                        ? <>
-                            <Input
-                                name="search"
-                                type="text"
-                                label=""
-                                value={query}
-                                onChangeHandler={changeHandler} />
-                            <i onClick={onSearch} className="fa-solid fa-magnifying-glass"></i>
-                            <i onClick={onShowSearchForm} className="fa-solid fa-xmark"></i>
-                        </>
-                        : <i onClick={onShowSearchForm} className="fa-solid fa-magnifying-glass" style={{
-                            position: "absolute",
-                            top: "18px"
-                        }}></i>
-                    }
-                </span>
+                <ArticlesListSearch
+                    isSearchIconClicked={isSearchIconClicked}
+                    query={query}
+                    onShowSearchForm={onShowSearchForm}
+                    onSearch={onSearch}
+                    changeHandler={changeHandler}
+                />
+
                 <ArticlesListCategoryDropDown
                     selectedCategoryName={selectedCategory.name}
                     onCategoryHandler={onCategoryHandler}

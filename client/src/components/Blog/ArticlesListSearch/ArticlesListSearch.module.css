@@ -1,0 +1,11 @@
+@import "../../../styles/constants.css";
+
+.articles-list-search-title {
+  position: relative;
+}
+
+.articles-list-search-title input {
+  border: 1px solid var(--clr-gold);
+  width: 500px;
+  margin-left: 10px;
+}
