@@ -2,24 +2,19 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
-import * as categoriesService from '../../../services/categories';
 import { directions } from '../../../utils/constants/global';
-import { toogle } from "../../../utils/helpers/dropdown";
 
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
 import ArticleSingle from "../ArticleSingle/ArticleSingle";
+import ArticlesListCategoryDropDown from '../ArticlesListCategoryDropDown/ArticlesListCategoryDropDown';
 import Input from '../../shared/Tags/Input/Input';
 
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
-    //TODO refactor
-    //TODO test no article -> category/query
-    //TODO need a form???
     const navigate = useNavigate();
     const [articles, setArticles] = useState([]);
-    const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({
         id: 'default',
         name: 'all',
@@ -49,21 +44,6 @@ function ArticlesList({ pathToImage }) {
             .catch((err) => console.error(err));
     }, [currentPage, selectedCategory, isSearched, isSearchIconClicked]);
 
-    useEffect(() => {
-        categoriesService
-            .all()
-            .then((res) => setCategories(res))
-            .catch((err) => console.error(err));
-    }, []);
-
-    const onToogleHandler = (e) => {
-        const dropdownElement = e.target.nextElementSibling;
-
-        dropdownElement.classList.contains('show')
-            ? toogle(dropdownElement, 'show', 'hide')
-            : toogle(dropdownElement, 'hide', 'show');
-    }
-
     const onPaginationHandler = (direction) => {
         const value = direction === directions.PREV ? -1 : 1;
         setCurrentPage(currentPage + value);
@@ -91,7 +71,6 @@ function ArticlesList({ pathToImage }) {
             id: e.target.id,
             name: e.target.innerText,
         });
-        toogle(e.target.parentElement, 'show', 'hide')
     }
 
     const onRemoveCategotyHandler = (e) => {
@@ -118,8 +97,8 @@ function ArticlesList({ pathToImage }) {
                 <h4 className={styles["articles-list-title"]}>Wedding Blog</h4>
                 <p className={styles["article-list-content-text"]}>You don't marry the person you can live with, you marry the person you can't live without.</p>
             </div>
-            <div className={styles["articles-list-categories-wrapper"]}>
-                <span className={styles["articles-list-blog-title"]}>
+            <div className={styles["articles-list-forms-wrapper"]}>
+                <span className={styles["articles-list-search-title"]}>
                     Search
                     {isSearchIconClicked
                         ? <>
@@ -138,24 +117,11 @@ function ArticlesList({ pathToImage }) {
                         }}></i>
                     }
                 </span>
-                <div className={styles["article-list-drop-down-wrapper"]}>
-                    <span className={styles["articles-list-categories"]}>Category:</span>
-                    <button onClick={onToogleHandler} className={styles["articles-list-categories-drop-down-btn"]}>
-                        {selectedCategory.name}
-                        {selectedCategory.name !== 'all' && <i onClick={(e) => onRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
-                    </button>
-                    <ul className={[styles["articles-list-categories-drop-down-ul"], "hide"].join(' ')}>
-                        {categories.map((c) =>
-                            <li
-                                key={c.id}
-                                id={c.id}
-                                className={styles["articles-list-categories-drop-down-li"]}
-                                onClick={onCategoryHandler}>
-                                {c.name}
-                            </li>)
-                        }
-                    </ul>
-                </div>
+                <ArticlesListCategoryDropDown
+                    selectedCategoryName={selectedCategory.name}
+                    onCategoryHandler={onCategoryHandler}
+                    onRemoveCategotyHandler={onRemoveCategotyHandler}
+                />
             </div>
             {
                 articles.length
