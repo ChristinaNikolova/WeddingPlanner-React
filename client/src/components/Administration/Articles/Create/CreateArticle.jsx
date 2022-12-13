@@ -65,8 +65,7 @@ function CreateArticle() {
                     return;
                 }
 
-                //todo change navigate
-                navigate('/');
+                navigate(`/blog/${data._id}`);
             })
             .catch((err) => console.error(err));
     }
