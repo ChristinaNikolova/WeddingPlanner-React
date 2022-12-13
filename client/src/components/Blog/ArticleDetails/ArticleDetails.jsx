@@ -8,13 +8,18 @@ import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails({ pathToImage }) {
+    //todo test search/filter article again!!!!
+    
     const [article, setArticle] = useState({});
     const { id } = useParams();
 
     useEffect(() => {
         articlesService
             .getById(id)
-            .then((res) => console.log(res))
+            .then((res) => {
+                console.log(res);
+                setArticle(res);
+            })
             .catch((err) => console.error(err));
     }, []);
 

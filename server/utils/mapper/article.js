@@ -1,4 +1,4 @@
-const { categoryNameViewModel } = require("./category");
+const { categoryViewModel, categoryNameViewModel } = require("./category");
 
 function articleListViewModel(article) {
     return {
@@ -15,10 +15,13 @@ function articleDetailsViewModel(article) {
     return {
         id: article._id,
         title: article.title,
-        shortContent: article.content,
+        content: article.content,
         image: article.image,
-        // category: categoryNameViewModel(article.category),
+        jumboImage: article.jumboImage,
+        likes: article.likes.length,
+        category: categoryViewModel(article.category),
         createdAt: createdAtViewModel(article.createdAt),
+        //todo comments should be separate
     };
 }
 

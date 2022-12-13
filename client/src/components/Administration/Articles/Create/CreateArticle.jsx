@@ -22,6 +22,7 @@ function CreateArticle() {
         title: '',
         content: '',
         image: '',
+        jumboImage: '',
         category: constants.article.DEFAUL_CATEGORY_SELECTED_ID,
     });
 
@@ -30,6 +31,7 @@ function CreateArticle() {
     const [titleError, setTitleError] = useState('');
     const [contentError, setContentError] = useState('');
     const [imageError, setImageError] = useState('');
+    const [jumboImageError, setJumboImageError] = useState('');
     const [categoryError, setCategoryError] = useState('');
     const [serverError, setServerError] = useState('');
 
@@ -42,7 +44,7 @@ function CreateArticle() {
 
     useEffect(() => {
         checkDisabled();
-    }, [values, titleError, contentError, imageError, categoryError]);
+    }, [values, titleError, contentError, imageError, jumboImageError, categoryError]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -50,15 +52,16 @@ function CreateArticle() {
         setTitleError(validator.validTitle(values.title));
         setContentError(validator.validContent(values.content));
         setImageError(validator.validImage(values.image));
+        setJumboImageError(validator.validImage(values.jumboImage));
         setCategoryError(validator.validCategory(values.category));
 
-        if (titleError || contentError || imageError || categoryError) {
+        if (titleError || contentError || imageError || jumboImageError || categoryError) {
             return;
         }
 
         // todo refactor css
 
-        articlesService.create(values.title, values.content, values.image, values.category)
+        articlesService.create(values.title, values.content, values.image, values.jumboImage, values.category)
             .then((data) => {
                 if (data.message) {
                     setServerError(data.message);
@@ -89,12 +92,16 @@ function CreateArticle() {
         setImageError(validator.validImage(values.image));
     }
 
+    const validateJumboImage = () => {
+        setJumboImageError(validator.validImage(values.jumboImage));
+    }
+
     const validateCatagory = () => {
         setCategoryError(validator.validCategory(values.category));
     }
 
     const checkDisabled = () => {
-        setIsDisabled(helpers.isButtonDisabled(values, [titleError, contentError, imageError, categoryError]));
+        setIsDisabled(helpers.isButtonDisabled(values, [titleError, contentError, imageError, jumboImageError, categoryError]));
     };
 
     return (
@@ -131,13 +138,24 @@ function CreateArticle() {
                     <div className="form-wrapper">
                         <Input
                             name="image"
-                            type="text"
+                            type="url"
                             label="Image"
                             value={values.image}
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateImage}
                         />
                         {imageError && <ClientError error={imageError} />}
+                    </div>
+                    <div className="form-wrapper">
+                        <Input
+                            name="jumboImage"
+                            type="url"
+                            label="Jumbo Image"
+                            value={values.jumboImage}
+                            onChangeHandler={changeHandler}
+                            onBlurHandler={validateJumboImage}
+                        />
+                        {jumboImageError && <ClientError error={jumboImageError} />}
                     </div>
                     <div className="form-wrapper">
                         <Select

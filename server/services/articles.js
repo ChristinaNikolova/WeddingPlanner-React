@@ -2,7 +2,7 @@ const Article = require("../models/Article");
 const { articleListViewModel, articleDetailsViewModel } = require("../utils/mapper/article");
 const { Types: { ObjectId } } = require('mongoose');
 
-async function create(title, content, image, category) {
+async function create(title, content, image, jumboImage, category) {
     let article = await getByTitle(title);
 
     if (article) {
@@ -13,6 +13,7 @@ async function create(title, content, image, category) {
         title,
         content,
         image,
+        jumboImage,
         category,
     });
 
@@ -42,9 +43,8 @@ async function getTotalCount(selectedCategory, searchedQuery) {
 async function getById(id) {
     return articleDetailsViewModel(
         await Article
-            .findById(id));
-
-    //TODO return Post.findById(id).populate('author', 'firstName lastName').populate('votes', 'email');
+            .findById(id)
+            .populate('category', 'name image'));
 }
 
 async function getByTitle(title) {

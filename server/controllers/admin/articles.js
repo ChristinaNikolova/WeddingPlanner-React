@@ -6,6 +6,7 @@ const { mapErrors } = require('../../utils/parser');
 
 router.post('/', isAdmin(),
     body('image').isURL().withMessage('Invalid url'),
+    body('jumboImage').isURL().withMessage('Invalid url'),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);
@@ -14,7 +15,7 @@ router.post('/', isAdmin(),
                 throw mapErrors(errors);
             }
 
-            const article = await create(req.body.title, req.body.content, req.body.image, req.body.category);
+            const article = await create(req.body.title, req.body.content, req.body.image, req.body.jumboImage, req.body.category);
             res.json(article);
         } catch (error) {
             const message = mapErrors(error);

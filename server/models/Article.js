@@ -19,6 +19,10 @@ const articleSchema = new Schema({
         type: String,
         required: [true, 'Image is required'],
     },
+    jumboImage: {
+        type: String,
+        required: [true, 'Jumbo image is required'],
+    },
     category: {
         type: ObjectId,
         ref: 'Category',
