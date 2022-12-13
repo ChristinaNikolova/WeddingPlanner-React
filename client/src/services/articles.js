@@ -12,3 +12,9 @@ export const all = (currentPage = 1, selectedCategory, query = '') => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (id) => {
+    return requester(`${api.articles}/${id}`, 'GET')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

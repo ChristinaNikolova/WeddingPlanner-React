@@ -1,9 +1,9 @@
 const Article = require("../models/Article");
-const { articleViewModel } = require("../utils/mapper/article");
+const { articleListViewModel, articleDetailsViewModel } = require("../utils/mapper/article");
 const { Types: { ObjectId } } = require('mongoose');
 
 async function create(title, content, image, category) {
-    let article = await getArticleByTitle(title);
+    let article = await getByTitle(title);
 
     if (article) {
         throw new Error('Title is already taken');
@@ -29,7 +29,7 @@ async function all(take, skip, selectedCategory, searchedQuery) {
         .sort({ createdAt: -1, title: 1 })
         .skip(skip)
         .limit(take))
-        .map(articleViewModel);
+        .map(articleListViewModel);
 }
 
 async function getTotalCount(selectedCategory, searchedQuery) {
@@ -39,7 +39,15 @@ async function getTotalCount(selectedCategory, searchedQuery) {
         .length;
 }
 
-async function getArticleByTitle(title) {
+async function getById(id) {
+    return articleDetailsViewModel(
+        await Article
+            .findById(id));
+
+    //TODO return Post.findById(id).populate('author', 'firstName lastName').populate('votes', 'email');
+}
+
+async function getByTitle(title) {
     return await Article
         .findOne({ title })
         .collation({ locale: 'en', strength: 2 });
@@ -49,4 +57,5 @@ module.exports = {
     create,
     all,
     getTotalCount,
+    getById,
 }

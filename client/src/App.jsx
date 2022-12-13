@@ -11,6 +11,7 @@ import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Logout from './components/Auth/Logout/Logout';
 import ArticlesList from './components/Blog/ArticlesList/ArticlesList';
+import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/blog" element={<ArticlesList pathToImage={constants.paths.JUMBO_BLOG} />} />
+        <Route path="/blog/:id" element={<ArticleDetails pathToImage={constants.paths.JUMBO_BLOG} />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>

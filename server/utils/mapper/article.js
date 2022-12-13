@@ -1,12 +1,23 @@
 const { categoryNameViewModel } = require("./category");
 
-function articleViewModel(article) {
+function articleListViewModel(article) {
     return {
         id: article._id,
         title: article.title,
         shortContent: article.content.slice(0, 200) + '...',
         image: article.image,
         category: categoryNameViewModel(article.category),
+        createdAt: createdAtViewModel(article.createdAt),
+    };
+}
+
+function articleDetailsViewModel(article) {
+    return {
+        id: article._id,
+        title: article.title,
+        shortContent: article.content,
+        image: article.image,
+        // category: categoryNameViewModel(article.category),
         createdAt: createdAtViewModel(article.createdAt),
     };
 }
@@ -20,5 +31,6 @@ function createdAtViewModel(createdAt) {
 }
 
 module.exports = {
-    articleViewModel,
+    articleListViewModel,
+    articleDetailsViewModel,
 }
