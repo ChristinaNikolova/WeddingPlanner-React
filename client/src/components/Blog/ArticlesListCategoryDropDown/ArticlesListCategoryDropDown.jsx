@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import * as categoriesService from '../../../services/categories';
+import * as constants from '../../../utils/constants/article';
 import { toogle } from "../../../utils/helpers/dropdown";
 
 import styles from './ArticlesListCategoryDropDown.module.css';
@@ -11,7 +12,10 @@ function ArticlesListCategoryDropDown({ selectedCategoryName, onCategoryHandler,
     useEffect(() => {
         categoriesService
             .all()
-            .then((res) => setCategories(res))
+            .then((res) => {
+                res = res.filter((el) => el.id !== constants.article.DEFAUL_CATEGORY_SELECTED_ID);
+                setCategories(res)
+            })
             .catch((err) => console.error(err));
     }, []);
 
