@@ -47,6 +47,19 @@ async function getById(id) {
             .populate('category', 'name image'));
 }
 
+async function like(id, userId) {
+    const article = await Article.findById(id);
+
+    if (article.likes.includes(userId)) {
+        const index = article.likes.indexOf(userId);
+        article.likes.splice(index, 1);
+    } else {
+        article.likes.push(userId);
+    }
+
+    return article.save();
+}
+
 async function getByTitle(title) {
     return await Article
         .findOne({ title })
@@ -58,4 +71,5 @@ module.exports = {
     all,
     getTotalCount,
     getById,
+    like,
 }

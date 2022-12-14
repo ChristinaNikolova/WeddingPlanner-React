@@ -50,6 +50,11 @@
 
 .article-details-ul .article-details-li:first-of-type img {
   margin-right: 12px;
+  border-radius: 100%;
+}
+
+.article-details-ul .article-details-li:last-of-type i {
+  margin-left: 10px;
 }
 
 .article-details-ul img {
@@ -81,4 +86,10 @@
   font-weight: 600;
   font-size: 28px;
   margin-bottom: 16px;
+}
+
+.article-details-btn-wrapper {
+  text-align: right;
+  margin-right: 150px;
+  margin-bottom: 80px;
 }

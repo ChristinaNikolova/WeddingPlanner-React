@@ -18,3 +18,9 @@ export const getById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const like = (id) => {
+    return requester(`${api.articles}/${id}`, 'POST')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

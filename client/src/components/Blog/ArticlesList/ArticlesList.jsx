@@ -13,8 +13,6 @@ import ArticlesListSearch from '../ArticlesListSearch/ArticlesListSearch';
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
-    //todo query with searched category
-    
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const page = searchParams.get('page');

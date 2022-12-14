@@ -19,7 +19,8 @@ function articleDetailsViewModel(article) {
         content: article.content.slice((article.content.indexOf('.') + 1)),
         image: article.image,
         jumboImage: article.jumboImage,
-        likes: article.likes.length,
+        likesCount: article.likes.length,
+        likes: article.likes,
         category: categoryViewModel(article.category),
         createdAt: createdAtViewModel(article.createdAt),
         //todo comments should be separate
@@ -32,14 +33,6 @@ function createdAtViewModel(createdAt) {
         + createdAt.getMonth()
         + '/'
         + createdAt.getFullYear().toString().substr(-2);
-}
-
-function test(content) {
-    const test = content.split(/[.!?])/g);
-    console.log('///////////////////')
-    console.log(test);
-    console.log('///////////////////')
-    return content.slice((content.indexOf('.') + 1))
 }
 
 module.exports = {
