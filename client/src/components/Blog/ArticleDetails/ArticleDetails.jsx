@@ -12,7 +12,7 @@ function ArticleDetails() {
     //todo test search/filter article again!!!!
     //todo add comments
     //todo add like/dislike + test
-    //todo refactor object fit cover
+    //todo refactor object fit cover + shadow
     //todo add edit/delete button for admin
 
     const { userId } = useContext(AuthContext);
