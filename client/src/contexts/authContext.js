@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { useSessionStorage } from '../hooks/useLocaleStorage';
+import { useSessionStorage } from '../hooks/useSessionStorage';
 
 export const AuthContext = createContext();
 
@@ -29,6 +29,7 @@ export const AuthProvider = ({
             userLogout,
             isAuthenticated: !!authToken,
             isAdmin: email === 'admin@weddingplanner.com',
+            userId: id,
         }}>
             {children}
         </AuthContext.Provider>
