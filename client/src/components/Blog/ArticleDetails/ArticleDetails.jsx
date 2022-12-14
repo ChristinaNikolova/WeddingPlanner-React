@@ -13,6 +13,7 @@ function ArticleDetails() {
     //todo add comments
     //todo add like/dislike + test
     //todo refactor object fit cover
+    //todo add edit/delete button for admin
 
     const { userId } = useContext(AuthContext);
     const { id, page } = useParams();
@@ -20,6 +21,7 @@ function ArticleDetails() {
 
     const [article, setArticle] = useState({});
     const [isLiked, setIsLiked] = useState(false);
+    const [hasToScroll, setHasToScroll] = useState(true);
 
     useEffect(() => {
         articlesService
@@ -27,6 +29,11 @@ function ArticleDetails() {
             .then((res) => {
                 setArticle(res);
                 setIsLiked(setIsLikedHelper(res.likes));
+
+                if (hasToScroll) {
+                    window.scrollTo(0, 0);
+                    setHasToScroll(true);
+                }
             })
             .catch((err) => console.error(err));
     }, [isLiked]);
@@ -38,7 +45,10 @@ function ArticleDetails() {
     const like = () => {
         articlesService
             .like(id)
-            .then((res) => setIsLiked(setIsLikedHelper(res.likes)))
+            .then((res) => {
+                setIsLiked(setIsLikedHelper(res.likes));
+                setHasToScroll(false);
+            })
             .catch((err) => console.error(err));
     }
 
@@ -81,7 +91,7 @@ function ArticleDetails() {
                 </div>
                 <div className={styles["article-details-content"]}>
                     <p className={styles["article-details-bold-content"]}>{article.shortContent}</p>
-                    <p className="article-details-content-text">{article.content}</p>
+                    {article.content?.map((el, i) => <p key={i} className={styles["article-details-content-text"]}>{el}</p>)}
                 </div>
             </div>
             <div className={styles["article-details-btn-wrapper"]}>
