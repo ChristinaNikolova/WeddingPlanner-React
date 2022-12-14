@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { directions } from '../../../utils/constants/global';
@@ -13,13 +13,18 @@ import ArticlesListSearch from '../ArticlesListSearch/ArticlesListSearch';
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
+    //todo query with searched category
+    
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const page = searchParams.get('page');
+
     const [articles, setArticles] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({
         id: 'default',
         name: 'all',
     });
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(page);
     const [pagesCount, setPagesCount] = useState(1);
     const [hasToScroll, setHasToScroll] = useState(false);
 
@@ -125,6 +130,7 @@ function ArticlesList({ pathToImage }) {
                                 shortContent={a.shortContent}
                                 createdAt={a.createdAt}
                                 categoryName={a.category.name}
+                                currentPage={currentPage}
                             />)
                         }
                     </div>
