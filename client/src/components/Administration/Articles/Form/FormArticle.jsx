@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import * as constants from '../../../../utils/constants/article';
 import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/article';
-
 import * as categoriesService from '../../../../services/categories';
 
 import Input from '../../../shared/Tags/Input/Input';

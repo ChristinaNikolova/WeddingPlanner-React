@@ -12,8 +12,7 @@ function ArticleDetails() {
     //todo test search/filter article again!!!!
     //todo add comments
     //todo add like/dislike + test
-    //todo refactor object fit cover + shadow
-    //todo check all files
+    //todo check all files!!!!!!
     //reorder onevent and classnames
 
     const { userId, isAdmin } = useContext(AuthContext);
