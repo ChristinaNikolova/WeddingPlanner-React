@@ -30,10 +30,14 @@ function UpdateCategory() {
                     return;
                 }
 
-                navigate('/administration/categories');
+                onCancelHandler();
             })
             .catch((err) => console.error(err));
     };
+
+    const onCancelHandler = () => {
+        navigate('/administration/categories');
+    }
 
     if (!category.name || !category.image) {
         return null;
@@ -46,6 +50,7 @@ function UpdateCategory() {
             image={category.image}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }

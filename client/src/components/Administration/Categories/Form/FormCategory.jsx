@@ -9,7 +9,7 @@ import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
 import styles from './FormCategory.module.css'
 
-function FormCategory({ formName, name, image, serverError, onSubmitHandler }) {
+function FormCategory({ formName, name, image, serverError, onSubmitHandler, onCancelHandler }) {
     const [values, setValues] = useState({
         name: name,
         image: image,
@@ -42,7 +42,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler }) {
         setIsDisabled(helpers.isButtonDisabled(values, [nameError, imageError]));
     };
 
-    const submitHandler = (e) => {
+    const onsubmitHelperHandler = (e) => {
         e.preventDefault();
 
         setNameError(validator.validName(values.name));
@@ -62,7 +62,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler }) {
                 <h2 className="section-title">{formName} Category</h2>
             </div>
             <div className={styles["create-category-content-wrapper"]}>
-                <form className={styles["create-category-form"]} onSubmit={submitHandler}>
+                <form className={styles["create-category-form"]} onSubmit={onsubmitHelperHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="name"
@@ -77,7 +77,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler }) {
                     <div className="form-wrapper">
                         <Input
                             name="image"
-                            type="text"
+                            type="url"
                             label="Image"
                             value={values.image}
                             onChangeHandler={changeHandler}
@@ -85,7 +85,10 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler }) {
                         />
                         {imageError && <ClientError error={imageError} />}
                     </div>
-                    <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                    <div className={styles["create-article-btns-wrapper"]}>
+                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                    </div>
                 </form>
                 <div className={styles["create-category-img-wrapper"]}>
                     <img className={`${styles["create-category-img"]} img-shadow`} src="./../../../img/bunch-of-flowers-363169_1920.jpg" alt="wedding_flowers" />

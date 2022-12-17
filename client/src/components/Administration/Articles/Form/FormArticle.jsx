@@ -15,8 +15,6 @@ import ServerError from '../../../shared/Errors/ServerError/ServerError';
 import styles from './FormArticle.module.css';
 
 function FormArticle({ formName, title, content, image, jumboImage, category, serverError, onSubmitHandler, onCancelHandler }) {
-    //change name handlers
-
     const [values, setValues] = useState({
         title: title,
         content: content,
