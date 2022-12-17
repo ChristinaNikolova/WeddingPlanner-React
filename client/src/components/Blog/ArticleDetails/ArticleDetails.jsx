@@ -99,7 +99,7 @@ function ArticleDetails() {
                         </li>
                         {isAdmin &&
                             <li className={styles["article-details-li"]}>
-                                <Link to={`/administration/articles/edit/${id}`}>
+                                <Link to={`/administration/articles/edit/${id}`} state={{ page: page }}>
                                     <i className="fa-solid fa-pen"></i>
                                 </Link>
                                 <i onClick={onDeleteHandler} className="fa-solid fa-trash"></i>

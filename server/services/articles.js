@@ -22,6 +22,28 @@ async function create(title, content, image, jumboImage, category) {
     return article;
 }
 
+async function update(id, title, content, image, jumboImage, category) {
+    const article = await getById(id, false);
+
+    if (article.title.toLowerCase() !== title.toLowerCase()) {
+        const result = await getByTitle(title);
+
+        if (result) {
+            throw new Error('Title already exists');
+        }
+    }
+
+    article.title = title;
+    article.content = content;
+    article.image = image;
+    article.jumboImage = jumboImage;
+    article.category = category;
+
+    await article.save();
+
+    return article;
+}
+
 async function all(take, skip, selectedCategory, searchedQuery) {
     return (await Article
         .find(selectedCategory ? { category: new ObjectId(selectedCategory) } : {})
@@ -40,11 +62,12 @@ async function getTotalCount(selectedCategory, searchedQuery) {
         .length;
 }
 
-async function getById(id) {
-    return articleDetailsViewModel(
-        await Article
-            .findById(id)
-            .populate('category', 'name image'));
+async function getById(id, hasToCast) {
+    const article = await Article
+        .findById(id)
+        .populate('category', 'name image');
+
+    return hasToCast ? articleDetailsViewModel(article) : article;
 }
 
 async function like(id, userId) {
@@ -77,4 +100,5 @@ module.exports = {
     getById,
     like,
     deleteById,
+    update,
 }

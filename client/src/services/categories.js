@@ -7,8 +7,8 @@ export const create = (name, image) => {
         .catch((err) => console.error(err));
 }
 
-export const all = () => {
-    return requester(api.categories, 'GET')
+export const update = (id, name, image) => {
+    return requester(`${api.adminCategory}/${id}`, 'PUT', { name, image })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
@@ -23,14 +23,14 @@ export const deleteById = (id) => {
         .catch((err) => console.error(err));
 }
 
-export const getById = (id) => {
-    return requester(`${api.adminCategory}/${id}`, 'GET')
+export const all = () => {
+    return requester(api.categories, 'GET')
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
-export const update = (id, name, image) => {
-    return requester(`${api.adminCategory}/${id}`, 'PUT', { name, image })
+export const getById = (id) => {
+    return requester(`${api.adminCategory}/${id}`, 'GET')
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }

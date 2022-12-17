@@ -7,6 +7,12 @@ export const create = (title, content, image, jumboImage, category) => {
         .catch((err) => console.error(err));
 }
 
+export const update = (id, title, content, image, jumboImage, category) => {
+    return requester(`${api.adminArticle}/${id}`, 'PUT', { title, content, image, jumboImage, category })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
 export const deleteById = (id) => {
     return requester(`${api.adminArticle}/${id}`, 'DELETE')
         .then((res) => res.json())
