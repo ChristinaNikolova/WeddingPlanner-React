@@ -47,7 +47,7 @@ function ArticleDetails() {
         articlesService
             .deleteById(id)
             .then(() => {
-                navigate('/blog?page=1')
+                onBackHandler();
             })
             .catch((err) => console.error(err));
     }

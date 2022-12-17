@@ -33,10 +33,14 @@ function UpdateArticle() {
                     return;
                 }
 
-                navigate(`/blog/${state.page}/${id}`);
+                onCancelHandler();
             })
             .catch((err) => console.error(err));
     };
+
+    const onCancelHandler = () => {
+        navigate(`/blog/${state.page}/${id}`);
+    }
 
     if (!article.title || !article.content || !article.image || !article.jumboImage || !article.category) {
         return null;
@@ -54,6 +58,7 @@ function UpdateArticle() {
             category={article.category}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }

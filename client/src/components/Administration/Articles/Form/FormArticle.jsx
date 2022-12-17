@@ -14,10 +14,9 @@ import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
 import styles from './FormArticle.module.css';
 
-function FormArticle({ formName, title, content, image, jumboImage, category, serverError, onSubmitHandler }) {
-    //todo test category
+function FormArticle({ formName, title, content, image, jumboImage, category, serverError, onSubmitHandler, onCancelHandler }) {
     //change name handlers
-    
+
     const [values, setValues] = useState({
         title: title,
         content: content,
@@ -76,7 +75,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
         setIsDisabled(helpers.isButtonDisabled(values, [titleError, contentError, imageError, jumboImageError, categoryError]));
     };
 
-    const submitHandler = (e) => {
+    const onsubmitHelperHandler = (e) => {
         e.preventDefault();
 
         setTitleError(validator.validTitle(values.title));
@@ -99,7 +98,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                 <h2 className="section-title">{formName} Article</h2>
             </div>
             <div className={styles["create-article-content-wrapper"]} >
-                <form className={styles["create-article-form"]} onSubmit={submitHandler}>
+                <form className={styles["create-article-form"]} onSubmit={onsubmitHelperHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="title"
@@ -156,7 +155,10 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                         />
                         {categoryError && <ClientError error={categoryError} />}
                     </div>
-                    <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                    <div className={styles["create-article-btns-wrapper"]}>
+                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                    </div>
                 </form>
             </div>
         </section>
