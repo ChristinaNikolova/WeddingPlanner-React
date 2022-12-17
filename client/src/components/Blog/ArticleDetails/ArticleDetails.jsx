@@ -13,8 +13,6 @@ function ArticleDetails() {
     //todo add comments
     //todo add like/dislike + test
     //todo refactor object fit cover + shadow
-    //todo add edit/delete button for admin
-    //test like/dislike when jumbo is added
 
     const { userId, isAdmin } = useContext(AuthContext);
     const { id, page } = useParams();

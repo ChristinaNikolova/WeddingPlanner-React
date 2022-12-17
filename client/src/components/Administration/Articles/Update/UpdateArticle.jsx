@@ -46,8 +46,6 @@ function UpdateArticle() {
         return null;
     }
 
-    //todo test the content prop
-
     return (
         <FormArticle
             formName={formName}

@@ -34,9 +34,6 @@ router.put('/:id', isAdmin(),
                 throw mapErrors(errors);
             }
 
-            console.log(req.body.content);
-            console.log(req.body.content.length)
-
             const id = req.params.id;
             const article = await update(id, req.body.title, req.body.content, req.body.image, req.body.jumboImage, req.body.category);
             res.json(article);
