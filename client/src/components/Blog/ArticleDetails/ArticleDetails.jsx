@@ -13,6 +13,8 @@ function ArticleDetails() {
     //todo add comments
     //todo add like/dislike + test
     //todo refactor object fit cover + shadow
+    //todo check all files
+    //reorder onevent and classnames
 
     const { userId, isAdmin } = useContext(AuthContext);
     const { id, page } = useParams();
@@ -76,11 +78,11 @@ function ArticleDetails() {
             </div>
             <div className={styles["article-details-main-content-wrapper"]}>
                 <div className="article-details-list-image">
-                    <img className={styles["article-details-image"]} src={article.image} alt={article.title} />
+                    <img className={`${styles["article-details-image"]} img img-shadow`} src={article.image} alt={article.title} />
                     <ul className={styles["article-details-ul"]}>
                         <li className={styles["article-details-li"]}>
                             <span className={styles["article-details-li-span"]}> Category:</span>
-                            <img src={article.category?.image} alt={article.category?.name} />
+                            <img className="img" src={article.category?.image} alt={article.category?.name} />
                             {article.category?.name}
                         </li>
                         <li className={styles["article-details-li"]}>
