@@ -132,6 +132,11 @@ img {
 input.input,
 select.input {
   height: 42px;
+  padding: 10px;
+}
+
+textarea {
+  padding: 10px;
 }
 
 .input:focus {
