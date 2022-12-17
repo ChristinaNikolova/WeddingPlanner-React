@@ -5,7 +5,7 @@ const api = {
     register: `${baseUrl}/auth/register`,
     login: `${baseUrl}/auth/login`,
     logout: `${baseUrl}/auth/logout`,
-    createArticle: `${baseUrl}/admin/articles`,
+    adminArticle: `${baseUrl}/admin/articles`,
     adminCategory: `${baseUrl}/admin/categories`,
     articles: `${baseUrl}/articles`,
     categories: `${baseUrl}/categories`,

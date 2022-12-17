@@ -66,10 +66,15 @@ async function getByTitle(title) {
         .collation({ locale: 'en', strength: 2 });
 }
 
+async function deleteById(id) {
+    return Article.findByIdAndDelete(id);
+}
+
 module.exports = {
     create,
     all,
     getTotalCount,
     getById,
     like,
+    deleteById,
 }

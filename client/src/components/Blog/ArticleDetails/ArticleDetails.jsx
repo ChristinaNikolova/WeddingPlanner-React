@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { AuthContext } from '../../../contexts/authContext';
@@ -14,8 +14,9 @@ function ArticleDetails() {
     //todo add like/dislike + test
     //todo refactor object fit cover + shadow
     //todo add edit/delete button for admin
+    //test like/dislike when jumbo is added
 
-    const { userId } = useContext(AuthContext);
+    const { userId, isAdmin } = useContext(AuthContext);
     const { id, page } = useParams();
     const navigate = useNavigate();
 
@@ -40,6 +41,15 @@ function ArticleDetails() {
 
     const onBackHandler = () => {
         navigate(`/blog?page=${page}`);
+    }
+
+    const onDeleteHandler = () => {
+        articlesService
+            .deleteById(id)
+            .then(() => {
+                navigate('/blog?page=1')
+            })
+            .catch((err) => console.error(err));
     }
 
     const like = () => {
@@ -87,6 +97,14 @@ function ArticleDetails() {
                                 : <i onClick={like} className="fa-regular fa-heart"></i>
                             }
                         </li>
+                        {isAdmin &&
+                            <li className={styles["article-details-li"]}>
+                                <Link to={`/administration/articles/edit/${id}`}>
+                                    <i className="fa-solid fa-pen"></i>
+                                </Link>
+                                <i onClick={onDeleteHandler} className="fa-solid fa-trash"></i>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div className={styles["article-details-content"]}>

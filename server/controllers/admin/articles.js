@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { isAdmin } = require('../../middlewares/guards');
-const { create } = require('../../services/articles');
+const { create, deleteById } = require('../../services/articles');
 const { mapErrors } = require('../../utils/parser');
 
 router.post('/', isAdmin(),
@@ -22,5 +22,17 @@ router.post('/', isAdmin(),
             res.status(400).json({ message });
         }
     });
+
+router.delete('/:id', isAdmin(), async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const article = await deleteById(id);
+        res.json(article);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
 
 module.exports = router;

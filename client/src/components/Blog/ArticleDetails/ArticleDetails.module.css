@@ -53,8 +53,12 @@
   border-radius: 100%;
 }
 
-.article-details-ul .article-details-li:last-of-type i {
+.article-details-ul .article-details-li:nth-child(3) i {
   margin-left: 10px;
+}
+
+.article-details-ul .article-details-li:last-of-type i:first-of-type {
+  margin-right: 20px;
 }
 
 .article-details-ul img {

@@ -2,7 +2,13 @@ import { api } from './api';
 import { requester } from './requester';
 
 export const create = (title, content, image, jumboImage, category) => {
-    return requester(api.createArticle, 'POST', { title, content, image, jumboImage, category })
+    return requester(api.adminArticle, 'POST', { title, content, image, jumboImage, category })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const deleteById = (id) => {
+    return requester(`${api.adminArticle}/${id}`, 'DELETE')
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
