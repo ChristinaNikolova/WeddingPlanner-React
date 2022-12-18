@@ -11,6 +11,8 @@ const category = {
 };
 
 const comment = {
+    TITLE_MIN_LEN: 3,
+    TITLE_MAX_LEN: 50,
     CONTENT_MIN_LEN: 20,
     CONTENT_MAX_LEN: 500,
 };
