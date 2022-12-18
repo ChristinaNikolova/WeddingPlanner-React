@@ -10,7 +10,7 @@ import Home from './components/Home/Home';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import Logout from './components/Auth/Logout/Logout';
-import ArticlesList from './components/Blog/ArticlesList/ArticlesList';
+import ArticlesAll from './components/Blog/ArticlesAll/ArticlesAll';
 import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
 import FavouriteArticle from './components/User/FavouriteArticle/FavouriteArticle';
 import NotFound from './components/NotFound/NotFound';
@@ -36,7 +36,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/blog" element={<ArticlesList pathToImage={constants.paths.JUMBO_BLOG} />} />
+        <Route path="/blog" element={<ArticlesAll pathToImage={constants.paths.JUMBO_BLOG} />} />
         <Route path="/blog/:id/" element={<ArticleDetails />} />
         <Route path="/user/favourite-article" element={<FavouriteArticle />} />
 

@@ -1,40 +1,40 @@
 @import "../../../styles/constants.css";
 
-.articles-list {
+.articles-all {
   margin: 0 auto;
   text-align: center;
 }
 
-.articles-list i {
+.articles-all i {
   font-size: 18px;
   margin-left: 10px;
 }
 
-.articles-list i:hover {
+.articles-all i:hover {
   color: var(--clr-gold);
 }
 
-.articles-list-title-wrapper {
+.articles-all-title-wrapper {
   text-align: center;
   width: 700px;
   margin: 0 auto;
 }
 
-.articles-list-title {
+.articles-all-title {
   font-size: 46px;
   font-weight: 400;
   letter-spacing: 2.5px;
   margin-bottom: 34px;
 }
 
-.article-list-content-text {
+.article-all-content-text {
   font-size: 33px;
   font-weight: 300;
   line-height: 1.9;
   margin-bottom: 120px;
 }
 
-.articles-list-forms-wrapper {
+.articles-all-forms-wrapper {
   display: flex;
   justify-content: space-between;
   padding-left: 20px;

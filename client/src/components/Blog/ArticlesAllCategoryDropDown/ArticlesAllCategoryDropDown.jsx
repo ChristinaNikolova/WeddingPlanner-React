@@ -4,9 +4,9 @@ import * as categoriesService from '../../../services/categories';
 import * as constants from '../../../utils/constants/article';
 import { toogle } from "../../../utils/helpers/dropdown";
 
-import styles from './ArticlesListCategoryDropDown.module.css';
+import styles from './ArticlesAllCategoryDropDown.module.css';
 
-function ArticlesListCategoryDropDown({ selectedCategoryName, onCategoryHandler, onRemoveCategotyHandler }) {
+function ArticlesAllCategoryDropDown({ selectedCategoryName, onCategoryHandler, onRemoveCategotyHandler }) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -33,18 +33,18 @@ function ArticlesListCategoryDropDown({ selectedCategoryName, onCategoryHandler,
     }
 
     return (
-        <div className={styles["article-list-category-drop-down-wrapper"]}>
-            <span className={styles["articles-list-category-drop-down"]}>Category:</span>
-            <button onClick={onToogleHandler} className={styles["articles-list-category-drop-down-btn"]}>
+        <div className={styles["article-all-category-drop-down-wrapper"]}>
+            <span className={styles["articles-all-category-drop-down"]}>Category:</span>
+            <button onClick={onToogleHandler} className={styles["articles-all-category-drop-down-btn"]}>
                 {selectedCategoryName}
                 {selectedCategoryName !== 'all' && <i onClick={(e) => onRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
             </button>
-            <ul className={[styles["articles-list-category-drop-down-ul"], "hide"].join(' ')}>
+            <ul className={[styles["articles-all-category-drop-down-ul"], "hide"].join(' ')}>
                 {categories.map((c) =>
                     <li
                         key={c.id}
                         id={c.id}
-                        className={styles["articles-list-category-drop-down-li"]}
+                        className={styles["articles-all-category-drop-down-li"]}
                         onClick={(e) => onClickCategoryHandler(e)}>
                         {c.name}
                     </li>)
@@ -54,4 +54,4 @@ function ArticlesListCategoryDropDown({ selectedCategoryName, onCategoryHandler,
     );
 }
 
-export default ArticlesListCategoryDropDown;
+export default ArticlesAllCategoryDropDown;

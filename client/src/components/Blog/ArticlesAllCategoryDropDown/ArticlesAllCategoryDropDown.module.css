@@ -1,6 +1,6 @@
 @import "../../../styles/constants.css";
 
-.articles-list-category-drop-down-btn {
+.articles-all-category-drop-down-btn {
   border: unset;
   background-color: unset;
   font-size: 34px;
@@ -12,30 +12,30 @@
   position: relative;
 }
 
-.articles-list-category-drop-down-btn:hover {
+.articles-all-category-drop-down-btn:hover {
   cursor: pointer;
   color: var(--clr-gold);
   font-weight: 600;
 }
 
-.articles-list-category-drop-down-btn i {
+.articles-all-category-drop-down-btn i {
   position: absolute;
   top: 14px;
 }
 
-.articles-list-category-drop-down-ul {
+.articles-all-category-drop-down-ul {
   -webkit-box-shadow: 5px 5px 20px 5px rgba(223, 223, 223, 0.3);
   box-shadow: 5px 5px 20px 5px rgba(223, 223, 223, 0.3);
   max-width: 320px;
 }
 
-.articles-list-category-drop-down-li {
+.articles-all-category-drop-down-li {
   transition: all 200ms ease-in-out;
   font-size: 26px;
   padding: 10px;
 }
 
-.articles-list-category-drop-down-li:hover {
+.articles-all-category-drop-down-li:hover {
   color: var(--clr-gold);
   cursor: pointer;
   font-weight: 600;

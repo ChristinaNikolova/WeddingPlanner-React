@@ -1,10 +1,10 @@
 import Input from '../../shared/Tags/Input/Input';
 
-import styles from './ArticlesListSearch.module.css';
+import styles from './ArticlesAllSearch.module.css';
 
-function ArticlesListSearch({ isSearchIconClicked, query, onShowSearchForm, onSearch, onChangeHandler }) {
+function ArticlesAllSearch({ isSearchIconClicked, query, onShowSearchForm, onSearch, onChangeHandler }) {
     return (
-        <span className={styles["articles-list-search-title"]}>
+        <span className={styles["articles-all-search-title"]}>
             Search
             {isSearchIconClicked
                 ? <>
@@ -26,4 +26,4 @@ function ArticlesListSearch({ isSearchIconClicked, query, onShowSearchForm, onSe
     );
 }
 
-export default ArticlesListSearch;
+export default ArticlesAllSearch;

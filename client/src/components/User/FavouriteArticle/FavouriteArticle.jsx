@@ -17,14 +17,14 @@ function FavouriteArticle({ pathToImage }) {
     }, []);
 
     return (
-        <section className={styles["articles-list"]}>
+        <section className={styles["articles-all"]}>
             <Jumbotron
                 pathToImage={pathToImage}
                 isHomePage={false}
             />
-            <div className={styles["articles-list-title-wrapper"]}>
-                <h4 className={styles["articles-list-title"]}>Wedding Blog</h4>
-                <p className={styles["article-list-content-text"]}>You don't marry the person you can live with, you marry the person you can't live without.</p>
+            <div className={styles["articles-all-title-wrapper"]}>
+                <h4 className={styles["articles-all-title"]}>Wedding Blog</h4>
+                <p className={styles["article-all-content-text"]}>You don't marry the person you can live with, you marry the person you can't live without.</p>
             </div>
             {
                 favArticles.length
