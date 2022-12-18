@@ -46,7 +46,7 @@ router.delete('/:id', isAdmin(), async (req, res) => {
     try {
         const id = req.params.id;
 
-        if (id === category.DEFAUL_CATEGORY_SELECTED_ID) {
+        if (id === category.DEFAULT_CATEGORY_SELECTED_ID) {
             return;
         }
 

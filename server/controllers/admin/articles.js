@@ -16,7 +16,7 @@ router.post('/', isAdmin(),
                 throw mapErrors(errors);
             }
 
-            if (req.body.category === category.DEFAUL_CATEGORY_SELECTED_ID) {
+            if (req.body.category === category.DEFAULT_CATEGORY_SELECTED_ID) {
                 throw new Error('Please select category');
             }
 
