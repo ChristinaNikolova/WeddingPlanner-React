@@ -29,7 +29,7 @@ function Header() {
                         ?
                         <>
                             <li className={styles["header-nav-li"]}>
-                                <NavLink className={setNavStyle} to="/profile">Profile</NavLink>
+                                <NavLink className={setNavStyle} to="/user/favourite-article">Favourite</NavLink>
                             </li>
                             {isAdmin &&
                                 <li className={styles["header-nav-li"]}>

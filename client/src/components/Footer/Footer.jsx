@@ -27,7 +27,7 @@ function Footer() {
                         ?
                         <>
                             <li className={styles["footer-nav-li"]}>
-                                <Link to="/profile">Profile</Link>
+                                <Link to="/user/favourite-article">Favourite</Link>
                             </li>
                             <li className={styles["footer-nav-li"]}>
                                 <Link to="/logout">Logout</Link>

@@ -9,12 +9,8 @@ import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
-    //todo test search/filter article again!!!!
-
     //todo add comments -> delete + edit??
-
     //todo check all files!!!!!!
-
     //todo reorder onevent and classnames
     //todo constants for errors
 
