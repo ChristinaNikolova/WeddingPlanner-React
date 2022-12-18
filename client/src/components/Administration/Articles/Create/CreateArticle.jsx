@@ -14,8 +14,6 @@ function CreateArticle() {
     }, [serverError]);
 
     const submitHandler = (title, content, image, jumboImage, category) => {
-        // todo refactor css
-
         articlesService.create(title, content, image, jumboImage, category)
             .then((data) => {
                 if (data.message) {
