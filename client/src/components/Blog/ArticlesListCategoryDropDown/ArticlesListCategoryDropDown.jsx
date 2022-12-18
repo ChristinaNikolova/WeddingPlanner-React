@@ -13,7 +13,7 @@ function ArticlesListCategoryDropDown({ selectedCategoryName, onCategoryHandler,
         categoriesService
             .all()
             .then((res) => {
-                res = res.filter((el) => el.id !== constants.article.DEFAUL_CATEGORY_SELECTED_ID);
+                res = res.filter((el) => el.id !== constants.article.DEFAULT_CATEGORY_SELECTED_ID);
                 setCategories(res)
             })
             .catch((err) => console.error(err));

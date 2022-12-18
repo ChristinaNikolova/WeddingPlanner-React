@@ -19,7 +19,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
         content: content,
         image: image,
         jumboImage: jumboImage,
-        category: category ? category.id : constants.article.DEFAUL_CATEGORY_SELECTED_ID,
+        category: category ? category.id : constants.article.DEFAULT_CATEGORY_SELECTED_ID,
     });
 
     const [isDisabled, setIsDisabled] = useState(true);

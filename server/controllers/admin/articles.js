@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 const { isAdmin } = require('../../middlewares/guards');
 const { create, deleteById, update } = require('../../services/articles');
 const { mapErrors } = require('../../utils/parser');
+const { category } = require('../../utils/constants/global');
 
 router.post('/', isAdmin(),
     body('image').isURL().withMessage('Invalid url'),
@@ -13,6 +14,10 @@ router.post('/', isAdmin(),
 
             if (errors.length > 0) {
                 throw mapErrors(errors);
+            }
+
+            if (req.body.category === category.DEFAUL_CATEGORY_SELECTED_ID) {
+                throw new Error('Please select category');
             }
 
             const article = await create(req.body.title, req.body.content, req.body.image, req.body.jumboImage, req.body.category);
