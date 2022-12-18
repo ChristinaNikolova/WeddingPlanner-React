@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/category';
 
-import Input from "../../../shared/Tags/Input/Input";
+import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
 

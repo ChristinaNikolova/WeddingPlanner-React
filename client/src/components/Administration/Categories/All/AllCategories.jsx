@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import * as categoriesService from '../../../../services/categories';
 
-import ServerError from "../../../shared/Errors/ServerError/ServerError";
-import SingleCategory from "../SingleCategory/SingleCategory";
+import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import SingleCategory from '../SingleCategory/SingleCategory';
 
 import styles from './AllCategories.module.css';
 

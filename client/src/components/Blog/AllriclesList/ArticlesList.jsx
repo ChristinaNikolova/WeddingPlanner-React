@@ -1,4 +1,4 @@
-import ArticleSingle from "../ArticleSingle/ArticleSingle";
+import ArticleSingle from '../ArticleSingle/ArticleSingle';
 
 import styles from './ArticlesList.module.css';
 

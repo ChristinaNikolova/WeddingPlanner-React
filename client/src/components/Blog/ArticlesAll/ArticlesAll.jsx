@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { directions } from '../../../utils/constants/global';
 
-import Jumbotron from "../../shared/Jumbotron/Jumbotron";
-import Pagination from "../../shared/Pagination/Pagination";
-import ArticlesList from "../AllriclesList/ArticlesList";
+import Jumbotron from '../../shared/Jumbotron/Jumbotron';
+import Pagination from '../../shared/Pagination/Pagination';
+import ArticlesList from '../AllriclesList/ArticlesList';
 import ArticlesAllCategoryDropDown from '../ArticlesAllCategoryDropDown/ArticlesAllCategoryDropDown';
 import ArticlesAllSearch from '../ArticlesAllSearch/ArticlesAllSearch';
 
 import styles from './ArticlesAll.module.css';
-
 
 function ArticlesAll({ pathToImage }) {
     const [searchParams] = useSearchParams();

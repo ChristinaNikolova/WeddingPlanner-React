@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import * as constants from '../../../../utils/constants/article';
 import * as helpers from '../../../../utils/helpers/form';

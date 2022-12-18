@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
 
 import * as articlesService from '../../../../services/articles';
 
-import FormArticle from "../Form/FormArticle";
+import FormArticle from '../Form/FormArticle';
 
 function UpdateArticle() {
     const formName = 'Update';

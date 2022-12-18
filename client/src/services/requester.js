@@ -1,4 +1,4 @@
-import { getToken } from "./auth";
+import { getToken } from './auth';
 
 export const requester = (url, method, data) => {
     return fetch(url, {
