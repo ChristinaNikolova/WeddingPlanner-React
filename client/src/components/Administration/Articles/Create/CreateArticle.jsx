@@ -23,7 +23,7 @@ function CreateArticle() {
                     return;
                 }
 
-                navigate(`/blog/1/${data._id}`);
+                navigate(`/blog/${data._id}`);
             })
             .catch((err) => console.error(err));
     }

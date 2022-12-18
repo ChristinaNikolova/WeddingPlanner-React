@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { AuthContext } from '../../../contexts/authContext';
@@ -10,14 +10,22 @@ import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
     //todo test search/filter article again!!!!
-    //todo add comments
-    //todo add like/dislike + test
+
+    //todo add comments -> delete + edit??
+
     //todo check all files!!!!!!
-    //reorder onevent and classnames
+
+    //todo reorder onevent and classnames
+    //todo constants for errors
 
     const { userId, isAdmin } = useContext(AuthContext);
-    const { id, page } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
+
+    const location = useLocation();
+    const { state } = location;
+    const page = state?.page ? state.page : '1';
+    const category = state?.category ? state.category : { id: 'default', name: 'all' };
 
     const [article, setArticle] = useState({});
     const [isLiked, setIsLiked] = useState(false);
@@ -38,15 +46,11 @@ function ArticleDetails() {
             .catch((err) => console.error(err));
     }, [isLiked]);
 
-    const onBackHandler = () => {
-        navigate(`/blog?page=${page}`);
-    }
-
     const onDeleteHandler = () => {
         articlesService
             .deleteById(id)
             .then(() => {
-                onBackHandler();
+                navigate('/blog?page=1&category=all');
             })
             .catch((err) => console.error(err));
     }
@@ -73,7 +77,7 @@ function ArticleDetails() {
             />
             <h1 className={styles["article-details-title"]}>{article.title}</h1>
             <div className={styles["article-details-btn-wrapper"]}>
-                <button className="btn" onClick={onBackHandler}>Back</button>
+                <Link to={`/blog?page=${page}&category=${category.name}`} state={{ category: category }} className="btn">Back</Link>
             </div>
             <div className={styles["article-details-main-content-wrapper"]}>
                 <div className="article-details-list-image">
@@ -98,7 +102,7 @@ function ArticleDetails() {
                         </li>
                         {isAdmin &&
                             <li className={styles["article-details-li"]}>
-                                <Link to={`/administration/articles/edit/${id}`} state={{ page: page }}>
+                                <Link to={`/administration/articles/edit/${id}`}>
                                     <i className="fa-solid fa-pen"></i>
                                 </Link>
                                 <i onClick={onDeleteHandler} className="fa-solid fa-trash"></i>
@@ -112,7 +116,7 @@ function ArticleDetails() {
                 </div>
             </div>
             <div className={styles["article-details-btn-wrapper"]}>
-                <button className="btn" onClick={onBackHandler}>Back</button>
+                <Link to={`/blog?page=${page}&category=${category.name}`} state={{ category: category }} className="btn">Back</Link>
             </div>
         </section >
     );

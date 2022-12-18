@@ -4,16 +4,16 @@ import { directions } from '../../../utils/constants/global';
 
 import styles from './Pagination.module.css';
 
-function Pagination({ currentPage, pagesCount, onClickHandler }) {
+function Pagination({ currentPage, pagesCount, selectedCategory, onClickHandler }) {
     return (
         <div className={styles["pagination-warpper"]}>
             {currentPage !== 1 &&
-                <Link className={styles["pagination"]} to={`/blog?page=${currentPage - 1}`} onClick={() => onClickHandler(directions.PREV)}>
+                <Link className={styles["pagination"]} to={`/blog?page=${currentPage - 1}&category=${selectedCategory.name}`} onClick={() => onClickHandler(directions.PREV)}>
                     Newer posts
                 </Link>
             }
             {currentPage !== pagesCount &&
-                <Link className={styles["pagination"]} to={`/blog?page=${currentPage + 1}`} onClick={() => onClickHandler(directions.NEXT)}>
+                <Link className={styles["pagination"]} to={`/blog?page=${currentPage + 1}&category=${selectedCategory.name}`} onClick={() => onClickHandler(directions.NEXT)}>
                     Older posts
                 </Link>
             }

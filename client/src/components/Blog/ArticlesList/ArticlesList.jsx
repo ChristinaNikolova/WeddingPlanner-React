@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { directions } from '../../../utils/constants/global';
@@ -13,18 +13,23 @@ import ArticlesListSearch from '../ArticlesListSearch/ArticlesListSearch';
 import styles from './ArticlesList.module.css';
 
 function ArticlesList({ pathToImage }) {
-    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const page = searchParams.get('page');
+    const page = searchParams?.get('page') ? searchParams.get('page') : '1';
+
+    const location = useLocation();
+    const { state } = location;
+
+    const navigate = useNavigate();
 
     const [articles, setArticles] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({
-        id: 'default',
-        name: 'all',
+        id: state?.category.id ? state.category.id : 'default',
+        name: state?.category.name ? state.category.name : 'all',
     });
     const [currentPage, setCurrentPage] = useState(page);
     const [pagesCount, setPagesCount] = useState(1);
     const [hasToScroll, setHasToScroll] = useState(false);
+    const [hasToNavigate, setHasToNavigate] = useState(false);
 
     const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
     const [query, setQuery] = useState('');
@@ -42,6 +47,11 @@ function ArticlesList({ pathToImage }) {
                 if (hasToScroll) {
                     window.scrollTo(0, 0);
                     setHasToScroll(false);
+                }
+
+                if (hasToNavigate) {
+                    startPageHelper();
+                    setHasToNavigate(false);
                 }
             })
             .catch((err) => console.error(err));
@@ -69,24 +79,24 @@ function ArticlesList({ pathToImage }) {
     }
 
     const onCategoryHandler = (e) => {
-        startPageHelper();
         setSelectedCategory({
             id: e.target.id,
             name: e.target.innerText,
         });
+        setHasToNavigate(true);
     }
 
     const onRemoveCategotyHandler = (e) => {
         e.stopPropagation();
-        startPageHelper();
         setSelectedCategory({
             id: 'default',
             name: 'all',
         });
+        setHasToNavigate(true);
     }
 
     const startPageHelper = () => {
-        navigate('/blog?page=1');
+        navigate(`/blog?page=1&category=${selectedCategory.name}`);
         setCurrentPage(1);
     }
 
@@ -129,6 +139,7 @@ function ArticlesList({ pathToImage }) {
                                 createdAt={a.createdAt}
                                 categoryName={a.category.name}
                                 currentPage={currentPage}
+                                selectedCategory={selectedCategory}
                             />)
                         }
                     </div>
@@ -137,6 +148,7 @@ function ArticlesList({ pathToImage }) {
             <Pagination
                 currentPage={currentPage}
                 pagesCount={pagesCount}
+                selectedCategory={selectedCategory}
                 onClickHandler={onPaginationHandler}
             />
         </section >

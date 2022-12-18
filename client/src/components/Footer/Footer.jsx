@@ -21,7 +21,7 @@ function Footer() {
                         <Link to="/plan">Plan your wedding</Link>
                     </li>
                     <li className={styles["footer-nav-li"]}>
-                        <Link to="/blog?page=1">Wedding's blog</Link>
+                        <Link to="/blog?page=1&category=all">Wedding's blog</Link>
                     </li>
                     {isAuthenticated
                         ?
