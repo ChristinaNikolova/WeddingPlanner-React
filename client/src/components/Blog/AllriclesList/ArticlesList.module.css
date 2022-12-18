@@ -1,0 +1,13 @@
+@import "../../../styles/constants.css";
+
+.articles-list-blog {
+  width: 1600px;
+  margin: 0 auto;
+}
+
+.articles-list-empty {
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--clr-gold);
+  margin-bottom: 200px;
+}

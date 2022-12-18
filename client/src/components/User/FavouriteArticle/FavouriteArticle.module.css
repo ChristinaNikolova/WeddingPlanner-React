@@ -1,0 +1,11 @@
+.fav-articles {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.fav-articles-title {
+  font-size: 46px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  margin-bottom: 150px;
+}

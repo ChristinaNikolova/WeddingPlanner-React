@@ -6,11 +6,12 @@ import { directions } from '../../../utils/constants/global';
 
 import Jumbotron from "../../shared/Jumbotron/Jumbotron";
 import Pagination from "../../shared/Pagination/Pagination";
-import ArticleSingle from "../ArticleSingle/ArticleSingle";
+import ArticlesList from "../AllriclesList/ArticlesList";
 import ArticlesAllCategoryDropDown from '../ArticlesAllCategoryDropDown/ArticlesAllCategoryDropDown';
 import ArticlesAllSearch from '../ArticlesAllSearch/ArticlesAllSearch';
 
 import styles from './ArticlesAll.module.css';
+
 
 function ArticlesAll({ pathToImage }) {
     const [searchParams] = useSearchParams();
@@ -125,26 +126,11 @@ function ArticlesAll({ pathToImage }) {
                     onRemoveCategotyHandler={onRemoveCategotyHandler}
                 />
             </div>
-            {
-                articles.length
-                    ? <div className={styles["articles-list-blog"]}>
-                        {articles.map((a, i) =>
-                            <ArticleSingle
-                                key={a.id}
-                                id={a.id}
-                                className={i % 2 === 0 ? 'left' : 'right'}
-                                title={a.title}
-                                image={a.image}
-                                shortContent={a.shortContent}
-                                createdAt={a.createdAt}
-                                categoryName={a.category.name}
-                                currentPage={currentPage}
-                                selectedCategory={selectedCategory}
-                            />)
-                        }
-                    </div>
-                    : <p className={styles["articles-list-empty"]}>No Articles Yet</p>
-            }
+            <ArticlesList
+                articles={articles}
+                currentPage={currentPage}
+                selectedCategory={selectedCategory}
+            />
             <Pagination
                 currentPage={currentPage}
                 pagesCount={pagesCount}
