@@ -42,7 +42,9 @@ const note = {
 };
 
 const planner = {
+    DESC_MIN_LEN: 4,
     DESC_MAX_LEN: 500,
+    LOCATION_MIN_LEN: 4,
     LOCATION_MAX_LEN: 100,
 };
 

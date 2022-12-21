@@ -11,8 +11,8 @@ const plannerSchema = new Schema({
     },
     description: {
         type: String,
+        minlength: [planner.DESC_MIN_LEN, `Description should be at least ${planner.DESC_MIN_LEN} characters long`],
         maxlength: [planner.DESC_MAX_LEN, `Description should be maximal ${planner.DESC_MAX_LEN} characters long`],
-        default: '',
     },
     date: {
         type: String,
@@ -26,8 +26,8 @@ const plannerSchema = new Schema({
     },
     location: {
         type: String,
+        minlength: [planner.LOCATION_MIN_LEN, `Location should be at least ${planner.LOCATION_MIN_LEN} characters long`],
         maxlength: [planner.LOCATION_MAX_LEN, `Location should be maximal ${planner.LOCATION_MAX_LEN} characters long`],
-        default: '',
     },
     bride: {
         type: ObjectId,

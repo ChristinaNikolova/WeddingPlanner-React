@@ -14,6 +14,7 @@ import ArticlesAll from './components/Blog/ArticlesAll/ArticlesAll';
 import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
 import FavouriteArticle from './components/User/FavouriteArticle/FavouriteArticle';
 import PlannerDashboard from './components/Planner/Dashboard/Dashboard';
+import CreatePlanner from './components/Planner/Create/CreatePlanner';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.paths.JUMBO_USER} />} />
 
         <Route path="/plan" element={<PlannerDashboard />} />
+        <Route path="/plan/create" element={<CreatePlanner />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>

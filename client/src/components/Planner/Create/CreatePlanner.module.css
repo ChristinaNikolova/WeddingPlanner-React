@@ -1,0 +1,10 @@
+.create-planner-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-planner-form {
+  width: 80%;
+}
