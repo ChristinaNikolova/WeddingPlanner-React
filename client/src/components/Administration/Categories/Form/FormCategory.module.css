@@ -22,15 +22,3 @@
   margin-left: unset;
   margin-right: unset;
 }
-
-.create-category-img-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.create-category-img {
-  width: 30%;
-  height: 20%;
-}

@@ -1,0 +1,11 @@
+.bottom-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.bottom-img {
+  width: 30%;
+  height: 20%;
+}

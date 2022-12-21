@@ -6,6 +6,7 @@ import * as validator from '../../../../utils/validators/category';
 import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import Bottom from '../../../shared/ImageWrappers/Bottom/Bottom';
 
 import styles from './FormCategory.module.css'
 
@@ -90,11 +91,11 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                         {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
                     </div>
                 </form>
-                <div className={styles["create-category-img-wrapper"]}>
-                    <img className={`${styles["create-category-img"]} img-shadow`} src="./../../../img/bunch-of-flowers-363169_1920.jpg" alt="wedding_flowers" />
-                    <img className={`${styles["create-category-img"]} img-shadow`} src="./../../../img/wedding-905240_1920.jpg" alt="wedding_table" />
-                    <img className={`${styles["create-category-img"]} img-shadow`} src="./../../../img/wedding-1760024_1920.jpg" alt="wedding_invitations" />
-                </div>
+                <Bottom
+                    first="bunch-of-flowers-363169_1920.jpg"
+                    second="wedding-1760024_1920.jpg"
+                    third="wedding-905240_1920.jpg"
+                />
             </div>
         </section>
     );
