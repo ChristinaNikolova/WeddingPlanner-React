@@ -1,7 +1,6 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
 const { planner } = require('../utils/constants/model');
 
-//TODO Check if utils.validators????
 const DATE_PATTERN = /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/;
 
 const plannerSchema = new Schema({
@@ -17,7 +16,7 @@ const plannerSchema = new Schema({
     date: {
         type: String,
         required: [true, 'Date is required'],
-        match: [DATE_PATTERN, 'Date should be in format dd.mm.yyyy'],
+        match: [DATE_PATTERN, 'Date should be in format DD.MM.YYYY'],
     },
     budget: {
         type: Number,

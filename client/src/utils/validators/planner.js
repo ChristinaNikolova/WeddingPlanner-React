@@ -27,5 +27,5 @@ export const validName = (name) => {
 export const validDate = (date) => {
     return (date.match(constants.planner.DATE_REGEX))
         ? ''
-        : 'Date should be in format dd.mm.yyyy';
+        : 'Date should be in format DD.MM.YYYY';
 }
