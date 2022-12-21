@@ -12,3 +12,9 @@ export const create = (description, date, budget, location, bride, groom) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (id) => {
+    return requester(`${api.planners}/${id}`, 'GET')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

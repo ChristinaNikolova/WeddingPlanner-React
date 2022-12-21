@@ -28,8 +28,8 @@ function Dashboard() {
                     <h2 className={styles["dashboard-left-title"]}>My planners</h2>
                     {planners.length
                         ? planners.map((p) =>
-                            <Link className={styles["dashboard-left-link"]} to={`/plan/${p.id}`}>
-                                <i class="fa-solid fa-heart"></i>
+                            <Link className={styles["dashboard-left-link"]} to={`/plan/${p.id}`} key={p.id}>
+                                <i className="fa-solid fa-heart"></i>
                                 {p.title}
                             </Link>)
                         : <p className={styles["dashboard-left-no-planners"]}>No planners yet</p>

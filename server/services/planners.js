@@ -1,6 +1,6 @@
 const { Types: { ObjectId } } = require('mongoose');
 const Planner = require("../models/Planner");
-const { plannerLinkViewModel } = require("../utils/mapper/planner");
+const { plannerLinkViewModel, plannerViewModel } = require("../utils/mapper/planner");
 const { create: createGuest } = require('./guests');
 
 async function allByUserId(userId) {
@@ -38,6 +38,15 @@ async function create(description, date, budget, location, bride, groom, userId)
     return planner;
 }
 
+async function getById(id) {
+    //todo .populate('category', 'name image');
+    return plannerViewModel(await Planner
+        .findById(id)
+        .populate('bride', 'firstName lastName')
+        .populate('groom', 'firstName lastName'));
+
+}
+
 function splitName(name) {
     return name
         .split(' ')
@@ -47,4 +56,5 @@ function splitName(name) {
 module.exports = {
     allByUserId,
     create,
+    getById,
 }
