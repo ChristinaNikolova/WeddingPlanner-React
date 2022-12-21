@@ -1,5 +1,12 @@
-.details-planner-couple{
-    text-align: center;
+@import "../../../styles/constants.css";
+
+.details-planner {
+  background-color: var(--clr-light-creme);
+}
+
+.details-planner-couple {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .details-planner-img-wrapper {
@@ -9,11 +16,35 @@
   margin-right: 50px;
 }
 
-.details-planner-img-wrapper img{
-    width: 100%;
-    object-fit: cover;
+.details-planner-img-wrapper img {
+  width: 100%;
+  object-fit: cover;
 }
 
 .details-planner-couple .details-planner-img-wrapper:first-of-type img {
-    width: 340px;
+  width: 340px;
+}
+
+.details-planner-event-info {
+  font-size: 36px;
+  margin-bottom: 80px;
+}
+
+.details-planner-time-location-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.details-planner-event-info-date-title,
+.details-planner-event-info-location-title {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.details-planner-event-info-description {
+  text-align: center;
 }

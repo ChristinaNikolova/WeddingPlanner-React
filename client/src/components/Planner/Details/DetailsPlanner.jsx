@@ -18,9 +18,11 @@ function DetailsPlanner() {
 
     console.log(planner);
     //todo add description
+    //todo hover effect on title to show edit and delete icons
+    //todo extract components???
 
     return (
-        <section className="details-planner section-background">
+        <section className={styles["details-planner"]}>
             <div className="section-title-wrapper">
                 <h2 className="section-title">{planner.title}</h2>
             </div>
@@ -33,16 +35,30 @@ function DetailsPlanner() {
                         <img src="/img/Groom-PNG-Image-95770.png" alt="groom" />
                     </div>
                 </div>
-                <div className="details-planner-event-info">
-                    <p className="details-planner-event-info-date">{planner.date}</p>
-                    <p className="details-planner-event-info-location">{planner.location}</p>
+                <div className={styles["details-planner-event-info"]}>
+                    <div className={styles["details-planner-time-location-wrapper"]}>
+                        <p className={styles["details-planner-event-info-date"]}>
+                            <h6 className={styles["details-planner-event-info-date-title"]}>Date:</h6>
+                            {planner.date}
+                        </p>
+                        <p className={styles["details-planner-event-info-location"]}>
+                            <h6 className={styles["details-planner-event-info-location-title"]}>Location:</h6>
+                            {planner.location}
+                        </p>
+                    </div>
+                    <p className={styles["details-planner-event-info-description"]}>{planner.description}</p>
                 </div>
                 <div className="details-planner-guests">
-                    <Link className="btn" to='guest/create'>Add Guest</Link>
-                    <Link className="btn" to='guest/create'>Guests</Link>
-                    <Link className="btn" to='guest/create'>Tables</Link>
-                    <p className="details-planner-total-guests"></p>
-                    <p className="details-planner-confirmed-guests"></p>
+                    <h4 className="details-planner-guests-title">Guests</h4>
+                    <div className="details-planner-guests-btns-wrapper">
+                        <Link className="btn" to='guest/create'>Add Guest</Link>
+                        <Link className="btn" to='guest/create'>Guests</Link>
+                        <Link className="btn" to='guest/create'>Tables</Link>
+                    </div>
+                    <div className="details-planner-guests-info-wrapper">
+                        <p className="details-planner-total-guests"></p>
+                        <p className="details-planner-confirmed-guests"></p>
+                    </div>
                 </div>
                 <div className="details-planner-budget">
                     <Link className="btn" to='guest/create'>Costs</Link>
@@ -64,7 +80,3 @@ function DetailsPlanner() {
 }
 
 export default DetailsPlanner;
-
-{/* <span style={{ width: '200px', height: '600px' }}><img src="/img/Bride-PNG-Image-30858.png" alt="bride" style={{ width: '200px', height: '100%' }} /></span>
-            <span style={{ width: '200px', height: '600px' }}><img src="/img/Groom-PNG-Image-95770.png" alt="groom" style={{ width: '200px', height: '100%', objectFit: 'cover' }} /></span>
- */}
