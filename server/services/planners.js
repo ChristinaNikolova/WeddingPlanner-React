@@ -1,5 +1,4 @@
 const { Types: { ObjectId } } = require('mongoose');
-const Guest = require('../models/Guest');
 const Planner = require("../models/Planner");
 const { plannerLinkViewModel } = require("../utils/mapper/planner");
 const { create: createGuest } = require('./guests');

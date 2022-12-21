@@ -7,7 +7,7 @@ export const validDescription = (description) => {
 }
 
 export const validBudget = (budget) => {
-    return (budget >= constants.planner.BUDGET_MIN)
+    return (budget && budget >= constants.planner.BUDGET_MIN)
         ? ''
         : 'Budget should be a positive number';
 }

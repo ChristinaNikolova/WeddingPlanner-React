@@ -28,7 +28,11 @@ function Dashboard() {
                 <div className={styles["dashboard-left-wrapper"]}>
                     <h2 className={styles["dashboard-left-title"]}>My planners</h2>
                     {planners.length
-                        ? planners.map((p) => <Link to={`/wedding/${p.id}`} />)
+                        ? planners.map((p) =>
+                            <Link className={styles["dashboard-left-link"]} to={`/wedding/${p.id}`}>
+                                <i class="fa-solid fa-heart"></i>
+                                {p.title}
+                            </Link>)
                         : <p className={styles["dashboard-left-no-planners"]}>No planners yet</p>
                     }
                 </div>

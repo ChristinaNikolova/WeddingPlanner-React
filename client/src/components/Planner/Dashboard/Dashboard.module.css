@@ -1,3 +1,5 @@
+@import "../../../styles/constants.css";
+
 .dashboard-content-wrapper {
   display: flex;
   justify-content: space-around;
@@ -14,10 +16,33 @@
   text-align: center;
 }
 
-.dashboard-left-title{
-    font-size: 56px;
+.dashboard-left-title {
+  font-size: 56px;
+  margin-bottom: 12px;
 }
 
 .dashboard-left-no-planners {
   font-size: 36px;
+}
+
+.dashboard-left-wrapper .dashboard-left-link:first-of-type {
+  margin-top: 20px;
+}
+
+.dashboard-left-link {
+  font-size: 26px;
+  transition: all 600ms ease-in-out;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dashboard-left-link:hover {
+  color: var(--clr-gold);
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.dashboard-left-link i {
+  font-size: 18px;
+  margin-right: 12px;
 }
