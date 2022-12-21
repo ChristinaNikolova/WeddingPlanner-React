@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
+import * as constants from '../../../utils/constants/paths';
 
 import Bottom from '../../shared/ImageWrappers/Bottom/Bottom';
 
@@ -41,9 +42,9 @@ function Dashboard() {
                 </div>
             </div>
             <Bottom
-                first="bunch-of-flowers-363169_1920.jpg"
-                second="wedding-1760024_1920.jpg"
-                third="wedding-905240_1920.jpg"
+                first={constants.paths.BOTTOM_FIRST}
+                second={constants.paths.BOTTOM_SECOND}
+                third={constants.paths.BOTTOM_THIRD}
             />
         </section>
     );
