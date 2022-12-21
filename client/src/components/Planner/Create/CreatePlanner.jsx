@@ -93,8 +93,7 @@ function CreatePlanner() {
                     return;
                 }
 
-                //TODO change navigate
-                navigate(`/plan`);
+                navigate(`/plan/${data._id}`);
             })
             .catch((err) => console.error(err));
     }

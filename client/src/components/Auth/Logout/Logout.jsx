@@ -6,13 +6,13 @@ import * as authService from '../../../services/auth';
 
 function Logout() {
     const { userLogout } = useContext(AuthContext);
-    const nagivate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         authService.logout()
             .then(() => {
                 userLogout();
-                nagivate('/');
+                navigate('/');
             })
             .catch((err) => console.error(err));
     }, []);

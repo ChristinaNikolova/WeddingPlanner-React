@@ -9,8 +9,6 @@ import Bottom from '../../shared/ImageWrappers/Bottom/Bottom';
 import styles from './Dashboard.module.css';
 
 function Dashboard() {
-    //todo create var for the images
-
     const [planners, setPlanners] = useState([]);
 
     useEffect(() => {
@@ -30,7 +28,7 @@ function Dashboard() {
                     <h2 className={styles["dashboard-left-title"]}>My planners</h2>
                     {planners.length
                         ? planners.map((p) =>
-                            <Link className={styles["dashboard-left-link"]} to={`/wedding/${p.id}`}>
+                            <Link className={styles["dashboard-left-link"]} to={`/plan/${p.id}`}>
                                 <i class="fa-solid fa-heart"></i>
                                 {p.title}
                             </Link>)
