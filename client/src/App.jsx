@@ -13,12 +13,13 @@ import Logout from './components/Auth/Logout/Logout';
 import ArticlesAll from './components/Blog/ArticlesAll/ArticlesAll';
 import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
 import FavouriteArticle from './components/User/FavouriteArticle/FavouriteArticle';
+import WeddingDashboard from './components/Wedding/Dashboard/Dashboard';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
 import './App.css';
 
-const Dashboard = lazy(() => import('./components/Administration/Dashboard/Dashboard'));
+const AdminDashboard = lazy(() => import('./components/Administration/Dashboard/Dashboard'));
 const CreateArticle = lazy(() => import('./components/Administration/Articles/Create/CreateArticle'));
 const UpdateArticle = lazy(() => import('./components/Administration/Articles/Update/UpdateArticle'));
 const AllCategories = lazy(() => import('./components/Administration/Categories/All/AllCategories'));
@@ -40,9 +41,11 @@ function App() {
         <Route path="/blog/:id/" element={<ArticleDetails />} />
         <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.paths.JUMBO_USER} />} />
 
+        <Route path="/plan" element={<WeddingDashboard />} />
+
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>
-            <Dashboard />
+            <AdminDashboard />
           </Suspense>
         } />
         <Route path="/administration/articles/create" element={

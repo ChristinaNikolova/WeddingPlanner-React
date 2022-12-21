@@ -69,7 +69,11 @@ const plannerSchema = new Schema({
         ref: 'Event',
         default: [],
     },
-});
+},
+    {
+        timestamps: true,
+    },
+);
 
 const Planner = model('Planner', plannerSchema);
 
