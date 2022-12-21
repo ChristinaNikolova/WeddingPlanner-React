@@ -13,7 +13,7 @@ import Logout from './components/Auth/Logout/Logout';
 import ArticlesAll from './components/Blog/ArticlesAll/ArticlesAll';
 import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
 import FavouriteArticle from './components/User/FavouriteArticle/FavouriteArticle';
-import WeddingDashboard from './components/Wedding/Dashboard/Dashboard';
+import PlannerDashboard from './components/Planner/Dashboard/Dashboard';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
@@ -41,7 +41,7 @@ function App() {
         <Route path="/blog/:id/" element={<ArticleDetails />} />
         <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.paths.JUMBO_USER} />} />
 
-        <Route path="/plan" element={<WeddingDashboard />} />
+        <Route path="/plan" element={<PlannerDashboard />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>

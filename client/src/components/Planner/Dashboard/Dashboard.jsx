@@ -9,7 +9,7 @@ import styles from './Dashboard.module.css';
 
 function Dashboard() {
     //todo create var for the images
-    
+
     const [planners, setPlanners] = useState([]);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ function Dashboard() {
                     }
                 </div>
                 <div className={styles["dashboard-right-wrapper"]}>
-                    <Link className='btn'>Create new planner</Link>
+                    <Link to="/plan/create" className='btn'>Create new planner</Link>
                 </div>
             </div>
             <Bottom
