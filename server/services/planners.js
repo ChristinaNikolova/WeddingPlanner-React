@@ -39,12 +39,8 @@ async function create(description, date, budget, location, bride, groom, userId)
 }
 
 async function getById(id) {
-    //todo .populate('category', 'name image');
     return plannerViewModel(await Planner
-        .findById(id)
-        .populate('bride', 'firstName lastName')
-        .populate('groom', 'firstName lastName'));
-
+        .findById(id));
 }
 
 function splitName(name) {

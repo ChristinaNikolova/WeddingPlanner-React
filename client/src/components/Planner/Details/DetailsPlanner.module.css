@@ -1,0 +1,19 @@
+.details-planner-couple{
+    text-align: center;
+}
+
+.details-planner-img-wrapper {
+  width: 200px;
+  height: 600px;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.details-planner-img-wrapper img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.details-planner-couple .details-planner-img-wrapper:first-of-type img {
+    width: 340px;
+}
