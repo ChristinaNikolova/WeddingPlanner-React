@@ -72,7 +72,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
         setIsDisabled(helpers.isButtonDisabled(values, [titleError, contentError, imageError, jumboImageError, categoryError]));
     };
 
-    const onsubmitHelperHandler = (e) => {
+    const onSubmitHelperHandler = (e) => {
         e.preventDefault();
 
         setTitleError(validator.validTitle(values.title));
@@ -95,7 +95,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                 <h2 className="section-title">{formName} Article</h2>
             </div>
             <div className={styles["create-article-content-wrapper"]} >
-                <form className={styles["create-article-form"]} onSubmit={onsubmitHelperHandler}>
+                <form className={styles["create-article-form"]} onSubmit={onSubmitHelperHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="title"
