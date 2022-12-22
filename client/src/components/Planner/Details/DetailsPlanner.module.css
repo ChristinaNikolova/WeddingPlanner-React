@@ -4,6 +4,21 @@
   background-color: var(--clr-light-creme);
 }
 
+.details-planner h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.details-planner-icons {
+  font-size: 22px;
+}
+
+.details-planner-icons i:first-of-type {
+  margin-right: 10px;
+}
+
 .details-planner-main-content-wrapper {
   padding-bottom: 10px;
 }

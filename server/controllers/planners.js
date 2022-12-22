@@ -1,4 +1,4 @@
-const { allByUserId, create, getById } = require('../services/planners');
+const { allByUserId, create, getById, deleteById } = require('../services/planners');
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
 
@@ -28,6 +28,17 @@ router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const planner = await getById(id);
+        res.json(planner);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const planner = await deleteById(id);
         res.json(planner);
     } catch (error) {
         const message = mapErrors(error);

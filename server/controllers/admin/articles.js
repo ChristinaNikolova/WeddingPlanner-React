@@ -51,7 +51,6 @@ router.put('/:id', isAdmin(),
 router.delete('/:id', isAdmin(), async (req, res) => {
     try {
         const id = req.params.id;
-
         const article = await deleteById(id);
         res.json(article);
     } catch (error) {

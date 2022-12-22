@@ -18,3 +18,9 @@ export const getById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.planners}/${id}`, 'DELETE')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

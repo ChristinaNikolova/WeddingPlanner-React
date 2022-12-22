@@ -46,6 +46,10 @@ async function getById(id) {
         .populate('tasks', 'subTasks'));
 }
 
+async function deleteById(id) {
+    return Planner.findByIdAndDelete(id);
+}
+
 function splitName(name) {
     return name
         .split(' ')
@@ -56,4 +60,5 @@ module.exports = {
     allByUserId,
     create,
     getById,
+    deleteById,
 }

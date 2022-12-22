@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
 
@@ -7,7 +7,10 @@ import styles from './DetailsPlanner.module.css';
 
 function DetailsPlanner() {
     const { id } = useParams();
+    const navigate = useNavigate();
+
     const [planner, setPlanner] = useState({});
+    const [isHovering, setIsHovering] = useState(false)
 
     useEffect(() => {
         plannersService
@@ -16,15 +19,40 @@ function DetailsPlanner() {
             .catch((err) => console.error(err));
     }, []);
 
+
+    const onMouseEnterHandler = () => {
+        setIsHovering(true);
+    }
+
+    const onMouseLeaveHandler = () => {
+        setIsHovering(false);
+    }
+
+    const onDeleteHandler = () => {
+        plannersService
+            .deleteById(id)
+            .then(() => {
+                navigate('/plan');
+            })
+            .catch((err) => console.error(err));
+    }
+
     console.log(planner);
-    //todo hover effect on title to show edit and delete icons
-    //todo extract components???
+    //todo edit planner
     //todo test all calculations
 
     return (
         <section className={styles["details-planner"]}>
             <div className="section-title-wrapper">
-                <h2 className="section-title">{planner.title}</h2>
+                <h2 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className="section-title">
+                    {planner.title}
+                    {isHovering &&
+                        <span className={styles["details-planner-icons"]}>
+                            <i className="fa-solid fa-pen"></i>
+                            <i onClick={onDeleteHandler} className="fa-solid fa-trash"></i>
+                        </span>
+                    }
+                </h2>
             </div>
             <div className={styles["details-planner-main-content-wrapper"]}>
                 <div className={styles["details-planner-section"]}>
