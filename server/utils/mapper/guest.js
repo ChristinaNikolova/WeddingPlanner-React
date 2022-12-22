@@ -1,4 +1,5 @@
 function guestViewModel(guests) {
+    //todo some refactoring here??
     return mapGuest(guests);
 }
 

@@ -38,6 +38,10 @@
   margin-left: 15px;
 }
 
+.guests-all-image i:hover {
+  cursor: unset;
+}
+
 .guests-all-info {
   font-size: 20px;
   color: var(--clr-gold);
