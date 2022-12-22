@@ -28,11 +28,11 @@ function plannerViewModel(planner) {
 }
 
 function calculateTotalCosts(costs) {
-    return costs.reduce((curr, acc) => curr.price + acc, 0);
+    return costs.reduce((acc, curr) => curr.price + acc, 0);
 }
 
 function calculateTotalTasks(tasks) {
-    return tasks.reduce((curr, acc) => curr.subTasks + acc, 0);
+    return tasks.reduce((acc, curr) => curr.subTasks + acc, 0);
 }
 
 module.exports = {

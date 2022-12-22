@@ -1,4 +1,15 @@
 const Guest = require("../models/Guest");
+const Planner = require("../models/Planner");
+const { guestViewModel } = require("../utils/mapper/guest");
+
+async function all(plannerId) {
+    //todo add some kind of soring!!!!
+    const planner = await Planner
+        .findById(plannerId)
+        .populate('guests');
+
+    return guestViewModel(planner.guests);
+}
 
 async function create(firstName, lastName, gender, age, side, role, confirmed = false) {
     const guest = new Guest({
@@ -39,4 +50,5 @@ async function getById(id) {
 module.exports = {
     create,
     update,
+    all,
 }

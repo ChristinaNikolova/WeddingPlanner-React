@@ -33,7 +33,6 @@ const event = {
 const guest = {
     NAME_MIN_LEN: 1,
     NAME_MAX_LEN: 50,
-    COMMENT_MAX_LEN: 500,
 };
 
 const note = {

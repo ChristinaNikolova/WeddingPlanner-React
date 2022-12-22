@@ -52,13 +52,8 @@ const guestSchema = new Schema({
     },
     mainDish: {
         type: String,
-        enum: ['no info', 'meat', 'fish', 'veggie'],
+        enum: ['no info', 'meat', 'fish', 'veggies'],
         default: 'no info',
-    },
-    comment: {
-        type: String,
-        maxlength: [guest.COMMENT_MAX_LEN, `Comment should be maximal ${guest.COMMENT_MAX_LEN} characters long`],
-        default: '',
     },
     confirmed: {
         type: Boolean,

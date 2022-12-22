@@ -10,6 +10,7 @@ const api = {
     categories: `${baseUrl}/categories`,
     users: `${baseUrl}/users`,
     planners: `${baseUrl}/planners`,
+    guests: `${baseUrl}/guests`,
 }
 
 module.exports = {
