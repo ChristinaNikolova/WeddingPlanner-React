@@ -4,8 +4,38 @@
   background-color: var(--clr-light-creme);
 }
 
-.details-planner-couple {
+.details-planner-main-content-wrapper {
+  padding-bottom: 10px;
+}
+
+.details-planner-border {
+  border-bottom: 1px solid var(--clr-gold);
+  margin-bottom: 50px;
+  margin-left: 280px;
+  margin-right: 280px;
+}
+
+.details-planner-section {
   text-align: center;
+  font-size: 36px;
+}
+
+.details-planner-section-title {
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.details-planner-title {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 800;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+}
+
+.details-planner-main-content-wrapper .details-planner-section:first-of-type {
+  padding-bottom: 50px;
   margin-bottom: 50px;
 }
 
@@ -18,33 +48,43 @@
 
 .details-planner-img-wrapper img {
   width: 100%;
-  object-fit: cover;
 }
 
-.details-planner-couple .details-planner-img-wrapper:first-of-type img {
+.details-planner-main-content-wrapper
+  .details-planner-section:first-of-type
+  .details-planner-img-wrapper:first-of-type
+  img {
   width: 340px;
-}
-
-.details-planner-event-info {
-  font-size: 36px;
-  margin-bottom: 80px;
 }
 
 .details-planner-time-location-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 60px;
 }
 
-.details-planner-event-info-date-title,
-.details-planner-event-info-location-title {
-  display: inline-block;
-  margin-right: 10px;
-  font-weight: 800;
-  font-size: 28px;
-}
-
 .details-planner-event-info-description {
   text-align: center;
+  font-size: 26px;
+  padding-bottom: 80px;
+}
+
+.details-planner-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.details-planner-btns-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.details-planner-main-content-wrapper .details-planner-section:last-of-type {
+  border-bottom: unset;
 }

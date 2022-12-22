@@ -40,7 +40,10 @@ async function create(description, date, budget, location, bride, groom, userId)
 
 async function getById(id) {
     return plannerViewModel(await Planner
-        .findById(id));
+        .findById(id)
+        .populate('guests', 'confirmed')
+        .populate('costs', 'price')
+        .populate('tasks', 'subTasks'));
 }
 
 function splitName(name) {
