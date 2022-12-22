@@ -16,6 +16,7 @@ import FavouriteArticle from './components/User/FavouriteArticle/FavouriteArticl
 import PlannerDashboard from './components/Planner/Dashboard/Dashboard';
 import CreatePlanner from './components/Planner/Create/CreatePlanner';
 import DetailsPlanner from './components/Planner/Details/DetailsPlanner';
+import UpdatePlanner from './components/Planner/Update/UpdatePlanner';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/plan" element={<PlannerDashboard />} />
         <Route path="/plan/create" element={<CreatePlanner />} />
         <Route path="/plan/:id" element={<DetailsPlanner />} />
+        <Route path="/plan/edit/:id" element={<UpdatePlanner />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>

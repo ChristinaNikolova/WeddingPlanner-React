@@ -37,7 +37,7 @@ function DetailsPlanner() {
             .catch((err) => console.error(err));
     }
 
-    console.log(planner);
+    //console.log(planner);
     //todo edit planner
     //todo test all calculations
 
@@ -48,7 +48,7 @@ function DetailsPlanner() {
                     {planner.title}
                     {isHovering &&
                         <span className={styles["details-planner-icons"]}>
-                            <i className="fa-solid fa-pen"></i>
+                            <Link to={`/plan/edit/${id}`}><i className="fa-solid fa-pen"></i></Link>
                             <i onClick={onDeleteHandler} className="fa-solid fa-trash"></i>
                         </span>
                     }

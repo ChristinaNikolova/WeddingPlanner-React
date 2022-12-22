@@ -1,7 +1,7 @@
 const { Types: { ObjectId } } = require('mongoose');
 const Planner = require("../models/Planner");
 const { plannerLinkViewModel, plannerViewModel } = require("../utils/mapper/planner");
-const { create: createGuest } = require('./guests');
+const { create: createGuest, update: updateGuest } = require('./guests');
 
 async function allByUserId(userId) {
     return (await Planner
@@ -38,16 +38,41 @@ async function create(description, date, budget, location, bride, groom, userId)
     return planner;
 }
 
-async function getById(id) {
-    return plannerViewModel(await Planner
+async function getById(id, hasToCast) {
+    const planner = await Planner
         .findById(id)
+        .populate('bride', 'firstName lastName')
+        .populate('groom', 'firstName lastName')
         .populate('guests', 'confirmed')
         .populate('costs', 'price')
-        .populate('tasks', 'subTasks'));
+        .populate('tasks', 'subTasks');
+
+    return hasToCast ? plannerViewModel(planner) : planner;
 }
 
 async function deleteById(id) {
     return Planner.findByIdAndDelete(id);
+}
+
+async function update(id, description, date, budget, location, bride, brideId, groom, groomId) {
+    const planner = await getById(id, false);
+
+    const [brideFirstName, brideLastName] = splitName(bride);
+    await updateGuest(brideId, brideFirstName, brideLastName, 'female', 'adult', 'bride', 'bride', true);
+
+    const [groomFirstName, groomLastName] = splitName(groom);
+    await updateGuest(groomId, groomFirstName, groomLastName, 'male', 'adult', 'groom', 'groom', true);
+
+    planner.title = `${bride} & ${groom}`;
+    planner.description = description;
+    planner.date = date;
+    planner.budget = Number(budget);
+    planner.location = location;
+    planner.description = description;
+
+    await planner.save();
+
+    return planner;
 }
 
 function splitName(name) {
@@ -61,4 +86,5 @@ module.exports = {
     create,
     getById,
     deleteById,
+    update,
 }

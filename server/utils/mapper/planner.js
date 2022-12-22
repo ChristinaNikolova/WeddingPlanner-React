@@ -12,6 +12,10 @@ function plannerViewModel(planner) {
         description: planner.description,
         date: planner.date,
         budget: planner.budget.toFixed(2),
+        bride: planner.bride.firstName + ' ' + planner.bride.lastName,
+        brideId: planner.bride._id,
+        groom: planner.groom.firstName + ' ' + planner.groom.lastName,
+        groomId: planner.groom._id,
         totalCosts: (calculateTotalCosts(planner.costs)).toFixed(2),
         location: planner.location,
         totalGuests: planner.guests.length,
@@ -20,6 +24,7 @@ function plannerViewModel(planner) {
         doneTasks: 100,
     }
     //todo add calculation here
+    //todo extract function!!!!
 }
 
 function calculateTotalCosts(costs) {

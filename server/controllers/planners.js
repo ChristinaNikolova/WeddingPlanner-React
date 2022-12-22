@@ -1,4 +1,4 @@
-const { allByUserId, create, getById, deleteById } = require('../services/planners');
+const { allByUserId, create, getById, deleteById, update } = require('../services/planners');
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
 
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const planner = await getById(id);
+        const planner = await getById(id, true);
         res.json(planner);
     } catch (error) {
         const message = mapErrors(error);
@@ -39,6 +39,25 @@ router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const planner = await deleteById(id);
+        res.json(planner);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const planner = await update(id,
+            req.body.description,
+            req.body.date,
+            req.body.budget,
+            req.body.location,
+            req.body.bride,
+            req.body.brideId,
+            req.body.groom,
+            req.body.groomId);
         res.json(planner);
     } catch (error) {
         const message = mapErrors(error);

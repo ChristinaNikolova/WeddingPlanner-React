@@ -24,3 +24,9 @@ export const deleteById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const update = (id, description, date, budget, location, bride, brideId, groom, groomId) => {
+    return requester(`${api.planners}/${id}`, 'PUT', { description, date, budget, location, bride, brideId, groom, groomId })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
