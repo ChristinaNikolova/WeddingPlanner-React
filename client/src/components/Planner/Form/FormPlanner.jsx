@@ -159,7 +159,10 @@ function FormPlanner({ formName, description, date, budget, location, bride, gro
                         />
                         {groomError && <ClientError error={groomError} />}
                     </div>
-                    <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                    <div className={styles["create-planner-btns-wrapper"]}>
+                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                    </div>
                 </form>
             </div>
         </section>

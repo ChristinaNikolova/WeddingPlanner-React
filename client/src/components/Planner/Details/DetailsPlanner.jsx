@@ -38,7 +38,6 @@ function DetailsPlanner() {
     }
 
     //console.log(planner);
-    //todo edit planner
     //todo test all calculations
 
     return (

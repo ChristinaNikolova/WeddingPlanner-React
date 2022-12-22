@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as plannersService from '../../../services/planners';
+
 import FormPlanner from "../Form/FormPlanner";
 
 function UpdatePlanner() {
@@ -31,17 +32,18 @@ function UpdatePlanner() {
                     return;
                 }
 
-                navigate(`/plan/${id}`);
+                onCancelHandler();
             })
             .catch((err) => console.error(err));
     };
 
+    const onCancelHandler = () => {
+        navigate(`/plan/${id}`);
+    }
+
     if (!planner.description || !planner.date || !planner.budget || !planner.location || !planner.bride || !planner.groom) {
         return null;
     }
-
-    console.log(planner);
-    //todo add cancel button
 
     return (
         <FormPlanner
@@ -54,6 +56,7 @@ function UpdatePlanner() {
             groom={planner.groom}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }
