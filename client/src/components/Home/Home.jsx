@@ -18,7 +18,7 @@ function Home() {
                 <p className={styles["home-content"]}>
                     Because planning the biggest day of your life is only the beginning of your adventure
                 </p>
-                <Link to="/" className='btn'>Start planning</Link>
+                <Link to="/plan" className='btn'>Start planning</Link>
             </div>
         </section>
     );

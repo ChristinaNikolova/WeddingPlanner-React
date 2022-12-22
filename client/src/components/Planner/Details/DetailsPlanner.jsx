@@ -39,6 +39,7 @@ function DetailsPlanner() {
 
     //console.log(planner);
     //todo test all calculations
+    //refactor all forms css
 
     return (
         <section className={styles["details-planner"]}>
