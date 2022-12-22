@@ -12,10 +12,12 @@ function GuestsAll() {
     //todo test images -> person + dish
     //todo hover effect for edit/delete
     //todo add guest button or + icon???
+    //todo add min height
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
 
+    //todo extract constants
     const personImages = {
         adultFemale: <i className="fa-solid fa-person-dress"></i>,
         adultMale: <i className="fa-solid fa-person"></i>,

@@ -187,9 +187,9 @@ i:hover {
   cursor: pointer;
 }
 .fa-pen {
-  color: orange;
+  color: var(--clr-orange);
 }
 
 .fa-trash {
-  color: red;
+  color: var(--clr-red);
 }

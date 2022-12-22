@@ -37,7 +37,6 @@ function DetailsPlanner() {
             .catch((err) => console.error(err));
     }
 
-    //console.log(planner);
     //todo test all calculations
     //refactor all forms css
 
