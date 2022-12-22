@@ -57,13 +57,6 @@
   width: 340px;
 }
 
-.details-planner-time-location-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 60px;
-}
-
 .details-planner-event-info-description {
   text-align: center;
   font-size: 26px;

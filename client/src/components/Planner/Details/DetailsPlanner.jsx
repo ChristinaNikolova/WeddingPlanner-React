@@ -19,7 +19,6 @@ function DetailsPlanner() {
     console.log(planner);
     //todo hover effect on title to show edit and delete icons
     //todo extract components???
-    //todo add equals classNames for the sections 
     //todo test all calculations
 
     return (
@@ -37,12 +36,12 @@ function DetailsPlanner() {
                     </div>
                 </div>
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
-                    <div className={styles["details-planner-time-location-wrapper"]}>
-                        <p className={styles["details-planner-event-info-date"]}>
+                    <div className={styles["details-planner-content-wrapper"]}>
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Date:</span>
                             {planner.date}
                         </p>
-                        <p className={styles["details-planner-event-info-location"]}>
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Location:</span>
                             {planner.location}
                         </p>
@@ -57,11 +56,11 @@ function DetailsPlanner() {
                         <Link className="btn" to='/guest/tables'>Tables</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-total-guests">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total guests:</span>
                             {planner.totalGuests}
                         </p>
-                        <p className="details-planner-confirmed-guests">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Confirmed guests:</span>
                             {planner.confirmedGuests}
                         </p>
@@ -73,11 +72,11 @@ function DetailsPlanner() {
                         <Link className="btn" to='guest/create'>Costs</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-total-budget">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Target budget:</span>
                             ${planner.budget}
                         </p>
-                        <p className="details-planner-actual-cost">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Actual costs:</span>
                             ${planner.totalCosts}
                         </p>
@@ -89,11 +88,11 @@ function DetailsPlanner() {
                         <Link className="btn" to='guest/create'>Checklist</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-total-tasks">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total tasks:</span>
                             {planner.totalTasks}
                         </p>
-                        <p className="details-planner-done-tasks">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Done tasks:</span>
                             {planner.doneTasks}
                         </p>
@@ -105,7 +104,7 @@ function DetailsPlanner() {
                         <Link className="btn" to='guest/create'>Plan</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-total-tasks">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total events:</span>
                             {planner.totalEvents}
                         </p>
@@ -117,7 +116,7 @@ function DetailsPlanner() {
                         <Link className="btn" to='guest/create'>Notes</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-total-tasks">
+                        <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total notes:</span>
                             {planner.totalNotes}
                         </p>
