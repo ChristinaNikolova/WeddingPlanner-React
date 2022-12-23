@@ -69,8 +69,8 @@ function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
     }
 
     return (
-        <div className={styles["create-guest-content-wrapper"]} >
-            <form className={styles["create-guest-form"]} onSubmit={onSubmitHelperHandler}>
+        <div className={styles["guest-content-form-wrapper"]} >
+            <form className={styles["guest-form"]} onSubmit={onSubmitHelperHandler}>
                 <div className="form-wrapper">
                     <Input
                         name="firstName"
@@ -281,13 +281,12 @@ function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
                         </div>
                     </div>
                 </div>
-                <div className={styles["create-guest-btns-wrapper"]}>
-                    <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
+                <div className={styles["guest-btns-wrapper"]}>
+                    <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                 </div>
             </form>
         </div>
-
     );
 }
 

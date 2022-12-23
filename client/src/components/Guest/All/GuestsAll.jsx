@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import * as guestsService from '../../../services/guests';
 import * as images from '../../../utils/constants/images';
 
-import FormGuest from '../Form/FormGuest';
+import CreateGuest from '../Create/CreateGuest';
 
 import styles from './GuestsAll.module.css';
 
@@ -22,13 +22,7 @@ function GuestsAll() {
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
-    const [isHidden, setIsHidden] = useState(true);
-
-    const formName = 'Create';
-    const [serverError, setServerError] = useState('');
-
-    useEffect(() => {
-    }, [serverError]);
+    const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
         loadGuests();
@@ -73,26 +67,25 @@ function GuestsAll() {
         return image;
     }
 
-    const onShowFormHandler = () => {
-        setIsHidden(!isHidden);
+    const onMouseEnterHandler = () => {
+        setIsHovering(true);
     }
 
-    const onSubmitHandler = (firstName, lastName, gender, age, side, role, table, mainDish, confirmed) => {
-        guestsService.create(plannerId, firstName, lastName, gender, age, side, role, table, mainDish, confirmed)
-            .then((data) => {
-                if (data.message) {
-                    setServerError(data.message);
-                    return;
-                }
+    const onMouseLeaveHandler = () => {
+        setIsHovering(false);
+    }
 
+    const onDeleteHandler = (guestId, role) => {
+        if (role === 'bride' || role === 'groom') {
+            return;
+        }
+
+        guestsService
+            .deleteById(guestId)
+            .then(() => {
                 loadGuests();
-                onCancelHandler();
             })
             .catch((err) => console.error(err));
-    };
-
-    const onCancelHandler = () => {
-        setIsHidden(true);
     }
 
     return (
@@ -105,11 +98,19 @@ function GuestsAll() {
                     <div key={g.id} className={styles["guests-all-info-wrapper"]}>
                         <div className="guests-all-info-left">
                             <p className={styles["guests-all-role"]}>{g.role}</p>
-                            <p className={styles["guests-all-name"]}>
+                            <p onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["guests-all-name"]}>
                                 {g.firstName} {g.lastName}
                                 <span className={styles["guests-all-image"]}>
                                     {getPersonImage(g)}
                                 </span>
+                                {isHovering &&
+                                    <span className={styles["guests-all-icons"]}>
+                                        <i className="fa-solid fa-pen"></i>
+                                        {g.role !== 'bride' && g.role !== 'groom' &&
+                                            <i onClick={() => onDeleteHandler(g.id, g.role)} className="fa-solid fa-trash"></i>
+                                        }
+                                    </span>
+                                }
                             </p>
                         </div>
                         <div className="guests-all-info-right">
@@ -135,18 +136,10 @@ function GuestsAll() {
                     </div>
                 )}
             </div>
-            <div className="guests-all-create-form-wrapper">
-                <div className={styles["guests-all-create-form-icon"]}>
-                    <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
-                    Add guest
-                </div>
-                {!isHidden &&
-                    <FormGuest
-                        formName={formName}
-                        onSubmitHandler={onSubmitHandler}
-                        onCancelHandler={onCancelHandler}
-                    />}
-            </div>
+            <CreateGuest
+                plannerId={plannerId}
+                loadGuests={loadGuests}
+            />
         </section>
     );
 }

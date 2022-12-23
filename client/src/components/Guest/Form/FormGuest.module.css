@@ -1,15 +1,15 @@
-.create-guest-content-wrapper {
+.guest-content-form-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.create-guest-form {
+.guest-form {
   width: 24%;
 }
 
-.create-guest-btns-wrapper {
+.guest-btns-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   margin-top: 60px;
 }
 
-.create-guest-btns-wrapper button {
+.guest-btns-wrapper button {
   margin-left: unset;
   margin-right: unset;
 }
