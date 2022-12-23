@@ -1,4 +1,4 @@
-function Input({ name, type, label, value, onChangeHandler, onBlurHandler }) {
+function Input({ name, type, label, value, onChangeHandler, onBlurHandler, checked }) {
     return (
         <>
             <label className="label" htmlFor={name}>{label}</label>
@@ -9,6 +9,7 @@ function Input({ name, type, label, value, onChangeHandler, onBlurHandler }) {
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
                 value={value}
+                checked={checked ? checked : ''}
             />
         </>
     );

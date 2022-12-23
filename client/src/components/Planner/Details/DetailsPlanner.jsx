@@ -78,7 +78,6 @@ function DetailsPlanner() {
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <h4 className={styles["details-planner-section-title"]}>Guests</h4>
                     <div className={styles["details-planner-btns-wrapper"]}>
-                        <Link className="btn" to='/guest/create'>Add Guest</Link>
                         <Link className="btn" to={`/${id}/guest`}>Guests List</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>

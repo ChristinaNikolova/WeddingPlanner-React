@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as guestsService from '../../../services/guests';
-import * as constants from '../../../utils/constants/images';
+import * as images from '../../../utils/constants/images';
+
+import FormGuest from '../Form/FormGuest';
 
 import styles from './GuestsAll.module.css';
 
@@ -11,11 +13,22 @@ function GuestsAll() {
     //todo divs bride side - groom side
     //todo test images -> person + dish
     //todo hover effect for edit/delete
-    //todo add guest button or + icon???
     //todo add min height
+    //todo delete collections in mongo to test last changes -> TABLE!
+    //todo test create form!!!!!
+    //todo test custom form tags after the changes!!!
+    //todo cancel button always
+    //tod test server error by creating guest
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
+    const [isHidden, setIsHidden] = useState(true);
+
+    const formName = 'Create';
+    const [serverError, setServerError] = useState('');
+
+    useEffect(() => {
+    }, [serverError]);
 
     useEffect(() => {
         guestsService
@@ -28,15 +41,15 @@ function GuestsAll() {
         let image = '';
 
         if (guest.age === 'adult' && guest.gender === 'male') {
-            image = constants.personImages.ADULT_MALE;
+            image = images.personImages.ADULT_MALE;
         } else if (guest.age === 'adult' && guest.gender === 'female') {
-            image = constants.personImages.ADULT_FEMALE;
+            image = images.personImages.ADULT_FEMALE;
         } else if (guest.age === 'child' && guest.gender === 'male') {
-            image = constants.personImages.CHILD_MALE;
+            image = images.personImages.CHILD_MALE;
         } else if (guest.age === 'child' && guest.gender === 'female') {
-            image = constants.personImages.CHILD_FEMALE;
+            image = images.personImages.CHILD_FEMALE;
         } else if (guest.age === 'baby') {
-            image = constants.personImages.BABY;
+            image = images.personImages.BABY;
         }
 
         return image;
@@ -46,58 +59,91 @@ function GuestsAll() {
         let image = '';
 
         if (guest.mainDish === 'meat') {
-            image = constants.dishImages.MEAT;
+            image = images.dishImages.MEAT;
         } else if (guest.mainDish === 'fish') {
-            image = constants.dishImages.FISH;
+            image = images.dishImages.FISH;
         } else if (guest.mainDish === 'veggies') {
-            image = constants.dishImages.VEGGIES;
+            image = images.dishImages.VEGGIES;
         }
 
         return image;
     }
 
-    console.log(guests);
+    const onShowFormHandler = () => {
+        setIsHidden(!isHidden);
+    }
 
-    return (<section className={styles["guests-all"]}>
-        <div className="section-title-wrapper">
-            <h2 className="section-title">Guests</h2>
-        </div>
-        <div className={styles["guests-all-main-content-wrapper"]}>
-            {guests.map((g) =>
-                <div key={g.id} className={styles["guests-all-info-wrapper"]}>
-                    <div className="guests-all-info-left">
-                        <p className={styles["guests-all-role"]}>{g.role}</p>
-                        <p className={styles["guests-all-name"]}>
-                            {g.firstName} {g.lastName}
-                            <span className={styles["guests-all-image"]}>
-                                {getPersonImage(g)}
-                            </span>
-                        </p>
+    const onSubmitHandler = (firstName, lastName, gender, age, side, role, table, mainDish, confirmed) => {
+        guestsService.create(plannerId, firstName, lastName, gender, age, side, role, table, mainDish, confirmed)
+            .then((data) => {
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
+
+                onCancelHandler();
+                // refresh??
+            })
+            .catch((err) => console.error(err));
+    };
+
+    const onCancelHandler = () => {
+        setIsHidden(true);
+    }
+
+    return (
+        <section className={styles["guests-all"]}>
+            <div className="section-title-wrapper">
+                <h2 className="section-title">Guests</h2>
+            </div>
+            <div className={styles["guests-all-main-content-wrapper"]}>
+                {guests.map((g) =>
+                    <div key={g.id} className={styles["guests-all-info-wrapper"]}>
+                        <div className="guests-all-info-left">
+                            <p className={styles["guests-all-role"]}>{g.role}</p>
+                            <p className={styles["guests-all-name"]}>
+                                {g.firstName} {g.lastName}
+                                <span className={styles["guests-all-image"]}>
+                                    {getPersonImage(g)}
+                                </span>
+                            </p>
+                        </div>
+                        <div className="guests-all-info-right">
+                            <p className={styles["guests-all-info"]}>
+                                <span className={styles["guests-all-info-title"]}>Table:</span>
+                                {g.table === '' ? '?' : g.table}
+                            </p>
+                            <p className={styles["guests-all-info"]}>
+                                <span className={styles["guests-all-info-title"]}>Confirmed:</span>
+                                {g.confirmed
+                                    ? <i className="fa-solid fa-check"></i>
+                                    : <i className="fa-solid fa-xmark"></i>
+                                }
+                            </p>
+                            <p className={styles["guests-all-info"]}>
+                                <span className={styles["guests-all-info-title"]}>Dish:</span>
+                                {g.mainDish === 'no info'
+                                    ? g.mainDish
+                                    : getDishImage(g)
+                                }
+                            </p>
+                        </div>
                     </div>
-                    <div className="guests-all-info-right">
-                        <p className={styles["guests-all-info"]}>
-                            <span className={styles["guests-all-info-title"]}>Table:</span>
-                            {g.table === 0 ? '?' : g.table}
-                        </p>
-                        <p className={styles["guests-all-info"]}>
-                            <span className={styles["guests-all-info-title"]}>Confirmed:</span>
-                            {g.confirmed
-                                ? <i className="fa-solid fa-check"></i>
-                                : <i className="fa-solid fa-xmark"></i>
-                            }
-                        </p>
-                        <p className={styles["guests-all-info"]}>
-                            <span className={styles["guests-all-info-title"]}>Dish:</span>
-                            {g.mainDish === 'no info'
-                                ? g.mainDish
-                                : getDishImage(g)
-                            }
-                        </p>
-                    </div>
+                )}
+            </div>
+            <div className="guests-all-create-form-wrapper">
+                <div className={styles["guests-all-create-form-icon"]}>
+                    <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
+                    Add guest
                 </div>
-            )}
-        </div>
-    </section>
+                {!isHidden &&
+                    <FormGuest
+                        formName={formName}
+                        onSubmitHandler={onSubmitHandler}
+                        onCancelHandler={onCancelHandler}
+                    />}
+            </div>
+        </section>
     );
 }
 

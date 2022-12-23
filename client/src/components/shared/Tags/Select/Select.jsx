@@ -8,7 +8,7 @@ function Select({ name, label, value, onChangeHandler, onBlurHandler, categories
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
             >
-                {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                {categories.map(c => <option key={c.id ? c.id : c} value={c.id ? c.id : c}>{c.name ? c.name : c}</option>)}
             </select>
         </>
     );

@@ -47,8 +47,8 @@ const guestSchema = new Schema({
         ],
     },
     table: {
-        type: Number,
-        default: 0,
+        type: String,
+        default: '',
     },
     mainDish: {
         type: String,
