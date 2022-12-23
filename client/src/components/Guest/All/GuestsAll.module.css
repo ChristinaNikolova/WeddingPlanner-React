@@ -69,3 +69,14 @@
   font-weight: 700;
   margin-right: 12px;
 }
+
+/* icons */
+
+.guests-all-icons {
+  font-size: 22px;
+}
+
+.guests-all-icons i:first-of-type {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -58,8 +58,13 @@ async function getById(id) {
     return Guest.findById(id);
 }
 
+async function deleteById(id) {
+    return Guest.findByIdAndDelete(id);
+}
+
 module.exports = {
     create,
     update,
     all,
+    deleteById,
 }

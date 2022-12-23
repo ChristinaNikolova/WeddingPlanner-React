@@ -12,3 +12,9 @@ export const create = (plannerId, firstName, lastName, gender, age, side, role, 
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.guests}/${id}`, 'DELETE')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

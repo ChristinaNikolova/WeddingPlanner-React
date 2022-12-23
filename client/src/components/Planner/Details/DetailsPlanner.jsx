@@ -10,7 +10,7 @@ function DetailsPlanner() {
     const navigate = useNavigate();
 
     const [planner, setPlanner] = useState({});
-    const [isHovering, setIsHovering] = useState(false)
+    const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
         plannersService
