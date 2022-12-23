@@ -19,7 +19,7 @@ export const personImages = {
 };
 
 export const dishImages = {
-    MEAT: <i className="fa-solid fa-meat"></i>,
+    MEAT: <i className="fa-solid fa-hotdog"></i>,
     FISH: <i className="fa-solid fa-fish"></i>,
-    VEGGIES: <i className="fa-solid fa-salad"></i>,
+    VEGGIES: <i className="fa-solid fa-seedling"></i>,
 };
