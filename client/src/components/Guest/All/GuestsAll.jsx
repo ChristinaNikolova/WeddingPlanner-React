@@ -19,10 +19,10 @@ function GuestsAll() {
     //todo test create form!!!!!
     //todo test server error by creating guest 
     //todo test conformed, not confirmed guests calculations
+    //todo test again!!!!
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
-
 
     useEffect(() => {
         loadGuests();
@@ -35,11 +35,7 @@ function GuestsAll() {
             .catch((err) => console.error(err));
     }
 
-    const onDeleteHandler = (guestId, role) => {
-        if (role === 'bride' || role === 'groom') {
-            return;
-        }
-
+    const onDeleteHandler = (guestId) => {
         guestsService
             .deleteById(guestId)
             .then(() => {
@@ -56,6 +52,7 @@ function GuestsAll() {
             <div className={styles["guests-all-main-content-wrapper"]}>
                 {guests.map((g) =>
                     <SingleGuest
+                        key={g.id}
                         id={g.id}
                         firstName={g.firstName}
                         lastName={g.lastName}
@@ -66,7 +63,8 @@ function GuestsAll() {
                         mainDish={g.mainDish}
                         confirmed={g.confirmed}
                         onDeleteHandler={onDeleteHandler}
-                    />)}
+                    />)
+                }
             </div>
             <CreateGuest
                 plannerId={plannerId}

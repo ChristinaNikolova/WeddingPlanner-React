@@ -48,7 +48,7 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDi
     }
 
     return (
-        <div key={id} className={styles["guests-all-info-wrapper"]}>
+        <div className={styles["guests-all-info-wrapper"]}>
             <div className="guests-all-info-left">
                 <p className={styles["guests-all-role"]}>{role}</p>
                 <p onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["guests-all-name"]}>
@@ -60,7 +60,7 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDi
                         <span className={styles["guests-all-icons"]}>
                             <i className="fa-solid fa-pen"></i>
                             {role !== 'bride' && role !== 'groom' &&
-                                <i onClick={() => onDeleteHandler(id, role)} className="fa-solid fa-trash"></i>
+                                <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                             }
                         </span>
                     }
