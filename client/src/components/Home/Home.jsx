@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import * as constants from '../../utils/constants/paths';
+import * as constants from '../../utils/constants/images';
 
 import Jumbotron from '../shared/Jumbotron/Jumbotron';
 
@@ -10,7 +10,7 @@ function Home() {
     return (
         <section className={`${styles.home} section`}>
             <Jumbotron
-                pathToImage={constants.paths.JUMBO_HOME}
+                pathToImage={constants.jumbo.HOME}
                 isHomePage={true}
             />
             <div className={styles["home-content-wrapper"]}>

@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/authContext';
-import * as constants from './utils/constants/paths';
+import * as constants from './utils/constants/images';
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -41,9 +41,9 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/blog" element={<ArticlesAll pathToImage={constants.paths.JUMBO_BLOG} />} />
+        <Route path="/blog" element={<ArticlesAll pathToImage={constants.jumbo.BLOG} />} />
         <Route path="/blog/:id/" element={<ArticleDetails />} />
-        <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.paths.JUMBO_USER} />} />
+        <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.jumbo.USER} />} />
 
         <Route path="/plan" element={<PlannerDashboard />} />
         <Route path="/plan/create" element={<CreatePlanner />} />

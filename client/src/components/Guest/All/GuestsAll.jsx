@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as guestsService from '../../../services/guests';
+import * as constants from '../../../utils/constants/images';
 
 import styles from './GuestsAll.module.css';
 
 function GuestsAll() {
-    //todo btn View Tables???
     //todo extract bride and groom
     //todo divs bride side - groom side
     //todo test images -> person + dish
@@ -16,21 +16,6 @@ function GuestsAll() {
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
-
-    //todo extract constants
-    const personImages = {
-        adultFemale: <i className="fa-solid fa-person-dress"></i>,
-        adultMale: <i className="fa-solid fa-person"></i>,
-        childMale: <i className="fa-solid fa-child"></i>,
-        childFemale: <i className="fa-solid fa-child-dress"></i>,
-        baby: <i className="fa-solid fa-baby"></i>,
-    };
-
-    const dishImages = {
-        meat: <i className="fa-solid fa-meat"></i>,
-        fish: <i className="fa-solid fa-fish"></i>,
-        veggies: <i className="fa-solid fa-salad"></i>,
-    };
 
     useEffect(() => {
         guestsService
@@ -43,15 +28,15 @@ function GuestsAll() {
         let image = '';
 
         if (guest.age === 'adult' && guest.gender === 'male') {
-            image = personImages.adultMale;
+            image = constants.personImages.ADULT_MALE;
         } else if (guest.age === 'adult' && guest.gender === 'female') {
-            image = personImages.adultFemale;
+            image = constants.personImages.ADULT_FEMALE;
         } else if (guest.age === 'child' && guest.gender === 'male') {
-            image = personImages.childMale;
+            image = constants.personImages.CHILD_MALE;
         } else if (guest.age === 'child' && guest.gender === 'female') {
-            image = personImages.childFemale;
+            image = constants.personImages.CHILD_FEMALE;
         } else if (guest.age === 'baby') {
-            image = personImages.baby;
+            image = constants.personImages.BABY;
         }
 
         return image;
@@ -61,11 +46,11 @@ function GuestsAll() {
         let image = '';
 
         if (guest.mainDish === 'meat') {
-            image = dishImages.meat;
+            image = constants.dishImages.MEAT;
         } else if (guest.mainDish === 'fish') {
-            image = dishImages.fish;
+            image = constants.dishImages.FISH;
         } else if (guest.mainDish === 'veggies') {
-            image = dishImages.veggies;
+            image = constants.dishImages.VEGGIES;
         }
 
         return image;

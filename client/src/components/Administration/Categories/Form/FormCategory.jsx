@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/category';
-import * as constants from '../../../../utils/constants/paths';
+import * as constants from '../../../../utils/constants/images';
 
 import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
@@ -93,9 +93,9 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                     </div>
                 </form>
                 <Bottom
-                    first={constants.paths.BOTTOM_FIRST}
-                    second={constants.paths.BOTTOM_SECOND}
-                    third={constants.paths.BOTTOM_THIRD}
+                    first={constants.bottom.FIRST}
+                    second={constants.bottom.SECOND}
+                    third={constants.bottom.THIRD}
                 />
             </div>
         </section>

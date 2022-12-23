@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
-import * as constants from '../../../utils/constants/paths';
+import * as constants from '../../../utils/constants/images';
 
 import Bottom from '../../shared/ImageWrappers/Bottom/Bottom';
 
@@ -40,9 +40,9 @@ function Dashboard() {
                 </div>
             </div>
             <Bottom
-                first={constants.paths.BOTTOM_FIRST}
-                second={constants.paths.BOTTOM_SECOND}
-                third={constants.paths.BOTTOM_THIRD}
+                first={constants.bottom.FIRST}
+                second={constants.bottom.SECOND}
+                third={constants.bottom.THIRD}
             />
         </section>
     );

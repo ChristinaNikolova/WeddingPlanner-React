@@ -80,7 +80,6 @@ function DetailsPlanner() {
                     <div className={styles["details-planner-btns-wrapper"]}>
                         <Link className="btn" to='/guest/create'>Add Guest</Link>
                         <Link className="btn" to={`/${id}/guest`}>Guests List</Link>
-                        <Link className="btn" to='/guest/tables'>Tables</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
