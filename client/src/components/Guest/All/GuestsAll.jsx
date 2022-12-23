@@ -11,14 +11,12 @@ import styles from './GuestsAll.module.css';
 function GuestsAll() {
     //todo extract bride and groom
     //todo divs bride side - groom side
-    //todo test images -> person + dish
     //todo hover effect for edit/delete
-    //todo add min height
     //todo delete collections in mongo to test last changes -> TABLE!
-    //todo test create form!!!!!
     //todo test custom form tags after the changes!!!
     //todo cancel button always
-    //tod test server error by creating guest
+    //todo test create form!!!!!
+    //todo test server error by creating guest 
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
@@ -117,7 +115,7 @@ function GuestsAll() {
                         <div className="guests-all-info-right">
                             <p className={styles["guests-all-info"]}>
                                 <span className={styles["guests-all-info-title"]}>Table:</span>
-                                {g.table === '' ? '?' : g.table}
+                                {g.table === '' ? 'no info' : g.table}
                             </p>
                             <p className={styles["guests-all-info"]}>
                                 <span className={styles["guests-all-info-title"]}>Confirmed:</span>

@@ -3,6 +3,7 @@
 .guests-all {
   background-color: var(--clr-light-creme);
   padding-bottom: 40px;
+  min-height: 80vh;
 }
 
 .guests-all-main-content-wrapper {

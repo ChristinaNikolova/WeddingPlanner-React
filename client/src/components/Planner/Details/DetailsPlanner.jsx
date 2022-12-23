@@ -38,7 +38,7 @@ function DetailsPlanner() {
     }
 
     //todo test all calculations
-    //refactor all forms css
+    //todo refactor all forms css
 
     return (
         <section className={styles["details-planner"]}>
