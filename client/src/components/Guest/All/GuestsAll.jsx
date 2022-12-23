@@ -15,8 +15,10 @@ function GuestsAll() {
     //todo delete collections in mongo to test last changes -> TABLE!
     //todo test custom form tags after the changes!!!
     //todo cancel button always
+    //todo extract child component
     //todo test create form!!!!!
     //todo test server error by creating guest 
+    //todo test conformed, not confirmed guests calculations
 
     const { id: plannerId } = useParams();
     const [guests, setGuests] = useState([]);
@@ -67,8 +69,6 @@ function GuestsAll() {
         } else if (guest.mainDish === 'veggies') {
             image = images.dishImages.VEGGIES;
         }
-
-        console.log(image);
 
         return image;
     }

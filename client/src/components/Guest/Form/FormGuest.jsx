@@ -51,8 +51,7 @@ function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
             firstName: values.firstName,
             lastName: values.lastName,
         };
-        
-        console.log(valuesToCheck);
+
         setIsDisabled(helpers.isButtonDisabled(valuesToCheck, [firstNameError, lastNameError]));
     };
 
