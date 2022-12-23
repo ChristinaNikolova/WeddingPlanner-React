@@ -12,10 +12,10 @@ async function allByUserId(userId) {
 
 async function create(description, date, budget, location, bride, groom, userId) {
     const [brideFirstName, brideLastName] = splitName(bride);
-    const brideAsGuestResult = await createGuest(brideFirstName, brideLastName, 'female', 'adult', 'bride', 'bride', true);
+    const brideAsGuestResult = await createGuest(brideFirstName, brideLastName, 'female', 'adult', 'bride', 'bride', '', 'no info', true);
 
     const [groomFirstName, groomLastName] = splitName(groom);
-    const groomAsGuestResult = await createGuest(groomFirstName, groomLastName, 'male', 'adult', 'groom', 'groom', true);
+    const groomAsGuestResult = await createGuest(groomFirstName, groomLastName, 'male', 'adult', 'groom', 'groom', '', 'no info', true);
 
     const planner = new Planner({
         title: `${bride} & ${groom}`,
@@ -58,10 +58,10 @@ async function update(id, description, date, budget, location, bride, brideId, g
     const planner = await getById(id, false);
 
     const [brideFirstName, brideLastName] = splitName(bride);
-    await updateGuest(brideId, brideFirstName, brideLastName, 'female', 'adult', 'bride', 'bride', true);
+    await updateGuest(brideId, brideFirstName, brideLastName, 'female', 'adult', 'bride', 'bride', '', 'no info', true);
 
     const [groomFirstName, groomLastName] = splitName(groom);
-    await updateGuest(groomId, groomFirstName, groomLastName, 'male', 'adult', 'groom', 'groom', true);
+    await updateGuest(groomId, groomFirstName, groomLastName, 'male', 'adult', 'groom', 'groom', '', 'no info', true);
 
     planner.title = `${bride} & ${groom}`;
     planner.description = description;

@@ -12,7 +12,7 @@ async function all(plannerId) {
     return guestViewModel(planner.guests);
 }
 
-async function create(firstName, lastName, gender, age, side, role, confirmed = false) {
+async function create(firstName, lastName, gender, age, side, role, table, mainDish, confirmed, plannerId) {
     const guest = new Guest({
         firstName,
         lastName,
@@ -20,15 +20,23 @@ async function create(firstName, lastName, gender, age, side, role, confirmed = 
         age,
         side,
         role,
+        table,
+        mainDish,
         confirmed: confirmed,
     });
 
-    await guest.save();
+    const result = await guest.save();
 
-    return guest;
+    if (plannerId) {
+        const planner = await Planner.findById(plannerId);
+        planner.guests.push(result._id);
+        await planner.save();
+    }
+
+    return result;
 }
 
-async function update(id, firstName, lastName, gender, age, side, role, confirmed = false) {
+async function update(id, firstName, lastName, gender, age, side, role, table, mainDish, confirmed) {
     const guest = await getById(id);
 
     guest.firstName = firstName;
@@ -37,6 +45,8 @@ async function update(id, firstName, lastName, gender, age, side, role, confirme
     guest.age = age;
     guest.side = side;
     guest.role = role;
+    guest.table = table;
+    guest.mainDish = mainDish;
     guest.confirmed = confirmed;
 
     await guest.save();

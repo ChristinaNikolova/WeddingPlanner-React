@@ -31,11 +31,15 @@ function GuestsAll() {
     }, [serverError]);
 
     useEffect(() => {
+        loadGuests();
+    }, []);
+
+    const loadGuests = () => {
         guestsService
             .all(plannerId)
             .then((res) => setGuests(res))
             .catch((err) => console.error(err));
-    }, []);
+    }
 
     const getPersonImage = (guest) => {
         let image = '';
@@ -66,6 +70,8 @@ function GuestsAll() {
             image = images.dishImages.VEGGIES;
         }
 
+        console.log(image);
+
         return image;
     }
 
@@ -81,8 +87,8 @@ function GuestsAll() {
                     return;
                 }
 
+                loadGuests();
                 onCancelHandler();
-                // refresh??
             })
             .catch((err) => console.error(err));
     };
