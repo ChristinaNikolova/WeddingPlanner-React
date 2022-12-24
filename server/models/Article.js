@@ -41,7 +41,7 @@ const articleSchema = new Schema({
 },
     {
         timestamps: true,
-    }
+    },
 );
 
 articleSchema.index({ title: 1 }, {

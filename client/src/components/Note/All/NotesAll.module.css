@@ -1,0 +1,9 @@
+.notes-all {
+    background-color: var(--clr-light-creme);
+    padding-bottom: 40px;
+    min-height: 80vh;
+  }
+  
+  .notes-all-main-content-wrapper {
+    padding-top: 40px;
+  }

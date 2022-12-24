@@ -18,6 +18,7 @@ import CreatePlanner from './components/Planner/Create/CreatePlanner';
 import DetailsPlanner from './components/Planner/Details/DetailsPlanner';
 import UpdatePlanner from './components/Planner/Update/UpdatePlanner';
 import GuestsAll from './components/Guest/All/GuestsAll';
+import NotesAll from './components/Note/All/NotesAll';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
@@ -51,6 +52,8 @@ function App() {
         <Route path="/plan/edit/:id" element={<UpdatePlanner />} />
 
         <Route path="/:id/guest" element={<GuestsAll />} />
+
+        <Route path="/:id/note" element={<NotesAll />} />
 
         <Route path="/administration" element={
           <Suspense fallback={<Loading />}>
