@@ -4,7 +4,7 @@ import * as images from '../../../utils/constants/images';
 
 import styles from './SingleGuest.module.css';
 
-function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDish, confirmed, onDeleteHandler }) {
+function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDish, confirmed, isEditIconHidden, onDeleteHandler, onShowFormHandler }) {
     const [isHovering, setIsHovering] = useState(false);
 
     const getPersonImage = (age, gender) => {
@@ -49,7 +49,7 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDi
 
     return (
         <div className={styles["guests-all-info-wrapper"]}>
-            <div className="guests-all-info-left">
+            <div className={styles["guests-all-info-left"]}>
                 <p className={styles["guests-all-role"]}>{role}</p>
                 <p onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["guests-all-name"]}>
                     {firstName} {lastName}
@@ -58,7 +58,7 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDi
                     </span>
                     {isHovering &&
                         <span className={styles["guests-all-icons"]}>
-                            <i className="fa-solid fa-pen"></i>
+                            {!isEditIconHidden && <i onClick={() => onShowFormHandler(id)} className="fa-solid fa-pen"></i>}
                             {role !== 'bride' && role !== 'groom' &&
                                 <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                             }

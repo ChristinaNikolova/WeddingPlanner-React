@@ -5,22 +5,23 @@ import * as helpers from '../../../utils/helpers/form';
 import * as validator from '../../../utils/validators/guest';
 
 import ClientError from '../../shared/Errors/ClientError/ClientError';
+import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import Select from '../../shared/Tags/Select/Select';
 
 import styles from './FormGuest.module.css';
 
-function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
+function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDish, confirmed, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
-        firstName: '',
-        lastName: '',
-        gender: 'male',
-        age: 'adult',
-        side: 'bride',
-        role: 'bride',
-        table: '',
-        mainDish: 'no info',
-        confirmed: 'no',
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        age: age,
+        side: side,
+        role: role,
+        table: table,
+        mainDish: mainDish,
+        confirmed: confirmed ? 'yes' : 'no',
     });
 
     const [isDisabled, setIsDisabled] = useState(true);
@@ -70,7 +71,8 @@ function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
 
     return (
         <div className={styles["guest-content-form-wrapper"]} >
-            <form className={styles["guest-form"]} onSubmit={onSubmitHelperHandler}>
+            <form className={[styles["guest-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
+                {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <Input
                         name="firstName"
@@ -283,7 +285,7 @@ function FormGuest({ formName, onSubmitHandler, onCancelHandler }) {
                 </div>
                 <div className={styles["guest-btns-wrapper"]}>
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
-                    <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
+                    <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
                 </div>
             </form>
         </div>

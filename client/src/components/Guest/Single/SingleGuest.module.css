@@ -2,13 +2,16 @@
 
 .guests-all-info-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-bottom: 10px;
   margin-left: 500px;
   margin-right: 500px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--clr-gold);
+}
+
+.guests-all-info-left {
+  width: 86%;
 }
 
 .guests-all-role {

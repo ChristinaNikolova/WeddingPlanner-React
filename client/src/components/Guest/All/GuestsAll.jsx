@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import * as guestsService from '../../../services/guests';
 
 import CreateGuest from '../Create/CreateGuest';
+import UpdateGuest from '../Update/UpdateGuest';
 import SingleGuest from '../Single/SingleGuest';
 
 import styles from './GuestsAll.module.css';
@@ -11,18 +12,15 @@ import styles from './GuestsAll.module.css';
 function GuestsAll() {
     //todo extract bride and groom
     //todo divs bride side - groom side
-    //todo hover effect for edit/delete
-    //todo delete collections in mongo to test last changes -> TABLE!
+
     //todo test custom form tags after the changes!!!
     //todo cancel button always
-    //todo extract child component
-    //todo test create form!!!!!
-    //todo test server error by creating guest 
-    //todo test conformed, not confirmed guests calculations
-    //todo test again!!!!
 
     const { id: plannerId } = useParams();
+    const [guestId, setGuestId] = useState('');
     const [guests, setGuests] = useState([]);
+    const [isHidden, setIsHidden] = useState(true);
+    const [isEditIconHidden, setIsEditIconHidden] = useState(false);
 
     useEffect(() => {
         loadGuests();
@@ -33,6 +31,18 @@ function GuestsAll() {
             .all(plannerId)
             .then((res) => setGuests(res))
             .catch((err) => console.error(err));
+    }
+
+    const onCancelFormHandler = () => {
+        setIsHidden(true);
+        setIsEditIconHidden(false);
+        setGuestId('');
+    }
+
+    const onShowFormHandler = (guestId) => {
+        setIsHidden(!isHidden);
+        guestId ? setGuestId(guestId) : setGuestId('');
+        setIsEditIconHidden(!isEditIconHidden);
     }
 
     const onDeleteHandler = (guestId) => {
@@ -62,14 +72,27 @@ function GuestsAll() {
                         table={g.table}
                         mainDish={g.mainDish}
                         confirmed={g.confirmed}
+                        isEditIconHidden={isEditIconHidden}
                         onDeleteHandler={onDeleteHandler}
+                        onShowFormHandler={onShowFormHandler}
                     />)
                 }
             </div>
-            <CreateGuest
-                plannerId={plannerId}
-                loadGuests={loadGuests}
-            />
+            {guestId
+                ? <UpdateGuest
+                    guestId={guestId}
+                    plannerId={plannerId}
+                    onCancelFormHandler={onCancelFormHandler}
+                    loadGuests={loadGuests}
+                />
+                : <CreateGuest
+                    plannerId={plannerId}
+                    isHidden={isHidden}
+                    onCancelFormHandler={onCancelFormHandler}
+                    onShowFormHandler={onShowFormHandler}
+                    loadGuests={loadGuests}
+                />
+            }
         </section>
     );
 }

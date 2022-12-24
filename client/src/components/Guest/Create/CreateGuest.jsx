@@ -6,21 +6,12 @@ import FormGuest from '../Form/FormGuest';
 
 import styles from './CreateGuest.module.css';
 
-function CreateGuest({ plannerId, loadGuests }) {
+function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadGuests }) {
     const formName = 'Create';
     const [serverError, setServerError] = useState('');
-    const [isHidden, setIsHidden] = useState(true);
 
     useEffect(() => {
     }, [serverError]);
-
-    const onCancelHandler = () => {
-        setIsHidden(true);
-    }
-
-    const onShowFormHandler = () => {
-        setIsHidden(!isHidden);
-    }
 
     const onSubmitHandler = (firstName, lastName, gender, age, side, role, table, mainDish, confirmed) => {
         guestsService.create(plannerId, firstName, lastName, gender, age, side, role, table, mainDish, confirmed)
@@ -30,7 +21,7 @@ function CreateGuest({ plannerId, loadGuests }) {
                     return;
                 }
 
-                onCancelHandler();
+                onCancelFormHandler();
                 loadGuests();
             })
             .catch((err) => console.error(err));
@@ -39,14 +30,24 @@ function CreateGuest({ plannerId, loadGuests }) {
     return (
         <>
             <div className={styles["guest-form-icon"]}>
-                <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
+                <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
                 Add guest
             </div>
             {!isHidden &&
                 <FormGuest
+                    firstName={''}
+                    lastName={''}
+                    gender={'male'}
+                    age={'adult'}
+                    side={'bride'}
+                    role={'bride'}
+                    table={''}
+                    mainDish={'no info'}
+                    confirmed={''}
                     formName={formName}
+                    serverError={serverError}
                     onSubmitHandler={onSubmitHandler}
-                    onCancelHandler={onCancelHandler}
+                    onCancelFormHandler={onCancelFormHandler}
                 />
             }
         </>
