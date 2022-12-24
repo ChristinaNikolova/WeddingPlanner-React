@@ -1,3 +1,4 @@
+const { formatCreatedAt } = require("../parser");
 const { categoryViewModel, categoryNameViewModel } = require("./category");
 
 function articleListViewModel(article) {
@@ -42,14 +43,6 @@ function splitContentIntoArray(content) {
     }
 
     return result;
-}
-
-function formatCreatedAt(createdAt) {
-    return createdAt.getDate()
-        + '/'
-        + createdAt.getMonth()
-        + '/'
-        + createdAt.getFullYear().toString().substr(-2);
 }
 
 module.exports = {

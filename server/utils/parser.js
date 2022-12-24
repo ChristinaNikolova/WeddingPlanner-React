@@ -10,6 +10,15 @@ function mapErrors(err) {
     }
 }
 
+function formatCreatedAt(createdAt) {
+    return createdAt.getDate()
+        + '/'
+        + createdAt.getMonth()
+        + '/'
+        + createdAt.getFullYear().toString().substr(-2);
+}
+
 module.exports = {
     mapErrors,
+    formatCreatedAt,
 };

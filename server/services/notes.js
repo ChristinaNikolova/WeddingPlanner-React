@@ -7,6 +7,7 @@ async function all(plannerId) {
         .findById(plannerId)
         .populate('notes');
 
+    //todo sort notes
     return planner.notes.map(noteViewModel);
 }
 
