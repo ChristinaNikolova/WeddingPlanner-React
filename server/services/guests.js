@@ -1,15 +1,13 @@
 const Guest = require("../models/Guest");
 const Planner = require("../models/Planner");
-const { guestViewModel, guestSingleViewModel } = require("../utils/mapper/guest");
+const { guestViewModel } = require("../utils/mapper/guest");
 
 async function all(plannerId) {
-    //todo add some kind of soring!!!!
-    //todo extract 2 collection + 1 collection from bride and groom?
     const planner = await Planner
         .findById(plannerId)
         .populate('guests');
 
-    return guestViewModel(planner.guests);
+    return planner.guests.map(guestViewModel);
 }
 
 async function create(firstName, lastName, gender, age, side, role, table, mainDish, confirmed, plannerId) {
@@ -56,7 +54,7 @@ async function update(id, firstName, lastName, gender, age, side, role, table, m
 
 async function getById(id, hastToCast) {
     const guest = await Guest.findById(id);
-    return hastToCast ? guestSingleViewModel(guest) : guest;
+    return hastToCast ? guestViewModel(guest) : guest;
 }
 
 async function deleteById(id) {
