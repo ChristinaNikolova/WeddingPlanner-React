@@ -4,7 +4,7 @@ import * as images from '../../../utils/constants/images';
 
 import styles from './SingleGuest.module.css';
 
-function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDish, confirmed, isEditIconHidden, onDeleteHandler, onShowFormHandler }) {
+function SingleGuest({ id, firstName, lastName, gender, age, role, side, table, mainDish, confirmed, isEditIconHidden, onDeleteHandler, onShowFormHandler }) {
     const [isHovering, setIsHovering] = useState(false);
 
     const getPersonImage = (age, gender) => {
@@ -64,6 +64,10 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, table, mainDi
                             }
                         </span>
                     }
+                </p>
+                <p className={styles["guests-all-side"]}>
+                    <span className={styles["guests-all-info-title"]}>Side:</span>
+                    {side}
                 </p>
             </div>
             <div className="guests-all-info-right">

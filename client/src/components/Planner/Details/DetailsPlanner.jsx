@@ -89,6 +89,14 @@ function DetailsPlanner() {
                             <span className={styles["details-planner-title"]}>Confirmed guests:</span>
                             {planner.confirmedGuests}
                         </p>
+                        <p className="details-planner-content">
+                            <span className={styles["details-planner-title"]}>Bride's guests:</span>
+                            {planner.brideGuests}
+                        </p>
+                        <p className="details-planner-content">
+                            <span className={styles["details-planner-title"]}>Groom's guests:</span>
+                            {planner.groomGuests}
+                        </p>
                     </div>
                 </div>
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>

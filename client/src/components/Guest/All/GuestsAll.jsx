@@ -10,9 +10,6 @@ import SingleGuest from '../Single/SingleGuest';
 import styles from './GuestsAll.module.css';
 
 function GuestsAll() {
-    //todo extract bride and groom
-    //todo divs bride side - groom side
-
     //todo test custom form tags after the changes!!!
     //todo cancel button always
 
@@ -69,6 +66,7 @@ function GuestsAll() {
                         gender={g.gender}
                         age={g.age}
                         role={g.role}
+                        side={g.side}
                         table={g.table}
                         mainDish={g.mainDish}
                         confirmed={g.confirmed}

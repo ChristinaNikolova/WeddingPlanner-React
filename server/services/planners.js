@@ -43,7 +43,7 @@ async function getById(id, hasToCast) {
         .findById(id)
         .populate('bride', 'firstName lastName')
         .populate('groom', 'firstName lastName')
-        .populate('guests', 'confirmed')
+        .populate('guests', 'confirmed side')
         .populate('costs', 'price')
         .populate('tasks', 'subTasks');
 

@@ -19,6 +19,8 @@ function plannerViewModel(planner) {
         totalCosts: (calculateTotalCosts(planner.costs)).toFixed(2),
         location: planner.location,
         totalGuests: planner.guests.length,
+        brideGuests: planner.guests.filter((g) => g.side === 'bride').length,
+        groomGuests: planner.guests.filter((g) => g.side === 'groom').length,
         confirmedGuests: planner.guests.filter((g) => g.confirmed).length,
         totalTasks: calculateTotalTasks(planner.tasks),
         doneTasks: 100,
