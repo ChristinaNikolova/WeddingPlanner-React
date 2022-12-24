@@ -161,7 +161,7 @@ function FormPlanner({ formName, description, date, budget, location, bride, gro
                     </div>
                     <div className={styles["create-planner-btns-wrapper"]}>
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>
                 </form>
             </div>

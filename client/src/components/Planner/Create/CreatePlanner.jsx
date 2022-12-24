@@ -27,6 +27,10 @@ function CreatePlanner() {
             .catch((err) => console.error(err));
     };
 
+    const onCancelHandler = () => {
+        navigate(`/plan`);
+    }
+
     return (
         <FormPlanner
             formName={formName}
@@ -38,6 +42,7 @@ function CreatePlanner() {
             groom={''}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }

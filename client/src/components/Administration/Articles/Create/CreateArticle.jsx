@@ -26,6 +26,10 @@ function CreateArticle() {
             .catch((err) => console.error(err));
     }
 
+    const onCancelHandler = () => {
+        navigate(`/blog`);
+    }
+
     return (
         <FormArticle
             formName={formName}
@@ -36,6 +40,7 @@ function CreateArticle() {
             category={''}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }

@@ -26,6 +26,10 @@ function CreateCategory() {
             .catch((err) => console.error(err));
     };
 
+    const onCancelHandler = () => {
+        navigate('/administration/categories');
+    }
+
     return (
         <FormCategory
             formName={formName}
@@ -33,6 +37,7 @@ function CreateCategory() {
             image={''}
             serverError={serverError}
             onSubmitHandler={submitHandler}
+            onCancelHandler={onCancelHandler}
         />
     );
 }

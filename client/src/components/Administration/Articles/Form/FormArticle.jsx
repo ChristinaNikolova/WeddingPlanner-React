@@ -154,7 +154,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                     </div>
                     <div className={styles["create-article-btns-wrapper"]}>
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>
                 </form>
             </div>

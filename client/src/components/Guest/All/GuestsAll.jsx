@@ -10,9 +10,6 @@ import SingleGuest from '../Single/SingleGuest';
 import styles from './GuestsAll.module.css';
 
 function GuestsAll() {
-    //todo test custom form tags after the changes!!!
-    //todo cancel button always
-
     const { id: plannerId } = useParams();
     const [guestId, setGuestId] = useState('');
     const [guests, setGuests] = useState([]);

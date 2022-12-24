@@ -89,7 +89,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                     </div>
                     <div className={styles["create-article-btns-wrapper"]}>
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        {formName.toLowerCase() === 'update' && <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>}
+                       <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>
                 </form>
                 <Bottom
