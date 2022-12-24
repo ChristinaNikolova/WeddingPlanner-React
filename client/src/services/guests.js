@@ -18,3 +18,15 @@ export const deleteById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const update = (id, firstName, lastName, gender, age, side, role, table, mainDish, confirmed) => {
+    return requester(`${api.guests}/${id}`, 'PUT', { firstName, lastName, gender, age, side, role, table, mainDish, confirmed })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const getById = (plannerId, guestId) => {
+    return requester(`${api.guests}/${plannerId}/${guestId}`, 'GET')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

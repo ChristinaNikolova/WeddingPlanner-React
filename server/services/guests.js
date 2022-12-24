@@ -1,6 +1,6 @@
 const Guest = require("../models/Guest");
 const Planner = require("../models/Planner");
-const { guestViewModel } = require("../utils/mapper/guest");
+const { guestViewModel, guestSingleViewModel } = require("../utils/mapper/guest");
 
 async function all(plannerId) {
     //todo add some kind of soring!!!!
@@ -37,7 +37,7 @@ async function create(firstName, lastName, gender, age, side, role, table, mainD
 }
 
 async function update(id, firstName, lastName, gender, age, side, role, table, mainDish, confirmed) {
-    const guest = await getById(id);
+    const guest = await getById(id, false);
 
     guest.firstName = firstName;
     guest.lastName = lastName;
@@ -54,8 +54,9 @@ async function update(id, firstName, lastName, gender, age, side, role, table, m
     return guest;
 }
 
-async function getById(id) {
-    return Guest.findById(id);
+async function getById(id, hastToCast) {
+    const guest = await Guest.findById(id);
+    return hastToCast ? guestSingleViewModel(guest) : guest;
 }
 
 async function deleteById(id) {
@@ -67,4 +68,5 @@ module.exports = {
     update,
     all,
     deleteById,
+    getById,
 }

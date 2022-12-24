@@ -3,6 +3,22 @@ function guestViewModel(guests) {
     return mapGuest(guests);
 }
 
+function guestSingleViewModel(guest) {
+    //todo some refactoring here??
+    return {
+        id: guest._id,
+        firstName: guest.firstName,
+        lastName: guest.lastName,
+        gender: guest.gender,
+        age: guest.age,
+        side: guest.side,
+        role: guest.role,
+        table: guest.table,
+        mainDish: guest.mainDish,
+        confirmed: guest.confirmed,
+    }
+}
+
 function mapGuest(guests) {
     const result = guests.reduce((acc, curr) => {
         acc.push({
@@ -26,4 +42,5 @@ function mapGuest(guests) {
 
 module.exports = {
     guestViewModel,
+    guestSingleViewModel,
 }
