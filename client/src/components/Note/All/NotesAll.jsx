@@ -16,6 +16,7 @@ function NotesAll() {
     const formName = 'Create';
     //todo calculate on details planner
     //todo test server errors -> create and update
+    //todo test cancel button
 
     const { id: plannerId } = useParams();
     const [notes, setNotes] = useState([]);
@@ -81,7 +82,13 @@ function NotesAll() {
             </div>
             <div className={styles["notes-all-main-content-wrapper"]}>
                 {notes.length
-                    ? notes.map((n) => <SingleNote />)
+                    ? notes.map((n) =>
+                        <SingleNote
+                            key={n.id}
+                            id={n.id}
+                            description={n.description}
+                            createdAt={n.createdAt}
+                        />)
                     : <p className={[styles["notes-all-empty"], "empty"].join(' ')}>No notes yet</p>
                 }
             </div>
