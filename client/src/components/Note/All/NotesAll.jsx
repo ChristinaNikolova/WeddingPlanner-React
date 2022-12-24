@@ -82,7 +82,7 @@ function NotesAll() {
             <div className={styles["notes-all-main-content-wrapper"]}>
                 {notes.length
                     ? notes.map((n) => <SingleNote />)
-                    : <span>No notes yet</span>
+                    : <p className={[styles["notes-all-empty"], "empty"].join(' ')}>No notes yet</p>
                 }
             </div>
             <>

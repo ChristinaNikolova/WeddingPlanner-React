@@ -1,3 +1,5 @@
+@import "../../../styles/constants.css";
+
 .notes-all {
   background-color: var(--clr-light-creme);
   padding-bottom: 40px;
@@ -6,6 +8,14 @@
 
 .notes-all-main-content-wrapper {
   padding-top: 40px;
+  text-align: center;
+}
+
+.notes-all-empty {
+  border-bottom: 1px solid var(--clr-gold);
+  margin-left: 700px;
+  margin-right: 700px;
+  padding-bottom: 20px;
 }
 
 /* form icon*/
