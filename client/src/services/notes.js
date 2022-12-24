@@ -6,3 +6,9 @@ export const all = (plannerId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const create = (plannerId, description) => {
+    return requester(`${api.notes}/${plannerId}`, 'POST', { description })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

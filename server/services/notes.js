@@ -10,6 +10,21 @@ async function all(plannerId) {
     return planner.notes.map(noteViewModel);
 }
 
+async function create(plannerId, description) {
+    const note = new Note({
+        description,
+    });
+
+    const result = await note.save();
+
+    const planner = await Planner.findById(plannerId);
+    planner.notes.push(result._id);
+    await planner.save();
+
+    return result;
+}
+
 module.exports = {
     all,
+    create,
 }
