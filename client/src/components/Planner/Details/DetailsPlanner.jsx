@@ -151,7 +151,7 @@ function DetailsPlanner() {
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total notes:</span>
-                            {planner.totalNotes}
+                            {planner.notes}
                         </p>
                     </div>
                 </div>
