@@ -7,7 +7,7 @@ import * as helpers from '../../../utils/helpers/form';
 
 import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
-import Input from '../../shared/Tags/Input/Input';
+import TextArea from '../../shared/Tags/TextArea/TextArea';
 import SingleNote from '../Single/SingleNote';
 
 import styles from './NotesAll.module.css';
@@ -99,14 +99,14 @@ function NotesAll() {
                 </div>
                 {!isHidden &&
                     <div className={styles["note-content-form-wrapper"]} >
-                        <form className={[styles["note-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHandler}>
+                        <form className={[styles["note-form"], "form-error-message-width", "form-custom-width"].join(' ')} onSubmit={onSubmitHandler}>
                             {serverError && <ServerError errors={serverError} />}
                             <div className="form-wrapper">
-                                <Input
+                                <TextArea
                                     name="description"
-                                    type="text"
                                     label="Note"
                                     value={values.description}
+                                    rows="10"
                                     onChangeHandler={changeHandler}
                                     onBlurHandler={validateDescription}
                                 />

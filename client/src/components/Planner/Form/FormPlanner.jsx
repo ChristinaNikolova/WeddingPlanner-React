@@ -97,7 +97,6 @@ function FormPlanner({ formName, description, date, budget, location, bride, gro
                             name="description"
                             label="Description"
                             value={values.description}
-                            cols="30"
                             rows="8"
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateDescription}

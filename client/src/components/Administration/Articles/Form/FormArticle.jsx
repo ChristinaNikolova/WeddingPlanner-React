@@ -112,7 +112,6 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                             name="content"
                             label="Content"
                             value={values.content}
-                            cols="30"
                             rows="16"
                             onChangeHandler={changeHandler}
                             onBlurHandler={validateContent}

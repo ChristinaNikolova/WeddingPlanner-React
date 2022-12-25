@@ -144,6 +144,10 @@ textarea {
   border: 1px solid var(--clr-gold);
 }
 
+.form-custom-width {
+  width: 80%;
+}
+
 .radio {
   display: flex;
   flex-direction: row;

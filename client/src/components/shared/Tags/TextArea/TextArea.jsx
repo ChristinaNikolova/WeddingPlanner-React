@@ -1,4 +1,4 @@
-function TextArea({ name, label, value, cols, rows, onChangeHandler, onBlurHandler }) {
+function TextArea({ name, label, value, rows, onChangeHandler, onBlurHandler }) {
     return (
         <>
             <label className="label" htmlFor={name}>{label}</label>
@@ -7,7 +7,6 @@ function TextArea({ name, label, value, cols, rows, onChangeHandler, onBlurHandl
                 name={name}
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
-                cols={cols}
                 rows={rows}
                 value={value}
             />
