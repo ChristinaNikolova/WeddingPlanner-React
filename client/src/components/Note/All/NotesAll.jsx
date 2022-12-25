@@ -11,14 +11,17 @@ import UpdateNote from '../Update/UpdateNote';
 
 function NotesAll() {
     //todo calculate on details planner
+    //todo btns wrapper extract
+
+    //todo test notes!!!!
     //todo test server errors -> create and update
     //todo test cancel button
-    //todo btns wrapper extract
 
     const { id: plannerId } = useParams();
     const [noteId, setNoteId] = useState('');
     const [notes, setNotes] = useState([]);
     const [isHidden, setIsHidden] = useState(true);
+    const [isEditIconHidden, setIsEditIconHidden] = useState(false);
 
     useEffect(() => {
         loadNotes();
@@ -28,11 +31,13 @@ function NotesAll() {
     const onShowFormHandler = (noteId) => {
         setIsHidden(!isHidden);
         noteId ? setNoteId(noteId) : setNoteId('');
+        setIsEditIconHidden(!isEditIconHidden);
     }
 
     const onCancelFormHandler = () => {
         setIsHidden(true);
         setNoteId('');
+        setIsEditIconHidden(false);
     }
 
     const loadNotes = () => {
@@ -64,6 +69,7 @@ function NotesAll() {
                             id={n.id}
                             description={n.description}
                             createdAt={n.createdAt}
+                            isEditIconHidden={isEditIconHidden}
                             onDeleteHandler={onDeleteHandler}
                             onShowFormHandler={onShowFormHandler}
                         />)

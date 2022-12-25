@@ -39,7 +39,6 @@ async function update(id, description) {
     const note = await getById(id, false);
 
     note.description = description;
-
     await note.save();
 
     return note;
