@@ -1,6 +1,6 @@
 import styles from './SingleNote.module.css';
 
-function SingleNote({ id, description, createdAt, onDeleteHandler }) {
+function SingleNote({ id, description, createdAt, onDeleteHandler, onShowFormHandler }) {
     //todo extract pena nd trash in component??
     return (
         <div className={styles["notes-all-info-wrapper"]}>
@@ -9,7 +9,7 @@ function SingleNote({ id, description, createdAt, onDeleteHandler }) {
                     {createdAt}
                 </p>
                 <div className={styles["notes-all-icon-wrapper"]}>
-                    <i className="fa-solid fa-pen"></i>
+                    <i onClick={() => onShowFormHandler(id)} className="fa-solid fa-pen"></i>
                     <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                 </div>
             </div>
@@ -21,7 +21,5 @@ function SingleNote({ id, description, createdAt, onDeleteHandler }) {
         </div>
     );
 }
-
-//todo onClick={() => onShowFormHandler(id)}
 
 export default SingleNote;

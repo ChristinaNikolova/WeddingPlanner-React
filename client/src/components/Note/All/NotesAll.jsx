@@ -7,6 +7,7 @@ import SingleNote from '../Single/SingleNote';
 import CreateNote from '../Create/CreateNote';
 
 import styles from './NotesAll.module.css';
+import UpdateNote from '../Update/UpdateNote';
 
 function NotesAll() {
     //todo calculate on details planner
@@ -15,6 +16,7 @@ function NotesAll() {
     //todo btns wrapper extract
 
     const { id: plannerId } = useParams();
+    const [noteId, setNoteId] = useState('');
     const [notes, setNotes] = useState([]);
     const [isHidden, setIsHidden] = useState(true);
 
@@ -23,12 +25,14 @@ function NotesAll() {
     }, []);
 
 
-    const onShowFormHandler = () => {
+    const onShowFormHandler = (noteId) => {
         setIsHidden(!isHidden);
+        noteId ? setNoteId(noteId) : setNoteId('');
     }
 
     const onCancelFormHandler = () => {
         setIsHidden(true);
+        setNoteId('');
     }
 
     const loadNotes = () => {
@@ -61,17 +65,26 @@ function NotesAll() {
                             description={n.description}
                             createdAt={n.createdAt}
                             onDeleteHandler={onDeleteHandler}
+                            onShowFormHandler={onShowFormHandler}
                         />)
                     : <p className={[styles["notes-all-empty"], "empty"].join(' ')}>No notes yet</p>
                 }
             </div>
-            <CreateNote
-                plannerId={plannerId}
-                isHidden={isHidden}
-                onCancelFormHandler={onCancelFormHandler}
-                onShowFormHandler={onShowFormHandler}
-                loadNotes={loadNotes}
-            />
+            {noteId
+                ? <UpdateNote
+                    noteId={noteId}
+                    plannerId={plannerId}
+                    onCancelFormHandler={onCancelFormHandler}
+                    loadGuests={loadNotes}
+                />
+                : <CreateNote
+                    plannerId={plannerId}
+                    isHidden={isHidden}
+                    onCancelFormHandler={onCancelFormHandler}
+                    onShowFormHandler={onShowFormHandler}
+                    loadNotes={loadNotes}
+                />
+            }
         </section>
     );
 }

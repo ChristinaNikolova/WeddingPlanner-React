@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { all, create, deleteById } = require('../services/notes');
+const { all, create, deleteById, update, getById } = require('../services/notes');
 const { mapErrors } = require('../utils/parser');
 
 router.get('/:id', async (req, res) => {
@@ -28,6 +28,28 @@ router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const note = await deleteById(id);
+        res.json(note);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const note = await update(id, req.body.description);
+        res.json(note);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.get('/:plannerId/:noteId', async (req, res) => {
+    try {
+        const id = req.params.noteId;
+        const note = await getById(id, true);
         res.json(note);
     } catch (error) {
         const message = mapErrors(error);

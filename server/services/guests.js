@@ -52,9 +52,9 @@ async function update(id, firstName, lastName, gender, age, side, role, table, m
     return guest;
 }
 
-async function getById(id, hastToCast) {
+async function getById(id, hasToCast) {
     const guest = await Guest.findById(id);
-    return hastToCast ? guestViewModel(guest) : guest;
+    return hasToCast ? guestViewModel(guest) : guest;
 }
 
 async function deleteById(id) {

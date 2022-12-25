@@ -30,8 +30,25 @@ async function deleteById(id) {
     return Note.findByIdAndDelete(id);
 }
 
+async function getById(id, hasToCast) {
+    const note = await Note.findById(id);
+    return hasToCast ? noteViewModel(note) : note;
+}
+
+async function update(id, description) {
+    const note = await getById(id, false);
+
+    note.description = description;
+
+    await note.save();
+
+    return note;
+}
+
 module.exports = {
     all,
     create,
     deleteById,
+    update,
+    getById,
 }
