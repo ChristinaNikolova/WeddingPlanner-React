@@ -11,9 +11,10 @@ function mapErrors(err) {
 }
 
 function formatCreatedAt(createdAt) {
+    //todo test month in january
     return createdAt.getDate()
         + '/'
-        + createdAt.getMonth()
+        + (createdAt.getMonth() + 1)
         + '/'
         + createdAt.getFullYear().toString().substr(-2);
 }
