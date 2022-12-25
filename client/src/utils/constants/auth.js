@@ -3,4 +3,4 @@ export const auth = {
     NAME_MAX_LEN: 50,
     PASSWORD_MIN_LEN: 6,
     PASSWORD_MAX_LEN: 50,
-}
+};

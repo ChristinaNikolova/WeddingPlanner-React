@@ -12,8 +12,6 @@ function NotesAll() {
     //todo calculate on details planner
     //todo test server errors -> create and update
     //todo test cancel button
-    //todo test cancel + remove text in inputs
-    //todo http constants
     //todo btns wrapper extract
 
     const { id: plannerId } = useParams();

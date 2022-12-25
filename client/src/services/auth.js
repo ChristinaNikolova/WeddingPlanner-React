@@ -1,9 +1,10 @@
 import { api } from './api';
 import { requester } from './requester';
+import { httpMethods } from '../utils/constants/global';
 
 export const register = (firstName, lastName, email, password) => {
     return fetch(api.register, {
-        method: 'post',
+        method: httpMethods.POST,
         headers: {
             'Content-Type': 'application/json',
         },
@@ -15,7 +16,7 @@ export const register = (firstName, lastName, email, password) => {
 
 export const login = (email, password) => {
     return fetch(api.login, {
-        method: 'post',
+        method: httpMethods.POST,
         headers: {
             'Content-Type': 'application/json',
         },
@@ -26,7 +27,7 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
-    return requester(api.logout, 'GET')
+    return requester(api.logout, httpMethods.GET)
         .catch((err) => console.error(err));
 }
 

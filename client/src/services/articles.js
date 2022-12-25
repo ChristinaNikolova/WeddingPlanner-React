@@ -1,38 +1,39 @@
 import { api } from './api';
 import { requester } from './requester';
+import { httpMethods } from '../utils/constants/global';
 
 export const create = (title, content, image, jumboImage, category) => {
-    return requester(api.adminArticle, 'POST', { title, content, image, jumboImage, category })
+    return requester(api.adminArticle, httpMethods.POST, { title, content, image, jumboImage, category })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const update = (id, title, content, image, jumboImage, category) => {
-    return requester(`${api.adminArticle}/${id}`, 'PUT', { title, content, image, jumboImage, category })
+    return requester(`${api.adminArticle}/${id}`, httpMethods.PUT, { title, content, image, jumboImage, category })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const deleteById = (id) => {
-    return requester(`${api.adminArticle}/${id}`, 'DELETE')
+    return requester(`${api.adminArticle}/${id}`, httpMethods.DELETE)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const all = (currentPage = 1, selectedCategory, query = '') => {
-    return requester(`${api.articles}/${currentPage}/${selectedCategory}/${query}`, 'GET')
+    return requester(`${api.articles}/${currentPage}/${selectedCategory}/${query}`, httpMethods.GET)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const getById = (id) => {
-    return requester(`${api.articles}/${id}`, 'GET')
+    return requester(`${api.articles}/${id}`, httpMethods.GET)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const like = (id) => {
-    return requester(`${api.articles}/${id}`, 'POST')
+    return requester(`${api.articles}/${id}`, httpMethods.POST)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }

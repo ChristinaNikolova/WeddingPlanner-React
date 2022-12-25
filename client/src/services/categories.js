@@ -1,20 +1,21 @@
 import { api } from './api';
 import { requester } from './requester';
+import { httpMethods } from '../utils/constants/global';
 
 export const create = (name, image) => {
-    return requester(api.adminCategory, 'POST', { name, image })
+    return requester(api.adminCategory, httpMethods.POST, { name, image })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const update = (id, name, image) => {
-    return requester(`${api.adminCategory}/${id}`, 'PUT', { name, image })
+    return requester(`${api.adminCategory}/${id}`, httpMethods.PUT, { name, image })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const deleteById = (id) => {
-    return requester(`${api.adminCategory}/${id}`, 'DELETE')
+    return requester(`${api.adminCategory}/${id}`, httpMethods.DELETE)
         .then((res) => {
             if (res.status !== 204) {
                 return res.json();
@@ -24,13 +25,13 @@ export const deleteById = (id) => {
 }
 
 export const all = () => {
-    return requester(api.categories, 'GET')
+    return requester(api.categories, httpMethods.GET)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
 
 export const getById = (id) => {
-    return requester(`${api.adminCategory}/${id}`, 'GET')
+    return requester(`${api.adminCategory}/${id}`, httpMethods.GET)
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
