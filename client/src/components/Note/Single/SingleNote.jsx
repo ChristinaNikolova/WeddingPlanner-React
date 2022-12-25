@@ -1,8 +1,6 @@
 import styles from './SingleNote.module.css';
 
 function SingleNote({ id, description, createdAt }) {
-    //todo add soring
-
     return (
         <div className={styles["notes-all-info-wrapper"]}>
             <div className={styles["notes-all-info-left"]}>
