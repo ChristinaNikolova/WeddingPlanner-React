@@ -5,11 +5,18 @@
   justify-content: left;
   align-items: flex-start;
   gap: 100px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   margin-left: 150px;
   margin-right: 150px;
   margin-bottom: 35px;
   border-bottom: 1px solid var(--clr-gold);
+}
+
+.notes-all-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
 }
 
 .notes-all-info {
@@ -17,8 +24,24 @@
   font-weight: 700;
 }
 
+.notes-all-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .notes-all-description {
   font-size: 22px;
   line-height: 1.5;
   text-align: left;
 }
+
+/* .notes-all-icon {
+  font-size: 22px;
+}
+
+.notes-all-icons i:first-of-type {
+  margin-left: 10px;
+  margin-right: 10px;
+} */
