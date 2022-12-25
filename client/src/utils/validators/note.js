@@ -1,7 +1,7 @@
-import * as constants from '../constants/note';
+import { note } from '../constants/model';
 
 export const validDescription = (description) => {
-    return (description && description.length >= constants.note.DESC_MIN_LEN && description.length <= constants.note.DESC_MAX_LEN)
+    return (description && description.length >= note.DESC_MIN_LEN && description.length <= note.DESC_MAX_LEN)
         ? ''
-        : `Description should be between ${constants.note.DESC_MIN_LEN} and ${constants.note.DESC_MAX_LEN} characters long`;
+        : `Description should be between ${note.DESC_MIN_LEN} and ${note.DESC_MAX_LEN} characters long`;
 }

@@ -1,9 +1,9 @@
-import * as constants from '../constants/category';
+import { category } from '../constants/model';
 
 export const validName = (name) => {
-    return (name && name.length >= constants.category.NAME_MIN_LEN && name.length <= constants.category.NAME_MAX_LEN)
+    return (name && name.length >= category.NAME_MIN_LEN && name.length <= category.NAME_MAX_LEN)
         ? ''
-        : `Name should be between ${constants.category.NAME_MIN_LEN} and ${constants.category.NAME_MAX_LEN} characters long`;
+        : `Name should be between ${category.NAME_MIN_LEN} and ${category.NAME_MAX_LEN} characters long`;
 }
 
 export const validImage = (image) => {

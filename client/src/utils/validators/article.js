@@ -1,15 +1,15 @@
-import * as constants from '../constants/article';
+import { article } from '../constants/model';
 
 export const validTitle = (title) => {
-    return (title && title.length >= constants.article.TITLE_MIN_LEN && title.length <= constants.article.TITLE_MAX_LEN)
+    return (title && title.length >= article.TITLE_MIN_LEN && title.length <= article.TITLE_MAX_LEN)
         ? ''
-        : `Title should be between ${constants.article.TITLE_MIN_LEN} and ${constants.article.TITLE_MAX_LEN} characters long`;
+        : `Title should be between ${article.TITLE_MIN_LEN} and ${article.TITLE_MAX_LEN} characters long`;
 }
 
 export const validContent = (content) => {
-    return (content && content.length >= constants.article.CONTENT_MIN_LEN && content.length <= constants.article.CONTENT_MAX_LEN)
+    return (content && content.length >= article.CONTENT_MIN_LEN && content.length <= article.CONTENT_MAX_LEN)
         ? ''
-        : `Content should be between ${constants.article.CONTENT_MIN_LEN} and ${constants.article.CONTENT_MAX_LEN} characters long`;
+        : `Content should be between ${article.CONTENT_MIN_LEN} and ${article.CONTENT_MAX_LEN} characters long`;
 }
 
 export const validImage = (image) => {
@@ -17,5 +17,5 @@ export const validImage = (image) => {
 }
 
 export const validCategory = (category) => {
-    return category !== constants.article.DEFAULT_CATEGORY_SELECTED_ID ? '' : 'Please select category';
+    return category !== article.DEFAULT_CATEGORY_SELECTED_ID ? '' : 'Please select category';
 }

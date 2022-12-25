@@ -1,4 +1,4 @@
-import * as constants from '../constants/auth';
+import { auth } from '../constants/model';
 
 export const validEmail = (email) => {
     const emailRegex = new RegExp("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
@@ -8,15 +8,15 @@ export const validEmail = (email) => {
 }
 
 export const validName = (name) => {
-    return (name && name.length >= constants.auth.NAME_MIN_LEN && name.length <= constants.auth.NAME_MAX_LEN)
+    return (name && name.length >= auth.NAME_MIN_LEN && name.length <= auth.NAME_MAX_LEN)
         ? ''
-        : `Name should be between ${constants.auth.NAME_MIN_LEN} and ${constants.auth.NAME_MAX_LEN} characters long`;
+        : `Name should be between ${auth.NAME_MIN_LEN} and ${auth.NAME_MAX_LEN} characters long`;
 }
 
 export const validPassword = (password) => {
-    return (password && password.length >= constants.auth.PASSWORD_MIN_LEN && password.length <= constants.auth.PASSWORD_MAX_LEN)
+    return (password && password.length >= auth.PASSWORD_MIN_LEN && password.length <= auth.PASSWORD_MAX_LEN)
         ? ''
-        : `Password should be between ${constants.auth.PASSWORD_MIN_LEN} and ${constants.auth.PASSWORD_MAX_LEN} characters long`;
+        : `Password should be between ${auth.PASSWORD_MIN_LEN} and ${auth.PASSWORD_MAX_LEN} characters long`;
 }
 
 export const validPasswordMatch = (password, repass) => {

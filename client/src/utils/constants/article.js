@@ -1,7 +1,0 @@
-export const article = {
-    TITLE_MIN_LEN: 5,
-    TITLE_MAX_LEN: 100,
-    CONTENT_MIN_LEN: 100,
-    CONTENT_MAX_LEN: 3000,
-    DEFAULT_CATEGORY_SELECTED_ID: '638325c6bdd58333840dcc7e',
-};
