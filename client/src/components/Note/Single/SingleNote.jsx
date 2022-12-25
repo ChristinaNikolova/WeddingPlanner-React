@@ -1,17 +1,18 @@
 import styles from './SingleNote.module.css';
 
 function SingleNote({ id, description, createdAt }) {
+    //todo add soring
+
     return (
         <div className={styles["notes-all-info-wrapper"]}>
             <div className={styles["notes-all-info-left"]}>
-                <p className={styles["notes-all-name"]}>
-                    {description}
+                <p className={styles["notes-all-info"]}>
+                    {createdAt}
                 </p>
             </div>
             <div className="notes-all-info-right">
-                <p className={styles["notes-all-info"]}>
-                    <span className={styles["notes-all-info-title"]}>Created:</span>
-                    {createdAt}
+                <p className={styles["notes-all-description"]}>
+                    {description}
                 </p>
             </div>
         </div>
