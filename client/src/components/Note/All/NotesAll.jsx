@@ -18,6 +18,7 @@ function NotesAll() {
     //todo test server errors -> create and update
     //todo test cancel button
     //todo test cancel + remove text in inputs
+    //todo http constants
 
     const { id: plannerId } = useParams();
     const [notes, setNotes] = useState([]);
@@ -90,6 +91,15 @@ function NotesAll() {
             .catch((err) => console.error(err));
     }
 
+    const onDeleteHandler = (id) => {
+        notesService
+            .deleteById(id)
+            .then(() => {
+                loadNotes();
+            })
+            .catch((err) => console.error(err));
+    }
+
     return (
         <section className={styles["notes-all"]}>
             <div className="section-title-wrapper">
@@ -103,6 +113,7 @@ function NotesAll() {
                             id={n.id}
                             description={n.description}
                             createdAt={n.createdAt}
+                            onDeleteHandler={onDeleteHandler}
                         />)
                     : <p className={[styles["notes-all-empty"], "empty"].join(' ')}>No notes yet</p>
                 }

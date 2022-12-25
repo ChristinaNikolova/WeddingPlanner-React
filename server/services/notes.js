@@ -26,7 +26,12 @@ async function create(plannerId, description) {
     return result;
 }
 
+async function deleteById(id) {
+    return Note.findByIdAndDelete(id);
+}
+
 module.exports = {
     all,
     create,
+    deleteById,
 }

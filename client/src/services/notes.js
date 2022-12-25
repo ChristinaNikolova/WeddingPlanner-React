@@ -12,3 +12,9 @@ export const create = (plannerId, description) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.notes}/${id}`, 'DELETE')
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
