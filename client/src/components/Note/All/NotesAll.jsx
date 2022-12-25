@@ -17,6 +17,7 @@ function NotesAll() {
     //todo calculate on details planner
     //todo test server errors -> create and update
     //todo test cancel button
+    //todo test cancel + remove text in inputs
 
     const { id: plannerId } = useParams();
     const [notes, setNotes] = useState([]);
@@ -29,10 +30,7 @@ function NotesAll() {
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(() => {
-        notesService
-            .all(plannerId)
-            .then((res) => setNotes(res))
-            .catch((err) => console.error(err));
+        loadNotes();
     }, []);
 
     useEffect(() => {
@@ -41,6 +39,10 @@ function NotesAll() {
 
     const onShowFormHandler = () => {
         setIsHidden(!isHidden);
+    }
+
+    const onCancelFormHandler = () => {
+        setIsHidden(true);
     }
 
     const changeHandler = (e) => {
@@ -69,11 +71,24 @@ function NotesAll() {
 
         notesService
             .create(plannerId, values.description)
-            .then((res) => console.log(res))
+            .then((data) => {
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
+
+                onCancelFormHandler();
+                loadNotes();
+            })
             .catch((err) => console.error(err));
     }
 
-    console.log(notes);
+    const loadNotes = () => {
+        notesService
+            .all(plannerId)
+            .then((res) => setNotes(res))
+            .catch((err) => console.error(err));
+    }
 
     return (
         <section className={styles["notes-all"]}>
@@ -114,7 +129,7 @@ function NotesAll() {
                             </div>
                             <div className={styles["note-btns-wrapper"]}>
                                 <button disabled={isDisabled} className="btn btn-center">{formName}</button>
-                                {/* <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button> */}
+                                <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
                             </div>
                         </form>
                     </div>
