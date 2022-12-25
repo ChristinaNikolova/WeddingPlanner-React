@@ -59,7 +59,7 @@ function SingleGuest({ id, firstName, lastName, gender, age, role, side, table, 
                     {isHovering &&
                         <span className={styles["guests-all-icons"]}>
                             {!isEditIconHidden && <i onClick={() => onShowFormHandler(id)} className="fa-solid fa-pen"></i>}
-                            {role !== 'bride' && role !== 'groom' &&
+                            {role !== 'bride' && role !== 'groom' && !isEditIconHidden &&
                                 <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                             }
                         </span>

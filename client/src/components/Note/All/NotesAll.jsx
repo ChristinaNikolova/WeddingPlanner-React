@@ -13,10 +13,6 @@ function NotesAll() {
     //todo calculate on details planner
     //todo btns wrapper extract
 
-    //todo test notes!!!!
-    //todo test server errors -> create and update
-    //todo test cancel button
-
     const { id: plannerId } = useParams();
     const [noteId, setNoteId] = useState('');
     const [notes, setNotes] = useState([]);
