@@ -46,7 +46,8 @@ async function getById(id, hasToCast) {
         .populate('guests', 'confirmed side')
         .populate('costs', 'price')
         .populate('tasks', 'subTasks')
-        .populate('notes');
+        .populate('notes')
+        .populate('events');
 
     return hasToCast ? plannerViewModel(planner) : planner;
 }

@@ -1,8 +1,10 @@
 export const parseTime = (time) => {
-    const [hour, minutes] = time.split(':');
-    const date = new Date("", "", "", hour, minutes);
+    return parseDate(time).toLocaleTimeString();
+}
 
-    return date.toLocaleTimeString();
+export const parseDate = (time) => {
+    const [hour, minutes] = time.split(':');
+    return new Date("", "", "", hour, minutes);
 }
 
 export const getDifference = (start, end) => {

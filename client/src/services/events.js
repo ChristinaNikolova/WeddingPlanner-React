@@ -7,3 +7,9 @@ export const all = (plannerId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const create = (plannerId, title, startTime, endTime, duration) => {
+    return requester(`${api.events}/${plannerId}`, httpMethods.POST, { title, startTime, endTime, duration })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

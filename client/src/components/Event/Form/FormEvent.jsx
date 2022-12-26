@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { getDifference } from '../../../utils/helpers/datetime';
+import { getDifference, parseDate } from '../../../utils/helpers/datetime';
 import * as validator from '../../../utils/validators/event';
 import * as helpers from '../../../utils/helpers/form';
 
@@ -10,7 +10,7 @@ import Input from '../../shared/Tags/Input/Input';
 
 import styles from './FormEvent.module.css';
 
-//todo useref to calculate duration
+//todo time in locale time
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
         title: title,
@@ -62,18 +62,15 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     const onSubmitHelperHandler = (e) => {
         e.preventDefault();
 
-        console.log(typeof values.startTime);
-        console.log(values.endTime);
-
         setTitleError(validator.validTitle(values.title));
-        setStartTimeError(validator.validTime(values.startTime));
-        setEndTimeError(validator.validTime(values.endTime));
+        setStartTimeError(validator.validTime(values.startTime, values.endTime));
+        setEndTimeError(validator.validTime(values.startTime, values.endTime));
 
-        // if (titleError || startTimeError || endTimeError) {
-        //     return;
-        // }
+        if (titleError || startTimeError || endTimeError) {
+            return;
+        }
 
-        // onSubmitHandler(values.title, values.startTime, values.endTime, values.duration);
+        onSubmitHandler(values.title, parseDate(values.startTime), parseDate(values.endTime), values.duration);
     }
 
     return (
@@ -113,23 +110,10 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
                     />
                     {endTimeError && <ClientError error={endTimeError} />}
                 </div>
-                {/* <div className="form-wrapper">
-                    <Input
-                        name="duration"
-                        type="text"
-                        label="Duration"
-                        //value={values.duration}
-                        onChangeHandler={null}
-                        onBlurHandler={null}
-                        innerRef={durationRef}
-                    />
-                </div> */}
-
-                <div>
-                    <label htmlFor="uncontrolled-input">Uncontrolled Input</label>
-                    <input type="text" name="uncontrolled" id="uncontrolled-input" ref={durationRef} />
+                <div className="form-wrapper">
+                    <label className="label" htmlFor="duration">Duration</label>
+                    <input ref={durationRef} className="input" id="duration" name="duration" type="text" readOnly />
                 </div>
-
                 <div className={styles["event-btns-wrapper"]}>
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>

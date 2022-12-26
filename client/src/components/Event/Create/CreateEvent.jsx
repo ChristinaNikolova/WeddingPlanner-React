@@ -12,19 +12,19 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
     useEffect(() => {
     }, [serverError]);
 
-    const onSubmitHandler = (description) => {
-        // eventsService
-        //     .create(plannerId, description)
-        //     .then((data) => {
-        //         if (data.message) {
-        //             setServerError(data.message);
-        //             return;
-        //         }
+    const onSubmitHandler = (title, startTime, endTime, duration) => {
+        eventsService
+            .create(plannerId, title, startTime, endTime, duration)
+            .then((data) => {
+                if (data.message) {
+                    setServerError(data.message);
+                    return;
+                }
 
-        //         onCancelFormHandler();
-        //         loadNotes();
-        //     })
-        //     .catch((err) => console.error(err));
+                onCancelFormHandler();
+                loadEvents();
+            })
+            .catch((err) => console.error(err));
     };
 
     return (
