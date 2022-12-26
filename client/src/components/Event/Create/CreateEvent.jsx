@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as eventsService from '../../../services/events';
+
 import FormEvent from '../Form/FormEvent';
 
 import styles from './CreateEvent.module.css';

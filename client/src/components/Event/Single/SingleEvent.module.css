@@ -1,0 +1,38 @@
+@import "../../../styles/constants.css";
+
+.events-all-info-wrapper {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  gap: 100px;
+  padding-bottom: 15px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid var(--clr-gold);
+}
+
+.events-all-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.events-all-info {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.events-all-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.events-all-description {
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: left;
+}

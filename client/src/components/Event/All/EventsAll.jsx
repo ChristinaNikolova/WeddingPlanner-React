@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as eventsService from '../../../services/events';
+
 import CreateEvent from '../Create/CreateEvent';
+import SingleEvent from '../Single/SingleEvent';
 
 import styles from './EventsAll.module.css';
 
@@ -38,7 +40,15 @@ function EventsAll() {
             </div>
             <div className={styles["events-all-main-content-wrapper"]}>
                 {events.length
-                    ? events.map((e) => <div>Event</div>)
+                    ? events.map((e) =>
+                        <SingleEvent
+                            key={e.id}
+                            id={e.id}
+                            title={e.title}
+                            startTime={e.startTime}
+                            endTime={e.endTime}
+                            duration={e.duration}
+                        />)
                     : <p className={[styles["events-all-empty"], "empty"].join(' ')}>No events yet</p>
                 }
             </div>

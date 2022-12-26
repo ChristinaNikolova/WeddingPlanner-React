@@ -11,7 +11,6 @@ function SingleNote({ id, description, createdAt, isEditIconHidden, onDeleteHand
                 <div className={styles["notes-all-icon-wrapper"]}>
                     {!isEditIconHidden && <i onClick={() => onShowFormHandler(id)} className="fa-solid fa-pen"></i>}
                     {!isEditIconHidden && <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>}
-
                 </div>
             </div>
             <div className="notes-all-info-right">

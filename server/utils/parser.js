@@ -19,7 +19,16 @@ function formatCreatedAt(createdAt) {
         + createdAt.getFullYear().toString().substr(-2);
 }
 
+function extractTimeFromDate(date) {
+    let time = date.toLocaleTimeString();
+    time = (time.split(' ')[0]);
+    time = time.slice(0, time.lastIndexOf(':'));
+
+    return time;
+}
+
 module.exports = {
     mapErrors,
     formatCreatedAt,
+    extractTimeFromDate,
 };

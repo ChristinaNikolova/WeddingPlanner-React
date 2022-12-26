@@ -1,9 +1,11 @@
+const { extractTimeFromDate } = require("../parser")
+
 function eventViewModel(event) {
     return {
         id: event._id,
         title: event.title,
-        startTime: event.startTime,
-        endTime: event.endTime,
+        startTime: extractTimeFromDate(event.startTime),
+        endTime: extractTimeFromDate(event.endTime),
         duration: event.duration,
     }
 }
