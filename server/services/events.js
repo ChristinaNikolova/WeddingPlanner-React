@@ -7,8 +7,8 @@ async function all(plannerId) {
         .findById(plannerId)
         .populate('events');
 
-    //todo sort((a, b) => b.createdAt - a.createdAt)
     return planner.events
+        .sort((a, b) => a.startTime - b.startTime)
         .map(eventViewModel);
 }
 

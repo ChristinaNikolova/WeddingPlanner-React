@@ -10,7 +10,6 @@ import Input from '../../shared/Tags/Input/Input';
 
 import styles from './FormEvent.module.css';
 
-//todo time in locale time
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
         title: title,
