@@ -12,6 +12,7 @@ const api = {
     planners: `${baseUrl}/planners`,
     guests: `${baseUrl}/guests`,
     notes: `${baseUrl}/notes`,
+    events: `${baseUrl}/events`,
 }
 
 module.exports = {

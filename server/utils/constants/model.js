@@ -26,8 +26,6 @@ const cost = {
 const event = {
     TITLE_MIN_LEN: 5,
     TITLE_MAX_LEN: 100,
-    DESC_MAX_LEN: 500,
-    ADDRESS_MAX_LEN: 100,
 };
 
 const guest = {

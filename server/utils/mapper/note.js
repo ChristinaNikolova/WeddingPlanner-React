@@ -1,4 +1,4 @@
-const { formatCreatedAt } = require("../parser")
+const { formatCreatedAt } = require("../parser");
 
 function noteViewModel(note) {
     return {

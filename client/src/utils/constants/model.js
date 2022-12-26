@@ -18,6 +18,11 @@ export const category = {
     NAME_MAX_LEN: 30,
 };
 
+export const event = {
+    TITLE_MIN_LEN: 5,
+    TITLE_MAX_LEN: 100,
+};
+
 export const guest = {
     NAME_MIN_LEN: 1,
     NAME_MAX_LEN: 50,

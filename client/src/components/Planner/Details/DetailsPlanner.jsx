@@ -134,7 +134,7 @@ function DetailsPlanner() {
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <h4 className={styles["details-planner-section-title"]}>Plan the big day</h4>
                     <div className={styles["details-planner-btns-wrapper"]}>
-                        <Link className="btn" to='/note'>Plan</Link>
+                        <Link className="btn" to={`/${id}/event`}>Plan</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
