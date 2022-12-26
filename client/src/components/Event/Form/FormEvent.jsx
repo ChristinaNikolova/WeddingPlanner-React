@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
+import { getDifference } from '../../../utils/helpers/datetime';
 import * as validator from '../../../utils/validators/event';
 import * as helpers from '../../../utils/helpers/form';
 
@@ -18,6 +19,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
         duration: duration,
     });
 
+    const durationRef = useRef();
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [startTimeError, setStartTimeError] = useState('');
@@ -25,6 +27,13 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
 
     useEffect(() => {
         checkDisabled();
+
+        if (values.startTime && values.endTime) {
+            const [hours, minutes] = getDifference(values.startTime, values.endTime);
+
+            durationRef.current.value = `${hours}:${minutes}`;
+            values.duration = `${hours}:${minutes}`;
+        }
     }, [values, titleError, startTimeError, endTimeError]);
 
     const changeHandler = (e) => {
@@ -39,11 +48,11 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     };
 
     const validateStartTime = () => {
-        setStartTimeError(validator.validStartTime(values.startTime));
+        setStartTimeError(validator.validTime(values.startTime, values.endTime));
     };
 
     const validateEndTime = () => {
-        setEndTimeError(validator.validEndTime(values.startTime, values.endTime));
+        setEndTimeError(validator.validTime(values.startTime, values.endTime));
     };
 
     const checkDisabled = () => {
@@ -57,8 +66,8 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
         console.log(values.endTime);
 
         setTitleError(validator.validTitle(values.title));
-        setStartTimeError(validator.validStartTime(values.startTime));
-        setEndTimeError(validator.validEndTime(values.endTime));
+        setStartTimeError(validator.validTime(values.startTime));
+        setEndTimeError(validator.validTime(values.endTime));
 
         // if (titleError || startTimeError || endTimeError) {
         //     return;
@@ -104,16 +113,23 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
                     />
                     {endTimeError && <ClientError error={endTimeError} />}
                 </div>
-                <div className="form-wrapper">
+                {/* <div className="form-wrapper">
                     <Input
                         name="duration"
                         type="text"
                         label="Duration"
-                        value={values.duration}
-                        onChangeHandler={changeHandler}
+                        //value={values.duration}
+                        onChangeHandler={null}
                         onBlurHandler={null}
+                        innerRef={durationRef}
                     />
+                </div> */}
+
+                <div>
+                    <label htmlFor="uncontrolled-input">Uncontrolled Input</label>
+                    <input type="text" name="uncontrolled" id="uncontrolled-input" ref={durationRef} />
                 </div>
+
                 <div className={styles["event-btns-wrapper"]}>
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>

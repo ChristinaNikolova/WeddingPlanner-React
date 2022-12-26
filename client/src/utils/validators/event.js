@@ -9,19 +9,11 @@ export const validTitle = (title) => {
         : `Title should be between ${event.TITLE_MIN_LEN} and ${event.TITLE_MAX_LEN} characters long`;
 }
 
-export const validStartTime = (time) => {
-    return time
-        ? ''
-        : 'Time is required';
-}
-
-export const validEndTime = (start, end) => {
+export const validTime = (start, end) => {
     const startTime = parseTime(start);
     const endTime = parseTime(end);
 
-    if (startTime >= endTime) {
-        console.log('error')
-    } else {
-        console.log('success');
-    }
+    return startTime < endTime
+        ? ''
+        : 'End time should be after the start time';
 }
