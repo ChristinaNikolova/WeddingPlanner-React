@@ -18,7 +18,6 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     //todo check all css for event
 
     //todo start time before end time (also on the server)
-    //todo why title dont update the create buton
 
     //todo scroll to Form!!!!! for all components!!!!
 
@@ -36,14 +35,14 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     const durationRef = useRef();
 
     useEffect(() => {
-        checkDisabled();
-
         if (values.startTime && values.endTime) {
             const [hours, minutes] = getDifference(values.startTime, values.endTime);
 
             durationRef.current.value = `${hours}:${minutes}`;
             values.duration = `${hours}:${minutes}`;
         }
+
+        checkDisabled();
     }, [values, titleError, startTimeError, endTimeError]);
 
     const changeHandler = (e) => {

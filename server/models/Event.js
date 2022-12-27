@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const { event } = require('../utils/constants/model');
 
-//todo heighlight
 const eventSchema = new Schema({
     title: {
         type: String,
