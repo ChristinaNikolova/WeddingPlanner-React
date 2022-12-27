@@ -12,14 +12,14 @@
   background-color: var(--clr-gold);
   top: 0;
   bottom: 0;
-  left: 47%;
+  left: 46%;
 }
 
 .events-all-info-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 800px;
   position: relative;
   padding: 10px 40px;
   margin: 0 auto 70px auto;
@@ -31,7 +31,7 @@
   z-index: 1;
   width: 25px;
   height: 25px;
-  left: 281px;
+  left: 312px;
   top: 42px;
   background-color: var(--clr-white);
   border: 4px solid var(--clr-gold);
@@ -53,14 +53,13 @@
 }
 
 .events-all-info-left {
-  text-align: right;
-  width: 200px;
+  text-align: left;
+  width: 400px;
 }
 
 .events-all-time {
   font-size: 34px;
   font-weight: 700;
-  margin-bottom: 6px;
 }
 
 .events-all-duration {
@@ -69,17 +68,18 @@
 }
 
 .events-all-info-right {
-  width: 500px;
+  width: 400px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
 }
 
 .events-all-title {
-  font-size: 28px;
-  font-weight: 300;
+  font-size: 24px;
   text-transform: uppercase;
+  word-break:normal;
+  text-align: left;
 }
 
 .events-all-star-icons-wrapper i {

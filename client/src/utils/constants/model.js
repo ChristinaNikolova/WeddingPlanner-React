@@ -20,7 +20,7 @@ export const category = {
 
 export const event = {
     TITLE_MIN_LEN: 5,
-    TITLE_MAX_LEN: 100,
+    TITLE_MAX_LEN: 25,
 };
 
 export const guest = {
