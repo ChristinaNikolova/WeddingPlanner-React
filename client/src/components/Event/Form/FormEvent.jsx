@@ -17,6 +17,9 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     //todo extract css into files
     //todo start time before end time (also on the server)
     //todo check all css for event
+    //todo scroll to Form!!!!! for all components!!!!
+    //todo duration in minutes!
+    //todo more width form right-wrapper!!!!
 
     const [values, setValues] = useState({
         title: title,

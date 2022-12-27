@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { all, create, heightlight, deleteById } = require('../services/events');
+const { all, create, heightlight, deleteById, update, getById } = require('../services/events');
 const { mapErrors } = require('../utils/parser');
 
 router.get('/:id', async (req, res) => {
@@ -39,6 +39,28 @@ router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const event = await deleteById(id);
+        res.json(event);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const event = await update(id, req.body.title, req.body.startTime, req.body.endTime, req.body.duration);
+        res.json(event);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.get('/:plannerId/:eventId', async (req, res) => {
+    try {
+        const id = req.params.eventId;
+        const event = await getById(id, true);
         res.json(event);
     } catch (error) {
         const message = mapErrors(error);

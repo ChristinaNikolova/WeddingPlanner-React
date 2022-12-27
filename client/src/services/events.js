@@ -25,3 +25,15 @@ export const deleteById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (plannerId, eventId) => {
+    return requester(`${api.events}/${plannerId}/${eventId}`, httpMethods.GET)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const update = (id, title, startTime, endTime, duration) => {
+    return requester(`${api.events}/${id}`, httpMethods.PUT, { title, startTime, endTime, duration })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

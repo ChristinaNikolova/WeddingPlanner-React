@@ -14,8 +14,8 @@ function NotesAll() {
     //todo btns wrapper extract
 
     const { id: plannerId } = useParams();
-    const [noteId, setNoteId] = useState('');
     const [notes, setNotes] = useState([]);
+    const [noteId, setNoteId] = useState('');
     const [isHidden, setIsHidden] = useState(true);
     const [isEditIconHidden, setIsEditIconHidden] = useState(false);
 
@@ -36,19 +36,19 @@ function NotesAll() {
         setIsEditIconHidden(false);
     }
 
-    const loadNotes = () => {
-        notesService
-            .all(plannerId)
-            .then((res) => setNotes(res))
-            .catch((err) => console.error(err));
-    }
-
     const onDeleteHandler = (id) => {
         notesService
             .deleteById(id)
             .then(() => {
                 loadNotes();
             })
+            .catch((err) => console.error(err));
+    }
+
+    const loadNotes = () => {
+        notesService
+            .all(plannerId)
+            .then((res) => setNotes(res))
             .catch((err) => console.error(err));
     }
 

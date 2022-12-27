@@ -40,9 +40,29 @@ async function deleteById(id) {
     return Event.findByIdAndDelete(id);
 }
 
+async function getById(id, hasToCast) {
+    const event = await Event.findById(id);
+    return hasToCast ? eventViewModel(event) : event;
+}
+
+async function update(id, title, startTime, endTime, duration) {
+    const event = await getById(id, false);
+
+    event.title = title;
+    event.startTime = startTime;
+    event.endTime = endTime;
+    event.duration = duration;
+
+    await event.save();
+
+    return event;
+}
+
 module.exports = {
     all,
     create,
     heightlight,
     deleteById,
+    getById,
+    update,
 }

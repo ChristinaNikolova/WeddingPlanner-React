@@ -5,24 +5,31 @@ import * as eventsService from '../../../services/events';
 
 import CreateEvent from '../Create/CreateEvent';
 import SingleEvent from '../Single/SingleEvent';
+import UpdateEvent from '../Update/UpdateEvent';
 
 import styles from './EventsAll.module.css';
 
 function EventsAll() {
     const { id: plannerId } = useParams();
     const [events, setEvents] = useState([]);
+    const [eventId, setEventId] = useState('');
     const [isHidden, setIsHidden] = useState(true);
+    const [isEditIconHidden, setIsEditIconHidden] = useState(false);
 
     useEffect(() => {
         loadEvents();
     }, []);
 
-    const onCancelFormHandler = () => {
-        setIsHidden(true);
-    }
-
     const onShowFormHandler = (eventId) => {
         setIsHidden(!isHidden);
+        eventId ? setEventId(eventId) : setEventId('');
+        setIsEditIconHidden(!isEditIconHidden);
+    }
+
+    const onCancelFormHandler = () => {
+        setIsHidden(true);
+        setEventId('');
+        setIsEditIconHidden(false);
     }
 
     const onHeightlightHandler = (eventId) => {
@@ -66,34 +73,29 @@ function EventsAll() {
                             endTime={e.endTime}
                             duration={e.duration}
                             isHighlighted={e.isHighlighted}
+                            isEditIconHidden={isEditIconHidden}
                             onHeightlightHandler={onHeightlightHandler}
                             onDeleteHandler={onDeleteHandler}
+                            onShowFormHandler={onShowFormHandler}
                         />)
                     : <p className={[styles["events-all-empty"], "empty"].join(' ')}>No events yet</p>
                 }
             </div>
-            <CreateEvent
-                plannerId={plannerId}
-                isHidden={isHidden}
-                onCancelFormHandler={onCancelFormHandler}
-                onShowFormHandler={onShowFormHandler}
-                loadEvents={loadEvents}
-            />
-            {/* {eventId
-                ? <UpdateNote
-                    noteId={noteId}
+            {eventId
+                ? <UpdateEvent
+                    eventId={eventId}
                     plannerId={plannerId}
                     onCancelFormHandler={onCancelFormHandler}
-                    loadGuests={loadNotes}
+                    loadEvents={loadEvents}
                 />
-                : <CreateNote
+                : <CreateEvent
                     plannerId={plannerId}
                     isHidden={isHidden}
                     onCancelFormHandler={onCancelFormHandler}
                     onShowFormHandler={onShowFormHandler}
-                    loadNotes={loadNotes}
+                    loadEvents={loadEvents}
                 />
-            } */}
+            }
         </section>
     );
 }
