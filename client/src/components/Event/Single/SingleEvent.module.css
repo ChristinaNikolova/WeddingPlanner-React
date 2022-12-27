@@ -1,38 +1,70 @@
 @import "../../../styles/constants.css";
 
+.events-all-main-wrapper {
+  position: relative;
+}
+
+.events-all-main-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 190px;
+  background-color: var(--clr-gold);
+  top: 0;
+  bottom: 0;
+  left: 47%;
+}
+
 .events-all-info-wrapper {
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
-  gap: 100px;
-  padding-bottom: 15px;
-  margin-left: 150px;
-  margin-right: 150px;
-  margin-bottom: 35px;
-  border-bottom: 1px solid var(--clr-gold);
-}
-
-.events-all-info-left {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 16px;
-}
-
-.events-all-info {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.events-all-icon-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  width: 700px;
+  position: relative;
+  padding: 10px 40px;
+  margin: 0 auto 70px auto;
 }
 
-.events-all-description {
-  font-size: 22px;
-  line-height: 1.5;
-  text-align: left;
+.events-all-info-wrapper::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  left: 281px;
+  top: 42px;
+  background-color: var(--clr-white);
+  border: 4px solid var(--clr-gold);
+  border-radius: 50%;
+}
+
+.events-all-info-wrapper:hover {
+  cursor: pointer;
+  background-color: var(--clr-creme);
+}
+
+.events-all-info-left {
+  text-align: right;
+  width: 200px;
+}
+
+.events-all-time {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.events-all-duration {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.events-all-info-right {
+  width: 500px;
+}
+
+.events-all-title {
+  font-size: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
 }

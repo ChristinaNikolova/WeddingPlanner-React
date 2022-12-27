@@ -11,6 +11,13 @@ import Input from '../../shared/Tags/Input/Input';
 import styles from './FormEvent.module.css';
 
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
+    //todo test events again
+    //todo test server error - create and update
+    //test with icons
+    //todo heightl.
+    //todo add before and after for the timeline
+    //extract css into files
+
     const [values, setValues] = useState({
         title: title,
         startTime: startTime,
