@@ -39,8 +39,14 @@
 }
 
 .events-all-info-wrapper:hover {
-  cursor: pointer;
   background-color: var(--clr-creme);
+}
+
+.events-all-info-wrapper i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--clr-gold);
 }
 
 .events-all-info-left {

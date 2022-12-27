@@ -29,7 +29,15 @@ async function create(plannerId, title, startTime, endTime, duration) {
     return result;
 }
 
+async function heightlight(id) {
+    const event = await Event.findById(id);
+    event.isHighlighted = !event.isHighlighted;
+
+    return event.save();
+}
+
 module.exports = {
     all,
     create,
+    heightlight
 }

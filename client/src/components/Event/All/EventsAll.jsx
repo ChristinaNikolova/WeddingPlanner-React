@@ -9,6 +9,8 @@ import SingleEvent from '../Single/SingleEvent';
 import styles from './EventsAll.module.css';
 
 function EventsAll() {
+    //todo check all css for event
+
     const { id: plannerId } = useParams();
     const [events, setEvents] = useState([]);
     const [isHidden, setIsHidden] = useState(true);
@@ -25,12 +27,23 @@ function EventsAll() {
         setIsHidden(!isHidden);
     }
 
+    const onHeightlightHandler = (eventId) => {
+        eventsService
+            .heightlight(plannerId, eventId)
+            .then(() => {
+                loadEvents();
+            })
+            .catch((err) => console.error(err));
+    }
+
     const loadEvents = () => {
         eventsService
             .all(plannerId)
             .then((res) => setEvents(res))
             .catch((err) => console.error(err));
     }
+
+
     console.log(events);
 
     return (
@@ -48,6 +61,8 @@ function EventsAll() {
                             startTime={e.startTime}
                             endTime={e.endTime}
                             duration={e.duration}
+                            isHighlighted={e.isHighlighted}
+                            onHeightlightHandler={onHeightlightHandler}
                         />)
                     : <p className={[styles["events-all-empty"], "empty"].join(' ')}>No events yet</p>
                 }

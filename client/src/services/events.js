@@ -13,3 +13,9 @@ export const create = (plannerId, title, startTime, endTime, duration) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const heightlight = (plannerId, eventId) => {
+    return requester(`${api.events}/${plannerId}/${eventId}`, httpMethods.POST)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

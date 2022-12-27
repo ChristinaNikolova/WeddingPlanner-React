@@ -7,6 +7,7 @@ function eventViewModel(event) {
         startTime: extractTimeFromDate(event.startTime),
         endTime: extractTimeFromDate(event.endTime),
         duration: event.duration,
+        isHighlighted: event.isHighlighted,
     }
 }
 

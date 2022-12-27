@@ -1,7 +1,6 @@
 import styles from './SingleEvent.module.css'
 
-function SingleEvent({ id, title, startTime, endTime, duration }) {
-    //todo check all css for event
+function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, onHeightlightHandler }) {
     return (
         <div className={styles["events-all-main-wrapper"]}>
             <div className={styles["events-all-info-wrapper"]}>
@@ -18,8 +17,12 @@ function SingleEvent({ id, title, startTime, endTime, duration }) {
                         {title}
                     </p>
                 </div>
+                {isHighlighted
+                    ? <i onClick={() => onHeightlightHandler(id)} className="fa-solid fa-star"></i>
+                    : <i onClick={() => onHeightlightHandler(id)} className="fa-regular fa-star"></i>
+                }
             </div>
-        </div>
+        </div >
     );
 }
 
