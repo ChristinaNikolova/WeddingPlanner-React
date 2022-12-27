@@ -28,6 +28,7 @@ function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, i
                     </p>
                     <p className={styles["events-all-duration"]}>
                         {duration}
+                        <span className={styles["events-all-duration-unit"]}>minutes</span>
                     </p>
                 </div>
                 <div className={styles["events-all-info-right"]}>

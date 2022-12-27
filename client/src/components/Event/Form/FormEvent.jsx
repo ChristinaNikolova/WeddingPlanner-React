@@ -12,14 +12,15 @@ import styles from './FormEvent.module.css';
 
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     //todo test events again
-    //todo test server error - create and update
-    //todo test with icons
-    //todo extract css into files
-    //todo start time before end time (also on the server)
-    //todo check all css for event
-    //todo scroll to Form!!!!! for all components!!!!
-    //todo duration in minutes!
     //todo check all files again
+
+    //todo extract css into files
+    //todo check all css for event
+
+    //todo start time before end time (also on the server)
+    //todo why title dont update the create buton
+
+    //todo scroll to Form!!!!! for all components!!!!
 
     const [values, setValues] = useState({
         title: title,
@@ -27,7 +28,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
         endTime: endTime,
         duration: duration,
     });
-    
+
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [startTimeError, setStartTimeError] = useState('');

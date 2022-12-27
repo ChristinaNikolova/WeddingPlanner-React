@@ -64,7 +64,12 @@
 
 .events-all-duration {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.events-all-duration-unit {
+  font-size: 18px;
+  margin-left: 5px;
 }
 
 .events-all-info-right {
@@ -78,7 +83,7 @@
 .events-all-title {
   font-size: 24px;
   text-transform: uppercase;
-  word-break:normal;
+  word-break: normal;
   text-align: left;
 }
 

@@ -1,4 +1,4 @@
-const { extractTimeFromDate } = require("../parser")
+const { extractTimeFromDate, getTotalMinutes } = require("../parser")
 
 function eventViewModel(event) {
     return {
@@ -6,10 +6,11 @@ function eventViewModel(event) {
         title: event.title,
         startTime: extractTimeFromDate(event.startTime),
         endTime: extractTimeFromDate(event.endTime),
-        duration: event.duration,
+        duration: getTotalMinutes(event.duration),
         isHighlighted: event.isHighlighted,
     }
 }
+
 
 module.exports = {
     eventViewModel,

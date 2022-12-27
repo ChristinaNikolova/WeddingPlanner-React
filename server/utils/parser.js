@@ -27,8 +27,16 @@ function extractTimeFromDate(date) {
     return time;
 }
 
+function getTotalMinutes(duration) {
+    const [hours, minutes] = duration.split(':');
+    const result = Number(hours) * 60 + Number(minutes);
+
+    return result
+}
+
 module.exports = {
     mapErrors,
     formatCreatedAt,
     extractTimeFromDate,
+    getTotalMinutes,
 };
