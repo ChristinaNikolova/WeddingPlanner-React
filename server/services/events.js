@@ -36,8 +36,13 @@ async function heightlight(id) {
     return event.save();
 }
 
+async function deleteById(id) {
+    return Event.findByIdAndDelete(id);
+}
+
 module.exports = {
     all,
     create,
-    heightlight
+    heightlight,
+    deleteById,
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from './SingleEvent.module.css'
 
-function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, onHeightlightHandler }) {
+function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, onHeightlightHandler, onDeleteHandler }) {
     const [isHovering, setIsHovering] = useState(false);
 
     const getStyles = () => {
@@ -37,7 +37,7 @@ function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, o
                     {isHovering &&
                         <span className={styles["events-all-icons"]}>
                             {<i className="fa-solid fa-pen"></i>}
-                            {<i className="fa-solid fa-trash"></i>}
+                            {<i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>}
                         </span>
                     }
                 </div>

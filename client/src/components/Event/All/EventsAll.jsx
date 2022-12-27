@@ -34,6 +34,15 @@ function EventsAll() {
             .catch((err) => console.error(err));
     }
 
+    const onDeleteHandler = (eventId) => {
+        eventsService
+            .deleteById(eventId)
+            .then(() => {
+                loadEvents();
+            })
+            .catch((err) => console.error(err));
+    }
+
     const loadEvents = () => {
         eventsService
             .all(plannerId)
@@ -58,6 +67,7 @@ function EventsAll() {
                             duration={e.duration}
                             isHighlighted={e.isHighlighted}
                             onHeightlightHandler={onHeightlightHandler}
+                            onDeleteHandler={onDeleteHandler}
                         />)
                     : <p className={[styles["events-all-empty"], "empty"].join(' ')}>No events yet</p>
                 }

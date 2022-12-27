@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { all, create, heightlight } = require('../services/events');
+const { all, create, heightlight, deleteById } = require('../services/events');
 const { mapErrors } = require('../utils/parser');
 
 router.get('/:id', async (req, res) => {
@@ -28,6 +28,17 @@ router.post('/:plannerId/:eventId', async (req, res) => {
     try {
         const id = req.params.eventId;
         const event = await heightlight(id);
+        res.json(event);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const event = await deleteById(id);
         res.json(event);
     } catch (error) {
         const message = mapErrors(error);

@@ -19,3 +19,9 @@ export const heightlight = (plannerId, eventId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.events}/${id}`, httpMethods.DELETE)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
