@@ -43,9 +43,6 @@ function EventsAll() {
             .catch((err) => console.error(err));
     }
 
-
-    console.log(events);
-
     return (
         <section className={styles["events-all"]}>
             <div className="section-title-wrapper">

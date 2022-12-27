@@ -49,6 +49,10 @@
   color: var(--clr-gold);
 }
 
+.event-all-heightlight {
+  background-color: var(--clr-creme);
+}
+
 .events-all-info-left {
   text-align: right;
   width: 200px;

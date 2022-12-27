@@ -1,9 +1,14 @@
 import styles from './SingleEvent.module.css'
 
 function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, onHeightlightHandler }) {
+
+    const getStyles = () => {
+        return isHighlighted ? `${styles["events-all-info-wrapper"]} ${styles["event-all-heightlight"]}` : styles["events-all-info-wrapper"];
+    }
+
     return (
         <div className={styles["events-all-main-wrapper"]}>
-            <div className={styles["events-all-info-wrapper"]}>
+            <div className={getStyles()}>
                 <div className={styles["events-all-info-left"]}>
                     <p className={styles["events-all-time"]}>
                         {startTime} - {endTime}
