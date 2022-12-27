@@ -9,8 +9,6 @@ import SingleEvent from '../Single/SingleEvent';
 import styles from './EventsAll.module.css';
 
 function EventsAll() {
-    //todo check all css for event
-
     const { id: plannerId } = useParams();
     const [events, setEvents] = useState([]);
     const [isHidden, setIsHidden] = useState(true);

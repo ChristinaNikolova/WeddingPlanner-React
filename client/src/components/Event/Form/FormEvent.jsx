@@ -13,10 +13,10 @@ import styles from './FormEvent.module.css';
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     //todo test events again
     //todo test server error - create and update
-    //test with icons
-    //todo heightl.
-    //todo add before and after for the timeline
-    //extract css into files
+    //todo test with icons
+    //todo extract css into files
+    //todo start time before end time (also on the server)
+    //todo check all css for event
 
     const [values, setValues] = useState({
         title: title,
@@ -24,12 +24,12 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
         endTime: endTime,
         duration: duration,
     });
-
-    const durationRef = useRef();
+    
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [startTimeError, setStartTimeError] = useState('');
     const [endTimeError, setEndTimeError] = useState('');
+    const durationRef = useRef();
 
     useEffect(() => {
         checkDisabled();

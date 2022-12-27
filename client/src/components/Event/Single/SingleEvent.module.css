@@ -39,14 +39,13 @@
 }
 
 .events-all-info-wrapper:hover {
+  cursor: pointer;
   background-color: var(--clr-creme);
 }
 
-.events-all-info-wrapper i {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--clr-gold);
+.events-all-info-wrapper .events-all-icons i {
+  position: unset;
+  margin-right: 8px;
 }
 
 .event-all-heightlight {
@@ -71,10 +70,21 @@
 
 .events-all-info-right {
   width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .events-all-title {
   font-size: 28px;
   font-weight: 300;
   text-transform: uppercase;
+}
+
+.events-all-star-icons-wrapper i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--clr-gold);
 }
