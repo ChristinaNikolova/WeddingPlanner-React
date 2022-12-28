@@ -34,7 +34,7 @@ function ArticleDetails() {
                 setIsLiked(setIsLikedHelper(res.likes));
 
                 if (hasToScroll) {
-                    window.scrollTo(0, 0);
+                    window.scrollTo({ behavior: 'smooth', top: 0 });
                     setHasToScroll(true);
                 }
             })

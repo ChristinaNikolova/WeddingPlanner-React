@@ -45,7 +45,7 @@ function ArticlesAll({ pathToImage }) {
                 setIsSearched(false);
 
                 if (hasToScroll) {
-                    window.scrollTo(0, 0);
+                    window.scrollTo({ behavior: 'smooth', top: 0 });
                     setHasToScroll(false);
                 }
 

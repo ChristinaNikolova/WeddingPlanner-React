@@ -24,6 +24,7 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
 
                 onCancelFormHandler();
                 loadEvents();
+                window.scrollTo({ behavior: 'smooth', top: 0 });
             })
             .catch((err) => console.error(err));
     };

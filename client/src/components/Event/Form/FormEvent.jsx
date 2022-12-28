@@ -32,7 +32,13 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     const [titleError, setTitleError] = useState('');
     const [startTimeError, setStartTimeError] = useState('');
     const [endTimeError, setEndTimeError] = useState('');
+
     const durationRef = useRef();
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, []);
 
     useEffect(() => {
         if (values.startTime && values.endTime) {
@@ -83,7 +89,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     }
 
     return (
-        <div className={styles["event-content-form-wrapper"]} >
+        <div ref={formRef} className={styles["event-content-form-wrapper"]} >
             <form className={[styles["event-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
