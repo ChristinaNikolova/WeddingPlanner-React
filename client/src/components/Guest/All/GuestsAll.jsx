@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as guestsService from '../../../services/guests';
+import { scrollToTop } from '../../../utils/helpers/form';
 
 import CreateGuest from '../Create/CreateGuest';
 import UpdateGuest from '../Update/UpdateGuest';
@@ -23,7 +24,10 @@ function GuestsAll() {
     const loadGuests = () => {
         guestsService
             .all(plannerId)
-            .then((res) => setGuests(res))
+            .then((res) => {
+                setGuests(res);
+                scrollToTop();
+            })
             .catch((err) => console.error(err));
     }
 

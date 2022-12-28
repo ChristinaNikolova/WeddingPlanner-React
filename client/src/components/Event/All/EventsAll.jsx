@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as eventsService from '../../../services/events';
+import { scrollToTop } from '../../../utils/helpers/form';
 
 import CreateEvent from '../Create/CreateEvent';
 import SingleEvent from '../Single/SingleEvent';
@@ -53,7 +54,10 @@ function EventsAll() {
     const loadEvents = () => {
         eventsService
             .all(plannerId)
-            .then((res) => setEvents(res))
+            .then((res) => {
+                setEvents(res);
+                scrollToTop();
+            })
             .catch((err) => console.error(err));
     }
 

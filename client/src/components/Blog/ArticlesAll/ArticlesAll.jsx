@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { directions } from '../../../utils/constants/global';
+import { scrollToTop } from '../../../utils/helpers/form';
 
 import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import Pagination from '../../shared/Pagination/Pagination';
@@ -45,7 +46,7 @@ function ArticlesAll({ pathToImage }) {
                 setIsSearched(false);
 
                 if (hasToScroll) {
-                    window.scrollTo({ behavior: 'smooth', top: 0 });
+                    scrollToTop();
                     setHasToScroll(false);
                 }
 

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 
 import * as articlesService from '../../../services/articles';
 import { AuthContext } from '../../../contexts/authContext';
+import { scrollToTop } from '../../../utils/helpers/form';
 
 import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 
@@ -34,7 +35,7 @@ function ArticleDetails() {
                 setIsLiked(setIsLikedHelper(res.likes));
 
                 if (hasToScroll) {
-                    window.scrollTo({ behavior: 'smooth', top: 0 });
+                    scrollToTop();
                     setHasToScroll(true);
                 }
             })

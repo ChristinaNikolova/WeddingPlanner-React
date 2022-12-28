@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import * as validator from '../../../utils/validators/note';
 import * as helpers from '../../../utils/helpers/form';
@@ -15,6 +15,11 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
     });
     const [descriptionError, setDescriptionError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, []);
 
     useEffect(() => {
         checkDisabled();
@@ -48,7 +53,7 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
     }
 
     return (
-        <div className={styles["note-content-form-wrapper"]} >
+        <div ref={formRef} className={styles["note-content-form-wrapper"]} >
             <form className={[styles["note-form"], "form-error-message-width", "form-custom-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import * as global from '../../../utils/constants/global';
 import * as helpers from '../../../utils/helpers/form';
@@ -27,6 +27,11 @@ function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDi
     const [isDisabled, setIsDisabled] = useState(true);
     const [firstNameError, setFirstNameError] = useState('');
     const [lastNameError, setLastNameError] = useState('');
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, [])
 
     useEffect(() => {
         checkDisabled();
@@ -70,7 +75,7 @@ function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDi
     }
 
     return (
-        <div className={styles["guest-content-form-wrapper"]} >
+        <div ref={formRef} className={styles["guest-content-form-wrapper"]} >
             <form className={[styles["guest-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">

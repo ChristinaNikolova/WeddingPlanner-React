@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as notesService from '../../../services/notes';
+import { scrollToTop } from '../../../utils/helpers/form';
 
 import SingleNote from '../Single/SingleNote';
 import CreateNote from '../Create/CreateNote';
+import UpdateNote from '../Update/UpdateNote';
 
 import styles from './NotesAll.module.css';
-import UpdateNote from '../Update/UpdateNote';
 
 function NotesAll() {
     //todo calculate on details planner
@@ -48,7 +49,10 @@ function NotesAll() {
     const loadNotes = () => {
         notesService
             .all(plannerId)
-            .then((res) => setNotes(res))
+            .then((res) => {
+                setNotes(res);
+                scrollToTop();
+            })
             .catch((err) => console.error(err));
     }
 
