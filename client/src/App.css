@@ -173,11 +173,11 @@ textarea {
   border: 1px solid var(--clr-gold);
 }
 
-.input:read-only {
+input:read-only {
   background-color: var(--clr-creme);
 }
 
-.input:read-only:focus {
+input:read-only:focus {
   border: unset;
 }
 

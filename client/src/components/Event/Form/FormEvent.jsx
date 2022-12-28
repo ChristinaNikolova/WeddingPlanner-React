@@ -17,8 +17,6 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     //todo extract css into files
     //todo check all css for event
 
-    //todo check why last input in forms is disabled style
-
     const [values, setValues] = useState({
         title: title,
         startTime: startTime,
