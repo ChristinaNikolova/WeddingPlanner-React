@@ -7,11 +7,12 @@ import * as constants from '../../../../utils/constants/images';
 import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
-import Bottom from '../../../shared/ImageWrappers/Bottom/Bottom';
+import Bottom from '../../../shared/Wrappers/ImageBottom/Bottom';
+import Button from '../../../shared/Wrappers/Button/Button';
 
 import styles from './FormCategory.module.css'
 
-function FormCategory({ formName, name, image, serverError, onSubmitHandler, onCancelHandler }) {
+function FormCategory({ formName, name, image, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
         name: name,
         image: image,
@@ -87,10 +88,11 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                         />
                         {imageError && <ClientError error={imageError} />}
                     </div>
-                    <div className="form-btns-wrapper">
-                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
-                    </div>
+                    <Button
+                        formName={formName}
+                        isDisabled={isDisabled}
+                        onCancelFormHandler={onCancelFormHandler}
+                    />
                 </form>
                 <Bottom
                     first={constants.bottom.FIRST}

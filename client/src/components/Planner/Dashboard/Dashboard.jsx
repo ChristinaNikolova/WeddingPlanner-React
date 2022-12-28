@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as plannersService from '../../../services/planners';
 import * as constants from '../../../utils/constants/images';
 
-import Bottom from '../../shared/ImageWrappers/Bottom/Bottom';
+import Bottom from '../../shared/Wrappers/ImageBottom/Bottom';
 
 import styles from './Dashboard.module.css';
 

@@ -31,12 +31,12 @@ function UpdateArticle() {
                     return;
                 }
 
-                onCancelHandler();
+                onCancelFormHandler();
             })
             .catch((err) => console.error(err));
     };
 
-    const onCancelHandler = () => {
+    const onCancelFormHandler = () => {
         navigate(`/blog/${id}`);
     }
 
@@ -54,7 +54,7 @@ function UpdateArticle() {
             category={article.category}
             serverError={serverError}
             onSubmitHandler={submitHandler}
-            onCancelHandler={onCancelHandler}
+            onCancelFormHandler={onCancelFormHandler}
         />
     );
 }

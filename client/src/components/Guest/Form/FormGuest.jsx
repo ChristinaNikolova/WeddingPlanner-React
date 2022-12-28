@@ -8,6 +8,7 @@ import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import Select from '../../shared/Tags/Select/Select';
+import Button from '../../shared/Wrappers/Button/Button';
 
 import styles from './FormGuest.module.css';
 
@@ -302,10 +303,11 @@ function FormGuest({
                         </div>
                     </div>
                 </div>
-                <div className="form-btns-wrapper">
-                    <button disabled={isDisabled} className="btn btn-center">{formName}</button>
-                    <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
-                </div>
+                <Button
+                    formName={formName}
+                    isDisabled={isDisabled}
+                    onCancelFormHandler={onCancelFormHandler}
+                />
             </form>
         </div>
     );

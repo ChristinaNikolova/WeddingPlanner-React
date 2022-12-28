@@ -26,7 +26,7 @@ function CreateCategory() {
             .catch((err) => console.error(err));
     };
 
-    const onCancelHandler = () => {
+    const onCancelFormHandler = () => {
         navigate('/administration/categories');
     }
 
@@ -37,7 +37,7 @@ function CreateCategory() {
             image={''}
             serverError={serverError}
             onSubmitHandler={submitHandler}
-            onCancelHandler={onCancelHandler}
+            onCancelFormHandler={onCancelFormHandler}
         />
     );
 }

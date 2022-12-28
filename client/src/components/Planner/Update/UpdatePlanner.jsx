@@ -32,12 +32,12 @@ function UpdatePlanner() {
                     return;
                 }
 
-                onCancelHandler();
+                onCancelFormHandler();
             })
             .catch((err) => console.error(err));
     };
 
-    const onCancelHandler = () => {
+    const onCancelFormHandler = () => {
         navigate(`/plan/${id}`);
     }
 
@@ -56,7 +56,7 @@ function UpdatePlanner() {
             groom={planner.groom}
             serverError={serverError}
             onSubmitHandler={submitHandler}
-            onCancelHandler={onCancelHandler}
+            onCancelFormHandler={onCancelFormHandler}
         />
     );
 }

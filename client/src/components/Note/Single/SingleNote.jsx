@@ -1,7 +1,6 @@
 import styles from './SingleNote.module.css';
 
 function SingleNote({ id, description, createdAt, isEditIconHidden, onDeleteHandler, onShowFormHandler }) {
-    //todo extract pena nd trash in component??
     return (
         <div className={styles["notes-all-info-wrapper"]}>
             <div className={styles["notes-all-info-left"]}>

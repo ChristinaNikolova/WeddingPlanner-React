@@ -30,12 +30,12 @@ function UpdateCategory() {
                     return;
                 }
 
-                onCancelHandler();
+                onCancelFormHandler();
             })
             .catch((err) => console.error(err));
     };
 
-    const onCancelHandler = () => {
+    const onCancelFormHandler = () => {
         navigate('/administration/categories');
     }
 
@@ -50,7 +50,7 @@ function UpdateCategory() {
             image={category.image}
             serverError={serverError}
             onSubmitHandler={submitHandler}
-            onCancelHandler={onCancelHandler}
+            onCancelFormHandler={onCancelFormHandler}
         />
     );
 }

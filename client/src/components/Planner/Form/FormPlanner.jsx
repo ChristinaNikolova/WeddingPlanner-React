@@ -7,6 +7,7 @@ import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
+import Button from '../../shared/Wrappers/Button/Button';
 
 function FormPlanner({
     formName,
@@ -18,7 +19,7 @@ function FormPlanner({
     groom,
     serverError,
     onSubmitHandler,
-    onCancelHandler
+    onCancelFormHandler
 }) {
     const [values, setValues] = useState({
         description: description,
@@ -167,10 +168,11 @@ function FormPlanner({
                         />
                         {groomError && <ClientError error={groomError} />}
                     </div>
-                    <div className="form-btns-wrapper">
-                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
-                    </div>
+                    <Button
+                        formName={formName}
+                        isDisabled={isDisabled}
+                        onCancelFormHandler={onCancelFormHandler}
+                    />
                 </form>
             </div>
         </section>

@@ -10,8 +10,19 @@ import TextArea from '../../../shared/Tags/TextArea/TextArea';
 import Select from '../../../shared/Tags/Select/Select';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import Button from '../../../shared/Wrappers/Button/Button';
 
-function FormArticle({ formName, title, content, image, jumboImage, category, serverError, onSubmitHandler, onCancelHandler }) {
+function FormArticle({
+    formName,
+    title,
+    content,
+    image,
+    jumboImage,
+    category,
+    serverError,
+    onSubmitHandler,
+    onCancelFormHandler
+}) {
     const [values, setValues] = useState({
         title: title,
         content: content,
@@ -149,10 +160,11 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                         />
                         {categoryError && <ClientError error={categoryError} />}
                     </div>
-                    <div className="form-btns-wrapper">
-                        <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
-                    </div>
+                    <Button
+                        formName={formName}
+                        isDisabled={isDisabled}
+                        onCancelFormHandler={onCancelFormHandler}
+                    />
                 </form>
             </div>
         </section>
