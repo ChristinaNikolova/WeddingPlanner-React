@@ -2,7 +2,18 @@ import { useState } from 'react';
 
 import styles from './SingleEvent.module.css'
 
-function SingleEvent({ id, title, startTime, endTime, duration, isHighlighted, isEditIconHidden, onHeightlightHandler, onDeleteHandler, onShowFormHandler }) {
+function SingleEvent({
+    id,
+    title,
+    startTime,
+    endTime,
+    duration,
+    isHighlighted,
+    isEditIconHidden,
+    onHeightlightHandler,
+    onDeleteHandler,
+    onShowFormHandler
+}) {
     const [isHovering, setIsHovering] = useState(false);
 
     const getStyles = () => {

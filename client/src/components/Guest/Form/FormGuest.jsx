@@ -11,7 +11,21 @@ import Select from '../../shared/Tags/Select/Select';
 
 import styles from './FormGuest.module.css';
 
-function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDish, confirmed, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
+function FormGuest({
+    firstName,
+    lastName,
+    gender,
+    age,
+    side,
+    role,
+    table,
+    mainDish,
+    confirmed,
+    formName,
+    serverError,
+    onSubmitHandler,
+    onCancelFormHandler
+}) {
     const [values, setValues] = useState({
         firstName: firstName,
         lastName: lastName,

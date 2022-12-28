@@ -8,7 +8,18 @@ import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
 
-function FormPlanner({ formName, description, date, budget, location, bride, groom, serverError, onSubmitHandler, onCancelHandler }) {
+function FormPlanner({
+    formName,
+    description,
+    date,
+    budget,
+    location,
+    bride,
+    groom,
+    serverError,
+    onSubmitHandler,
+    onCancelHandler
+}) {
     const [values, setValues] = useState({
         description: description,
         date: date,

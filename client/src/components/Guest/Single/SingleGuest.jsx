@@ -4,7 +4,21 @@ import * as images from '../../../utils/constants/images';
 
 import styles from './SingleGuest.module.css';
 
-function SingleGuest({ id, firstName, lastName, gender, age, role, side, table, mainDish, confirmed, isEditIconHidden, onDeleteHandler, onShowFormHandler }) {
+function SingleGuest({
+    id,
+    firstName,
+    lastName,
+    gender,
+    age,
+    role,
+    side,
+    table,
+    mainDish,
+    confirmed,
+    isEditIconHidden,
+    onDeleteHandler,
+    onShowFormHandler
+}) {
     const [isHovering, setIsHovering] = useState(false);
 
     const getPersonImage = (age, gender) => {
