@@ -1,20 +1,5 @@
-@import "../../../styles/constants.css";
-
-.events-all {
-  background-color: var(--clr-light-creme);
-  padding-bottom: 40px;
-  min-height: 80vh;
-}
-
 .events-all-main-content-wrapper {
   padding-top: 40px;
   text-align: center;
   margin-bottom: 60px;
-}
-
-.events-all-empty {
-  border-bottom: 1px solid var(--clr-gold);
-  margin-left: 700px;
-  margin-right: 700px;
-  padding-bottom: 20px;
 }

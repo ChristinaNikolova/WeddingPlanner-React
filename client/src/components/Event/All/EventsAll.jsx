@@ -62,7 +62,7 @@ function EventsAll() {
     }
 
     return (
-        <section className={styles["events-all"]}>
+        <section className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">The big day</h2>
             </div>
@@ -82,7 +82,7 @@ function EventsAll() {
                             onDeleteHandler={onDeleteHandler}
                             onShowFormHandler={onShowFormHandler}
                         />)
-                    : <p className={[styles["events-all-empty"], "empty"].join(' ')}>No events yet</p>
+                    : <p className="empty empty-planner">No events yet</p>
                 }
             </div>
             {eventId

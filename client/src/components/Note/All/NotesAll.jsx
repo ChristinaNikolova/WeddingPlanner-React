@@ -57,7 +57,7 @@ function NotesAll() {
     }
 
     return (
-        <section className={styles["notes-all"]}>
+        <section className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Notes</h2>
             </div>
@@ -73,7 +73,7 @@ function NotesAll() {
                             onDeleteHandler={onDeleteHandler}
                             onShowFormHandler={onShowFormHandler}
                         />)
-                    : <p className={[styles["notes-all-empty"], "empty"].join(' ')}>No notes yet</p>
+                    : <p className="empty empty-planner">No notes yet</p>
                 }
             </div>
             {noteId

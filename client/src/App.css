@@ -210,6 +210,12 @@ li.logo a:hover {
   background-color: var(--clr-light-creme);
 }
 
+/* Section-Planner */
+.section-planner {
+  padding-bottom: 40px;
+  min-height: 80vh;
+}
+
 /* Font Awesome */
 i:hover {
   cursor: pointer;
@@ -239,4 +245,12 @@ i:hover {
   font-weight: 600;
   color: var(--clr-gold);
   margin-bottom: 200px;
+}
+
+/* Empty Planner List */
+.empty-planner {
+  border-bottom: 1px solid var(--clr-gold);
+  margin-left: 700px;
+  margin-right: 700px;
+  padding-bottom: 20px;
 }
