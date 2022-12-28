@@ -30,7 +30,7 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
 
     return (
         <>
-            <div className={styles["event-form-icon"]}>
+            <div className={[styles["event-form-icon"], "form-icon-wrapper"].join(' ')}>
                 <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
                 Add Event
             </div>

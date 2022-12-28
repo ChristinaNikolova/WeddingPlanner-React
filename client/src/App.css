@@ -227,6 +227,12 @@ i:hover {
 .fa-trash {
   color: var(--clr-red);
 }
+.form-icon-wrapper i {
+  color: var(--clr-gold);
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 12px;
+}
 
 /* Server error width */
 .form-error-message-width .error-message {

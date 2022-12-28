@@ -30,7 +30,7 @@ function CreateNote({ plannerId, isHidden, onCancelFormHandler, onShowFormHandle
 
     return (
         <>
-            <div className={styles["note-form-icon"]}>
+            <div className={[styles["note-form-icon"], "form-icon-wrapper"].join(' ')}>
                 <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
                 Add note
             </div>

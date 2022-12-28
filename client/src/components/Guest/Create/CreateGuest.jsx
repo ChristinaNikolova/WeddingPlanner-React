@@ -29,7 +29,7 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
 
     return (
         <>
-            <div className={styles["guest-form-icon"]}>
+            <div className={[styles["guest-form-icon"], "form-icon-wrapper"].join(' ')}>
                 <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
                 Add guest
             </div>
