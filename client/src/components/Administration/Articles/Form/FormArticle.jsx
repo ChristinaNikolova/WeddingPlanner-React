@@ -11,8 +11,6 @@ import Select from '../../../shared/Tags/Select/Select';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
 
-import styles from './FormArticle.module.css';
-
 function FormArticle({ formName, title, content, image, jumboImage, category, serverError, onSubmitHandler, onCancelHandler }) {
     const [values, setValues] = useState({
         title: title,
@@ -94,8 +92,8 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
             <div className="section-title-wrapper">
                 <h2 className="section-title">{formName} Article</h2>
             </div>
-            <div className={styles["create-article-content-wrapper"]} >
-                <form className={styles["create-article-form"]} onSubmit={onSubmitHelperHandler}>
+            <div className="form-wrapper-center">
+                <form className="form-width" onSubmit={onSubmitHelperHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="title"
@@ -151,7 +149,7 @@ function FormArticle({ formName, title, content, image, jumboImage, category, se
                         />
                         {categoryError && <ClientError error={categoryError} />}
                     </div>
-                    <div className={styles["create-article-btns-wrapper"]}>
+                    <div className="form-btns-wrapper">
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
                         <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>

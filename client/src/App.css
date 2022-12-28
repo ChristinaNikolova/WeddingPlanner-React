@@ -87,6 +87,7 @@ a:hover {
 }
 
 /* Image */
+
 img {
   object-fit: cover;
 }
@@ -97,6 +98,7 @@ img {
 }
 
 /* Form */
+
 .auth-form {
   width: 30%;
 }
@@ -111,7 +113,32 @@ img {
   margin-bottom: 60px;
 }
 
+.form-wrapper-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-width {
+  width: 80%;
+}
+
+.form-btns-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.form-btns-wrapper button {
+  margin-left: unset;
+  margin-right: unset;
+}
+
 /* Label */
+
 .label {
   font-weight: 500;
   font-size: 18px;
@@ -122,6 +149,7 @@ img {
 }
 
 /* Input & TextArea & Select */
+
 .input {
   border: unset;
   border-radius: unset;
@@ -210,13 +238,13 @@ li.logo a:hover {
   background-color: var(--clr-light-creme);
 }
 
-/* Section-Planner */
 .section-planner {
   padding-bottom: 40px;
   min-height: 80vh;
 }
 
 /* Font Awesome */
+
 i:hover {
   cursor: pointer;
 }
@@ -235,6 +263,7 @@ i:hover {
 }
 
 /* Server error width */
+
 .form-error-message-width .error-message {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -246,6 +275,7 @@ i:hover {
 }
 
 /* Empty List */
+
 .empty {
   font-size: 50px;
   font-weight: 600;
@@ -253,7 +283,6 @@ i:hover {
   margin-bottom: 200px;
 }
 
-/* Empty Planner List */
 .empty-planner {
   border-bottom: 1px solid var(--clr-gold);
   margin-left: 700px;

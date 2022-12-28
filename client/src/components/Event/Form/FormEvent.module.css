@@ -1,24 +1,3 @@
-.event-content-form-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
 .event-form {
   width: 26%;
-}
-
-.event-btns-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 60px;
-}
-
-.event-btns-wrapper button {
-  margin-left: unset;
-  margin-right: unset;
 }

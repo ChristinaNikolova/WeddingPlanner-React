@@ -8,8 +8,6 @@ import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
 
-import styles from './FormPlanner.module.css';
-
 function FormPlanner({ formName, description, date, budget, location, bride, groom, serverError, onSubmitHandler, onCancelHandler }) {
     const [values, setValues] = useState({
         description: description,
@@ -90,8 +88,8 @@ function FormPlanner({ formName, description, date, budget, location, bride, gro
             <div className="section-title-wrapper">
                 <h2 className="section-title">{formName} Planner</h2>
             </div>
-            <div className={styles["create-planner-content-wrapper"]} >
-                <form className={styles["create-planner-form"]} onSubmit={onSubmitHelperHandler}>
+            <div className="form-wrapper-center">
+                <form className="form-width" onSubmit={onSubmitHelperHandler}>
                     <div className="form-wrapper">
                         <TextArea
                             name="description"
@@ -158,7 +156,7 @@ function FormPlanner({ formName, description, date, budget, location, bride, gro
                         />
                         {groomError && <ClientError error={groomError} />}
                     </div>
-                    <div className={styles["create-planner-btns-wrapper"]}>
+                    <div className="form-btns-wrapper">
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
                         <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>

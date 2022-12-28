@@ -17,6 +17,8 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     //todo extract css into files
     //todo check all css for event
 
+    //todo check why last input in forms is disabled style
+
     const [values, setValues] = useState({
         title: title,
         startTime: startTime,
@@ -85,7 +87,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     }
 
     return (
-        <div ref={formRef} className={styles["event-content-form-wrapper"]} >
+        <div ref={formRef} className="form-wrapper-center">
             <form className={[styles["event-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
@@ -125,7 +127,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
                     <label className="label" htmlFor="duration">Duration</label>
                     <input ref={durationRef} className="input" id="duration" name="duration" type="text" readOnly />
                 </div>
-                <div className={styles["event-btns-wrapper"]}>
+                <div className="form-btns-wrapper">
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
                 </div>

@@ -7,8 +7,6 @@ import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
 
-import styles from './FormNote.module.css';
-
 function FormNote({ description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
         description: description,
@@ -53,8 +51,8 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
     }
 
     return (
-        <div ref={formRef} className={styles["note-content-form-wrapper"]} >
-            <form className={[styles["note-form"], "form-error-message-width", "form-custom-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
+        <div ref={formRef} className="form-wrapper-center">
+            <form className="form-width form-error-message-width" onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <TextArea
@@ -67,7 +65,7 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
                     />
                     {descriptionError && <ClientError error={descriptionError} />}
                 </div>
-                <div className={styles["note-btns-wrapper"]}>
+                <div className="form-btns-wrapper">
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
                 </div>

@@ -75,7 +75,7 @@ function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDi
     }
 
     return (
-        <div ref={formRef} className={styles["guest-content-form-wrapper"]} >
+        <div ref={formRef} className="form-wrapper-center">
             <form className={[styles["guest-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
@@ -288,7 +288,7 @@ function FormGuest({ firstName, lastName, gender, age, side, role, table, mainDi
                         </div>
                     </div>
                 </div>
-                <div className={styles["guest-btns-wrapper"]}>
+                <div className="form-btns-wrapper">
                     <button disabled={isDisabled} className="btn btn-center">{formName}</button>
                     <button onClick={onCancelFormHandler} className="btn btn-center">Cancel</button>
                 </div>

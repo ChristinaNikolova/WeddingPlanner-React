@@ -63,8 +63,8 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
             <div className="section-title-wrapper">
                 <h2 className="section-title">{formName} Category</h2>
             </div>
-            <div className={styles["create-category-content-wrapper"]}>
-                <form className={styles["create-category-form"]} onSubmit={onsubmitHelperHandler}>
+            <div className="form-wrapper-center">
+                <form className={[styles["create-category-form"], "form-width"].join(' ')} onSubmit={onsubmitHelperHandler}>
                     <div className="form-wrapper">
                         <Input
                             name="name"
@@ -87,9 +87,9 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                         />
                         {imageError && <ClientError error={imageError} />}
                     </div>
-                    <div className={styles["create-article-btns-wrapper"]}>
+                    <div className="form-btns-wrapper">
                         <button className="btn btn-center" disabled={isDisabled}>{formName}</button>
-                       <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
+                        <button onClick={onCancelHandler} className="btn btn-center">Cancel</button>
                     </div>
                 </form>
                 <Bottom
