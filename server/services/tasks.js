@@ -14,13 +14,11 @@ async function all(plannerId) {
         .map(taskViewModel);
 }
 
-async function create(plannerId, title, description) {
-    //todo add timespan dynamic
-
+async function create(plannerId, title, description, timespan) {
     const task = new Task({
         title,
         description,
-        timeSpan: 'one year'
+        timespan,
     });
 
     const result = await task.save();

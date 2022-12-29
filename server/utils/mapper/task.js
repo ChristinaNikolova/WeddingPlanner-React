@@ -5,7 +5,7 @@ function taskViewModel(task) {
         id: task._id,
         title: task.title,
         description: task.description,
-        timeSpan: task.timeSpan,
+        timespan: task.timespan,
         progress: task.progress,
         subTasks: task.subTasks,
     }

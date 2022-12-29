@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 router.post('/:id', async (req, res) => {
     try {
         const plannerId = req.params.id;
-        const task = await create(plannerId, req.body.title, req.body.description);
+        const task = await create(plannerId, req.body.title, req.body.description, req.body.timespan);
         res.json(task);
     } catch (error) {
         const message = mapErrors(error);

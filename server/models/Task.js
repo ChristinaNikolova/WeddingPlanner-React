@@ -14,7 +14,7 @@ const taskSchema = new Schema({
         maxlength: [task.DESC_MAX_LEN, `Description should be maximal ${task.DESC_MAX_LEN} characters long`],
         default: '',
     },
-    timeSpan: {
+    timespan: {
         type: String,
         required: [true, 'Time span is required'],
         enum: [
@@ -31,6 +31,10 @@ const taskSchema = new Schema({
         ],
     },
     progress: {
+        type: Number,
+        default: 0,
+    },
+    target: {
         type: Number,
         default: 0,
     },

@@ -8,8 +8,8 @@ export const all = (plannerId) => {
         .catch((err) => console.error(err));
 }
 
-export const create = (plannerId, title, description) => {
-    return requester(`${api.tasks}/${plannerId}`, httpMethods.POST, { title, description })
+export const create = (plannerId, title, description, timespan) => {
+    return requester(`${api.tasks}/${plannerId}`, httpMethods.POST, { title, description, timespan })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
