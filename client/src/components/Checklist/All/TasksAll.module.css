@@ -9,7 +9,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 100px;
 }
 
 .checklist-all-timespan {
@@ -26,4 +25,12 @@
   text-align: center;
   margin-top: 50px;
   margin-bottom: 20px;
+}
+
+.checklist-all-empty-tasks {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--clr-gold);
+  margin-bottom: 50px;
+  text-align: center;
 }

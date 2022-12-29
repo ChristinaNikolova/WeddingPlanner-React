@@ -9,7 +9,6 @@ import CreateTask from '../Create/CreateTask';
 import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
-    //todo remove @import constant from css
     //todo check css
 
     const { id: plannerId } = useParams();
@@ -72,28 +71,14 @@ function ChecklistAll() {
                                     loadTasks={loadTasks}
                                     onCancelFormHandler={onCancelFormHandler}
                                 />
+                                {tasks.filter((t) => t.timespan === time).length > 0
+                                    ? tasks.filter((t) => t.timespan === time).map((t) => <div key={t.id}>{t.title}</div>)
+                                    : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
+                                }
                             </div>
                             <p className={styles["checklist-all-end-content"]}>***</p>
                         </div>
                     )}
-                    {tasks.map((t) => <div>{t.title}</div>)}
-                    {/* {events.length
-                        ? events.map((e) =>
-                            <SingleEvent
-                                key={e.id}
-                                id={e.id}
-                                title={e.title}
-                                startTime={e.startTime}
-                                endTime={e.endTime}
-                                duration={e.duration}
-                                isHighlighted={e.isHighlighted}
-                                isEditIconHidden={isEditIconHidden}
-                                onHeightlightHandler={onHeightlightHandler}
-                                onDeleteHandler={onDeleteHandler}
-                                onShowFormHandler={onShowFormHandler}
-                            />)
-                        : <p className="empty empty-planner">No events yet</p>
-                    } */}
                 </div>
             </section>
         </>
