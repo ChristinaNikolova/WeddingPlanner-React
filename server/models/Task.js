@@ -38,7 +38,11 @@ const taskSchema = new Schema({
         ref: 'SubTask',
         default: [],
     },
-});
+},
+    {
+        timestamps: true,
+    },
+);
 
 const Task = model('Task', taskSchema);
 

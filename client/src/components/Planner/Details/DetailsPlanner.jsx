@@ -37,9 +37,6 @@ function DetailsPlanner() {
             .catch((err) => console.error(err));
     }
 
-    //todo test all calculations
-    //todo refactor all forms css
-
     return (
         <section className={styles["details-planner"]}>
             <div className="section-title-wrapper">
@@ -118,7 +115,7 @@ function DetailsPlanner() {
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <h4 className={styles["details-planner-section-title"]}>Checklist</h4>
                     <div className={styles["details-planner-btns-wrapper"]}>
-                        <Link className="btn" to='guest/create'>Checklist</Link>
+                        <Link className="btn" to={`/${id}/checklist`}>Checklist</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">

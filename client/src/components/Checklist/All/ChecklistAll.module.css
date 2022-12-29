@@ -1,0 +1,21 @@
+.checklist-all-main-content-wrapper {
+  padding-top: 40px;
+  text-align: left;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.checklist-all-timespan {
+  font-size: 32px;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.checklist-all-end-content {
+  color: var(--clr-gold);
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}

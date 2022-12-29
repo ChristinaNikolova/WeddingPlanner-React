@@ -214,7 +214,7 @@ function FormGuest({
                         value={values.role}
                         onChangeHandler={changeHandler}
                         onBlurHandler={null}
-                        categories={global.rolesAsArr}
+                        categories={global.roles}
                     />
                 </div>
                 <div className="form-wrapper">

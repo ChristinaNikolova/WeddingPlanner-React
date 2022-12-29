@@ -13,6 +13,7 @@ const api = {
     guests: `${baseUrl}/guests`,
     notes: `${baseUrl}/notes`,
     events: `${baseUrl}/events`,
+    tasks: `${baseUrl}/tasks`,
 }
 
 module.exports = {

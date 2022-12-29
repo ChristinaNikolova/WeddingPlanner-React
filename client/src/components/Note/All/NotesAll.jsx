@@ -12,7 +12,7 @@ import styles from './NotesAll.module.css';
 
 function NotesAll() {
     //todo calculate on details planner
-    //todo btns wrapper extract
+    //todo test all forms again!!!!
 
     const { id: plannerId } = useParams();
     const [notes, setNotes] = useState([]);
@@ -23,7 +23,6 @@ function NotesAll() {
     useEffect(() => {
         loadNotes();
     }, []);
-
 
     const onShowFormHandler = (noteId) => {
         setIsHidden(!isHidden);

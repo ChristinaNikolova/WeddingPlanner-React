@@ -10,7 +10,7 @@ export const httpMethods = {
     DELETE: 'DELETE',
 }
 
-export const rolesAsArr = [
+export const roles = [
     'bride',
     'groom',
     'best man',
@@ -22,4 +22,17 @@ export const rolesAsArr = [
     'brother',
     'family member',
     'friend',
+];
+
+export const timespans = [
+    'one year',
+    'nine months',
+    'six months',
+    'three months',
+    'one month',
+    'three weeks',
+    'two weeks',
+    'one week',
+    'one day',
+    'wedding day',
 ];
