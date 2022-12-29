@@ -1,5 +1,3 @@
-@import "../../../styles/constants.css";
-
 .pagination-warpper {
   display: flex;
   justify-content: space-between;

@@ -3,8 +3,6 @@ const Task = require("../models/Task");
 const { taskViewModel } = require("../utils/mapper/task");
 
 async function all(plannerId) {
-    //todo test sorting!!!
-    //todo add grouping into matrix
     const planner = await Planner
         .findById(plannerId)
         .populate('tasks');

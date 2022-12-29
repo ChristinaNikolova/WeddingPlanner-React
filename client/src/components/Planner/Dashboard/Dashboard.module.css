@@ -1,5 +1,3 @@
-@import "../../../styles/constants.css";
-
 .dashboard-content-wrapper {
   display: flex;
   justify-content: space-around;
