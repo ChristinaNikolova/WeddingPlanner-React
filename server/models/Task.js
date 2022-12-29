@@ -10,6 +10,7 @@ const taskSchema = new Schema({
     },
     description: {
         type: String,
+        minlength: [task.DESC_MIN_LEN, `Description should be at least ${task.DESC_MIN_LEN} characters long`],
         maxlength: [task.DESC_MAX_LEN, `Description should be maximal ${task.DESC_MAX_LEN} characters long`],
         default: '',
     },

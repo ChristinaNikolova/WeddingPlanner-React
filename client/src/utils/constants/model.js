@@ -42,3 +42,10 @@ export const planner = {
     NAME_REGEX: /^[A-za-z]{1,50}([ ][A-za-z]{1,50})$/g,
     DATE_REGEX: /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/g,
 };
+
+export const task = {
+    TITLE_MIN_LEN: 5,
+    TITLE_MAX_LEN: 100,
+    DESC_MIN_LEN: 10,
+    DESC_MAX_LEN: 500,
+};
