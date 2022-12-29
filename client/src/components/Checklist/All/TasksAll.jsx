@@ -11,7 +11,6 @@ import styles from './TasksAll.module.css';
 function ChecklistAll() {
     //todo remove @import constant from css
     //todo check css
-    //todo clear inputs??
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -23,15 +22,10 @@ function ChecklistAll() {
 
     const onShowFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.nextSibling;
+        targetFormElement.style.display = 'flex';
 
-        if (targetFormElement.style.display === 'flex') {
-            targetFormElement.style.display = 'none';
-            setTimespan('');
-        } else {
-            targetFormElement.style.display = 'flex';
-            const timeSpanValue = targetFormElement.previousSibling.children[0].innerText.toLowerCase();
-            setTimespan(timeSpanValue);
-        }
+        const timeSpanValue = targetFormElement.previousSibling.children[0].innerText.toLowerCase();
+        setTimespan(timeSpanValue);
     }
 
     const onCancelFormHandler = (e) => {

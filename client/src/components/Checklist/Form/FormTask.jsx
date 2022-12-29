@@ -10,6 +10,8 @@ import TextArea from '../../shared/Tags/TextArea/TextArea';
 import Button from '../../shared/Wrappers/Button/Button';
 
 function FormTask({ title, description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
+    //todo test server errors -> create and update
+    
     const [values, setValues] = useState({
         title: title,
         description: description,
@@ -64,7 +66,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     const setInputsToDefaultValues = () => {
         setValues({
             title: '',
-            description: ''
+            description: '',
         });
     }
 
