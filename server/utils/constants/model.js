@@ -46,8 +46,8 @@ const planner = {
 };
 
 const subTask = {
-    TITLE_MIN_LEN: 5,
-    TITLE_MAX_LEN: 100,
+    DESC_MIN_LEN: 5,
+    DESC_MAX_LEN: 200,
 };
 
 const task = {

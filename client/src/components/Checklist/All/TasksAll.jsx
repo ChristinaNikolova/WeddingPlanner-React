@@ -10,6 +10,9 @@ import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
     //todo check css
+    //todo check css with html
+    //todo class for empty and not empty sections
+    //todo add logic for checkbox
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -71,14 +74,38 @@ function ChecklistAll() {
                                     loadTasks={loadTasks}
                                     onCancelFormHandler={onCancelFormHandler}
                                 />
-                                {tasks.filter((t) => t.timespan === time).length > 0
-                                    ? tasks.filter((t) => t.timespan === time).map((t) => <div key={t.id}>{t.title}</div>)
-                                    : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
-                                }
+                                <div className={styles["checklist-all-line"]}></div>
+                                <div className={styles["checklist-all-tasks-content-wrapper"]}>
+                                    {tasks.filter((t) => t.timespan === time).length > 0
+                                        ? tasks.filter((t) => t.timespan === time).map((t) =>
+                                            <div key={t.id} className={styles["checklist-all-current-task-wrapper"]}>
+                                                <h4 className={styles["checklist-all-current-task-title"]}>{t.title}</h4>
+                                                <div className={styles["checklist-all-current-task-info-warpper"]}>
+                                                    <p className={styles["checklist-all-current-task-info-desc"]}>
+                                                        {t.description}
+                                                    </p>
+                                                    <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
+                                                        <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Subtasks</h6>
+                                                        <div className={styles["checklist-all-current-task-current-subtask"]}>
+                                                            <input type="checkbox" checked />
+                                                            <p className={styles["checklist-all-current-task-current-subtask-description"]}>Subtask Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita velit rem consequuntur aspernatur numquam animi architecto totam aut exercitationem voluptatem. Fugit impedit eos facilis eaque aliquam sunt minima, sequi vel.</p>
+                                                        </div>
+                                                        <div className={styles["checklist-all-current-task-current-subtask"]}>
+                                                            <input type="checkbox" checked />
+                                                            <p className={styles["checklist-all-current-task-current-subtask-description"]}>Subtask Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis exercitationem rerum dolorum inventore eius voluptatum assumenda quidem, dolorem alias aliquid fugit error suscipit eveniet provident repellat repudiandae sunt labore cum.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                        : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
+                                    }
+                                </div>
                             </div>
                             <p className={styles["checklist-all-end-content"]}>***</p>
                         </div>
-                    )}
+                    )
+                    }
                 </div>
             </section>
         </>

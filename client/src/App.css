@@ -181,6 +181,12 @@ input:read-only:focus {
   border: unset;
 }
 
+input:checked {
+  border: 1px solid var(--clr-gold);
+  accent-color: var(--clr-gold);
+  transform: scale(1.7);
+}
+
 .radio {
   display: flex;
   flex-direction: row;
