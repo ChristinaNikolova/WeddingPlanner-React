@@ -24,6 +24,16 @@ function ChecklistAll() {
         loadTasks();
     }, []);
 
+    const onMouseEnterHandler = (e) => {
+        e.target.children[0].style.display = 'inline-block';
+    }
+
+    const onMouseLeaveHandler = () => {
+        Array.from(document.getElementsByClassName('checklist-all-current-task-icons')).forEach((el) => {
+            el.style.display = 'none';
+        });
+    }
+
     const onShowFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.nextSibling;
         targetFormElement.style.display = 'flex';
@@ -99,7 +109,12 @@ function ChecklistAll() {
                                         ? tasks.filter((t) => t.timespan === time).map((t) =>
                                             <div key={t.id} className={styles["checklist-all-current-task-wrapper"]}>
                                                 <div className={styles["checklist-all-current-task-header-wrapper"]}>
-                                                    <h4 className={styles["checklist-all-current-task-header-title"]}>{t.title}</h4>
+                                                    <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
+                                                        <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
+                                                            <i className="fa-solid fa-pen"></i>
+                                                            <i className="fa-solid fa-trash"></i>
+                                                        </span>
+                                                    </h4>
                                                     <div className={styles["checklist-all-current-task-header-content-wrapper"]}>
                                                         <div className={styles["checklist-all-current-task-header-content-progress-wrapper"]}>
                                                             <span className={styles["checklist-all-current-task-progress"]}>{t.progress}</span>

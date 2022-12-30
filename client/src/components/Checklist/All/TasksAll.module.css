@@ -49,6 +49,16 @@
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: capitalize;
+  display: flex;
+  gap: 20px;
+}
+
+.checklist-all-current-task-header-title span i {
+  font-size: 20px;
+}
+
+.checklist-all-current-task-header-title span i:first-of-type {
+  margin-right: 8px;
 }
 
 .checklist-all-current-task-header-content-wrapper {
