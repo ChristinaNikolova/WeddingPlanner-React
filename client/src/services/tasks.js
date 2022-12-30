@@ -19,3 +19,17 @@ export const deleteById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (plannerId, taskId) => {
+    console.log('in');
+
+    return requester(`${api.tasks}/${plannerId}/${taskId}`, httpMethods.GET)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const update = (id, title, description) => {
+    return requester(`${api.tasks}/${id}`, httpMethods.PUT, { title, description })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

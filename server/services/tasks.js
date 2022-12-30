@@ -32,8 +32,26 @@ async function deleteById(id) {
     return Task.findByIdAndDelete(id);
 }
 
+async function getById(id, hasToCast) {
+    const task = await Task.findById(id);
+    return hasToCast ? taskViewModel(task) : task;
+}
+
+async function update(id, title, description) {
+    const task = await getById(id, false);
+
+    task.title = title;
+    task.description = description;
+
+    await task.save();
+
+    return task;
+}
+
 module.exports = {
     all,
     create,
     deleteById,
+    getById,
+    update,
 }

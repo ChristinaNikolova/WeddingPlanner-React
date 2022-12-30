@@ -5,6 +5,7 @@ import * as global from '../../../utils/constants/global';
 import * as tasksService from '../../../services/tasks';
 
 import CreateTask from '../Create/CreateTask';
+import UpdateTask from '../Update/UpdateTask';
 
 import styles from './TasksAll.module.css';
 
@@ -18,11 +19,13 @@ function ChecklistAll() {
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
+    const [taskId, setTaskId] = useState('');
     const [timespan, setTimespan] = useState('');
 
     useEffect(() => {
+        console.log('useeffectt  ' + taskId);
         loadTasks();
-    }, []);
+    }, [taskId]);
 
     const onMouseEnterHandler = (e) => {
         e.target.children[0].style.display = 'inline-block';
@@ -51,6 +54,7 @@ function ChecklistAll() {
             targetElement = e.target.parentElement.parentElement.parentElement;
         }
 
+        setTaskId('');
         targetElement.style.display = 'none';
     }
 
@@ -80,6 +84,16 @@ function ChecklistAll() {
             .catch((err) => console.error(err));
     }
 
+    const onEditHandler = (e, id) => {
+        console.log(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.previousSibling.previousSibling.children[0].style.display)
+
+        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.previousSibling.previousSibling.children[0].style.display = 'flex';
+
+        setTaskId(id);
+
+        //remove taskId at the end -> cancel or update-> test
+    }
+
     const loadTasks = () => {
         tasksService
             .all(plannerId)
@@ -101,17 +115,27 @@ function ChecklistAll() {
                                     <p className={styles["checklist-all-timespan"]}>
                                         {time}
                                     </p>
-                                    <div className="form-icon-wrapper">
-                                        <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
-                                        Add task
-                                    </div>
+                                    {!taskId &&
+                                        <div className="form-icon-wrapper">
+                                            <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
+                                            Add task
+                                        </div>
+                                    }
                                 </div>
-                                <CreateTask
-                                    plannerId={plannerId}
-                                    timespan={timespan}
-                                    loadTasks={loadTasks}
-                                    onCancelFormHandler={onCancelFormHandler}
-                                />
+                                {!taskId
+                                    ? <CreateTask
+                                        plannerId={plannerId}
+                                        timespan={timespan}
+                                        loadTasks={loadTasks}
+                                        onCancelFormHandler={onCancelFormHandler}
+                                    />
+                                    : <UpdateTask
+                                        plannerId={plannerId}
+                                        taskId={taskId}
+                                        loadTasks={loadTasks}
+                                        onCancelFormHandler={onCancelFormHandler}
+                                    />
+                                }
                                 <div className={styles["checklist-all-line"]}></div>
                                 <div className={styles["checklist-all-tasks-content-wrapper"]}>
                                     {tasks.filter((t) => t.timespan === time).length > 0
@@ -120,7 +144,7 @@ function ChecklistAll() {
                                                 <div className={styles["checklist-all-current-task-header-wrapper"]}>
                                                     <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
                                                         <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
-                                                            <i className="fa-solid fa-pen"></i>
+                                                            <i onClick={(e) => onEditHandler(e, t.id)} className="fa-solid fa-pen"></i>
                                                             <i onClick={() => onDeleteHandler(t.id)} className="fa-solid fa-trash"></i>
                                                         </span>
                                                     </h4>
