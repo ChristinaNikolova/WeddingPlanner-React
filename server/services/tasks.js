@@ -28,8 +28,12 @@ async function create(plannerId, title, description, timespan) {
     return result;
 }
 
+async function deleteById(id) {
+    return Task.findByIdAndDelete(id);
+}
 
 module.exports = {
     all,
     create,
+    deleteById,
 }

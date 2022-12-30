@@ -71,6 +71,15 @@ function ChecklistAll() {
         }
     }
 
+    const onDeleteHandler = (id) => {
+        tasksService
+            .deleteById(id)
+            .then(() => {
+                loadTasks();
+            })
+            .catch((err) => console.error(err));
+    }
+
     const loadTasks = () => {
         tasksService
             .all(plannerId)
@@ -112,7 +121,7 @@ function ChecklistAll() {
                                                     <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
                                                         <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
                                                             <i className="fa-solid fa-pen"></i>
-                                                            <i className="fa-solid fa-trash"></i>
+                                                            <i onClick={() => onDeleteHandler(t.id)} className="fa-solid fa-trash"></i>
                                                         </span>
                                                     </h4>
                                                     <div className={styles["checklist-all-current-task-header-content-wrapper"]}>
