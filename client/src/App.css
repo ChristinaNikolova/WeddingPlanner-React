@@ -238,6 +238,7 @@ li.logo a:hover {
 .section-title {
   font-size: 60px;
   margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
 .section-background {

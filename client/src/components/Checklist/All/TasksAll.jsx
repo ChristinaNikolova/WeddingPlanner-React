@@ -13,6 +13,8 @@ function ChecklistAll() {
     //todo check css with html
     //todo class for empty and not empty sections
     //todo add logic for checkbox
+    //todo update target/progress by adding new subtasks
+    //todo constants for classes
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -40,6 +42,23 @@ function ChecklistAll() {
         }
 
         targetElement.style.display = 'none';
+    }
+
+    const onShowContent = (e) => {
+        const targetIcon = e.target
+        const targetElement = targetIcon.parentElement.parentElement.parentElement.nextSibling;
+
+        targetElement.style.display === 'none'
+            ? targetElement.style.display = 'block'
+            : targetElement.style.display = 'none';
+
+        if (targetIcon.classList.contains("fa-chevron-down")) {
+            targetIcon.classList.remove("fa-chevron-down");
+            targetIcon.classList.add("fa-chevron-right");
+        } else {
+            targetIcon.classList.remove("fa-chevron-right");
+            targetIcon.classList.add("fa-chevron-down");
+        }
     }
 
     const loadTasks = () => {
@@ -79,8 +98,20 @@ function ChecklistAll() {
                                     {tasks.filter((t) => t.timespan === time).length > 0
                                         ? tasks.filter((t) => t.timespan === time).map((t) =>
                                             <div key={t.id} className={styles["checklist-all-current-task-wrapper"]}>
-                                                <h4 className={styles["checklist-all-current-task-title"]}>{t.title}</h4>
-                                                <div className={styles["checklist-all-current-task-info-warpper"]}>
+                                                <div className={styles["checklist-all-current-task-header-wrapper"]}>
+                                                    <h4 className={styles["checklist-all-current-task-header-title"]}>{t.title}</h4>
+                                                    <div className={styles["checklist-all-current-task-header-content-wrapper"]}>
+                                                        <div className={styles["checklist-all-current-task-header-content-progress-wrapper"]}>
+                                                            <span className={styles["checklist-all-current-task-progress"]}>{t.progress}</span>
+                                                            <span className={styles["checklist-all-current-task-delimiter"]}>/</span>
+                                                            <span className={styles["checklist-all-current-task-target"]}>{t.target}</span>
+                                                        </div>
+                                                        <div className={styles["checklist-all-current-task-header-content-icon-wrapper"]}>
+                                                            <i onClick={onShowContent} className="fa-solid fa-chevron-right"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={styles["checklist-all-current-task-info-warpper"]} style={{ display: 'none' }}>
                                                     <p className={styles["checklist-all-current-task-info-desc"]}>
                                                         {t.description}
                                                     </p>
