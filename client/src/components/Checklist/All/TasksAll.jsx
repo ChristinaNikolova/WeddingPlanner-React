@@ -12,7 +12,7 @@ import styles from './TasksAll.module.css';
 function ChecklistAll() {
     //todo check css
     //todo check css with html
-    //todo class for empty and not empty sections
+    //todo class for empty and not empty sections (css simular)
     //todo add logic for checkbox
     //todo update target/progress by adding new subtasks
     //todo constants for classes

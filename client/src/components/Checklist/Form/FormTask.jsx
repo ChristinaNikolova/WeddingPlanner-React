@@ -10,8 +10,6 @@ import TextArea from '../../shared/Tags/TextArea/TextArea';
 import Button from '../../shared/Wrappers/Button/Button';
 
 function FormTask({ title, description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
-    //todo test server errors -> create and update
-
     const [values, setValues] = useState({
         title: title,
         description: description,
@@ -20,11 +18,10 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
-
     const [currentStyle, setCurrentStyle] = useState('none')
 
     useEffect(() => {
-        if (title && description) {
+        if (formName.toLowerCase() === 'update') {
             setCurrentStyle('flex');
         }
     }, []);
@@ -72,10 +69,12 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     }
 
     const setInputsToDefaultValues = () => {
-        setValues({
-            title: '',
-            description: '',
-        });
+        if (formName.toLowerCase() !== 'update') {
+            setValues({
+                title: '',
+                description: '',
+            });
+        }
     }
 
     return (

@@ -4,7 +4,7 @@ import * as tasksService from '../../../services/tasks';
 
 import FormTask from '../Form/FormTask';
 
-function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler}) {
+function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
     const formName = 'Create';
     const [serverError, setServerError] = useState('');
 
