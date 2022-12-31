@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import * as guestsService from '../../../services/guests';
+import { formNames } from "../../../utils/constants/global";
 
 import FormGuest from "../Form/FormGuest";
 
 function UpdateGuest({ guestId, plannerId, onCancelFormHandler, loadGuests }) {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [guest, setGuest] = useState({});
 

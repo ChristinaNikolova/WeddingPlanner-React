@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import * as tasksService from '../../../services/tasks';
+import { formNames } from "../../../utils/constants/global";
 
 import FormTask from "../Form/FormTask";
 
 function UpdateTask({ plannerId, taskId, loadTasks, onCancelFormHandler }) {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [task, setTask] = useState({});
 

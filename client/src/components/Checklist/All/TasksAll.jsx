@@ -16,7 +16,7 @@ function ChecklistAll() {
     //todo add logic for checkbox
     //todo update target/progress by adding new subtasks
     //todo constants for classes
-    //todo constant for create and update
+    //todo add ref to scroll to the forms
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);

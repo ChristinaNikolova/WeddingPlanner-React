@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import * as tasksService from '../../../services/tasks';
+import { formNames } from '../../../utils/constants/global';
 
 import FormTask from '../Form/FormTask';
 
 function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 
     useEffect(() => {

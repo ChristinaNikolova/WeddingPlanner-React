@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import * as notesService from '../../../services/notes';
+import { formNames } from "../../../utils/constants/global";
 
 import FormNote from "../Form/FormNote";
 
 function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadGuests }) {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [note, setNote] = useState({});
 

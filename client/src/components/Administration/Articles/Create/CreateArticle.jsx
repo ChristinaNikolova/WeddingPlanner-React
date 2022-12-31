@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as articlesService from '../../../../services/articles';
+import { formNames } from '../../../../utils/constants/global';
 
 import FormArticle from '../Form/FormArticle';
 
 function CreateArticle() {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const navigate = useNavigate();
     const [serverError, setServerError] = useState('');
 

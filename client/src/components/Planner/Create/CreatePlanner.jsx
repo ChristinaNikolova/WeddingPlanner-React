@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
+import { formNames } from '../../../utils/constants/global';
 
 import FormPlanner from '../Form/FormPlanner';
 
 function CreatePlanner() {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const navigate = useNavigate();
     const [serverError, setServerError] = useState('');
 

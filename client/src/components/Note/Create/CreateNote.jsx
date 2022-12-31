@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import * as notesService from '../../../services/notes';
+import { formNames } from '../../../utils/constants/global';
 
 import FormNote from '../Form/FormNote';
 
 import styles from './CreateNote.module.css';
 
 function CreateNote({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadNotes }) {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 
     useEffect(() => {

@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as categoriesService from '../../../../services/categories';
+import { formNames } from '../../../../utils/constants/global';
 
 import FormCategory from '../Form/FormCategory';
 
 function CreateCategory() {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const navigate = useNavigate();
     const [serverError, setServerError] = useState('');
 

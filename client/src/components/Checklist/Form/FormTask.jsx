@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import * as validator from '../../../utils/validators/task';
 import * as helpers from '../../../utils/helpers/form';
+import { formNames } from '../../../utils/constants/global';
 
 import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
@@ -21,7 +22,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     const [currentStyle, setCurrentStyle] = useState('none')
 
     useEffect(() => {
-        if (formName.toLowerCase() === 'update') {
+        if (formName === formNames.UPDATE) {
             setCurrentStyle('flex');
         }
     }, []);
@@ -69,7 +70,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     }
 
     const setInputsToDefaultValues = () => {
-        if (formName.toLowerCase() !== 'update') {
+        if (formName !== formNames.UPDATE) {
             setValues({
                 title: '',
                 description: '',

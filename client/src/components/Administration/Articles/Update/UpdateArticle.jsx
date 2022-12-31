@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 import * as articlesService from '../../../../services/articles';
+import { formNames } from '../../../../utils/constants/global';
 
 import FormArticle from '../Form/FormArticle';
 
 function UpdateArticle() {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const navigate = useNavigate();
     const { id } = useParams();
 

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import * as eventsService from '../../../services/events';
+import { formNames } from "../../../utils/constants/global";
 
 import FormEvent from "../Form/FormEvent";
 
 function UpdateEvent({ eventId, plannerId, onCancelFormHandler, loadEvents }) {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [event, setEvent] = useState({});
 

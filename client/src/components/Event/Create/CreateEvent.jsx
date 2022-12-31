@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import * as eventsService from '../../../services/events';
+import { formNames } from '../../../utils/constants/global';
 
 import FormEvent from '../Form/FormEvent';
 
 import styles from './CreateEvent.module.css';
 
 function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadEvents }) {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 
     useEffect(() => {

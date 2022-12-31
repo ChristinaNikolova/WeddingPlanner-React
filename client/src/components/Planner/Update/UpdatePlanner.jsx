@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as plannersService from '../../../services/planners';
+import { formNames } from "../../../utils/constants/global";
 
 import FormPlanner from "../Form/FormPlanner";
 
 function UpdatePlanner() {
-    const formName = 'Update';
+    const formName = formNames.UPDATE;
     const navigate = useNavigate();
     const { id } = useParams();
 

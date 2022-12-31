@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import * as guestsService from '../../../services/guests';
+import { formNames } from '../../../utils/constants/global';
 
 import FormGuest from '../Form/FormGuest';
 
 import styles from './CreateGuest.module.css';
 
 function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadGuests }) {
-    const formName = 'Create';
+    const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 
     useEffect(() => {
