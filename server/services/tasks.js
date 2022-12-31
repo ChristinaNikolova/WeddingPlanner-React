@@ -5,7 +5,12 @@ const { taskViewModel } = require("../utils/mapper/task");
 async function all(plannerId) {
     const planner = await Planner
         .findById(plannerId)
-        .populate('tasks');
+        .populate({
+            path: 'tasks',
+            populate: {
+                path: 'subtasks'
+            }
+        });
 
     return planner.tasks.
         sort((a, b) => b.createdAt - a.createdAt)

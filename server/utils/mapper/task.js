@@ -1,3 +1,5 @@
+const { subtaskViewModel } = require("./subtask")
+
 function taskViewModel(task) {
     //todo progress should be number with max value subtasks.length
     //todo add subTasks
@@ -8,7 +10,7 @@ function taskViewModel(task) {
         timespan: task.timespan,
         progress: task.progress,
         target: task.target,
-        subtasks: task.subtasks,
+        subtasks: task.subtasks.map(subtaskViewModel),
     }
 }
 

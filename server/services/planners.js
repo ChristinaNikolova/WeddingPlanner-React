@@ -45,7 +45,7 @@ async function getById(id, hasToCast) {
         .populate('groom', 'firstName lastName')
         .populate('guests', 'confirmed side')
         .populate('costs', 'price')
-        .populate('tasks', 'subtasks')
+        .populate('tasks')
         .populate('notes')
         .populate('events');
 

@@ -7,3 +7,9 @@ export const create = (taskId, description) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const done = (taskId, subtaskId) => {
+    return requester(`${api.subtask}/${taskId}/${subtaskId}`, httpMethods.POST)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

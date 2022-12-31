@@ -181,6 +181,10 @@ input:read-only:focus {
   border: unset;
 }
 
+input[type="checkbox"] {
+  transform: scale(1.7);
+}
+
 input:checked {
   border: 1px solid var(--clr-gold);
   accent-color: var(--clr-gold);

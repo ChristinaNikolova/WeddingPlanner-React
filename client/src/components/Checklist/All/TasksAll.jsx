@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import * as global from '../../../utils/constants/global';
 import * as tasksService from '../../../services/tasks';
+import * as subtasksService from '../../../services/subtask';
 
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
@@ -20,6 +21,7 @@ function ChecklistAll() {
     //todo constants for classes
     //todo add ref to scroll to the forms
     //todo TasksAll_checklist-all-current-task-wrapper__7ovpG text-transform change!!!, by errors
+    //todo order subtasks desc
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -50,7 +52,7 @@ function ChecklistAll() {
     }
 
     const onShowSubTaskFormHandler = (e) => {
-        const targetFormElement = e.target.parentElement.previousSibling.previousSibling;
+        const targetFormElement = e.target.parentElement.parentElement.children[1];
         targetFormElement.style.display = 'flex';
     }
 
@@ -103,6 +105,15 @@ function ChecklistAll() {
         tasksService
             .all(plannerId)
             .then((res) => setTasks(res))
+            .catch((err) => console.error(err));
+    }
+
+    const onDoneSubtask = (taskId, subtaskId) => {
+        subtasksService
+            .done(taskId, subtaskId)
+            .then(() => {
+                loadTasks();
+            })
             .catch((err) => console.error(err));
     }
 
@@ -179,8 +190,11 @@ function ChecklistAll() {
                                                         />
                                                         {t.subtasks.length > 0
                                                             ? t.subtasks.map((st) =>
-                                                                <div className={styles["checklist-all-current-task-current-subtask"]}>
-                                                                    <input type="checkbox" checked />
+                                                                <div key={st.id} className={styles["checklist-all-current-task-current-subtask"]}>
+                                                                    {st.isDone
+                                                                        ? <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square-check"></i>
+                                                                        : <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square"></i>
+                                                                    }
                                                                     <p className={styles["checklist-all-current-task-current-subtask-description"]}>{st.description}</p>
                                                                 </div>
                                                             )

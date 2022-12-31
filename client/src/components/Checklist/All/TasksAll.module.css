@@ -118,6 +118,11 @@
   margin-bottom: 25px;
 }
 
+.checklist-all-current-task-current-subtask i {
+  font-weight: 400;
+  color: var(--clr-gold);
+}
+
 .checklist-all-current-task-current-subtask-description {
   font-size: 22px;
   line-height: 1.6;
