@@ -16,6 +16,7 @@ function ChecklistAll() {
     //todo add logic for checkbox
     //todo update target/progress by adding new subtasks
     //todo constants for classes
+    //todo constant for create and update
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -91,7 +92,6 @@ function ChecklistAll() {
     }
 
     const loadTasks = () => {
-        console.log('load')
         tasksService
             .all(plannerId)
             .then((res) => setTasks(res))
@@ -144,7 +144,7 @@ function ChecklistAll() {
                                                 <div className={styles["checklist-all-current-task-header-wrapper"]}>
                                                     <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
                                                         <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
-                                                            <i onClick={(e) => onEditHandler(t.id, index)} className="fa-solid fa-pen"></i>
+                                                            {!taskId && <i onClick={() => onEditHandler(t.id, index)} className="fa-solid fa-pen"></i>}
                                                             <i onClick={() => onDeleteHandler(t.id)} className="fa-solid fa-trash"></i>
                                                         </span>
                                                     </h4>
