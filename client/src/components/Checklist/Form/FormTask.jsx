@@ -11,7 +11,7 @@ import Button from '../../shared/Wrappers/Button/Button';
 
 function FormTask({ title, description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     //todo test server errors -> create and update
-    
+
     const [values, setValues] = useState({
         title: title,
         description: description,
@@ -20,6 +20,14 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
+
+    const [currentStyle, setCurrentStyle] = useState('none')
+
+    useEffect(() => {
+        if (title && description) {
+            setCurrentStyle('flex');
+        }
+    }, []);
 
     useEffect(() => {
         checkDisabled();
@@ -71,7 +79,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     }
 
     return (
-        <div className="form-wrapper-center" style={{ display: 'none' }}>
+        <div className="form-wrapper-center" style={{ display: currentStyle }}>
             <form className="form-width form-error-message-width" onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">

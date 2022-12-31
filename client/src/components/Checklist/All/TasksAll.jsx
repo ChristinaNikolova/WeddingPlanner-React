@@ -20,10 +20,10 @@ function ChecklistAll() {
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
     const [taskId, setTaskId] = useState('');
+    const [currentIndex, setCurrentIndex] = useState('');
     const [timespan, setTimespan] = useState('');
 
     useEffect(() => {
-        console.log('useeffectt  ' + taskId);
         loadTasks();
     }, [taskId]);
 
@@ -55,6 +55,7 @@ function ChecklistAll() {
         }
 
         setTaskId('');
+        setCurrentIndex('');
         targetElement.style.display = 'none';
     }
 
@@ -84,17 +85,13 @@ function ChecklistAll() {
             .catch((err) => console.error(err));
     }
 
-    const onEditHandler = (e, id) => {
-        console.log(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.previousSibling.previousSibling.children[0].style.display)
-
-        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.previousSibling.previousSibling.children[0].style.display = 'flex';
-
+    const onEditHandler = (id, index) => {
         setTaskId(id);
-
-        //remove taskId at the end -> cancel or update-> test
+        setCurrentIndex(index);
     }
 
     const loadTasks = () => {
+        console.log('load')
         tasksService
             .all(plannerId)
             .then((res) => setTasks(res))
@@ -122,16 +119,19 @@ function ChecklistAll() {
                                         </div>
                                     }
                                 </div>
-                                {!taskId
-                                    ? <CreateTask
+                                {taskId
+                                    && index === currentIndex
+                                    && <UpdateTask
                                         plannerId={plannerId}
-                                        timespan={timespan}
+                                        taskId={taskId}
                                         loadTasks={loadTasks}
                                         onCancelFormHandler={onCancelFormHandler}
                                     />
-                                    : <UpdateTask
+                                }
+                                {!taskId &&
+                                    <CreateTask
                                         plannerId={plannerId}
-                                        taskId={taskId}
+                                        timespan={timespan}
                                         loadTasks={loadTasks}
                                         onCancelFormHandler={onCancelFormHandler}
                                     />
@@ -144,7 +144,7 @@ function ChecklistAll() {
                                                 <div className={styles["checklist-all-current-task-header-wrapper"]}>
                                                     <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
                                                         <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
-                                                            <i onClick={(e) => onEditHandler(e, t.id)} className="fa-solid fa-pen"></i>
+                                                            <i onClick={(e) => onEditHandler(t.id, index)} className="fa-solid fa-pen"></i>
                                                             <i onClick={() => onDeleteHandler(t.id)} className="fa-solid fa-trash"></i>
                                                         </span>
                                                     </h4>
@@ -183,8 +183,7 @@ function ChecklistAll() {
                             </div>
                             <p className={styles["checklist-all-end-content"]}>***</p>
                         </div>
-                    )
-                    }
+                    )}
                 </div>
             </section>
         </>

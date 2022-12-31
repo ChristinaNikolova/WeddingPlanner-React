@@ -21,8 +21,6 @@ export const deleteById = (id) => {
 }
 
 export const getById = (plannerId, taskId) => {
-    console.log('in');
-
     return requester(`${api.tasks}/${plannerId}/${taskId}`, httpMethods.GET)
         .then((res) => res.json())
         .catch((err) => console.error(err));
