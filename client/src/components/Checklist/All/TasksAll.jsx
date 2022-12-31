@@ -15,6 +15,7 @@ function ChecklistAll() {
     //todo class for empty and not empty sections (css simular)
     //todo add logic for checkbox
     //todo update target/progress by adding new subtasks
+    //todo change background colow when task done also stricke 
     //todo constants for classes
     //todo add ref to scroll to the forms
 
@@ -165,19 +166,20 @@ function ChecklistAll() {
                                                     </p>
                                                     <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
                                                         <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Subtasks</h6>
-                                                        <div className={styles["checklist-all-current-task-current-subtask"]}>
-                                                            <input type="checkbox" checked />
-                                                            <p className={styles["checklist-all-current-task-current-subtask-description"]}>Subtask Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita velit rem consequuntur aspernatur numquam animi architecto totam aut exercitationem voluptatem. Fugit impedit eos facilis eaque aliquam sunt minima, sequi vel.</p>
-                                                        </div>
-                                                        <div className={styles["checklist-all-current-task-current-subtask"]}>
-                                                            <input type="checkbox" checked />
-                                                            <p className={styles["checklist-all-current-task-current-subtask-description"]}>Subtask Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis exercitationem rerum dolorum inventore eius voluptatum assumenda quidem, dolorem alias aliquid fugit error suscipit eveniet provident repellat repudiandae sunt labore cum.</p>
-                                                        </div>
+                                                        {t.subTasks.length > 0
+                                                            ? t.subTasks.map((st) =>
+                                                                <div className={styles["checklist-all-current-task-current-subtask"]}>
+                                                                    <input type="checkbox" checked />
+                                                                    <p className={styles["checklist-all-current-task-current-subtask-description"]}>{st.description}</p>
+                                                                </div>
+                                                            )
+                                                            : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-sub-tasks"]}`}>No subtasks yet</p>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
                                         )
-                                        : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
+                                        : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-tasks"]}`}>No tasks yet</p>
                                     }
                                 </div>
                             </div>

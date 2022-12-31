@@ -125,17 +125,24 @@
   color: var(--clr-grey);
 }
 
-.checklist-all-empty-tasks {
-  font-size: 26px;
+.checklist-all-empty {
   font-weight: 600;
   color: var(--clr-gold);
-  margin-bottom: 50px;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.checklist-all-empty-sub-tasks {
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+.checklist-all-empty-tasks {
+  font-size: 26px;
   background-color: var(--clr-creme);
   padding: 12px 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
-  margin-bottom: 20px;
 }
 
 .checklist-all-end-content {
