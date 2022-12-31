@@ -7,7 +7,7 @@ require('../models/Event');
 require('../models/Guest');
 require('../models/Note');
 require('../models/Planner');
-require('../models/SubTask');
+require('../models/Subtask');
 require('../models/Task');
 require('../models/TokenBlacklist');
 require('../models/User');

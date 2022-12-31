@@ -8,7 +8,7 @@ function taskViewModel(task) {
         timespan: task.timespan,
         progress: task.progress,
         target: task.target,
-        subTasks: task.subTasks,
+        subtasks: task.subtasks,
     }
 }
 

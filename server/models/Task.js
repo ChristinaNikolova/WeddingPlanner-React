@@ -38,9 +38,9 @@ const taskSchema = new Schema({
         type: Number,
         default: 0,
     },
-    subTasks: {
+    subtasks: {
         type: [ObjectId],
-        ref: 'SubTask',
+        ref: 'Subtask',
         default: [],
     },
 },

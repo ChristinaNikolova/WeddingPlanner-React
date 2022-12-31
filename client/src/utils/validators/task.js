@@ -9,5 +9,5 @@ export const validTitle = (title) => {
 export const validDescription = (description) => {
     return (description && description.length >= task.DESC_MIN_LEN && description.length <= task.DESC_MAX_LEN)
         ? ''
-        : `Title should be between ${task.DESC_MIN_LEN} and ${task.DESC_MAX_LEN} characters long`;
+        : `Description should be between ${task.DESC_MIN_LEN} and ${task.DESC_MAX_LEN} characters long`;
 }

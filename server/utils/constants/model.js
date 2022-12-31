@@ -45,7 +45,7 @@ const planner = {
     LOCATION_MAX_LEN: 100,
 };
 
-const subTask = {
+const subtask = {
     DESC_MIN_LEN: 5,
     DESC_MAX_LEN: 200,
 };
@@ -73,7 +73,7 @@ module.exports = {
     guest,
     note,
     planner,
-    subTask,
+    subtask,
     task,
     user,
 };

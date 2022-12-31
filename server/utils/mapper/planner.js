@@ -36,7 +36,7 @@ function calculateTotalCosts(costs) {
 }
 
 function calculateTotalTasks(tasks) {
-    return tasks.reduce((acc, curr) => curr.subTasks + acc, 0);
+    return tasks.reduce((acc, curr) => curr.subtasks + acc, 0);
 }
 
 module.exports = {

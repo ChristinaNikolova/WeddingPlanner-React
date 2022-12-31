@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
-const { subTask } = require('../utils/constants/model');
+const { subtask } = require('../utils/constants/model');
 
-const subTaskSchema = new Schema({
+const subtaskSchema = new Schema({
     description: {
         type: String,
         required: [true, 'Title is required'],
-        minlength: [subTask.DESC_MIN_LEN, `Title should be at least ${subTask.DESC_MIN_LEN} characters long`],
-        maxlength: [subTask.DESC_MAX_LEN, `Title should be maximal ${subTask.DESC_MAX_LEN} characters long`],
+        minlength: [subtask.DESC_MIN_LEN, `Title should be at least ${subtask.DESC_MIN_LEN} characters long`],
+        maxlength: [subtask.DESC_MAX_LEN, `Title should be maximal ${subtask.DESC_MAX_LEN} characters long`],
     },
     isDone: {
         type: Boolean,
@@ -14,6 +14,6 @@ const subTaskSchema = new Schema({
     },
 });
 
-const SubTask = model('SubTask', subTaskSchema);
+const Subtask = model('Subtask', subtaskSchema);
 
-module.exports = SubTask;
+module.exports = Subtask;

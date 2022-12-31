@@ -6,6 +6,7 @@ import * as tasksService from '../../../services/tasks';
 
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
+import CreateSubtask from '../Subtask/Create/CreateSubtask';
 
 import styles from './TasksAll.module.css';
 
@@ -18,6 +19,7 @@ function ChecklistAll() {
     //todo change background colow when task done also stricke 
     //todo constants for classes
     //todo add ref to scroll to the forms
+    //todo TasksAll_checklist-all-current-task-wrapper__7ovpG text-transform change!!!, by errors
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -39,12 +41,17 @@ function ChecklistAll() {
         });
     }
 
-    const onShowFormHandler = (e) => {
+    const onShowTaskFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.nextSibling;
         targetFormElement.style.display = 'flex';
 
         const timeSpanValue = targetFormElement.previousSibling.children[0].innerText.toLowerCase();
         setTimespan(timeSpanValue);
+    }
+
+    const onShowSubTaskFormHandler = (e) => {
+        const targetFormElement = e.target.parentElement.previousSibling.previousSibling;
+        targetFormElement.style.display = 'flex';
     }
 
     const onCancelFormHandler = (e) => {
@@ -115,7 +122,7 @@ function ChecklistAll() {
                                     </p>
                                     {!taskId &&
                                         <div className="form-icon-wrapper">
-                                            <i onClick={onShowFormHandler} className="fa-solid fa-plus"></i>
+                                            <i onClick={onShowTaskFormHandler} className="fa-solid fa-plus"></i>
                                             Add task
                                         </div>
                                     }
@@ -165,16 +172,24 @@ function ChecklistAll() {
                                                         {t.description}
                                                     </p>
                                                     <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
-                                                        <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Subtasks</h6>
-                                                        {t.subTasks.length > 0
-                                                            ? t.subTasks.map((st) =>
+                                                        <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Sub-tasks</h6>
+                                                        <CreateSubtask
+                                                            taskId={t.id}
+                                                            onCancelFormHandler={onCancelFormHandler}
+                                                        />
+                                                        {t.subtasks.length > 0
+                                                            ? t.subtasks.map((st) =>
                                                                 <div className={styles["checklist-all-current-task-current-subtask"]}>
                                                                     <input type="checkbox" checked />
                                                                     <p className={styles["checklist-all-current-task-current-subtask-description"]}>{st.description}</p>
                                                                 </div>
                                                             )
-                                                            : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-sub-tasks"]}`}>No subtasks yet</p>
+                                                            : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-sub-tasks"]}`}>No sub-tasks yet</p>
                                                         }
+                                                        <div className="form-icon-wrapper">
+                                                            <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
+                                                            Add sub-task
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

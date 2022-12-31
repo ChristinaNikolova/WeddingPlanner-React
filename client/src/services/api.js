@@ -14,6 +14,7 @@ const api = {
     notes: `${baseUrl}/notes`,
     events: `${baseUrl}/events`,
     tasks: `${baseUrl}/tasks`,
+    subtask: `${baseUrl}/subtasks`,
 }
 
 module.exports = {
