@@ -12,7 +12,11 @@ const subtaskSchema = new Schema({
         type: Boolean,
         default: false,
     },
-});
+},
+    {
+        timestamps: true,
+    },
+);
 
 const Subtask = model('Subtask', subtaskSchema);
 

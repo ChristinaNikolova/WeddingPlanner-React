@@ -8,7 +8,10 @@ async function all(plannerId) {
         .populate({
             path: 'tasks',
             populate: {
-                path: 'subtasks'
+                path: 'subtasks',
+                options: {
+                    sort: { 'createdAt': -1 }
+                }
             }
         });
 

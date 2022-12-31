@@ -15,13 +15,11 @@ function ChecklistAll() {
     //todo check css
     //todo check css with html
     //todo class for empty and not empty sections (css simular)
-    //todo add logic for checkbox
-    //todo update target/progress by adding new subtasks
+    //todo update target/progress by adding/deleting new subtasks
     //todo change background colow when task done also stricke 
     //todo constants for classes
     //todo add ref to scroll to the forms
     //todo TasksAll_checklist-all-current-task-wrapper__7ovpG text-transform change!!!, by errors
-    //todo order subtasks desc
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
