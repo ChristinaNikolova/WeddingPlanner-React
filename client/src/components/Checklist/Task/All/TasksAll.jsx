@@ -17,7 +17,7 @@ function ChecklistAll() {
     //todo update target/progress by adding/deleting new subtasks
     //todo constants for classes
     //todo add ref to scroll to the forms
-    //todo TasksAll_checklist-all-current-task-wrapper__7ovpG text-transform change!!!, by errors
+    //todo extract add... in separete component?
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);

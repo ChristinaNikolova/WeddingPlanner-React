@@ -7,7 +7,7 @@ import styles from './SubtasksAll.module.css';
 
 function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
     const onShowSubTaskFormHandler = (e) => {
-        const targetFormElement = e.target.parentElement.parentElement.children[1];
+        const targetFormElement = e.target.parentElement.parentElement.parentElement.children[1].children[0];
         targetFormElement.style.display = 'flex';
     }
 
@@ -23,10 +23,12 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
     return (
         <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
             <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Sub-tasks</h6>
-            <CreateSubtask
-                taskId={taskId}
-                onCancelFormHandler={onCancelFormHandler}
-            />
+            <div className={styles["checklist-all-current-task-subtasks-form-wrapper"]}>
+                <CreateSubtask
+                    taskId={taskId}
+                    onCancelFormHandler={onCancelFormHandler}
+                />
+            </div>
             {subtasks.length > 0
                 ? subtasks.map((st) =>
                     <SingleSubtask
@@ -39,9 +41,11 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
                 )
                 : <p className={styles["checklist-all-empty-subtasks"]}>No sub-tasks yet</p>
             }
-            <div className="form-icon-wrapper">
-                <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
-                Add sub-task
+            <div className={styles["checklist-all-current-task-subtasks-form-icon-wrapper"]}>
+                <div className="form-icon-wrapper">
+                    <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
+                    Add sub-task
+                </div>
             </div>
         </div>
     );

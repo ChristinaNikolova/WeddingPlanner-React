@@ -12,6 +12,10 @@
   margin-bottom: 10px;
 }
 
+.checklist-all-current-task-subtasks-form-wrapper {
+  margin-bottom: 20px;
+}
+
 .checklist-all-empty-subtasks {
   font-size: 22px;
   font-weight: 600;
@@ -19,4 +23,10 @@
   color: var(--clr-gold);
   padding-left: 20px;
   margin-bottom: 20px;
+}
+
+.checklist-all-current-task-subtasks-form-icon-wrapper {
+  font-size: 18px;
+  text-align: right;
+  margin-top: 30px;
 }
