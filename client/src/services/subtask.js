@@ -13,3 +13,9 @@ export const done = (taskId, subtaskId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (taskId, subtaskId) => {
+    return requester(`${api.subtask}/${taskId}/${subtaskId}`, httpMethods.DELETE)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

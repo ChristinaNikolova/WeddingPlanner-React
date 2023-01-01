@@ -33,7 +33,7 @@ function SingleSubtask({ taskId, id, description, isDone, onDoneSubtask, onEditH
                     className={`${styles["checklist-all-current-task-current-subtask-icons-wrapper"]} subtask-icons-wrapper`}
                     style={{ display: 'none' }}>
                     <i className="fa-solid fa-pen"></i>
-                    <i className="fa-solid fa-trash"></i>
+                    <i onClick={() => onDeleteHandler(taskId, id)} className="fa-solid fa-trash"></i>
                 </span>
             </p>
 

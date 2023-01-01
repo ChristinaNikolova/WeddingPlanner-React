@@ -20,6 +20,19 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
             .catch((err) => console.error(err));
     }
 
+    const onEditHandler = () => {
+
+    }
+
+    const onDeleteHandler = (taskId, subtaskId) => {
+        subtasksService
+            .deleteById(taskId, subtaskId)
+            .then(() => {
+                loadTasks();
+            })
+            .catch((err) => console.error(err));
+    }
+
     return (
         <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
             <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Sub-tasks</h6>
@@ -39,6 +52,8 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
                         description={st.description}
                         isDone={st.isDone}
                         onDoneSubtask={onDoneSubtask}
+                        onEditHandler={onEditHandler}
+                        onDeleteHandler={onDeleteHandler}
                     />
                 )
                 : <p className={styles["checklist-all-empty-subtasks"]}>No sub-tasks yet</p>

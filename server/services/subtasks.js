@@ -16,8 +16,8 @@ async function create(taskId, description) {
     return result;
 }
 
-async function done(taskId, subtaskid) {
-    const subtask = await Subtask.findById(subtaskid);
+async function done(taskId, subtaskId) {
+    const subtask = await Subtask.findById(subtaskId);
     subtask.isDone = !subtask.isDone;
     subtask.save();
 
@@ -28,7 +28,23 @@ async function done(taskId, subtaskid) {
     return subtask;
 }
 
+async function deleteById(taskId, subtaskId) {
+    const subtask = await Subtask.findById(subtaskId);
+
+    const task = await Task.findById(taskId);
+    task.target--;
+
+    if (subtask.isDone) {
+        task.progress--;
+    }
+
+    await task.save();
+
+    return Subtask.findByIdAndDelete(subtaskId);
+}
+
 module.exports = {
     create,
     done,
+    deleteById,
 }
