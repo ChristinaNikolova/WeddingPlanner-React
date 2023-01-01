@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
@@ -8,6 +8,7 @@ import styles from './DetailsPlanner.module.css';
 function DetailsPlanner() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const plannerRef = useRef(null);
 
     const [planner, setPlanner] = useState({});
     const [isHovering, setIsHovering] = useState(false);
@@ -15,8 +16,13 @@ function DetailsPlanner() {
     useEffect(() => {
         plannersService
             .getById(id)
-            .then((res) => setPlanner(res))
+            .then((res) => {
+                setPlanner(res);
+                plannerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            })
             .catch((err) => console.error(err));
+
+
     }, []);
 
 
@@ -38,7 +44,7 @@ function DetailsPlanner() {
     }
 
     return (
-        <section className={styles["details-planner"]}>
+        <section ref={plannerRef} className={styles["details-planner"]}>
             <div className="section-title-wrapper">
                 <h2 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className="section-title">
                     {planner.title}
