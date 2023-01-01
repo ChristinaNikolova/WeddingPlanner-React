@@ -30,6 +30,23 @@ export const styleNames = {
     BLOCK: 'block',
 }
 
+export const people = {
+    ADULT: 'adult',
+    CHILD: 'child',
+    BABY: 'baby',
+}
+
+export const genders = {
+    MALE: 'male',
+    FEMALE: 'female',
+}
+
+export const dishes = {
+    MEAT: 'meat',
+    FISH: 'fish',
+    VEGGIES: 'veggies',
+}
+
 export const roles = [
     'bride',
     'groom',

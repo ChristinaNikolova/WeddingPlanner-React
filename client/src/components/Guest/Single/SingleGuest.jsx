@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import * as images from '../../../utils/constants/images';
+import { dishes, people, genders } from '../../../utils/constants/global';
 
 import styles from './SingleGuest.module.css';
 
@@ -24,31 +25,29 @@ function SingleGuest({
     const getPersonImage = (age, gender) => {
         let image = '';
 
-        //todo constants
-        if (age === 'adult' && gender === 'male') {
+        if (age === people.ADULT && gender === genders.MALE) {
             image = images.personImages.ADULT_MALE;
-        } else if (age === 'adult' && gender === 'female') {
+        } else if (age === people.ADULT && gender === genders.FEMALE) {
             image = images.personImages.ADULT_FEMALE;
-        } else if (age === 'child' && gender === 'male') {
+        } else if (age === people.CHILD && gender === genders.MALE) {
             image = images.personImages.CHILD_MALE;
-        } else if (age === 'child' && gender === 'female') {
+        } else if (age === people.CHILD && gender === genders.FEMALE) {
             image = images.personImages.CHILD_FEMALE;
-        } else if (age === 'baby') {
+        } else if (age === people.BABY) {
             image = images.personImages.BABY;
         }
 
         return image;
     }
 
-    //todo constants
     const getDishImage = (mainDish) => {
         let image = '';
 
-        if (mainDish === 'meat') {
+        if (mainDish === dishes.MEAT) {
             image = images.dishImages.MEAT;
-        } else if (mainDish === 'fish') {
+        } else if (mainDish === dishes.FISH) {
             image = images.dishImages.FISH;
-        } else if (mainDish === 'veggies') {
+        } else if (mainDish === dishes.VEGGIES) {
             image = images.dishImages.VEGGIES;
         }
 
