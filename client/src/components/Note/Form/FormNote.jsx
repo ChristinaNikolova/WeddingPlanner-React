@@ -17,7 +17,7 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
     const formRef = useRef(null);
 
     useEffect(() => {
-        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, []);
 
     useEffect(() => {

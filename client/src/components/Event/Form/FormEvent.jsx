@@ -31,7 +31,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
     const formRef = useRef(null);
 
     useEffect(() => {
-        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, []);
 
     useEffect(() => {

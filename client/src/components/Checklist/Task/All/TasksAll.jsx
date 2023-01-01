@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { timespans, classNames, styleNames } from '../../../../utils/constants/global';
@@ -11,11 +11,7 @@ import UpdateTask from '../Update/UpdateTask';
 import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
-    //todo check css
-    //todo check css with html
-    //todo class for empty and not empty sections (css simular)
     //todo test again!!!
-    //todo add ref to scroll to the forms
     //todo extract add... in separete component?
 
     const { id: plannerId } = useParams();
@@ -23,9 +19,11 @@ function ChecklistAll() {
     const [taskId, setTaskId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
     const [timespan, setTimespan] = useState('');
+    const tasksAllRef = useRef(null);
 
     useEffect(() => {
         loadTasks();
+        tasksAllRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, []);
 
     const onShowTaskFormHandler = (e) => {
@@ -74,71 +72,69 @@ function ChecklistAll() {
     console.log()
 
     return (
-        <>
-            <section className="section-planner section-background">
-                <div className="section-title-wrapper">
-                    <h2 className="section-title">The big day</h2>
-                </div>
-                <div className={styles["checklist-all-main-content-wrapper"]}>
-                    {timespans.map((time, index) =>
-                        <div key={index} className={styles["checklist-all-timespan-wrapper"]}>
-                            <div className={styles["checklist-all-timespan-content-wrapper"]}>
-                                <div className={styles["checklist-all-timespan-title-wrapper"]}>
-                                    <p className={styles["checklist-all-timespan"]}>{time}</p>
-                                    {!taskId &&
-                                        <div className="form-icon-wrapper">
-                                            <i onClick={onShowTaskFormHandler} className="fa-solid fa-plus"></i>
-                                            Add task
-                                        </div>
-                                    }
-                                </div>
-                                {taskId
-                                    && index === currentIndex
-                                    && <UpdateTask
-                                        plannerId={plannerId}
-                                        taskId={taskId}
-                                        loadTasks={loadTasks}
-                                        onCancelFormHandler={onCancelFormHandler}
-                                    />
-                                }
+        <section ref={tasksAllRef} className="section-planner section-background">
+            <div className="section-title-wrapper">
+                <h2 className="section-title">The big day</h2>
+            </div>
+            <div className={styles["checklist-all-main-content-wrapper"]}>
+                {timespans.map((time, index) =>
+                    <div key={index} className={styles["checklist-all-timespan-wrapper"]}>
+                        <div className={styles["checklist-all-timespan-content-wrapper"]}>
+                            <div className={styles["checklist-all-timespan-title-wrapper"]}>
+                                <p className={styles["checklist-all-timespan"]}>{time}</p>
                                 {!taskId &&
-                                    <CreateTask
-                                        plannerId={plannerId}
-                                        timespan={timespan}
-                                        loadTasks={loadTasks}
-                                        onCancelFormHandler={onCancelFormHandler}
-                                    />
+                                    <div className="form-icon-wrapper">
+                                        <i onClick={onShowTaskFormHandler} className="fa-solid fa-plus"></i>
+                                        Add task
+                                    </div>
                                 }
-                                <div className={styles["checklist-all-line"]}></div>
-                                <div className={styles["checklist-all-tasks-content-wrapper"]}>
-                                    {tasks.filter((t) => t.timespan === time).length > 0
-                                        ? tasks.filter((t) => t.timespan === time).map((t) =>
-                                            <SingleTask
-                                                key={t.id}
-                                                index={index}
-                                                taskId={taskId}
-                                                id={t.id}
-                                                title={t.title}
-                                                description={t.description}
-                                                progress={t.progress}
-                                                target={t.target}
-                                                subtasks={t.subtasks}
-                                                loadTasks={loadTasks}
-                                                onEditHandler={onEditHandler}
-                                                onDeleteHandler={onDeleteHandler}
-                                                onCancelFormHandler={onCancelFormHandler}
-                                            />
-                                        )
-                                        : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
-                                    }
-                                </div>
                             </div>
-                            <p className={styles["checklist-all-end-content"]}>***</p>
+                            {taskId
+                                && index === currentIndex
+                                && <UpdateTask
+                                    plannerId={plannerId}
+                                    taskId={taskId}
+                                    loadTasks={loadTasks}
+                                    onCancelFormHandler={onCancelFormHandler}
+                                />
+                            }
+                            {!taskId &&
+                                <CreateTask
+                                    plannerId={plannerId}
+                                    timespan={timespan}
+                                    loadTasks={loadTasks}
+                                    onCancelFormHandler={onCancelFormHandler}
+                                />
+                            }
+                            <div className={styles["checklist-all-line"]}></div>
+                            <div className={styles["checklist-all-tasks-content-wrapper"]}>
+                                {tasks.filter((t) => t.timespan === time).length > 0
+                                    ? tasks.filter((t) => t.timespan === time).map((t) =>
+                                        <SingleTask
+                                            key={t.id}
+                                            index={index}
+                                            taskId={taskId}
+                                            id={t.id}
+                                            title={t.title}
+                                            description={t.description}
+                                            progress={t.progress}
+                                            target={t.target}
+                                            subtasks={t.subtasks}
+                                            loadTasks={loadTasks}
+                                            onEditHandler={onEditHandler}
+                                            onDeleteHandler={onDeleteHandler}
+                                            onCancelFormHandler={onCancelFormHandler}
+                                        />
+                                    )
+                                    : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
+                                }
+                            </div>
                         </div>
-                    )}
-                </div>
-            </section>
-        </>
+                        <p className={styles["checklist-all-end-content"]}>***</p>
+                    </div>
+                )}
+            </div>
+        </section>
     )
 }
 
