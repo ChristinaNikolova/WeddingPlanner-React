@@ -48,20 +48,17 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
             <div className={styles["checklist-all-current-task-subtasks-form-wrapper"]}>
 
                 {subtaskId
-                    && <UpdateSubtask
+                    ? <UpdateSubtask
                         subtaskId={subtaskId}
                         loadTasks={loadTasks}
                         onCancelFormHelperHandler={onCancelFormHelperHandler}
                     />
-                }
-                {!subtaskId &&
-                    <CreateSubtask
+                    : <CreateSubtask
                         taskId={taskId}
                         loadTasks={loadTasks}
                         onCancelFormHandler={onCancelFormHandler}
                     />
                 }
-
             </div>
             {subtasks.length > 0
                 ? subtasks.map((st) =>
@@ -80,10 +77,12 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
                 : <p className={styles["checklist-all-empty-subtasks"]}>No sub-tasks yet</p>
             }
             <div className={styles["checklist-all-current-task-subtasks-form-icon-wrapper"]}>
-                <div className="form-icon-wrapper">
-                    <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
-                    Add sub-task
-                </div>
+                {!subtaskId
+                    && <div className="form-icon-wrapper">
+                        <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
+                        Add sub-task
+                    </div>
+                }
             </div>
         </div>
     );

@@ -14,7 +14,6 @@ function ChecklistAll() {
     //todo check css
     //todo check css with html
     //todo class for empty and not empty sections (css simular)
-    //todo update target/progress by adding/deleting new subtasks
     //todo constants for classes
     //todo add ref to scroll to the forms
     //todo extract add... in separete component?
@@ -24,7 +23,7 @@ function ChecklistAll() {
     const [taskId, setTaskId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
     const [timespan, setTimespan] = useState('');
-
+    //todo need taskId??
     useEffect(() => {
         loadTasks();
     }, [taskId]);

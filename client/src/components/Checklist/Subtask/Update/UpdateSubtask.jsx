@@ -6,7 +6,6 @@ import { formNames } from '../../../../utils/constants/global';
 import FormSubtask from '../Form/FormSubtask';
 
 function UpdateSubtask({ subtaskId, loadTasks, onCancelFormHelperHandler }) {
-    //todo hide add new sb task button
     const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [subtask, setSubtask] = useState({});
