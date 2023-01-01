@@ -10,8 +10,6 @@ import TextArea from '../../../shared/Tags/TextArea/TextArea';
 import Button from '../../../shared/Wrappers/Button/Button';
 
 function FormSubtask({ description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
-    //todo test server error -> create and update
-
     const [values, setValues] = useState({
         description: description,
     });
