@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import * as global from '../../../utils/constants/global';
-import * as tasksService from '../../../services/tasks';
-import * as subtasksService from '../../../services/subtask';
+import * as global from '../../../../utils/constants/global';
+import * as tasksService from '../../../../services/tasks';
+import * as subtasksService from '../../../../services/subtask';
 
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
-import CreateSubtask from '../Subtask/Create/CreateSubtask';
+import CreateSubtask from '../../Subtask/Create/CreateSubtask';
 
 import styles from './TasksAll.module.css';
 
@@ -16,7 +16,6 @@ function ChecklistAll() {
     //todo check css with html
     //todo class for empty and not empty sections (css simular)
     //todo update target/progress by adding/deleting new subtasks
-    //todo change background colow when task done also stricke 
     //todo constants for classes
     //todo add ref to scroll to the forms
     //todo TasksAll_checklist-all-current-task-wrapper__7ovpG text-transform change!!!, by errors

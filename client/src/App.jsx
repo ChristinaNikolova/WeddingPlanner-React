@@ -18,7 +18,7 @@ import CreatePlanner from './components/Planner/Create/CreatePlanner';
 import DetailsPlanner from './components/Planner/Details/DetailsPlanner';
 import UpdatePlanner from './components/Planner/Update/UpdatePlanner';
 import GuestsAll from './components/Guest/All/GuestsAll';
-import ChecklistAll from './components/Checklist/All/TasksAll';
+import ChecklistAll from './components/Checklist/Task/All/TasksAll';
 import EventsAll from './components/Event/All/EventsAll';
 import NotesAll from './components/Note/All/NotesAll';
 import NotFound from './components/NotFound/NotFound';

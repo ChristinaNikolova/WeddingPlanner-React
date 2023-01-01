@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import * as tasksService from '../../../services/tasks';
-import { formNames } from "../../../utils/constants/global";
+import * as tasksService from '../../../../services/tasks';
+import { formNames } from '../../../../utils/constants/global';
 
-import FormTask from "../Form/FormTask";
+import FormTask from '../Form/FormTask';
 
 function UpdateTask({ plannerId, taskId, loadTasks, onCancelFormHandler }) {
     const formName = formNames.UPDATE;

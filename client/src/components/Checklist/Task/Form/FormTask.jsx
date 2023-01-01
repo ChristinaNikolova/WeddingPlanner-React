@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import * as validator from '../../../utils/validators/task';
-import * as helpers from '../../../utils/helpers/form';
-import { formNames } from '../../../utils/constants/global';
+import * as validator from '../../../../utils/validators/task';
+import * as helpers from '../../../../utils/helpers/form';
+import { formNames } from '../../../../utils/constants/global';
 
-import ClientError from '../../shared/Errors/ClientError/ClientError';
-import ServerError from '../../shared/Errors/ServerError/ServerError';
-import Input from '../../shared/Tags/Input/Input';
-import TextArea from '../../shared/Tags/TextArea/TextArea';
-import Button from '../../shared/Wrappers/Button/Button';
+import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import Input from '../../../shared/Tags/Input/Input';
+import TextArea from '../../../shared/Tags/TextArea/TextArea';
+import ClientError from '../../../shared/Errors/ClientError/ClientError';
+import Button from '../../../shared/Wrappers/Button/Button';
 
 function FormTask({ title, description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
