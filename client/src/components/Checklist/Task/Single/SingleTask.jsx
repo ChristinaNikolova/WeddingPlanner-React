@@ -17,6 +17,7 @@ function SingleTask({
     onCancelFormHandler
 }) {
     const onMouseEnterHandler = (e) => {
+        //todo check this error!
         e.target.children[0].style.display = 'inline-block';
     }
 
@@ -46,7 +47,11 @@ function SingleTask({
     return (
         <div key={id} className={styles["checklist-all-current-task-wrapper"]}>
             <div className={styles["checklist-all-current-task-header-wrapper"]}>
-                <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{title}
+                <h4
+                    onMouseEnter={onMouseEnterHandler}
+                    onMouseLeave={onMouseLeaveHandler}
+                    className={styles["checklist-all-current-task-header-title"]}>
+                    {title}
                     <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
                         {!taskId && <i onClick={() => onEditHandler(id, index)} className="fa-solid fa-pen"></i>}
                         <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>

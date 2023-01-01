@@ -20,6 +20,7 @@ function CreateSubtask({ taskId, loadTasks, onCancelFormHandler }) {
                     setServerError(data.message);
                     return;
                 }
+
                 onCancelFormHandler(e);
                 loadTasks();
             })
