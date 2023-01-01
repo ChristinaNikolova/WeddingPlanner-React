@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import * as notesService from '../../../services/notes';
-import { formNames } from "../../../utils/constants/global";
+import { formNames } from '../../../utils/constants/global';
 
-import FormNote from "../Form/FormNote";
+import FormNote from '../Form/FormNote';
 
 function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadGuests }) {
     const formName = formNames.UPDATE;

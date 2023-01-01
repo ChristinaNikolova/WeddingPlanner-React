@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import * as plannersService from '../../../services/planners';
-import { formNames } from "../../../utils/constants/global";
+import { formNames } from '../../../utils/constants/global';
 
-import FormPlanner from "../Form/FormPlanner";
+import FormPlanner from '../Form/FormPlanner';
 
 function UpdatePlanner() {
     const formName = formNames.UPDATE;
