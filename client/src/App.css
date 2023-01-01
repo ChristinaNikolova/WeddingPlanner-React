@@ -1,11 +1,14 @@
 @import "./styles/constants.css";
 @import "./styles/animations.css";
+@import "./styles/headings.css";
 @import "./styles/buttons-links.css";
 @import "./styles/forms.css";
 @import "./styles/icons.css";
 @import "./styles/images.css";
 @import "./styles/errors.css";
 @import "./styles/sections.css";
+@import "./styles/navigation.css";
+@import "./styles/empty-lists.css";
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 html {
@@ -14,48 +17,4 @@ html {
   font-family: var(--font-family);
   color: var(--clr-black);
   line-height: 1.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--clr-gold);
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-/* Header & Footer */
-
-.gold-underline {
-  border-bottom: 1px solid var(--clr-gold);
-}
-
-li.logo a {
-  color: var(--clr-gold);
-  font-size: 48px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-li.logo a:hover {
-  font-weight: 400;
-}
-
-/* Empty List */
-
-.empty {
-  font-size: 50px;
-  font-weight: 600;
-  color: var(--clr-gold);
-  margin-bottom: 200px;
-}
-
-.empty-planner {
-  border-bottom: 1px solid var(--clr-gold);
-  margin-left: 700px;
-  margin-right: 700px;
-  padding-bottom: 20px;
 }

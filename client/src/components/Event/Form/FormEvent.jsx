@@ -13,7 +13,6 @@ import styles from './FormEvent.module.css';
 
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     //todo test events again
-    //todo extract css into files
 
     const [values, setValues] = useState({
         title: title,
