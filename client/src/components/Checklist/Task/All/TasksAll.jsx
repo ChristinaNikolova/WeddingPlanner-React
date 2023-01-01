@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import * as global from '../../../../utils/constants/global';
 import * as tasksService from '../../../../services/tasks';
 
+import SingleTask from '../Single/SingleTask';
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
-import SubtasksAll from '../../Subtask/All/SubtasksAll';
 
 import styles from './TasksAll.module.css';
 
@@ -29,16 +29,6 @@ function ChecklistAll() {
         loadTasks();
     }, [taskId]);
 
-    const onMouseEnterHandler = (e) => {
-        e.target.children[0].style.display = 'inline-block';
-    }
-
-    const onMouseLeaveHandler = () => {
-        Array.from(document.getElementsByClassName('checklist-all-current-task-icons')).forEach((el) => {
-            el.style.display = 'none';
-        });
-    }
-
     const onShowTaskFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.nextSibling;
         targetFormElement.style.display = 'flex';
@@ -59,23 +49,6 @@ function ChecklistAll() {
         setTaskId('');
         setCurrentIndex('');
         targetElement.style.display = 'none';
-    }
-
-    const onShowContent = (e) => {
-        const targetIcon = e.target
-        const targetElement = targetIcon.parentElement.parentElement.parentElement.nextSibling;
-
-        targetElement.style.display === 'none'
-            ? targetElement.style.display = 'block'
-            : targetElement.style.display = 'none';
-
-        if (targetIcon.classList.contains("fa-chevron-down")) {
-            targetIcon.classList.remove("fa-chevron-down");
-            targetIcon.classList.add("fa-chevron-right");
-        } else {
-            targetIcon.classList.remove("fa-chevron-right");
-            targetIcon.classList.add("fa-chevron-down");
-        }
     }
 
     const onDeleteHandler = (id) => {
@@ -110,9 +83,7 @@ function ChecklistAll() {
                         <div key={index} className={styles["checklist-all-timespan-wrapper"]}>
                             <div className={styles["checklist-all-timespan-content-wrapper"]}>
                                 <div className={styles["checklist-all-timespan-title-wrapper"]}>
-                                    <p className={styles["checklist-all-timespan"]}>
-                                        {time}
-                                    </p>
+                                    <p className={styles["checklist-all-timespan"]}>{time}</p>
                                     {!taskId &&
                                         <div className="form-icon-wrapper">
                                             <i onClick={onShowTaskFormHandler} className="fa-solid fa-plus"></i>
@@ -141,37 +112,21 @@ function ChecklistAll() {
                                 <div className={styles["checklist-all-tasks-content-wrapper"]}>
                                     {tasks.filter((t) => t.timespan === time).length > 0
                                         ? tasks.filter((t) => t.timespan === time).map((t) =>
-                                            <div key={t.id} className={styles["checklist-all-current-task-wrapper"]}>
-                                                <div className={styles["checklist-all-current-task-header-wrapper"]}>
-                                                    <h4 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={styles["checklist-all-current-task-header-title"]}>{t.title}
-                                                        <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
-                                                            {!taskId && <i onClick={() => onEditHandler(t.id, index)} className="fa-solid fa-pen"></i>}
-                                                            <i onClick={() => onDeleteHandler(t.id)} className="fa-solid fa-trash"></i>
-                                                        </span>
-                                                    </h4>
-                                                    <div className={styles["checklist-all-current-task-header-content-wrapper"]}>
-                                                        <div className={styles["checklist-all-current-task-header-content-progress-wrapper"]}>
-                                                            <span className={styles["checklist-all-current-task-progress"]}>{t.progress}</span>
-                                                            <span className={styles["checklist-all-current-task-delimiter"]}>/</span>
-                                                            <span className={styles["checklist-all-current-task-target"]}>{t.target}</span>
-                                                        </div>
-                                                        <div className={styles["checklist-all-current-task-header-content-icon-wrapper"]}>
-                                                            <i onClick={onShowContent} className="fa-solid fa-chevron-right"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className={styles["checklist-all-current-task-info-warpper"]} style={{ display: 'none' }}>
-                                                    <p className={styles["checklist-all-current-task-info-desc"]}>
-                                                        {t.description}
-                                                    </p>
-                                                    <SubtasksAll
-                                                        taskId={t.id}
-                                                        subtasks={t.subtasks}
-                                                        loadTasks={loadTasks}
-                                                        onCancelFormHandler={onCancelFormHandler}
-                                                    />
-                                                </div>
-                                            </div>
+                                            <SingleTask
+                                                key={t.id}
+                                                index={index}
+                                                taskId={taskId}
+                                                id={t.id}
+                                                title={t.title}
+                                                description={t.description}
+                                                progress={t.progress}
+                                                target={t.target}
+                                                subtasks={t.subtasks}
+                                                loadTasks={loadTasks}
+                                                onEditHandler={onEditHandler}
+                                                onDeleteHandler={onDeleteHandler}
+                                                onCancelFormHandler={onCancelFormHandler}
+                                            />
                                         )
                                         : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
                                     }
