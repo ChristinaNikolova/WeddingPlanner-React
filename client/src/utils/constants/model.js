@@ -45,7 +45,7 @@ export const planner = {
 
 export const subtask = {
     DESC_MIN_LEN: 5,
-    DESC_MAX_LEN: 200,
+    DESC_MAX_LEN: 400,
 };
 
 export const task = {

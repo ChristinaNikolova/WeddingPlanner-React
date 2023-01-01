@@ -47,7 +47,7 @@ const planner = {
 
 const subtask = {
     DESC_MIN_LEN: 5,
-    DESC_MAX_LEN: 200,
+    DESC_MAX_LEN: 400,
 };
 
 const task = {

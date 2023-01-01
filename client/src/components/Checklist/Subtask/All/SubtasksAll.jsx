@@ -26,12 +26,14 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
             <div className={styles["checklist-all-current-task-subtasks-form-wrapper"]}>
                 <CreateSubtask
                     taskId={taskId}
+                    loadTasks={loadTasks}
                     onCancelFormHandler={onCancelFormHandler}
                 />
             </div>
             {subtasks.length > 0
                 ? subtasks.map((st) =>
                     <SingleSubtask
+                        key={st.id}
                         taskId={taskId}
                         id={st.id}
                         description={st.description}

@@ -5,7 +5,7 @@ import { formNames } from '../../../../utils/constants/global';
 
 import FormSubtask from '../Form/FormSubtask';
 
-function CreateSubtask({ taskId, onCancelFormHandler }) {
+function CreateSubtask({ taskId, loadTasks, onCancelFormHandler }) {
     const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 
@@ -21,7 +21,7 @@ function CreateSubtask({ taskId, onCancelFormHandler }) {
                     return;
                 }
                 onCancelFormHandler(e);
-                //loadTasks() or loadSubtasks()???
+                loadTasks();
             })
             .catch((err) => console.error(err));
     };
