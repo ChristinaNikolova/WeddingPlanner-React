@@ -104,8 +104,11 @@ function Register() {
                 </p>
             </div>
             <div className={styles["register-content-wrapper"]}>
-                <img className={`${styles["register-img"]} img-shadow`} src="./img/wedding-634526_1280.jpg" alt="bride_accessories" />
-                <form className="auth-form" onSubmit={submitHandler} >
+                <img
+                    className={`${styles["register-img"]} img-shadow`}
+                    src="./img/wedding-634526_1280.jpg"
+                    alt="bride_accessories" />
+                <form onSubmit={submitHandler} className="auth-form">
                     <div className="form-wrapper">
                         <Input
                             name="email"

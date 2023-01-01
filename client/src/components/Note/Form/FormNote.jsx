@@ -53,7 +53,7 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
 
     return (
         <div ref={formRef} className="form-wrapper-center">
-            <form className="form-width form-error-message-width" onSubmit={onSubmitHelperHandler}>
+            <form onSubmit={onSubmitHelperHandler} className="form-width form-error-message-width">
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <TextArea

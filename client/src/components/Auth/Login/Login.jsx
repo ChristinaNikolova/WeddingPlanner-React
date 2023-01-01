@@ -82,7 +82,7 @@ function Login() {
                 </p>
             </div>
             <div className={styles["login-content-wrapper"]}>
-                <form className="auth-form" onSubmit={submitHandler}>
+                <form onSubmit={submitHandler} className="auth-form">
                     <div className="form-wrapper">
                         <Input
                             name="email"

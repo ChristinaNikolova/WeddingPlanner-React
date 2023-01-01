@@ -91,7 +91,7 @@ function FormGuest({
 
     return (
         <div ref={formRef} className="form-wrapper-center">
-            <form className={[styles["guest-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
+            <form onSubmit={onSubmitHelperHandler} className={[styles["guest-form"], "form-error-message-width"].join(' ')}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <Input

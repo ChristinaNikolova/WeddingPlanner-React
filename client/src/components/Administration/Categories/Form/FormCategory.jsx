@@ -65,7 +65,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                 <h2 className="section-title">{formName} Category</h2>
             </div>
             <div className="form-wrapper-center">
-                <form className={[styles["create-category-form"], "form-width"].join(' ')} onSubmit={onsubmitHelperHandler}>
+                <form onSubmit={onsubmitHelperHandler} className={[styles["create-category-form"], "form-width"].join(' ')}>
                     <div className="form-wrapper">
                         <Input
                             name="name"

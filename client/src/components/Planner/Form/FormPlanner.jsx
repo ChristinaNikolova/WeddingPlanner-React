@@ -101,7 +101,7 @@ function FormPlanner({
                 <h2 className="section-title">{formName} Planner</h2>
             </div>
             <div className="form-wrapper-center">
-                <form className="form-width" onSubmit={onSubmitHelperHandler}>
+                <form onSubmit={onSubmitHelperHandler} className="form-width">
                     <div className="form-wrapper">
                         <TextArea
                             name="description"

@@ -8,12 +8,20 @@ function Pagination({ currentPage, pagesCount, selectedCategory, onClickHandler 
     return (
         <div className={styles["pagination-warpper"]}>
             {currentPage !== 1 &&
-                <Link className={styles["pagination"]} to={`/blog?page=${currentPage - 1}&category=${selectedCategory.name}`} onClick={() => onClickHandler(directions.PREV)}>
+                <Link
+                    onClick={() => onClickHandler(directions.PREV)}
+                    className={styles["pagination"]}
+                    to={`/blog?page=${currentPage - 1}&category=${selectedCategory.name}`}
+                >
                     Newer posts
                 </Link>
             }
             {currentPage !== pagesCount &&
-                <Link className={styles["pagination"]} to={`/blog?page=${currentPage + 1}&category=${selectedCategory.name}`} onClick={() => onClickHandler(directions.NEXT)}>
+                <Link
+                    onClick={() => onClickHandler(directions.NEXT)}
+                    className={styles["pagination"]}
+                    to={`/blog?page=${currentPage + 1}&category=${selectedCategory.name}`}
+                >
                     Older posts
                 </Link>
             }

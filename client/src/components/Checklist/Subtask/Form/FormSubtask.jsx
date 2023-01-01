@@ -71,7 +71,7 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
 
     return (
         <div className="form-wrapper-center" style={{ display: currentStyle }}>
-            <form className="form-width form-error-message-width" onSubmit={onSubmitHelperHandler}>
+            <form onSubmit={onSubmitHelperHandler} className="form-width form-error-message-width">
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <TextArea

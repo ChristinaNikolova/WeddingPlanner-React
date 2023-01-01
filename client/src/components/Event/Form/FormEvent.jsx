@@ -83,7 +83,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
 
     return (
         <div ref={formRef} className="form-wrapper-center">
-            <form className={[styles["event-form"], "form-error-message-width"].join(' ')} onSubmit={onSubmitHelperHandler}>
+            <form onSubmit={onSubmitHelperHandler} className={[styles["event-form"], "form-error-message-width"].join(' ')}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
                     <Input
