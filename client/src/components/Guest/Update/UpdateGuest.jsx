@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import * as guestsService from '../../../services/guests';
-import { formNames } from "../../../utils/constants/global";
+import { formNames } from '../../../utils/constants/global';
 
-import FormGuest from "../Form/FormGuest";
+import FormGuest from '../Form/FormGuest';
 
 function UpdateGuest({ guestId, plannerId, onCancelFormHandler, loadGuests }) {
     const formName = formNames.UPDATE;

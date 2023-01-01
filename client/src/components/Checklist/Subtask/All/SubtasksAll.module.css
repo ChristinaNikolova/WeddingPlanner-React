@@ -1,0 +1,22 @@
+.checklist-all-current-task-subtasks-wrapper {
+  margin-top: 20px;
+}
+
+.checklist-all-current-task-subtasks-title {
+  color: var(--clr-black);
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: -1px;
+  padding-left: 90px;
+  margin-bottom: 10px;
+}
+
+.checklist-all-empty-subtasks {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--clr-gold);
+  padding-left: 20px;
+  margin-bottom: 20px;
+}

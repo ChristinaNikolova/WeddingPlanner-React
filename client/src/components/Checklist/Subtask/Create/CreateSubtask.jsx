@@ -12,7 +12,7 @@ function CreateSubtask({ taskId, onCancelFormHandler }) {
     useEffect(() => {
     }, [serverError]);
 
-    const onSubmitHandler = (description) => {
+    const onSubmitHandler = (e, description) => {
         subtasksService
             .create(taskId, description)
             .then((data) => {
@@ -20,9 +20,8 @@ function CreateSubtask({ taskId, onCancelFormHandler }) {
                     setServerError(data.message);
                     return;
                 }
-
-                // onCancelFormHandler(e);
-                // loadTasks();
+                onCancelFormHandler(e);
+                //loadTasks() or loadSubtasks()???
             })
             .catch((err) => console.error(err));
     };

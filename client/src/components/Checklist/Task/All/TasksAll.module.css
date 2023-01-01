@@ -97,66 +97,16 @@
   margin-bottom: 40px;
 }
 
-.checklist-all-current-task-subtasks-title {
-  color: var(--clr-black);
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: capitalize;
-  letter-spacing: -1px;
-  padding-left: 90px;
-  margin-bottom: 10px;
-}
-
-.checklist-all-current-task-subtasks-wrapper {
-  margin-top: 20px;
-}
-
-.checklist-all-current-task-current-subtask {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding: 10px 20px;
-}
-
-.checklist-all-current-task-current-subtask-heightlight {
-  background-color: var(--clr-light-creme);
-}
-
-.checklist-all-current-task-current-subtask-heightlight
-  .checklist-all-current-task-current-subtask-description {
-  text-decoration: line-through;
-}
-
-.checklist-all-current-task-current-subtask i {
-  font-weight: 400;
-  color: var(--clr-gold);
-}
-
-.checklist-all-current-task-current-subtask-description {
-  font-size: 22px;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  color: var(--clr-grey);
-}
-
-.checklist-all-empty {
-  font-weight: 600;
-  color: var(--clr-gold);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.checklist-all-empty-sub-tasks {
-  font-size: 22px;
-  padding-left: 20px;
-}
-
 .checklist-all-empty-tasks {
   font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--clr-gold);
   background-color: var(--clr-creme);
-  padding: 12px 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  padding: 12px 20px;
+  margin-bottom: 20px;
 }
 
 .checklist-all-end-content {

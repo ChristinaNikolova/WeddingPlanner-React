@@ -1,0 +1,27 @@
+.checklist-all-current-task-current-subtask {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 10px 20px;
+}
+
+.checklist-all-current-task-current-subtask i {
+  font-weight: 400;
+  color: var(--clr-gold);
+}
+
+.checklist-all-current-task-current-subtask-heightlight {
+  background-color: var(--clr-light-creme);
+}
+
+.checklist-all-current-task-current-subtask-heightlight
+  .checklist-all-current-task-current-subtask-description {
+  text-decoration: line-through;
+}
+
+.checklist-all-current-task-current-subtask-description {
+  font-size: 22px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  color: var(--clr-grey);
+}

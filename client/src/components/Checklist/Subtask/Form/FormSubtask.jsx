@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import * as validator from '../../../../utils/validators/subtask';
 import * as helpers from '../../../../utils/helpers/form';
+import { formNames } from '../../../../utils/constants/global';
 
-import ClientError from "../../../shared/Errors/ClientError/ClientError";
-import ServerError from "../../../shared/Errors/ServerError/ServerError";
-import TextArea from "../../../shared/Tags/TextArea/TextArea";
-import Button from "../../../shared/Wrappers/Button/Button";
+import ClientError from '../../../shared/Errors/ClientError/ClientError';
+import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import TextArea from '../../../shared/Tags/TextArea/TextArea';
+import Button from '../../../shared/Wrappers/Button/Button';
 
 function FormSubtask({ description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
+    //todo test server error -> create and update
+
     const [values, setValues] = useState({
         description: description,
     });
@@ -44,23 +47,22 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
             return;
         }
 
-        onSubmitHandler(values.description);
-        //setInputsToDefaultValues();
+        onSubmitHandler(e, values.description);
+        setInputsToDefaultValues();
     }
 
     const onCancelFormHelperHandler = (e) => {
-        //setInputsToDefaultValues();
+        setInputsToDefaultValues();
         onCancelFormHandler(e);
     }
 
-    // const setInputsToDefaultValues = () => {
-    //     if (formName !== formNames.UPDATE) {
-    //         setValues({
-    //             title: '',
-    //             description: '',
-    //         });
-    //     }
-    // }
+    const setInputsToDefaultValues = () => {
+        if (formName !== formNames.UPDATE) {
+            setValues({
+                description: '',
+            });
+        }
+    }
 
     return (
         <div className="form-wrapper-center" style={{ display: 'none' }}>

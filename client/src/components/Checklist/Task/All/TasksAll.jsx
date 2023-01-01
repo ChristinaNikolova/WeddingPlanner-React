@@ -3,11 +3,10 @@ import { useParams } from 'react-router-dom';
 
 import * as global from '../../../../utils/constants/global';
 import * as tasksService from '../../../../services/tasks';
-import * as subtasksService from '../../../../services/subtask';
 
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
-import CreateSubtask from '../../Subtask/Create/CreateSubtask';
+import SubtasksAll from '../../Subtask/All/SubtasksAll';
 
 import styles from './TasksAll.module.css';
 
@@ -46,11 +45,6 @@ function ChecklistAll() {
 
         const timeSpanValue = targetFormElement.previousSibling.children[0].innerText.toLowerCase();
         setTimespan(timeSpanValue);
-    }
-
-    const onShowSubTaskFormHandler = (e) => {
-        const targetFormElement = e.target.parentElement.parentElement.children[1];
-        targetFormElement.style.display = 'flex';
     }
 
     const onCancelFormHandler = (e) => {
@@ -103,21 +97,6 @@ function ChecklistAll() {
             .all(plannerId)
             .then((res) => setTasks(res))
             .catch((err) => console.error(err));
-    }
-
-    const onDoneSubtask = (taskId, subtaskId) => {
-        subtasksService
-            .done(taskId, subtaskId)
-            .then(() => {
-                loadTasks();
-            })
-            .catch((err) => console.error(err));
-    }
-
-    const getStyles = (isDone) => {
-        return isDone
-            ? `${styles["checklist-all-current-task-current-subtask"]} ${styles["checklist-all-current-task-current-subtask-heightlight"]}`
-            : styles["checklist-all-current-task-current-subtask"];
     }
 
     return (
@@ -185,33 +164,16 @@ function ChecklistAll() {
                                                     <p className={styles["checklist-all-current-task-info-desc"]}>
                                                         {t.description}
                                                     </p>
-                                                    <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
-                                                        <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Sub-tasks</h6>
-                                                        <CreateSubtask
-                                                            taskId={t.id}
-                                                            onCancelFormHandler={onCancelFormHandler}
-                                                        />
-                                                        {t.subtasks.length > 0
-                                                            ? t.subtasks.map((st) =>
-                                                                <div key={st.id} className={getStyles(st.isDone)}>
-                                                                    {st.isDone
-                                                                        ? <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square-check"></i>
-                                                                        : <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square"></i>
-                                                                    }
-                                                                    <p className={styles["checklist-all-current-task-current-subtask-description"]}>{st.description}</p>
-                                                                </div>
-                                                            )
-                                                            : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-sub-tasks"]}`}>No sub-tasks yet</p>
-                                                        }
-                                                        <div className="form-icon-wrapper">
-                                                            <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
-                                                            Add sub-task
-                                                        </div>
-                                                    </div>
+                                                    <SubtasksAll
+                                                        taskId={t.id}
+                                                        subtasks={t.subtasks}
+                                                        loadTasks={loadTasks}
+                                                        onCancelFormHandler={onCancelFormHandler}
+                                                    />
                                                 </div>
                                             </div>
                                         )
-                                        : <p className={`${styles["checklist-all-empty"]} ${styles["checklist-all-empty-tasks"]}`}>No tasks yet</p>
+                                        : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
                                     }
                                 </div>
                             </div>
