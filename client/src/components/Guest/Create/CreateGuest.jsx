@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import * as guestsService from '../../../services/guests';
 import { formNames } from '../../../utils/constants/global';
 
+import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormGuest from '../Form/FormGuest';
-
-import styles from './CreateGuest.module.css';
 
 function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadGuests }) {
     const formName = formNames.CREATE;
@@ -30,10 +29,12 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
 
     return (
         <>
-            <div className={[styles["guest-form-icon"], "form-icon-wrapper"].join(' ')}>
-                <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
-                Add guest
-            </div>
+            <AddButton
+                classNames={['guest-form-icon']}
+                text={'guest'}
+                isEmptyString={true}
+                onShowFormHandler={onShowFormHandler}
+            />
             {!isHidden &&
                 <FormGuest
                     firstName={''}

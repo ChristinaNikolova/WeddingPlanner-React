@@ -7,12 +7,12 @@ import * as tasksService from '../../../../services/tasks';
 import SingleTask from '../Single/SingleTask';
 import CreateTask from '../Create/CreateTask';
 import UpdateTask from '../Update/UpdateTask';
+import AddButton from '../../../shared/Buttons/Add/AddButton';
 
 import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
     //todo test again!!!
-    //todo extract add... in separete component?
 
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
@@ -82,11 +82,13 @@ function ChecklistAll() {
                         <div className={styles["checklist-all-timespan-content-wrapper"]}>
                             <div className={styles["checklist-all-timespan-title-wrapper"]}>
                                 <p className={styles["checklist-all-timespan"]}>{time}</p>
-                                {!taskId &&
-                                    <div className="form-icon-wrapper">
-                                        <i onClick={onShowTaskFormHandler} className="fa-solid fa-plus"></i>
-                                        Add task
-                                    </div>
+                                {!taskId
+                                    && <AddButton
+                                        classNames={[]}
+                                        text={"task"}
+                                        isEmptyString={false}
+                                        onShowFormHandler={onShowTaskFormHandler}
+                                    />
                                 }
                             </div>
                             {taskId

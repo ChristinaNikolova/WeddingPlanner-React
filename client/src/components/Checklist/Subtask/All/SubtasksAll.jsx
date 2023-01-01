@@ -3,6 +3,7 @@ import { useState } from 'react';
 import * as subtasksService from '../../../../services/subtask';
 import { styleNames } from '../../../../utils/constants/global';
 
+import AddButton from '../../../shared/Buttons/Add/AddButton';
 import CreateSubtask from '../Create/CreateSubtask';
 import SingleSubtask from '../Single/SingleSubtask';
 import UpdateSubtask from '../Update/UpdateSubtask';
@@ -10,6 +11,7 @@ import UpdateSubtask from '../Update/UpdateSubtask';
 import styles from './SubtasksAll.module.css';
 
 function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
+    //todo constants for add buttons
     const [subtaskId, setSubtaskId] = useState('');
 
     const onShowSubTaskFormHandler = (e) => {
@@ -78,10 +80,12 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
             }
             <div className={styles["checklist-all-current-task-subtasks-form-icon-wrapper"]}>
                 {!subtaskId
-                    && <div className="form-icon-wrapper">
-                        <i onClick={onShowSubTaskFormHandler} className="fa-solid fa-plus"></i>
-                        Add sub-task
-                    </div>
+                    && <AddButton
+                        classNames={[]}
+                        text={"sub-task"}
+                        isEmptyString={false}
+                        onShowFormHandler={onShowSubTaskFormHandler}
+                    />
                 }
             </div>
         </div>

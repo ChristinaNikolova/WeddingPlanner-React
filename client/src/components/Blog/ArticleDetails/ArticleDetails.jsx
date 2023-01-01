@@ -11,7 +11,6 @@ import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
     //todo add comments -> delete + edit??
-    //todo reorder onevent and classnames
     //todo constants for errors
 
     const { userId, isAdmin } = useContext(AuthContext);

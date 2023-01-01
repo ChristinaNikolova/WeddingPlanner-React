@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import * as eventsService from '../../../services/events';
 import { formNames } from '../../../utils/constants/global';
 
+import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormEvent from '../Form/FormEvent';
-
-import styles from './CreateEvent.module.css';
 
 function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadEvents }) {
     const formName = formNames.CREATE;
@@ -31,10 +30,12 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
 
     return (
         <>
-            <div className={[styles["event-form-icon"], "form-icon-wrapper"].join(' ')}>
-                <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
-                Add Event
-            </div>
+            <AddButton
+                classNames={['event-form-icon']}
+                text={'event'}
+                isEmptyString={true}
+                onShowFormHandler={onShowFormHandler}
+            />
             {!isHidden &&
                 <FormEvent
                     title={''}

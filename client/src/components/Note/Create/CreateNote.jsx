@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import * as notesService from '../../../services/notes';
 import { formNames } from '../../../utils/constants/global';
 
+import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormNote from '../Form/FormNote';
-
-import styles from './CreateNote.module.css';
 
 function CreateNote({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadNotes }) {
     const formName = formNames.CREATE;
@@ -31,10 +30,12 @@ function CreateNote({ plannerId, isHidden, onCancelFormHandler, onShowFormHandle
 
     return (
         <>
-            <div className={[styles["note-form-icon"], "form-icon-wrapper"].join(' ')}>
-                <i onClick={() => onShowFormHandler('')} className="fa-solid fa-plus"></i>
-                Add note
-            </div>
+            <AddButton
+                classNames={['note-form-icon']}
+                text={'note'}
+                isEmptyString={true}
+                onShowFormHandler={onShowFormHandler}
+            />
             {!isHidden &&
                 <FormNote
                     description={''}
