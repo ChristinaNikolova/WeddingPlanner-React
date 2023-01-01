@@ -14,7 +14,7 @@ function ChecklistAll() {
     //todo check css
     //todo check css with html
     //todo class for empty and not empty sections (css simular)
-    //todo constants for classes
+    //todo test again!!!
     //todo add ref to scroll to the forms
     //todo extract add... in separete component?
 
