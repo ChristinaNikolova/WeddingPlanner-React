@@ -7,8 +7,8 @@ import * as constants from '../../../../utils/constants/images';
 import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
-import Bottom from '../../../shared/Wrappers/ImageBottom/Bottom';
 import FormButton from '../../../shared/Buttons/Form/FormButton';
+import Bottom from '../../../shared/Images/Bottom/Bottom';
 
 import styles from './FormCategory.module.css'
 
