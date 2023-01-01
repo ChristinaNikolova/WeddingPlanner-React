@@ -36,6 +36,12 @@
   font-weight: 900;
 }
 
+.checklist-all-current-task-current-subtask-icons-wrapper i:first-of-type {
+  margin-left: 12px;
+  color: var(--clr-orange);
+}
+
 .checklist-all-current-task-current-subtask-icons-wrapper i:last-of-type {
   margin-left: 12px;
+  color: var(--clr-red);
 }

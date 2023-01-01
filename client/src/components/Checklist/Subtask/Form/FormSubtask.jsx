@@ -18,6 +18,13 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
 
     const [isDisabled, setIsDisabled] = useState(true);
     const [descriptionError, setDescriptionError] = useState('');
+    const [currentStyle, setCurrentStyle] = useState('none');
+
+    useEffect(() => {
+        if (formName === formNames.UPDATE) {
+            setCurrentStyle('flex');
+        }
+    }, []);
 
     useEffect(() => {
         checkDisabled();
@@ -65,7 +72,7 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
     }
 
     return (
-        <div className="form-wrapper-center" style={{ display: 'none' }}>
+        <div className="form-wrapper-center" style={{ display: currentStyle }}>
             <form className="form-width form-error-message-width" onSubmit={onSubmitHelperHandler}>
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">

@@ -19,3 +19,15 @@ export const deleteById = (taskId, subtaskId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (id) => {
+    return requester(`${api.subtask}/${id}`, httpMethods.GET)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const update = (id, description) => {
+    return requester(`${api.subtask}/${id}`, httpMethods.PUT, { description })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

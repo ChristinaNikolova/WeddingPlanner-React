@@ -19,7 +19,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
-    const [currentStyle, setCurrentStyle] = useState('none')
+    const [currentStyle, setCurrentStyle] = useState('none');
 
     useEffect(() => {
         if (formName === formNames.UPDATE) {

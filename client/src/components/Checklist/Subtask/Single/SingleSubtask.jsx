@@ -1,6 +1,6 @@
 import styles from './SingleSubtask.module.css';
 
-function SingleSubtask({ taskId, id, description, isDone, onDoneSubtask, onEditHandler, onDeleteHandler }) {
+function SingleSubtask({ taskId, subtaskId, id, description, isDone, onDoneSubtask, onEditHandler, onDeleteHandler }) {
     const onMouseEnterHandler = (e) => {
         //todo check this error!
         e.target.children[0].style.display = 'inline-block';
@@ -32,7 +32,7 @@ function SingleSubtask({ taskId, id, description, isDone, onDoneSubtask, onEditH
                 <span
                     className={`${styles["checklist-all-current-task-current-subtask-icons-wrapper"]} subtask-icons-wrapper`}
                     style={{ display: 'none' }}>
-                    <i className="fa-solid fa-pen"></i>
+                    {!subtaskId && <i onClick={() => onEditHandler(id)} className="fa-solid fa-pen"></i>}
                     <i onClick={() => onDeleteHandler(taskId, id)} className="fa-solid fa-trash"></i>
                 </span>
             </p>

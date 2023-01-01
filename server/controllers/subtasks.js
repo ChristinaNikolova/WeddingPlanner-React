@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
-const { create, done, deleteById } = require('../services/subtasks');
+const { create, done, deleteById, update, getById } = require('../services/subtasks');
 
 router.post('/:id', async (req, res) => {
     try {
@@ -38,5 +38,28 @@ router.delete('/:taskId/:subtaskId', async (req, res) => {
         res.status(400).json({ message });
     }
 });
+
+router.put('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const subtask = await update(id, req.body.description);
+        res.json(subtask);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const subtask = await getById(id, true);
+        res.json(subtask);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
+
 
 module.exports = router;
