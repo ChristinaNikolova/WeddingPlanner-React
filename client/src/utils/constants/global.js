@@ -47,6 +47,14 @@ export const dishes = {
     VEGGIES: 'veggies',
 }
 
+export const addButtonTexts = {
+    SUB_TASK: 'sub-task',
+    TASK: 'task',
+    EVENT: 'event',
+    GUEST: 'guest',
+    NOTE: 'note',
+}
+
 export const roles = [
     'bride',
     'groom',

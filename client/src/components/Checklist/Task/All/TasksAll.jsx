@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { timespans, classNames, styleNames } from '../../../../utils/constants/global';
+import { timespans, classNames, styleNames, addButtonTexts } from '../../../../utils/constants/global';
 import * as tasksService from '../../../../services/tasks';
 
 import SingleTask from '../Single/SingleTask';
@@ -85,7 +85,7 @@ function ChecklistAll() {
                                 {!taskId
                                     && <AddButton
                                         classNames={[]}
-                                        text={"task"}
+                                        text={addButtonTexts.TASK}
                                         isEmptyString={false}
                                         onShowFormHandler={onShowTaskFormHandler}
                                     />

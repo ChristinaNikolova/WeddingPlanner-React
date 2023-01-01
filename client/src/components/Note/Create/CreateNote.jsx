@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as notesService from '../../../services/notes';
-import { formNames } from '../../../utils/constants/global';
+import { addButtonTexts, formNames } from '../../../utils/constants/global';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormNote from '../Form/FormNote';
@@ -32,7 +32,7 @@ function CreateNote({ plannerId, isHidden, onCancelFormHandler, onShowFormHandle
         <>
             <AddButton
                 classNames={['note-form-icon']}
-                text={'note'}
+                text={addButtonTexts.NOTE}
                 isEmptyString={true}
                 onShowFormHandler={onShowFormHandler}
             />

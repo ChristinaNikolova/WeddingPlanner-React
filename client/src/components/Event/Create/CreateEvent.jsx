@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as eventsService from '../../../services/events';
-import { formNames } from '../../../utils/constants/global';
+import { addButtonTexts, formNames } from '../../../utils/constants/global';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormEvent from '../Form/FormEvent';
@@ -32,7 +32,7 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
         <>
             <AddButton
                 classNames={['event-form-icon']}
-                text={'event'}
+                text={addButtonTexts.EVENT}
                 isEmptyString={true}
                 onShowFormHandler={onShowFormHandler}
             />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import * as subtasksService from '../../../../services/subtask';
-import { styleNames } from '../../../../utils/constants/global';
+import { addButtonTexts, styleNames } from '../../../../utils/constants/global';
 
 import AddButton from '../../../shared/Buttons/Add/AddButton';
 import CreateSubtask from '../Create/CreateSubtask';
@@ -11,7 +11,6 @@ import UpdateSubtask from '../Update/UpdateSubtask';
 import styles from './SubtasksAll.module.css';
 
 function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
-    //todo constants for add buttons
     const [subtaskId, setSubtaskId] = useState('');
 
     const onShowSubTaskFormHandler = (e) => {
@@ -82,7 +81,7 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
                 {!subtaskId
                     && <AddButton
                         classNames={[]}
-                        text={"sub-task"}
+                        text={addButtonTexts.SUB_TASK}
                         isEmptyString={false}
                         onShowFormHandler={onShowSubTaskFormHandler}
                     />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as guestsService from '../../../services/guests';
-import { formNames } from '../../../utils/constants/global';
+import { addButtonTexts, formNames } from '../../../utils/constants/global';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import FormGuest from '../Form/FormGuest';
@@ -31,7 +31,7 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandl
         <>
             <AddButton
                 classNames={['guest-form-icon']}
-                text={'guest'}
+                text={addButtonTexts.GUEST}
                 isEmptyString={true}
                 onShowFormHandler={onShowFormHandler}
             />
