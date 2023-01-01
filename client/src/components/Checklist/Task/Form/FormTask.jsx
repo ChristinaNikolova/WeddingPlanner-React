@@ -5,10 +5,10 @@ import * as helpers from '../../../../utils/helpers/form';
 import { formNames, styleNames } from '../../../../utils/constants/global';
 
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
+import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import Input from '../../../shared/Tags/Input/Input';
 import TextArea from '../../../shared/Tags/TextArea/TextArea';
-import ClientError from '../../../shared/Errors/ClientError/ClientError';
-import Button from '../../../shared/Wrappers/Button/Button';
+import FormButton from '../../../shared/Buttons/Form/FormButton';
 
 function FormTask({ title, description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
@@ -104,7 +104,7 @@ function FormTask({ title, description, formName, serverError, onSubmitHandler, 
                     />
                     {descriptionError && <ClientError error={descriptionError} />}
                 </div>
-                <Button
+                <FormButton
                     formName={formName}
                     isDisabled={isDisabled}
                     onCancelFormHandler={onCancelFormHelperHandler}

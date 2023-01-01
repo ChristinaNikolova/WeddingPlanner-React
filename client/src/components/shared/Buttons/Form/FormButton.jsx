@@ -1,4 +1,4 @@
-function Button({ formName, isDisabled, onCancelFormHandler }) {
+function FormButton({ formName, isDisabled, onCancelFormHandler }) {
     return (
         <div className="form-btns-wrapper">
             <button disabled={isDisabled} className="btn btn-center">{formName}</button>
@@ -7,4 +7,4 @@ function Button({ formName, isDisabled, onCancelFormHandler }) {
     );
 }
 
-export default Button;
+export default FormButton;

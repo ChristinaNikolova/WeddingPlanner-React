@@ -8,7 +8,7 @@ import Input from '../../../shared/Tags/Input/Input';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
 import Bottom from '../../../shared/Wrappers/ImageBottom/Bottom';
-import Button from '../../../shared/Wrappers/Button/Button';
+import FormButton from '../../../shared/Buttons/Form/FormButton';
 
 import styles from './FormCategory.module.css'
 
@@ -88,7 +88,7 @@ function FormCategory({ formName, name, image, serverError, onSubmitHandler, onC
                         />
                         {imageError && <ClientError error={imageError} />}
                     </div>
-                    <Button
+                    <FormButton
                         formName={formName}
                         isDisabled={isDisabled}
                         onCancelFormHandler={onCancelFormHandler}

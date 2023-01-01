@@ -7,7 +7,7 @@ import * as helpers from '../../../utils/helpers/form';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import ClientError from '../../shared/Errors/ClientError/ClientError';
 import Input from '../../shared/Tags/Input/Input';
-import Button from '../../shared/Wrappers/Button/Button';
+import FormButton from '../../shared/Buttons/Form/FormButton';
 
 import styles from './FormEvent.module.css';
 
@@ -122,7 +122,7 @@ function FormEvent({ title, startTime, endTime, duration, formName, serverError,
                     <label className="label" htmlFor="duration">Duration</label>
                     <input ref={durationRef} className="input" id="duration" name="duration" type="text" readOnly />
                 </div>
-                <Button
+                <FormButton
                     formName={formName}
                     isDisabled={isDisabled}
                     onCancelFormHandler={onCancelFormHandler}

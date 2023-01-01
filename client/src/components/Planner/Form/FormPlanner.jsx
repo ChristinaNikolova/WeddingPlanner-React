@@ -7,7 +7,7 @@ import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
-import Button from '../../shared/Wrappers/Button/Button';
+import FormButton from '../../shared/Buttons/Form/FormButton';
 
 function FormPlanner({
     formName,
@@ -168,7 +168,7 @@ function FormPlanner({
                         />
                         {groomError && <ClientError error={groomError} />}
                     </div>
-                    <Button
+                    <FormButton
                         formName={formName}
                         isDisabled={isDisabled}
                         onCancelFormHandler={onCancelFormHandler}

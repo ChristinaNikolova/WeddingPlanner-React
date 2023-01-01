@@ -6,7 +6,7 @@ import * as helpers from '../../../utils/helpers/form';
 import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import TextArea from '../../shared/Tags/TextArea/TextArea';
-import Button from '../../shared/Wrappers/Button/Button';
+import FormButton from '../../shared/Buttons/Form/FormButton';
 
 function FormNote({ description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
@@ -66,7 +66,7 @@ function FormNote({ description, formName, serverError, onSubmitHandler, onCance
                     />
                     {descriptionError && <ClientError error={descriptionError} />}
                 </div>
-                <Button
+                <FormButton
                     formName={formName}
                     isDisabled={isDisabled}
                     onCancelFormHandler={onCancelFormHandler}

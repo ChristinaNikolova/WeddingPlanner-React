@@ -7,7 +7,7 @@ import { formNames, styleNames } from '../../../../utils/constants/global';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
 import TextArea from '../../../shared/Tags/TextArea/TextArea';
-import Button from '../../../shared/Wrappers/Button/Button';
+import FormButton from '../../../shared/Buttons/Form/FormButton';
 
 function FormSubtask({ description, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
     const [values, setValues] = useState({
@@ -84,7 +84,7 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
                     />
                     {descriptionError && <ClientError error={descriptionError} />}
                 </div>
-                <Button
+                <FormButton
                     formName={formName}
                     isDisabled={isDisabled}
                     onCancelFormHandler={onCancelFormHelperHandler}

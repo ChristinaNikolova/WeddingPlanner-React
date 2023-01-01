@@ -4,11 +4,11 @@ import * as global from '../../../utils/constants/global';
 import * as helpers from '../../../utils/helpers/form';
 import * as validator from '../../../utils/validators/guest';
 
+import FormButton from '../../shared/Buttons/Form/FormButton';
 import ClientError from '../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../shared/Errors/ServerError/ServerError';
 import Input from '../../shared/Tags/Input/Input';
 import Select from '../../shared/Tags/Select/Select';
-import Button from '../../shared/Wrappers/Button/Button';
 
 import styles from './FormGuest.module.css';
 
@@ -303,7 +303,7 @@ function FormGuest({
                         </div>
                     </div>
                 </div>
-                <Button
+                <FormButton
                     formName={formName}
                     isDisabled={isDisabled}
                     onCancelFormHandler={onCancelFormHandler}

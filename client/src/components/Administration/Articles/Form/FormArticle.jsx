@@ -10,7 +10,7 @@ import TextArea from '../../../shared/Tags/TextArea/TextArea';
 import Select from '../../../shared/Tags/Select/Select';
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
-import Button from '../../../shared/Wrappers/Button/Button';
+import FormButton from '../../../shared/Buttons/Form/FormButton';
 
 function FormArticle({
     formName,
@@ -160,7 +160,7 @@ function FormArticle({
                         />
                         {categoryError && <ClientError error={categoryError} />}
                     </div>
-                    <Button
+                    <FormButton
                         formName={formName}
                         isDisabled={isDisabled}
                         onCancelFormHandler={onCancelFormHandler}
