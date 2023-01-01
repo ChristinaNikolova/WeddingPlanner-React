@@ -115,6 +115,12 @@ function ChecklistAll() {
             .catch((err) => console.error(err));
     }
 
+    const getStyles = (isDone) => {
+        return isDone
+            ? `${styles["checklist-all-current-task-current-subtask"]} ${styles["checklist-all-current-task-current-subtask-heightlight"]}`
+            : styles["checklist-all-current-task-current-subtask"];
+    }
+
     return (
         <>
             <section className="section-planner section-background">
@@ -188,7 +194,7 @@ function ChecklistAll() {
                                                         />
                                                         {t.subtasks.length > 0
                                                             ? t.subtasks.map((st) =>
-                                                                <div key={st.id} className={styles["checklist-all-current-task-current-subtask"]}>
+                                                                <div key={st.id} className={getStyles(st.isDone)}>
                                                                     {st.isDone
                                                                         ? <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square-check"></i>
                                                                         : <i onClick={() => onDoneSubtask(t.id, st.id)} className="fa-solid fa-square"></i>
