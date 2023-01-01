@@ -15,6 +15,21 @@ export const formNames = {
     UPDATE: 'update',
 }
 
+export const classNames = {
+    SHOW: 'show',
+    HIDE: 'hide',
+    FORM_WIDTH: 'form-width',
+    CHEVRON_DOWN: 'fa-chevron-down',
+    CHEVRON_RIGHT: 'fa-chevron-right',
+}
+
+export const styleNames = {
+    FLEX: 'flex',
+    NONE: 'none',
+    INLINE_BLOCK: 'inline-block',
+    BLOCK: 'block',
+}
+
 export const roles = [
     'bride',
     'groom',

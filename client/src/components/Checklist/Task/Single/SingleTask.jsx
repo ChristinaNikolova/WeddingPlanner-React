@@ -1,3 +1,5 @@
+import { classNames, styleNames } from '../../../../utils/constants/global';
+
 import SubtasksAll from '../../Subtask/All/SubtasksAll';
 
 import styles from './SingleTask.module.css';
@@ -18,12 +20,12 @@ function SingleTask({
 }) {
     const onMouseEnterHandler = (e) => {
         //todo check this error!
-        e.target.children[0].style.display = 'inline-block';
+        e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 
     const onMouseLeaveHandler = () => {
         Array.from(document.getElementsByClassName('checklist-all-current-task-icons')).forEach((el) => {
-            el.style.display = 'none';
+            el.style.display = styleNames.NONE;
         });
     }
 
@@ -31,16 +33,16 @@ function SingleTask({
         const targetIcon = e.target
         const targetElement = targetIcon.parentElement.parentElement.parentElement.nextSibling;
 
-        targetElement.style.display === 'none'
-            ? targetElement.style.display = 'block'
-            : targetElement.style.display = 'none';
+        targetElement.style.display === styleNames.NONE
+            ? targetElement.style.display = styleNames.BLOCK
+            : targetElement.style.display = styleNames.NONE;
 
-        if (targetIcon.classList.contains("fa-chevron-down")) {
-            targetIcon.classList.remove("fa-chevron-down");
-            targetIcon.classList.add("fa-chevron-right");
+        if (targetIcon.classList.contains(classNames.CHEVRON_DOWN)) {
+            targetIcon.classList.remove(classNames.CHEVRON_DOWN);
+            targetIcon.classList.add(classNames.CHEVRON_RIGHT);
         } else {
-            targetIcon.classList.remove("fa-chevron-right");
-            targetIcon.classList.add("fa-chevron-down");
+            targetIcon.classList.remove(classNames.CHEVRON_RIGHT);
+            targetIcon.classList.add(classNames.CHEVRON_DOWN);
         }
     }
 

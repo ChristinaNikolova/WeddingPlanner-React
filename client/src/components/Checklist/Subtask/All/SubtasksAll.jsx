@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import * as subtasksService from '../../../../services/subtask';
+import { styleNames } from '../../../../utils/constants/global';
 
 import CreateSubtask from '../Create/CreateSubtask';
 import SingleSubtask from '../Single/SingleSubtask';
@@ -13,7 +14,7 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
 
     const onShowSubTaskFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.parentElement.children[1].children[0];
-        targetFormElement.style.display = 'flex';
+        targetFormElement.style.display = styleNames.FLEX;
     }
 
     const onDoneSubtask = (taskId, subtaskId) => {
@@ -46,7 +47,6 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
         <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
             <h6 className={styles["checklist-all-current-task-subtasks-title"]}>Sub-tasks</h6>
             <div className={styles["checklist-all-current-task-subtasks-form-wrapper"]}>
-
                 {subtaskId
                     ? <UpdateSubtask
                         subtaskId={subtaskId}

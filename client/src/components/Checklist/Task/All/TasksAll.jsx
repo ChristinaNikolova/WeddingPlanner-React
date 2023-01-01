@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import * as global from '../../../../utils/constants/global';
+import { timespans, classNames, styleNames } from '../../../../utils/constants/global';
 import * as tasksService from '../../../../services/tasks';
 
 import SingleTask from '../Single/SingleTask';
@@ -23,14 +23,14 @@ function ChecklistAll() {
     const [taskId, setTaskId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
     const [timespan, setTimespan] = useState('');
-    //todo need taskId??
+
     useEffect(() => {
         loadTasks();
-    }, [taskId]);
+    }, []);
 
     const onShowTaskFormHandler = (e) => {
         const targetFormElement = e.target.parentElement.parentElement.nextSibling;
-        targetFormElement.style.display = 'flex';
+        targetFormElement.style.display = styleNames.FLEX;
 
         const timeSpanValue = targetFormElement.previousSibling.children[0].innerText.toLowerCase();
         setTimespan(timeSpanValue);
@@ -39,7 +39,7 @@ function ChecklistAll() {
     const onCancelFormHandler = (e) => {
         let targetElement = '';
 
-        if (e.target.classList.contains('form-width')) {
+        if (e.target.classList.contains(classNames.FORM_WIDTH)) {
             targetElement = e.target.parentElement;
         } else {
             targetElement = e.target.parentElement.parentElement.parentElement;
@@ -47,7 +47,7 @@ function ChecklistAll() {
 
         setTaskId('');
         setCurrentIndex('');
-        targetElement.style.display = 'none';
+        targetElement.style.display = styleNames.NONE;
     }
 
     const onDeleteHandler = (id) => {
@@ -71,6 +71,8 @@ function ChecklistAll() {
             .catch((err) => console.error(err));
     }
 
+    console.log()
+
     return (
         <>
             <section className="section-planner section-background">
@@ -78,7 +80,7 @@ function ChecklistAll() {
                     <h2 className="section-title">The big day</h2>
                 </div>
                 <div className={styles["checklist-all-main-content-wrapper"]}>
-                    {global.timespans.map((time, index) =>
+                    {timespans.map((time, index) =>
                         <div key={index} className={styles["checklist-all-timespan-wrapper"]}>
                             <div className={styles["checklist-all-timespan-content-wrapper"]}>
                                 <div className={styles["checklist-all-timespan-title-wrapper"]}>

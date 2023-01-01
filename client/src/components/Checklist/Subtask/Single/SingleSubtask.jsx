@@ -1,14 +1,16 @@
+import { styleNames } from '../../../../utils/constants/global';
+
 import styles from './SingleSubtask.module.css';
 
 function SingleSubtask({ taskId, subtaskId, id, description, isDone, onDoneSubtask, onEditHandler, onDeleteHandler }) {
     const onMouseEnterHandler = (e) => {
         //todo check this error!
-        e.target.children[0].style.display = 'inline-block';
+        e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 
     const onMouseLeaveHandler = () => {
         Array.from(document.getElementsByClassName('subtask-icons-wrapper')).forEach((el) => {
-            el.style.display = 'none';
+            el.style.display = styleNames.NONE;
         });
     }
 

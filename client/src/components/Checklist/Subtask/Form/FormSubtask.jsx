@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as validator from '../../../../utils/validators/subtask';
 import * as helpers from '../../../../utils/helpers/form';
-import { formNames } from '../../../../utils/constants/global';
+import { formNames, styleNames } from '../../../../utils/constants/global';
 
 import ClientError from '../../../shared/Errors/ClientError/ClientError';
 import ServerError from '../../../shared/Errors/ServerError/ServerError';
@@ -16,11 +16,11 @@ function FormSubtask({ description, formName, serverError, onSubmitHandler, onCa
 
     const [isDisabled, setIsDisabled] = useState(true);
     const [descriptionError, setDescriptionError] = useState('');
-    const [currentStyle, setCurrentStyle] = useState('none');
+    const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
 
     useEffect(() => {
         if (formName === formNames.UPDATE) {
-            setCurrentStyle('flex');
+            setCurrentStyle(styleNames.FLEX);
         }
     }, []);
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import * as categoriesService from '../../../services/categories';
+import { classNames } from '../../../utils/constants/global';
 import { article } from '../../../utils/constants/model';
 import { toogle } from '../../../utils/helpers/dropdown';
 
@@ -22,13 +23,13 @@ function ArticlesAllCategoryDropDown({ selectedCategoryName, onCategoryHandler, 
     const onToogleHandler = (e) => {
         const dropdownElement = e.target.nextElementSibling;
 
-        dropdownElement.classList.contains('show')
-            ? toogle(dropdownElement, 'show', 'hide')
-            : toogle(dropdownElement, 'hide', 'show');
+        dropdownElement.classList.contains(classNames.SHOW)
+            ? toogle(dropdownElement, classNames.SHOW, classNames.HIDE)
+            : toogle(dropdownElement, classNames.HIDE, classNames.SHOW);
     }
 
     const onClickCategoryHandler = (e) => {
-        toogle(e.target.parentElement, 'show', 'hide');
+        toogle(e.target.parentElement, classNames.SHOW, classNames.HIDE);
         onCategoryHandler(e);
     }
 

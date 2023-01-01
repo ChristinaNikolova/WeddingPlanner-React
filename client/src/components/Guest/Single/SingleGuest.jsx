@@ -24,6 +24,7 @@ function SingleGuest({
     const getPersonImage = (age, gender) => {
         let image = '';
 
+        //todo constants
         if (age === 'adult' && gender === 'male') {
             image = images.personImages.ADULT_MALE;
         } else if (age === 'adult' && gender === 'female') {
@@ -39,6 +40,7 @@ function SingleGuest({
         return image;
     }
 
+    //todo constants
     const getDishImage = (mainDish) => {
         let image = '';
 
