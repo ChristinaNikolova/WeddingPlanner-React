@@ -107,7 +107,12 @@ function DetailsPlanner() {
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <h4 className={styles["details-planner-section-title"]}>Budget</h4>
                     <div className={styles["details-planner-btns-wrapper"]}>
-                        <Link className="btn" to={`/${id}/budget`}>Costs</Link>
+                        <Link
+                            to={`/${id}/budget`}
+                            state={{ budget: planner.budget }}
+                            className="btn">
+                            Costs
+                        </Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
@@ -116,7 +121,7 @@ function DetailsPlanner() {
                         </p>
                         <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Actual costs:</span>
-                            ${planner.totalCosts}
+                            ${planner.actualCosts}
                         </p>
                     </div>
                 </div>

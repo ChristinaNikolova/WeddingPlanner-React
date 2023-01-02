@@ -1,4 +1,4 @@
-import { classNames, styleNames } from "../constants/global";
+import { classNames, styleNames } from '../constants/global';
 
 export const toggle = (element, remove, add) => {
     element.classList.remove(remove);

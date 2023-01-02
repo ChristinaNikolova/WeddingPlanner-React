@@ -27,6 +27,11 @@
   margin-bottom: 12px;
 }
 
+.budget-info-actual-unit {
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
 .budget-main-content-wrapper
   .budget-main-current-category-wrapper:last-of-type {
   margin-bottom: 12px;

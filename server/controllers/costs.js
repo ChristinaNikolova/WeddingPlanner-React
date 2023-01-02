@@ -47,7 +47,6 @@ router.put('/:id', async (req, res) => {
 });
 
 router.get('/:plannerId/:costId', async (req, res) => {
-    console.log('cont')
     try {
         const id = req.params.costId;
         const cost = await getById(id, true);

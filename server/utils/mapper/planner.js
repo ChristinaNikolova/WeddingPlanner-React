@@ -17,14 +17,12 @@ function plannerViewModel(planner) {
         groom: getFullName(planner.groom),
         groomId: planner.groom._id,
         location: planner.location,
-
-        totalCosts: (calculateTotalCosts(planner.costs)).toFixed(2),
-
+        actualCosts: (calculateActualCosts(planner.costs)),
         totalGuests: planner.guests.length,
         brideGuests: getSideGuestsCount(planner.guests, 'bride'),
         groomGuests: getSideGuestsCount(planner.guests, 'groom'),
         confirmedGuests: getConfirmedGuestsCount(planner.guests),
-
+        //todo add calculation here
         totalTasks: calculateTotalTasks(planner.tasks),
         doneTasks: 100,
 
@@ -32,8 +30,6 @@ function plannerViewModel(planner) {
         highlightedEvents: getHighlightedEventsCount(planner.events),
         notes: planner.notes.length,
     }
-    //todo add calculation here
-    //todo extract function!!!!
 }
 
 function getHighlightedEventsCount(events) {
@@ -52,9 +48,8 @@ function getFullName(person) {
     return person.firstName + ' ' + person.lastName;
 }
 
-function calculateTotalCosts(costs) {
-    //todo test this + function toFixed here
-    return costs.reduce((acc, curr) => curr.price + acc, 0);
+function calculateActualCosts(costs) {
+    return (costs.reduce((acc, curr) => curr.price + acc, 0)).toFixed(2);
 }
 
 function calculateTotalTasks(tasks) {
@@ -62,7 +57,7 @@ function calculateTotalTasks(tasks) {
     //done tasks
     //total subtasks
     //done subtasks
-    
+
     return tasks.reduce((acc, curr) => curr.subtasks + acc, 0);
 }
 
