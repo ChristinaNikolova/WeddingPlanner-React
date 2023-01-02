@@ -68,6 +68,20 @@ function AllCosts() {
             .catch((err) => console.error(err));
     }
 
+    const onMouseEnterHandler = (e) => {
+        // if (e.target.nodeName !== tagNames.H4) {
+        //     return;
+        // }
+
+        // e.target.children[0].style.display = styleNames.INLINE_BLOCK;
+    }
+
+    const onMouseLeaveHandler = () => {
+        // Array.from(document.getElementsByClassName('checklist-all-current-task-icons')).forEach((el) => {
+        //     el.style.display = styleNames.NONE;
+        // });
+    }
+
     console.log(categories);
     console.log(costs);
 
@@ -112,7 +126,16 @@ function AllCosts() {
                                     .filter((cost) => cost.category === c.id)
                                     .map((cost) =>
                                         <div key={cost.id} className={styles["budget-main-current-category-current-cost-wrapper"]}>
-                                            <p className="budget-main-current-category-current-cost-title">{cost.title}</p>
+                                            <p
+                                                onMouseEnter={onMouseEnterHandler}
+                                                onMouseLeave={onMouseLeaveHandler}
+                                                className="budget-main-current-category-current-cost-title">
+                                                {cost.title}
+                                                <span className="checklist-all-current-task-icons" style={{ display: styleNames.NONE }}>
+                                                    <i className="fa-solid fa-pen"></i>
+                                                    <i className="fa-solid fa-trash"></i>
+                                                </span>
+                                            </p>
                                             <p className="budget-main-current-category-current-cost-price">
                                                 <span className={styles["budget-main-current-category-current-cost-price-unit"]}>$</span>
                                                 {cost.price}

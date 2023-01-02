@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as validator from '../../../utils/validators/cost';
 import * as helpers from '../../../utils/helpers/form';
-import { formNames } from '../../../utils/constants/global';
+import { formNames, styleNames } from '../../../utils/constants/global';
 
 import FormButton from '../../shared/Buttons/Form/FormButton';
 import ClientError from '../../shared/Errors/ClientError/ClientError';
@@ -71,7 +71,7 @@ function FormCost({ title, price, formName, serverError, onSubmitHandler, onCanc
     }
 
     return (
-        <div className="form-wrapper-center" style={{ display: 'none' }}>
+        <div className="form-wrapper-center" style={{ display: styleNames.NONE }}>
             <form onSubmit={onSubmitHelperHandler} className="form-width form-error-message-width">
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">
