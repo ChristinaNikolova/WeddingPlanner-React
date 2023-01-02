@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import * as categoriesService from '../../../services/categories';
 import { classNames } from '../../../utils/constants/global';
-import { article } from '../../../utils/constants/model';
+import { category } from '../../../utils/constants/model';
 import { toggle } from '../../../utils/helpers/dropdown';
 
 import styles from './ArticlesAllCategoryDropDown.module.css';
@@ -14,8 +14,8 @@ function ArticlesAllCategoryDropDown({ selectedCategoryName, onCategoryHandler, 
         categoriesService
             .all()
             .then((res) => {
-                res = res.filter((el) => el.id !== article.DEFAULT_CATEGORY_SELECTED_ID);
-                setCategories(res)
+                res = res.filter((el) => el.id !== category.DEFAULT_CATEGORY_SELECTED_ID);
+                setCategories(res);
             })
             .catch((err) => console.error(err));
     }, []);

@@ -3,7 +3,6 @@ export const article = {
     TITLE_MAX_LEN: 100,
     CONTENT_MIN_LEN: 100,
     CONTENT_MAX_LEN: 3000,
-    DEFAULT_CATEGORY_SELECTED_ID: '638325c6bdd58333840dcc7e',
 };
 
 export const auth = {
@@ -16,6 +15,7 @@ export const auth = {
 export const category = {
     NAME_MIN_LEN: 3,
     NAME_MAX_LEN: 30,
+    DEFAULT_CATEGORY_SELECTED_ID: '638325c6bdd58333840dcc7e',
 };
 
 export const cost = {

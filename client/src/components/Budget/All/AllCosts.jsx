@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
 import { classNames, styleNames } from '../../../utils/constants/global';
+import { category } from '../../../utils/constants/model';
 import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
@@ -12,10 +13,11 @@ import CreateCost from '../Create/CreateCost';
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
-    //todo check for border radius
     //todo add css classes to categorories images
-    //todo remoce "plaese select category"
     //todo add constants form none, block, flex...
+    //todo check all files with css
+    //todo check all files with files tasks
+    //todo calculate budget/actual costs
 
     const { id: plannerId } = useParams();
     const [categories, setCategories] = useState([]);
@@ -24,7 +26,10 @@ function AllCosts() {
     useEffect(() => {
         categoriesService
             .all()
-            .then((res) => setCategories(res))
+            .then((res) => {
+                res = res.filter((el) => el.id !== category.DEFAULT_CATEGORY_SELECTED_ID);
+                setCategories(res);
+            })
             .catch((err) => console.error(err));
     }, []);
 
@@ -91,18 +96,28 @@ function AllCosts() {
                                 </span>
                             </div>
                         </div>
-                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
+                        <div className={styles["budget-main-current-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
                             <CreateCost
                                 plannerId={plannerId}
                                 category={c.id}
                                 loadCosts={loadCosts}
                                 onCancelFormHandler={onCancelFormHandler}
                             />
+                            <div className={styles["budget-main-current-category-costs-titles-wrapper"]}>
+                                <p className="budget-main-current-category-costs-titles-title">Title</p>
+                                <p className="budget-main-current-category-costs-titles-cost">Actual cost</p>
+                            </div>
                             {costs.filter((cost) => cost.category === c.id).length > 0
                                 ? costs
                                     .filter((cost) => cost.category === c.id)
                                     .map((cost) =>
-                                        <div key={cost.id}>{cost.title} - {cost.price}</div>
+                                        <div key={cost.id} className={styles["budget-main-current-category-current-cost-wrapper"]}>
+                                            <p className="budget-main-current-category-current-cost-title">{cost.title}</p>
+                                            <p className="budget-main-current-category-current-cost-price">
+                                                <span className={styles["budget-main-current-category-current-cost-price-unit"]}>$</span>
+                                                {cost.price}
+                                            </p>
+                                        </div>
                                     )
                                 : <p className={styles["budget-main-current-category-costs-empty"]}>No costs yet</p>
                             }
