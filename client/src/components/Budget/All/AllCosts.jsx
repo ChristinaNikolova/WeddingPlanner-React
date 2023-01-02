@@ -22,7 +22,7 @@ function AllCosts() {
 
     //todo add css classes to categorories images
     //todo calculate budget/actual costs
-    
+
     const { id: plannerId } = useParams();
     const [categories, setCategories] = useState([]);
     const [costs, setCosts] = useState([]);
@@ -102,7 +102,7 @@ function AllCosts() {
                         <div className={styles["budget-main-current-category-info-wrapper"]}>
                             <i onClick={onShowContent} className="fa-solid fa-chevron-down"></i>
                             <div className={styles["budget-main-current-category-info"]}>
-                                <img className={styles["budget-main-current-category-info-image"]} src={c.image} alt={c.name} />
+                                <img className={`${styles["budget-main-current-category-info-image"]} img`} src={c.image} alt={c.name} />
                                 <span className={styles["budget-main-current-category-info-name"]}>
                                     {c.name}
                                 </span>
