@@ -20,7 +20,6 @@ const comment = {
 const cost = {
     TITLE_MIN_LEN: 3,
     TITLE_MAX_LEN: 80,
-    DESC_MAX_LEN: 300,
 };
 
 const event = {

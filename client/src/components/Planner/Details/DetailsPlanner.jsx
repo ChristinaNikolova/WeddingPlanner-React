@@ -107,7 +107,7 @@ function DetailsPlanner() {
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <h4 className={styles["details-planner-section-title"]}>Budget</h4>
                     <div className={styles["details-planner-btns-wrapper"]}>
-                        <Link className="btn" to='guest/create'>Costs</Link>
+                        <Link className="btn" to={`/${id}/budget`}>Costs</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">

@@ -1,4 +1,4 @@
-const { extractTimeFromDate, getTotalMinutes } = require("../parser")
+const { extractTimeFromDate, getTotalMinutes } = require("../parser");
 
 function eventViewModel(event) {
     return {

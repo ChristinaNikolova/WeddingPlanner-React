@@ -13,11 +13,6 @@ const costSchema = new Schema({
         required: [true, 'Price is required'],
         min: [0, 'Price should be a positive number'],
     },
-    description: {
-        type: String,
-        maxlength: [cost.DESC_MAX_LEN, `Description should be maximal ${cost.DESC_MAX_LEN} characters long`],
-        default: '',
-    },
     category: {
         type: ObjectId,
         ref: 'Category',

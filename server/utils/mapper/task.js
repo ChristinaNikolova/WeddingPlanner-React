@@ -1,4 +1,4 @@
-const { subtaskViewModel } = require("./subtask")
+const { subtaskViewModel } = require("./subtask");
 
 function taskViewModel(task) {
     return {

@@ -11,6 +11,7 @@ const api = {
     users: `${baseUrl}/users`,
     planners: `${baseUrl}/planners`,
     guests: `${baseUrl}/guests`,
+    costs: `${baseUrl}/costs`,
     notes: `${baseUrl}/notes`,
     events: `${baseUrl}/events`,
     tasks: `${baseUrl}/tasks`,
