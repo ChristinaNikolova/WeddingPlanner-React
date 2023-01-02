@@ -13,22 +13,45 @@
   margin: 0 auto;
   background-color: var(--clr-creme);
   border-radius: 8px;
+  padding: 22px 40px;
 }
 
 .budget-main-current-category-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 14px;
   margin-bottom: 50px;
 }
 
-.budget-main-current-category-image {
+.budget-main-content-wrapper
+  .budget-main-current-category-wrapper:last-of-type {
+  margin-bottom: 12px;
+}
+
+.budget-main-current-category-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.budget-main-current-category-info-image {
   width: 40px;
   height: 40px;
   object-fit: cover;
 }
 
-.budget-main-current-category-name {
+.budget-main-current-category-info-name {
   font-size: 24px;
   font-weight: 500;
+}
+
+.budget-main-cuurent-category-costs-wrapper {
+  margin-bottom: 20px;
+}
+
+.budget-main-current-category-costs-empty {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--clr-gold);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--clr-gold);
 }

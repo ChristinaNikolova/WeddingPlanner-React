@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
 
+import AddButton from '../../shared/Buttons/Add/AddButton';
+
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
@@ -47,8 +49,26 @@ function AllCosts() {
             <div className={styles["budget-main-content-wrapper"]}>
                 {categories.map((c) =>
                     <div key={c.id} className={styles["budget-main-current-category-wrapper"]}>
-                        <img className={styles["budget-main-current-category-image"]} src={c.image} alt={c.name} />
-                        <span className={styles["budget-main-current-category-name"]}>{c.name}</span>
+                        <div className={styles["budget-main-current-category-info"]}>
+                            <img className={styles["budget-main-current-category-info-image"]} src={c.image} alt={c.name} />
+                            <span className={styles["budget-main-current-category-info-name"]}>{c.name}</span>
+                        </div>
+                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]}>
+                            {costs.filter((cost) => cost.category === c.id).length > 0
+                                ? costs
+                                    .filter((cost) => cost.category === c.id)
+                                    .map((cost) =>
+                                        <div>{cost.title} - {cost.price}</div>
+                                    )
+                                : <p className={styles["budget-main-current-category-costs-empty"]}>No costs yet</p>
+                            }
+                        </div>
+                        <AddButton
+                            classNames={[]}
+                            text={'cost'}
+                            isEmptyString={false}
+                            onShowFormHandler={null}
+                        />
                     </div>
                 )}
             </div>

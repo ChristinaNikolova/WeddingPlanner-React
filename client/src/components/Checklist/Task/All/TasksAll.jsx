@@ -107,23 +107,25 @@ function ChecklistAll() {
                             <div className={styles["checklist-all-line"]}></div>
                             <div className={styles["checklist-all-tasks-content-wrapper"]}>
                                 {tasks.filter((t) => t.timespan === time).length > 0
-                                    ? tasks.filter((t) => t.timespan === time).map((t) =>
-                                        <SingleTask
-                                            key={t.id}
-                                            index={index}
-                                            taskId={taskId}
-                                            id={t.id}
-                                            title={t.title}
-                                            description={t.description}
-                                            progress={t.progress}
-                                            target={t.target}
-                                            subtasks={t.subtasks}
-                                            loadTasks={loadTasks}
-                                            onEditHandler={onEditHandler}
-                                            onDeleteHandler={onDeleteHandler}
-                                            onCancelFormHandler={onCancelFormHandler}
-                                        />
-                                    )
+                                    ? tasks
+                                        .filter((t) => t.timespan === time)
+                                        .map((t) =>
+                                            <SingleTask
+                                                key={t.id}
+                                                index={index}
+                                                taskId={taskId}
+                                                id={t.id}
+                                                title={t.title}
+                                                description={t.description}
+                                                progress={t.progress}
+                                                target={t.target}
+                                                subtasks={t.subtasks}
+                                                loadTasks={loadTasks}
+                                                onEditHandler={onEditHandler}
+                                                onDeleteHandler={onDeleteHandler}
+                                                onCancelFormHandler={onCancelFormHandler}
+                                            />
+                                        )
                                     : <p className={styles["checklist-all-empty-tasks"]}>No tasks yet</p>
                                 }
                             </div>
