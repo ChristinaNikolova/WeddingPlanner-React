@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
@@ -16,20 +16,19 @@ import UpdateCost from '../Update/UpdateCost';
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
-    //todo add css classes to categorories images
-    //todo add constants form none, block, flex...
     //todo check all files with css
     //todo check all files with files tasks
-    //todo calculate budget/actual costs
-    //todo show/hode button when edint adding...
-    //todo add smooth scrooll to top
     //todo test again!!!!
 
+    //todo add css classes to categorories images
+    //todo calculate budget/actual costs
+    
     const { id: plannerId } = useParams();
     const [categories, setCategories] = useState([]);
     const [costs, setCosts] = useState([]);
     const [costId, setCostId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
+    const costsAllRef = useRef(null);
 
     useEffect(() => {
         categoriesService
@@ -37,6 +36,7 @@ function AllCosts() {
             .then((res) => {
                 res = res.filter((el) => el.id !== category.DEFAULT_CATEGORY_SELECTED_ID);
                 setCategories(res);
+                costsAllRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
             })
             .catch((err) => console.error(err));
     }, []);
@@ -84,7 +84,7 @@ function AllCosts() {
     }
 
     return (
-        <section className="section-planner section-background">
+        <section ref={costsAllRef} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Budget</h2>
             </div>
