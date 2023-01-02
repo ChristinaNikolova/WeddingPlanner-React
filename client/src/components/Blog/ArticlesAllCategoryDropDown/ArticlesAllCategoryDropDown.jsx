@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import * as categoriesService from '../../../services/categories';
 import { classNames } from '../../../utils/constants/global';
 import { article } from '../../../utils/constants/model';
-import { toogle } from '../../../utils/helpers/dropdown';
+import { toggle } from '../../../utils/helpers/dropdown';
 
 import styles from './ArticlesAllCategoryDropDown.module.css';
 
@@ -20,23 +20,23 @@ function ArticlesAllCategoryDropDown({ selectedCategoryName, onCategoryHandler, 
             .catch((err) => console.error(err));
     }, []);
 
-    const onToogleHandler = (e) => {
+    const onToggleHandler = (e) => {
         const dropdownElement = e.target.nextElementSibling;
 
         dropdownElement.classList.contains(classNames.SHOW)
-            ? toogle(dropdownElement, classNames.SHOW, classNames.HIDE)
-            : toogle(dropdownElement, classNames.HIDE, classNames.SHOW);
+            ? toggle(dropdownElement, classNames.SHOW, classNames.HIDE)
+            : toggle(dropdownElement, classNames.HIDE, classNames.SHOW);
     }
 
     const onClickCategoryHandler = (e) => {
-        toogle(e.target.parentElement, classNames.SHOW, classNames.HIDE);
+        toggle(e.target.parentElement, classNames.SHOW, classNames.HIDE);
         onCategoryHandler(e);
     }
 
     return (
         <div className={styles["article-all-category-drop-down-wrapper"]}>
             <span className={styles["articles-all-category-drop-down"]}>Category:</span>
-            <button onClick={onToogleHandler} className={styles["articles-all-category-drop-down-btn"]}>
+            <button onClick={onToggleHandler} className={styles["articles-all-category-drop-down-btn"]}>
                 {selectedCategoryName}
                 {selectedCategoryName !== 'all' && <i onClick={(e) => onRemoveCategotyHandler(e)} className="fa-solid fa-xmark"></i>}
             </button>

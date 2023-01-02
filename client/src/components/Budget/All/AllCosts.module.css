@@ -13,11 +13,18 @@
   margin: 0 auto;
   background-color: var(--clr-creme);
   border-radius: 8px;
-  padding: 22px 40px;
+  padding: 22px;
 }
 
 .budget-main-current-category-wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.budget-main-current-category-info-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .budget-main-content-wrapper
@@ -28,8 +35,7 @@
 .budget-main-current-category-info {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 30px;
+  gap: 8px;
 }
 
 .budget-main-current-category-info-image {
@@ -44,6 +50,8 @@
 }
 
 .budget-main-cuurent-category-costs-wrapper {
+  padding-left: 80px;
+  padding-right: 80px;
   margin-bottom: 20px;
 }
 

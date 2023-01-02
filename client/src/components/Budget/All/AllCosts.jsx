@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
+import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 
@@ -30,6 +31,12 @@ function AllCosts() {
             .catch((err) => console.error(err));
     }, []);
 
+    const onShowContent = (e) => {
+        const targetIcon = e.target
+        const targetElement = targetIcon.parentElement.nextSibling;
+        toggleWithTargetContent(targetElement, targetIcon);
+    }
+
     console.log(categories);
     console.log(costs);
 
@@ -49,11 +56,16 @@ function AllCosts() {
             <div className={styles["budget-main-content-wrapper"]}>
                 {categories.map((c) =>
                     <div key={c.id} className={styles["budget-main-current-category-wrapper"]}>
-                        <div className={styles["budget-main-current-category-info"]}>
-                            <img className={styles["budget-main-current-category-info-image"]} src={c.image} alt={c.name} />
-                            <span className={styles["budget-main-current-category-info-name"]}>{c.name}</span>
+                        <div className={styles["budget-main-current-category-info-wrapper"]}>
+                            <i onClick={onShowContent} className="fa-solid fa-chevron-right"></i>
+                            <div className={styles["budget-main-current-category-info"]}>
+                                <img className={styles["budget-main-current-category-info-image"]} src={c.image} alt={c.name} />
+                                <span className={styles["budget-main-current-category-info-name"]}>
+                                    {c.name}
+                                </span>
+                            </div>
                         </div>
-                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]}>
+                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]} style={{ display: 'none' }}>
                             {costs.filter((cost) => cost.category === c.id).length > 0
                                 ? costs
                                     .filter((cost) => cost.category === c.id)
