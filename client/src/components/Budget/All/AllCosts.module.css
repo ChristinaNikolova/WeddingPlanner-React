@@ -35,7 +35,7 @@
 .budget-main-current-category-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .budget-main-current-category-info-image {
@@ -45,13 +45,36 @@
 }
 
 .budget-main-current-category-info-name {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 700;
 }
 
-.budget-main-cuurent-category-costs-wrapper {
+.budget-main-current-category-costs-wrapper {
   padding-left: 80px;
   padding-right: 80px;
+}
+
+.budget-main-current-category-costs-titles-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.budget-main-current-category-current-cost-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--clr-gold);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.budget-main-current-category-current-cost-price-unit {
+  margin-right: 4px;
 }
 
 .budget-main-current-category-costs-empty {
