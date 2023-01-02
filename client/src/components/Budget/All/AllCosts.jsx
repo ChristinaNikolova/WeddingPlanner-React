@@ -10,6 +10,7 @@ import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import CreateCost from '../Create/CreateCost';
 import SingleCost from '../Single/SingleCost';
+import UpdateCost from '../Update/UpdateCost';
 
 import styles from './AllCosts.module.css';
 
@@ -20,10 +21,14 @@ function AllCosts() {
     //todo check all files with files tasks
     //todo calculate budget/actual costs
     //todo show/hode button when edint adding...
+    //todo add smooth scrooll to top
+    //todo test again!!!!
 
     const { id: plannerId } = useParams();
     const [categories, setCategories] = useState([]);
     const [costs, setCosts] = useState([]);
+    const [costId, setCostId] = useState('');
+    const [currentIndex, setCurrentIndex] = useState('');
 
     useEffect(() => {
         categoriesService
@@ -55,6 +60,8 @@ function AllCosts() {
             targetElement = e.target.parentElement.parentElement.parentElement;
         }
 
+        setCostId('');
+        setCurrentIndex('');
         targetElement.style.display = styleNames.NONE;
     }
 
@@ -79,6 +86,11 @@ function AllCosts() {
             .catch((err) => console.error(err));
     }
 
+    const onEditHandler = (id, index) => {
+        setCostId(id);
+        setCurrentIndex(index);
+    }
+
     return (
         <section className="section-planner section-background">
             <div className="section-title-wrapper">
@@ -93,7 +105,7 @@ function AllCosts() {
                 </p>
             </div>
             <div className={styles["budget-main-content-wrapper"]}>
-                {categories.map((c) =>
+                {categories.map((c, index) =>
                     <div key={c.id} className={styles["budget-main-current-category-wrapper"]}>
                         <div className={styles["budget-main-current-category-info-wrapper"]}>
                             <i onClick={onShowContent} className="fa-solid fa-chevron-down"></i>
@@ -105,12 +117,23 @@ function AllCosts() {
                             </div>
                         </div>
                         <div className={styles["budget-main-current-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
-                            <CreateCost
-                                plannerId={plannerId}
-                                category={c.id}
-                                loadCosts={loadCosts}
-                                onCancelFormHandler={onCancelFormHandler}
-                            />
+                            {costId
+                                && index === currentIndex
+                                && <UpdateCost
+                                    plannerId={plannerId}
+                                    costId={costId}
+                                    loadCosts={loadCosts}
+                                    onCancelFormHandler={onCancelFormHandler}
+                                />
+                            }
+                            {!costId &&
+                                <CreateCost
+                                    plannerId={plannerId}
+                                    category={c.id}
+                                    loadCosts={loadCosts}
+                                    onCancelFormHandler={onCancelFormHandler}
+                                />
+                            }
                             <div className={styles["budget-main-current-category-costs-titles-wrapper"]}>
                                 <p className="budget-main-current-category-costs-titles-title">Title</p>
                                 <p className="budget-main-current-category-costs-titles-cost">Actual cost</p>
@@ -121,20 +144,25 @@ function AllCosts() {
                                     .map((cost) =>
                                         <SingleCost
                                             key={cost.id}
+                                            index={index}
+                                            costId={costId}
                                             id={cost.id}
                                             title={cost.title}
                                             price={cost.price}
+                                            onEditHandler={onEditHandler}
                                             onDeleteHandler={onDeleteHandler}
                                         />
                                     )
                                 : <p className={styles["budget-main-current-category-costs-empty"]}>No costs yet</p>
                             }
-                            <AddButton
-                                classNames={[]}
-                                text={'cost'}
-                                isEmptyString={false}
-                                onShowFormHandler={onShowFormHandler}
-                            />
+                            {!costId
+                                && <AddButton
+                                    classNames={[]}
+                                    text={'cost'}
+                                    isEmptyString={false}
+                                    onShowFormHandler={onShowFormHandler}
+                                />
+                            }
                         </div>
                     </div>
                 )}

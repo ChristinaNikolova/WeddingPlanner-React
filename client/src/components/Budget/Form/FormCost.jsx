@@ -18,6 +18,13 @@ function FormCost({ title, price, formName, serverError, onSubmitHandler, onCanc
     const [isDisabled, setIsDisabled] = useState(true);
     const [titleError, setTitleError] = useState('');
     const [priceError, setPriceError] = useState('');
+    const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
+
+    useEffect(() => {
+        if (formName === formNames.UPDATE) {
+            setCurrentStyle(styleNames.FLEX);
+        }
+    }, []);
 
     useEffect(() => {
         checkDisabled();
@@ -71,7 +78,7 @@ function FormCost({ title, price, formName, serverError, onSubmitHandler, onCanc
     }
 
     return (
-        <div className="form-wrapper-center" style={{ display: styleNames.NONE }}>
+        <div className="form-wrapper-center" style={{ display: currentStyle }}>
             <form onSubmit={onSubmitHelperHandler} className="form-width form-error-message-width">
                 {serverError && <ServerError errors={serverError} />}
                 <div className="form-wrapper">

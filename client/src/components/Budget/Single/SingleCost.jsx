@@ -2,7 +2,7 @@ import { styleNames } from '../../../utils/constants/global';
 
 import styles from './SingleCost.module.css';
 
-function SingleCost({ id, title, price, onDeleteHandler }) {
+function SingleCost({ index, costId, id, title, price, onEditHandler, onDeleteHandler }) {
     const onMouseEnterHandler = (e) => {
         e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
@@ -21,7 +21,7 @@ function SingleCost({ id, title, price, onDeleteHandler }) {
                 className={styles["budget-main-current-category-current-cost-title"]}>
                 {title}
                 <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
-                    <i className="fa-solid fa-pen"></i>
+                    {!costId && <i onClick={() => onEditHandler(id, index)} className="fa-solid fa-pen"></i>}
                     <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                 </span>
             </p>
