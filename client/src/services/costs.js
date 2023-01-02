@@ -7,3 +7,9 @@ export const all = (plannerId) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const create = (plannerId, title, price, category) => {
+    return requester(`${api.costs}/${plannerId}`, httpMethods.POST, { title, price, category })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

@@ -11,7 +11,7 @@ const costSchema = new Schema({
     price: {
         type: Number,
         required: [true, 'Price is required'],
-        min: [0, 'Price should be a positive number'],
+        min: [cost.PRICE_MIN, 'Price should be a positive number'],
     },
     category: {
         type: ObjectId,

@@ -18,6 +18,12 @@ export const category = {
     NAME_MAX_LEN: 30,
 };
 
+export const cost = {
+    TITLE_MIN_LEN: 3,
+    TITLE_MAX_LEN: 80,
+    PRICE_MIN: 1,
+};
+
 export const event = {
     TITLE_MIN_LEN: 5,
     TITLE_MAX_LEN: 25,

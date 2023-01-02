@@ -17,7 +17,7 @@
 }
 
 .budget-main-current-category-wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .budget-main-current-category-info-wrapper {
@@ -52,7 +52,6 @@
 .budget-main-cuurent-category-costs-wrapper {
   padding-left: 80px;
   padding-right: 80px;
-  margin-bottom: 20px;
 }
 
 .budget-main-current-category-costs-empty {
@@ -60,6 +59,7 @@
   font-weight: 600;
   text-align: left;
   color: var(--clr-gold);
-  padding-bottom: 12px;
   border-bottom: 1px solid var(--clr-gold);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
 }

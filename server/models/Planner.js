@@ -21,7 +21,7 @@ const plannerSchema = new Schema({
     budget: {
         type: Number,
         required: [true, 'Budget is required'],
-        min: [1, 'Budget should be a positive number'],
+        min: [planner.PRICE_MIN, 'Budget should be a positive number'],
     },
     location: {
         type: String,

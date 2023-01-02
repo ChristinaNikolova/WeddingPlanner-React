@@ -20,6 +20,7 @@ const comment = {
 const cost = {
     TITLE_MIN_LEN: 3,
     TITLE_MAX_LEN: 80,
+    PRICE_MIN: 1,
 };
 
 const event = {
@@ -42,6 +43,7 @@ const planner = {
     DESC_MAX_LEN: 500,
     LOCATION_MIN_LEN: 4,
     LOCATION_MAX_LEN: 100,
+    PRICE_MIN: 1,
 };
 
 const subtask = {
