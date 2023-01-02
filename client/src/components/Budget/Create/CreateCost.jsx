@@ -6,7 +6,6 @@ import { formNames } from '../../../utils/constants/global';
 import FormCost from '../Form/FormCost';
 
 function CreateCost({ plannerId, category, loadCosts, onCancelFormHandler }) {
-    //todo test budgem min planner
     const formName = formNames.CREATE;
     const [serverError, setServerError] = useState('');
 

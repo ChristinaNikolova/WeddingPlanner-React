@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { timespans, classNames, styleNames, addButtonTexts } from '../../../../utils/constants/global';
+import { timespans, styleNames, addButtonTexts } from '../../../../utils/constants/global';
+import { cancelForm } from '../../../../utils/helpers/form';
 import * as tasksService from '../../../../services/tasks';
 
 import SingleTask from '../Single/SingleTask';
@@ -33,17 +34,9 @@ function ChecklistAll() {
     }
 
     const onCancelFormHandler = (e) => {
-        let targetElement = '';
-
-        if (e.target.classList.contains(classNames.FORM_WIDTH)) {
-            targetElement = e.target.parentElement;
-        } else {
-            targetElement = e.target.parentElement.parentElement.parentElement;
-        }
-
+        cancelForm(e.target);
         setTaskId('');
         setCurrentIndex('');
-        targetElement.style.display = styleNames.NONE;
     }
 
     const onDeleteHandler = (id) => {

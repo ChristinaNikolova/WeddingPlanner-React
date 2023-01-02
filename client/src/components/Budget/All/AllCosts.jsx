@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
-import { classNames, styleNames } from '../../../utils/constants/global';
+import { styleNames } from '../../../utils/constants/global';
 import { category } from '../../../utils/constants/model';
 import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
+import { cancelForm } from '../../../utils/helpers/form';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import CreateCost from '../Create/CreateCost';
@@ -51,18 +52,9 @@ function AllCosts() {
     }
 
     const onCancelFormHandler = (e) => {
-        //todo extract in helper function
-        let targetElement = '';
-
-        if (e.target.classList.contains(classNames.FORM_WIDTH)) {
-            targetElement = e.target.parentElement;
-        } else {
-            targetElement = e.target.parentElement.parentElement.parentElement;
-        }
-
+        cancelForm(e.target);
         setCostId('');
         setCurrentIndex('');
-        targetElement.style.display = styleNames.NONE;
     }
 
     const onShowFormHandler = (e) => {
