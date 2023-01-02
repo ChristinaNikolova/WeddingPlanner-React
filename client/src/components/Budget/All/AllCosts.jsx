@@ -9,6 +9,7 @@ import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import CreateCost from '../Create/CreateCost';
+import SingleCost from '../Single/SingleCost';
 
 import styles from './AllCosts.module.css';
 
@@ -69,16 +70,6 @@ function AllCosts() {
             .catch((err) => console.error(err));
     }
 
-    const onMouseEnterHandler = (e) => {
-        e.target.children[0].style.display = styleNames.INLINE_BLOCK;
-    }
-
-    const onMouseLeaveHandler = () => {
-        Array.from(document.getElementsByClassName('budget-main-current-category-current-cost-icons')).forEach((el) => {
-            el.style.display = styleNames.NONE;
-        });
-    }
-
     const onDeleteHandler = (id) => {
         costsService
             .deleteById(id)
@@ -128,22 +119,13 @@ function AllCosts() {
                                 ? costs
                                     .filter((cost) => cost.category === c.id)
                                     .map((cost) =>
-                                        <div key={cost.id} className={styles["budget-main-current-category-current-cost-wrapper"]}>
-                                            <p
-                                                onMouseEnter={onMouseEnterHandler}
-                                                onMouseLeave={onMouseLeaveHandler}
-                                                className={styles["budget-main-current-category-current-cost-title"]}>
-                                                {cost.title}
-                                                <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
-                                                    <i className="fa-solid fa-pen"></i>
-                                                    <i onClick={() => onDeleteHandler(cost.id)} className="fa-solid fa-trash"></i>
-                                                </span>
-                                            </p>
-                                            <p className="budget-main-current-category-current-cost-price">
-                                                <span className={styles["budget-main-current-category-current-cost-price-unit"]}>$</span>
-                                                {cost.price}
-                                            </p>
-                                        </div>
+                                        <SingleCost
+                                            key={cost.id}
+                                            id={cost.id}
+                                            title={cost.title}
+                                            price={cost.price}
+                                            onDeleteHandler={onDeleteHandler}
+                                        />
                                     )
                                 : <p className={styles["budget-main-current-category-costs-empty"]}>No costs yet</p>
                             }

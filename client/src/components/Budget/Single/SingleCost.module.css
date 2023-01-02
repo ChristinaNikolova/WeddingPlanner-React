@@ -1,0 +1,23 @@
+.budget-main-current-category-current-cost-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--clr-gold);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.budget-main-current-category-current-cost-title i {
+  font-size: 16px;
+  margin-left: 16px;
+}
+
+.budget-main-current-category-current-cost-title i:last-of-type {
+  margin-left: 8px;
+}
+
+.budget-main-current-category-current-cost-price-unit {
+  margin-right: 4px;
+}
