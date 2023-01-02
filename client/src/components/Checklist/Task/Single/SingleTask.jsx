@@ -47,7 +47,7 @@ function SingleTask({
                     onMouseLeave={onMouseLeaveHandler}
                     className={styles["checklist-all-current-task-header-title"]}>
                     {title}
-                    <span className="checklist-all-current-task-icons" style={{ display: 'none' }}>
+                    <span className="checklist-all-current-task-icons" style={{ display: styleNames.NONE }}>
                         {!taskId && <i onClick={() => onEditHandler(id, index)} className="fa-solid fa-pen"></i>}
                         <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                     </span>
@@ -63,7 +63,7 @@ function SingleTask({
                     </div>
                 </div>
             </div>
-            <div className={styles["checklist-all-current-task-info-warpper"]} style={{ display: 'none' }}>
+            <div className={styles["checklist-all-current-task-info-warpper"]} style={{ display: styleNames.NONE }}>
                 <p className={styles["checklist-all-current-task-info-desc"]}>
                     {description}
                 </p>

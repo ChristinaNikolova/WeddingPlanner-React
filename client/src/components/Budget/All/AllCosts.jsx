@@ -18,6 +18,7 @@ function AllCosts() {
     //todo check all files with css
     //todo check all files with files tasks
     //todo calculate budget/actual costs
+    //todo show/hode button when edint adding...
 
     const { id: plannerId } = useParams();
     const [categories, setCategories] = useState([]);
@@ -69,17 +70,13 @@ function AllCosts() {
     }
 
     const onMouseEnterHandler = (e) => {
-        // if (e.target.nodeName !== tagNames.H4) {
-        //     return;
-        // }
-
-        // e.target.children[0].style.display = styleNames.INLINE_BLOCK;
+        e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 
     const onMouseLeaveHandler = () => {
-        // Array.from(document.getElementsByClassName('checklist-all-current-task-icons')).forEach((el) => {
-        //     el.style.display = styleNames.NONE;
-        // });
+        Array.from(document.getElementsByClassName('budget-main-current-category-current-cost-icons')).forEach((el) => {
+            el.style.display = styleNames.NONE;
+        });
     }
 
     console.log(categories);
@@ -129,9 +126,9 @@ function AllCosts() {
                                             <p
                                                 onMouseEnter={onMouseEnterHandler}
                                                 onMouseLeave={onMouseLeaveHandler}
-                                                className="budget-main-current-category-current-cost-title">
+                                                className={styles["budget-main-current-category-current-cost-title"]}>
                                                 {cost.title}
-                                                <span className="checklist-all-current-task-icons" style={{ display: styleNames.NONE }}>
+                                                <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
                                                     <i className="fa-solid fa-pen"></i>
                                                     <i className="fa-solid fa-trash"></i>
                                                 </span>
