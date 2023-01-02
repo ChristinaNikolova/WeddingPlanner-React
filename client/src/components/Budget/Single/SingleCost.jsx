@@ -1,9 +1,13 @@
-import { styleNames } from '../../../utils/constants/global';
+import { styleNames, tagNames } from '../../../utils/constants/global';
 
 import styles from './SingleCost.module.css';
 
 function SingleCost({ index, costId, id, title, price, onEditHandler, onDeleteHandler }) {
     const onMouseEnterHandler = (e) => {
+        if (e.target.nodeName !== tagNames.P) {
+            return;
+        }
+
         e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 
