@@ -19,3 +19,15 @@ export const deleteById = (id) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const getById = (plannerId, costId) => {
+    return requester(`${api.costs}/${plannerId}/${costId}`, httpMethods.GET)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
+
+export const update = (id, title, price) => {
+    return requester(`${api.costs}/${id}`, httpMethods.PUT, { title, price })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}

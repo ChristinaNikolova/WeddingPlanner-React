@@ -33,8 +33,26 @@ async function deleteById(id) {
     return Cost.findByIdAndDelete(id);
 }
 
+async function getById(id, hasToCast) {
+    const cost = await Cost.findById(id);
+    return hasToCast ? costViewModel(cost) : cost;
+}
+
+async function update(id, title, price) {
+    const cost = await getById(id, false);
+
+    cost.title = title;
+    cost.price = Number(price);
+
+    await cost.save();
+
+    return cost;
+}
+
 module.exports = {
     all,
     create,
     deleteById,
+    update,
+    getById,
 }
