@@ -12,31 +12,57 @@ function plannerViewModel(planner) {
         description: planner.description,
         date: planner.date,
         budget: planner.budget.toFixed(2),
-        bride: planner.bride.firstName + ' ' + planner.bride.lastName,
+        bride: getFullName(planner.bride),
         brideId: planner.bride._id,
-        groom: planner.groom.firstName + ' ' + planner.groom.lastName,
+        groom: getFullName(planner.groom),
         groomId: planner.groom._id,
-        totalCosts: (calculateTotalCosts(planner.costs)).toFixed(2),
         location: planner.location,
+
+        totalCosts: (calculateTotalCosts(planner.costs)).toFixed(2),
+
         totalGuests: planner.guests.length,
-        brideGuests: planner.guests.filter((g) => g.side === 'bride').length,
-        groomGuests: planner.guests.filter((g) => g.side === 'groom').length,
-        confirmedGuests: planner.guests.filter((g) => g.confirmed).length,
+        brideGuests: getSideGuestsCount(planner.guests, 'bride'),
+        groomGuests: getSideGuestsCount(planner.guests, 'groom'),
+        confirmedGuests: getConfirmedGuestsCount(planner.guests),
+
         totalTasks: calculateTotalTasks(planner.tasks),
         doneTasks: 100,
+
         totalEvents: planner.events.length,
-        highlightedEvents: planner.events.filter((e) => e.isHighlighted).length,
+        highlightedEvents: getHighlightedEventsCount(planner.events),
         notes: planner.notes.length,
     }
     //todo add calculation here
     //todo extract function!!!!
 }
 
+function getHighlightedEventsCount(events) {
+    return events.filter((e) => e.isHighlighted).length;
+}
+
+function getConfirmedGuestsCount(guests) {
+    return guests.filter((g) => g.confirmed).length;
+}
+
+function getSideGuestsCount(guests, side) {
+    return guests.filter((g) => g.side === side).length;
+}
+
+function getFullName(person) {
+    return person.firstName + ' ' + person.lastName;
+}
+
 function calculateTotalCosts(costs) {
+    //todo test this + function toFixed here
     return costs.reduce((acc, curr) => curr.price + acc, 0);
 }
 
 function calculateTotalTasks(tasks) {
+    //total tasks 
+    //done tasks
+    //total subtasks
+    //done subtasks
+    
     return tasks.reduce((acc, curr) => curr.subtasks + acc, 0);
 }
 
