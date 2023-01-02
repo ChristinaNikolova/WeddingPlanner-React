@@ -28,7 +28,13 @@ async function create(plannerId, title, price, category) {
     return result;
 }
 
+async function deleteById(id) {
+    //todo calculate budget, actual costs????
+    return Cost.findByIdAndDelete(id);
+}
+
 module.exports = {
     all,
     create,
+    deleteById,
 }

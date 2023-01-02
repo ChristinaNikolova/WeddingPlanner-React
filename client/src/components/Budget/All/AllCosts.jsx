@@ -79,8 +79,14 @@ function AllCosts() {
         });
     }
 
-    console.log(categories);
-    console.log(costs);
+    const onDeleteHandler = (id) => {
+        costsService
+            .deleteById(id)
+            .then(() => {
+                loadCosts();
+            })
+            .catch((err) => console.error(err));
+    }
 
     return (
         <section className="section-planner section-background">
@@ -130,7 +136,7 @@ function AllCosts() {
                                                 {cost.title}
                                                 <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
                                                     <i className="fa-solid fa-pen"></i>
-                                                    <i className="fa-solid fa-trash"></i>
+                                                    <i onClick={() => onDeleteHandler(cost.id)} className="fa-solid fa-trash"></i>
                                                 </span>
                                             </p>
                                             <p className="budget-main-current-category-current-cost-price">

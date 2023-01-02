@@ -13,3 +13,9 @@ export const create = (plannerId, title, price, category) => {
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }
+
+export const deleteById = (id) => {
+    return requester(`${api.costs}/${id}`, httpMethods.DELETE)
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+}
