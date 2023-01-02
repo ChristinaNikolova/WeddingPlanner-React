@@ -1,4 +1,4 @@
-import { classNames, styleNames } from '../../../../utils/constants/global';
+import { classNames, styleNames, tagNames } from '../../../../utils/constants/global';
 
 import SubtasksAll from '../../Subtask/All/SubtasksAll';
 
@@ -19,7 +19,10 @@ function SingleTask({
     onCancelFormHandler
 }) {
     const onMouseEnterHandler = (e) => {
-        //todo check this error!
+        if (e.target.nodeName !== tagNames.H4) {
+            return;
+        }
+
         e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 

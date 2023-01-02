@@ -6,6 +6,8 @@ import * as plannersService from '../../../services/planners';
 import styles from './DetailsPlanner.module.css';
 
 function DetailsPlanner() {
+    //todo calculate on details planner
+
     const { id } = useParams();
     const navigate = useNavigate();
     const plannerRef = useRef(null);
@@ -142,7 +144,11 @@ function DetailsPlanner() {
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total events:</span>
-                            {planner.events}
+                            {planner.totalEvents}
+                        </p>
+                        <p className="details-planner-content">
+                            <span className={styles["details-planner-title"]}>Highlighted events:</span>
+                            {planner.highlightedEvents}
                         </p>
                     </div>
                 </div>

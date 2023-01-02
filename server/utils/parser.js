@@ -11,7 +11,6 @@ function mapErrors(err) {
 }
 
 function formatCreatedAt(createdAt) {
-    //todo test month in january
     return createdAt.getDate()
         + '/'
         + (createdAt.getMonth() + 1)

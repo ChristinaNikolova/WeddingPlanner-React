@@ -12,8 +12,6 @@ import FormButton from '../../shared/Buttons/Form/FormButton';
 import styles from './FormEvent.module.css';
 
 function FormEvent({ title, startTime, endTime, duration, formName, serverError, onSubmitHandler, onCancelFormHandler }) {
-    //todo test events again
-
     const [values, setValues] = useState({
         title: title,
         startTime: startTime,

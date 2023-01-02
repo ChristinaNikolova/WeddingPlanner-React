@@ -12,8 +12,6 @@ import AddButton from '../../../shared/Buttons/Add/AddButton';
 import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
-    //todo test again!!!
-
     const { id: plannerId } = useParams();
     const [tasks, setTasks] = useState([]);
     const [taskId, setTaskId] = useState('');
@@ -68,8 +66,6 @@ function ChecklistAll() {
             .then((res) => setTasks(res))
             .catch((err) => console.error(err));
     }
-
-    console.log()
 
     return (
         <section ref={tasksAllRef} className="section-planner section-background">

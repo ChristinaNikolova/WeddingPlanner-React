@@ -1,10 +1,13 @@
-import { styleNames } from '../../../../utils/constants/global';
+import { styleNames, tagNames } from '../../../../utils/constants/global';
 
 import styles from './SingleSubtask.module.css';
 
 function SingleSubtask({ taskId, subtaskId, id, description, isDone, onDoneSubtask, onEditHandler, onDeleteHandler }) {
     const onMouseEnterHandler = (e) => {
-        //todo check this error!
+        if (e.target.nodeName !== tagNames.P) {
+            return;
+        }
+
         e.target.children[0].style.display = styleNames.INLINE_BLOCK;
     }
 

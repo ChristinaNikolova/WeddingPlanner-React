@@ -11,9 +11,6 @@ import UpdateNote from '../Update/UpdateNote';
 import styles from './NotesAll.module.css';
 
 function NotesAll() {
-    //todo calculate on details planner
-    //todo test all forms again!!!!
-
     const { id: plannerId } = useParams();
     const [notes, setNotes] = useState([]);
     const [noteId, setNoteId] = useState('');

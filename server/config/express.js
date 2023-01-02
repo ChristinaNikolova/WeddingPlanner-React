@@ -6,5 +6,6 @@ module.exports = (app) => {
     app.use(express.json());
     app.use(cors());
     //TODO trimBody
+    //todo test all forms again!!!!TODO
     app.use(session());
 }

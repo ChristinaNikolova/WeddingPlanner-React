@@ -24,7 +24,8 @@ function plannerViewModel(planner) {
         confirmedGuests: planner.guests.filter((g) => g.confirmed).length,
         totalTasks: calculateTotalTasks(planner.tasks),
         doneTasks: 100,
-        events: planner.events.length,
+        totalEvents: planner.events.length,
+        highlightedEvents: planner.events.filter((e) => e.isHighlighted).length,
         notes: planner.notes.length,
     }
     //todo add calculation here

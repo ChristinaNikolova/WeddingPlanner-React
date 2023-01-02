@@ -55,6 +55,11 @@ export const addButtonTexts = {
     NOTE: 'note',
 }
 
+export const tagNames = {
+    P: 'P',
+    H4: 'H4',
+}
+
 export const roles = [
     'bride',
     'groom',
