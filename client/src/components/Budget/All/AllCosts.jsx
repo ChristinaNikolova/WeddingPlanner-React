@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
-import { styleNames } from '../../../utils/constants/global';
+import { classNames, styleNames } from '../../../utils/constants/global';
 import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
@@ -36,6 +36,19 @@ function AllCosts() {
         const targetIcon = e.target
         const targetElement = targetIcon.parentElement.nextSibling;
         toggleWithTargetContent(targetElement, targetIcon);
+    }
+
+    const onCancelFormHandler = (e) => {
+        //todo extract in helper function
+        let targetElement = '';
+
+        if (e.target.classList.contains(classNames.FORM_WIDTH)) {
+            targetElement = e.target.parentElement;
+        } else {
+            targetElement = e.target.parentElement.parentElement.parentElement;
+        }
+
+        targetElement.style.display = styleNames.NONE;
     }
 
     const onShowFormHandler = (e) => {
@@ -78,18 +91,18 @@ function AllCosts() {
                                 </span>
                             </div>
                         </div>
-                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]} style={{ display: 'block' }}>
+                        <div className={styles["budget-main-cuurent-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
                             <CreateCost
                                 plannerId={plannerId}
                                 category={c.id}
                                 loadCosts={loadCosts}
-                                onCancelFormHandler={null}
+                                onCancelFormHandler={onCancelFormHandler}
                             />
                             {costs.filter((cost) => cost.category === c.id).length > 0
                                 ? costs
                                     .filter((cost) => cost.category === c.id)
                                     .map((cost) =>
-                                        <div>{cost.title} - {cost.price}</div>
+                                        <div key={cost.id}>{cost.title} - {cost.price}</div>
                                     )
                                 : <p className={styles["budget-main-current-category-costs-empty"]}>No costs yet</p>
                             }
