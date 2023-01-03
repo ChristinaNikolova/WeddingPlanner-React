@@ -7,7 +7,6 @@ function costViewModel(cost) {
     }
 }
 
-
 module.exports = {
     costViewModel,
 }

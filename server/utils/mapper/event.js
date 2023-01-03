@@ -11,7 +11,6 @@ function eventViewModel(event) {
     }
 }
 
-
 module.exports = {
     eventViewModel,
 }
