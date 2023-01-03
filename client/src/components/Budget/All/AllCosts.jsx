@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
@@ -10,25 +10,31 @@ import { cancelForm } from '../../../utils/helpers/form';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
 import CreateCost from '../Create/CreateCost';
+import InfoWrapper from '../InfoWrapper/InfoWrapper';
 import SingleCost from '../Single/SingleCost';
 import UpdateCost from '../Update/UpdateCost';
 
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
+    //todo add guards BE + FE
+    //todo Home Page => last three articles??
+    //todo responsive 
     //todo check all files with css
     //todo check all files with files tasks
     //todo test again!!!!
 
-    //todo add css classes to categorories images
     //todo calculate budget/actual costs
-
+    //todo calculate costs by category
+    const location = useLocation();
+    const { state } = location;
     const { id: plannerId } = useParams();
+    const costsAllRef = useRef(null);
+
     const [categories, setCategories] = useState([]);
     const [costs, setCosts] = useState([]);
     const [costId, setCostId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
-    const costsAllRef = useRef(null);
 
     useEffect(() => {
         categoriesService
@@ -72,9 +78,7 @@ function AllCosts() {
     const onDeleteHandler = (id) => {
         costsService
             .deleteById(id)
-            .then(() => {
-                loadCosts();
-            })
+            .then(() => loadCosts())
             .catch((err) => console.error(err));
     }
 
@@ -83,19 +87,19 @@ function AllCosts() {
         setCurrentIndex(index);
     }
 
+    const calculateActualCosts = () => {
+        return (costs.reduce((acc, curr) => Number(curr.price) + acc, 0)).toFixed(2);
+    }
+
     return (
         <section ref={costsAllRef} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Budget</h2>
             </div>
-            <div className={styles["budget-info-wrapper"]}>
-                <p className="budget-info-target">
-                    <span className="budget-info-target-name">Budget:</span>
-                </p>
-                <p className="budget-info-actual">
-                    <span className="budget-info-actual-name">Actual total:</span>
-                </p>
-            </div>
+            <InfoWrapper
+                budget={state.budget}
+                actualCosts={calculateActualCosts()}
+            />
             <div className={styles["budget-main-content-wrapper"]}>
                 {categories.map((c, index) =>
                     <div key={c.id} className={styles["budget-main-current-category-wrapper"]}>
@@ -159,6 +163,10 @@ function AllCosts() {
                     </div>
                 )}
             </div>
+            <InfoWrapper
+                budget={state.budget}
+                actualCosts={calculateActualCosts()}
+            />
         </section>
     );
 }
