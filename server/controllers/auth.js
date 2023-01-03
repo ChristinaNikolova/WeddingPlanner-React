@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
+const { isGuest, hasUser } = require('../middlewares/guards');
 const { register, login, logout } = require('../services/auth');
 const { user } = require('../utils/constants/model');
 const { mapErrors } = require('../utils/parser');
 
-router.post('/register',
+router.post('/register', isGuest(),
     body('email').isEmail().withMessage('Invalid email'),
     body('password').isLength({ min: user.PASSWORD_MIN_LEN }).withMessage(`Password should be between ${user.PASSWORD_MIN_LEN} and ${user.PASSWORD_MAX_LEN} characters long`),
     body('password').isLength({ max: user.PASSWORD_MAX_LEN }).withMessage(`Password should be between ${user.PASSWORD_MIN_LEN} and ${user.PASSWORD_MAX_LEN} characters long`),
@@ -24,7 +25,7 @@ router.post('/register',
         }
     });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.email, req.body.password);
         res.json(token);
@@ -34,7 +35,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/logout', async (req, res) => {
+router.get('/logout', hasUser(), async (req, res) => {
     try {
         const token = req.headers['x-authorization'].split(' ')[1];
         await logout(token);

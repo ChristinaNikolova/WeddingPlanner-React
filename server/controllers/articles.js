@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { hasUser } = require('../middlewares/guards');
 const { all, getTotalCount, getById, like } = require('../services/articles');
 const { pagination } = require('../utils/constants/global');
 const { mapErrors } = require('../utils/parser');
@@ -21,7 +22,7 @@ router.get('/:page/:category/:query?', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const article = await getById(id, true);
@@ -32,7 +33,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const userId = req.user._id;
