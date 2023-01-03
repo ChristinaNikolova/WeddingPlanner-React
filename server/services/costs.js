@@ -29,7 +29,6 @@ async function create(plannerId, title, price, category) {
 }
 
 async function deleteById(id) {
-    //todo calculate budget, actual costs????
     return Cost.findByIdAndDelete(id);
 }
 

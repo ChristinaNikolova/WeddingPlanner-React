@@ -17,8 +17,6 @@ import UpdateCost from '../Update/UpdateCost';
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
-    //todo test again!!!!
-
     const { id: plannerId } = useParams();
     const costsAllRef = useRef(null);
     const location = useLocation();

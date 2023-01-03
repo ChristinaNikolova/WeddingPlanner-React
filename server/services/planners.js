@@ -45,7 +45,12 @@ async function getById(id, hasToCast) {
         .populate('groom', 'firstName lastName')
         .populate('guests', 'confirmed side')
         .populate('costs', 'price')
-        .populate('tasks')
+        .populate({
+            path: 'tasks',
+            populate: {
+                path: 'subtasks',
+            }
+        })
         .populate('notes')
         .populate('events', 'isHighlighted');
 

@@ -133,11 +133,11 @@ function DetailsPlanner() {
                     <div className={styles["details-planner-content-wrapper"]}>
                         <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Total tasks:</span>
-                            {'planner.totalTasks'}
+                            {planner.totalTasks}
                         </p>
                         <p className="details-planner-content">
                             <span className={styles["details-planner-title"]}>Done tasks:</span>
-                            {'planner.doneTasks'}
+                            {planner.totalDoneTasks}
                         </p>
                     </div>
                 </div>
