@@ -5,10 +5,10 @@ import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
 import { styleNames } from '../../../utils/constants/global';
 import { category } from '../../../utils/constants/model';
-import { toggleWithTargetContent } from '../../../utils/helpers/dropdown';
 import { cancelForm } from '../../../utils/helpers/form';
 
 import AddButton from '../../shared/Buttons/Add/AddButton';
+import CategoryWrapper from '../CategoryWrapper/CategoryWrapper';
 import CreateCost from '../Create/CreateCost';
 import InfoWrapper from '../InfoWrapper/InfoWrapper';
 import SingleCost from '../Single/SingleCost';
@@ -23,9 +23,6 @@ function AllCosts() {
     //todo check all files with css
     //todo check all files with files tasks
     //todo test again!!!!
-
-    //todo calculate budget/actual costs
-    //todo calculate costs by category
     const location = useLocation();
     const { state } = location;
     const { id: plannerId } = useParams();
@@ -50,12 +47,6 @@ function AllCosts() {
     useEffect(() => {
         loadCosts();
     }, []);
-
-    const onShowContent = (e) => {
-        const targetIcon = e.target
-        const targetElement = targetIcon.parentElement.nextSibling;
-        toggleWithTargetContent(targetElement, targetIcon);
-    }
 
     const onCancelFormHandler = (e) => {
         cancelForm(e.target);
@@ -88,7 +79,16 @@ function AllCosts() {
     }
 
     const calculateActualCosts = () => {
-        return (costs.reduce((acc, curr) => Number(curr.price) + acc, 0)).toFixed(2);
+        return (costs
+            .reduce((acc, curr) => Number(curr.price) + acc, 0))
+            .toFixed(2);
+    }
+
+    const calculateCatgeryActualCosts = (categoryId) => {
+        return (costs
+            .filter((c) => c.category === categoryId)
+            .reduce((acc, curr) => Number(curr.price) + acc, 0))
+            .toFixed(2);
     }
 
     return (
@@ -103,15 +103,11 @@ function AllCosts() {
             <div className={styles["budget-main-content-wrapper"]}>
                 {categories.map((c, index) =>
                     <div key={c.id} className={styles["budget-main-current-category-wrapper"]}>
-                        <div className={styles["budget-main-current-category-info-wrapper"]}>
-                            <i onClick={onShowContent} className="fa-solid fa-chevron-down"></i>
-                            <div className={styles["budget-main-current-category-info"]}>
-                                <img className={`${styles["budget-main-current-category-info-image"]} img`} src={c.image} alt={c.name} />
-                                <span className={styles["budget-main-current-category-info-name"]}>
-                                    {c.name}
-                                </span>
-                            </div>
-                        </div>
+                        <CategoryWrapper
+                            name={c.name}
+                            image={c.image}
+                            categoryCosts={calculateCatgeryActualCosts(c.id)}
+                        />
                         <div className={styles["budget-main-current-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
                             {costId
                                 && index === currentIndex
@@ -131,8 +127,8 @@ function AllCosts() {
                                 />
                             }
                             <div className={styles["budget-main-current-category-costs-titles-wrapper"]}>
-                                <p className="budget-main-current-category-costs-titles-title">Title</p>
-                                <p className="budget-main-current-category-costs-titles-cost">Actual cost</p>
+                                <p className={styles["budget-main-current-category-costs-titles-title"]}>Title</p>
+                                <p className={styles["budget-main-current-category-costs-titles-cost"]}>Actual cost</p>
                             </div>
                             {costs.filter((cost) => cost.category === c.id).length > 0
                                 ? costs
@@ -167,7 +163,7 @@ function AllCosts() {
                 budget={state.budget}
                 actualCosts={calculateActualCosts()}
             />
-        </section>
+        </section >
     );
 }
 
