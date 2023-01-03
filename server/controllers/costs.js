@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const { hasUser } = require('../middlewares/guards');
 const { all, create, deleteById, update, getById } = require('../services/costs');
 const { mapErrors } = require('../utils/parser');
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', hasUser(), async (req, res) => {
     try {
         const plannerId = req.params.id;
         const costs = await all(plannerId);
@@ -13,7 +14,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', hasUser(), async (req, res) => {
     try {
         const plannerId = req.params.id;
         const cost = await create(plannerId, req.body.title, req.body.price, req.body.category);
@@ -24,7 +25,7 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const cost = await deleteById(id);
@@ -35,7 +36,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const cost = await update(id, req.body.title, req.body.price);
@@ -46,7 +47,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.get('/:plannerId/:costId', async (req, res) => {
+router.get('/:plannerId/:costId', hasUser(), async (req, res) => {
     try {
         const id = req.params.costId;
         const cost = await getById(id, true);

@@ -1,9 +1,10 @@
 const { getFavArticles } = require('../services/users');
 const { mapErrors } = require('../utils/parser');
+const { hasUser } = require('../middlewares/guards');
 
 const router = require('express').Router();
 
-router.get('/articles', async (req, res) => {
+router.get('/articles', hasUser(), async (req, res) => {
     try {
         const userId = req.user._id;
         const articles = await getFavArticles(userId);

@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
 const { create, done, deleteById, update, getById } = require('../services/subtasks');
+const { hasUser } = require('../middlewares/guards');
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', hasUser(), async (req, res) => {
     try {
         const taskId = req.params.id;
         const subtask = await create(taskId, req.body.description);
@@ -13,7 +14,7 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-router.post('/:taskId/:subtaskId', async (req, res) => {
+router.post('/:taskId/:subtaskId', hasUser(), async (req, res) => {
     try {
         const taskId = req.params.taskId;
         const subtaskId = req.params.subtaskId;
@@ -26,7 +27,7 @@ router.post('/:taskId/:subtaskId', async (req, res) => {
     }
 });
 
-router.delete('/:taskId/:subtaskId', async (req, res) => {
+router.delete('/:taskId/:subtaskId', hasUser(), async (req, res) => {
     try {
         const taskId = req.params.taskId;
         const subtaskId = req.params.subtaskId;
@@ -39,7 +40,7 @@ router.delete('/:taskId/:subtaskId', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const subtask = await update(id, req.body.description);
@@ -50,7 +51,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const subtask = await getById(id, true);

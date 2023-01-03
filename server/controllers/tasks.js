@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
 const { all, create, deleteById, getById, update } = require('../services/tasks');
+const { hasUser } = require('../middlewares/guards');
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', hasUser(), async (req, res) => {
     try {
         const plannerId = req.params.id;
         const tasks = await all(plannerId);
@@ -13,7 +14,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/:id', async (req, res) => {
+router.post('/:id', hasUser(), async (req, res) => {
     try {
         const plannerId = req.params.id;
         const task = await create(plannerId, req.body.title, req.body.description, req.body.timespan);
@@ -24,7 +25,7 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const task = await deleteById(id);
@@ -35,7 +36,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const task = await update(id, req.body.title, req.body.description);
@@ -46,7 +47,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.get('/:plannerId/:taskId', async (req, res) => {
+router.get('/:plannerId/:taskId', hasUser(), async (req, res) => {
     try {
         const id = req.params.taskId;
         const task = await getById(id, true);

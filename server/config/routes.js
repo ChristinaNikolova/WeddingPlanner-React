@@ -12,21 +12,20 @@ const tasksController = require('../controllers/tasks');
 const subtasksController = require('../controllers/subtasks');
 const adminArticlesController = require('../controllers/admin/articles');
 const adminCategoriesController = require('../controllers/admin/categories');
-const { hasUser } = require('../middlewares/guards');
 
 module.exports = (app) => {
     app.use(homeController);
     app.use('/auth', authController);
     app.use('/articles', articlesController);
     app.use('/categories', categoriesController);
-    app.use('/users', hasUser(), usersController);
-    app.use('/planners', hasUser(), plannersController);
-    app.use('/guests', hasUser(), guestsController);
-    app.use('/costs', hasUser(), costsController);
-    app.use('/notes', hasUser(), notesController);
-    app.use('/events', hasUser(), eventsController);
-    app.use('/tasks', hasUser(), tasksController);
-    app.use('/subtasks', hasUser(), subtasksController);
+    app.use('/users', usersController);
+    app.use('/planners', plannersController);
+    app.use('/guests', guestsController);
+    app.use('/costs', costsController);
+    app.use('/notes', notesController);
+    app.use('/events', eventsController);
+    app.use('/tasks', tasksController);
+    app.use('/subtasks', subtasksController);
     app.use('/admin/articles', adminArticlesController);
     app.use('/admin/categories', adminCategoriesController);
 }

@@ -1,8 +1,9 @@
+const { hasUser } = require('../middlewares/guards');
 const { allByUserId, create, getById, deleteById, update } = require('../services/planners');
 const router = require('express').Router();
 const { mapErrors } = require('../utils/parser');
 
-router.get('/', async (req, res) => {
+router.get('/', hasUser(), async (req, res) => {
     try {
         const userId = req.user._id;
         const planners = await allByUserId(userId);
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', hasUser(), async (req, res) => {
     try {
         const userId = req.user._id;
         const planner = await create(req.body.description, req.body.date, req.body.budget, req.body.location, req.body.bride, req.body.groom, userId);
@@ -24,7 +25,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const planner = await getById(id, true);
@@ -35,7 +36,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const planner = await deleteById(id);
@@ -46,7 +47,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const planner = await update(id,
