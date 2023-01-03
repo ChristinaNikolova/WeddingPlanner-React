@@ -21,7 +21,12 @@ export const deleteById = (id) => {
 }
 
 export const all = (currentPage = 1, selectedCategory, query = '') => {
-    return requester(`${api.articles}/${currentPage}/${selectedCategory}/${query}`, httpMethods.GET)
+    return fetch(`${api.articles}/${currentPage}/${selectedCategory}/${query}`, {
+        method: httpMethods.GET,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }

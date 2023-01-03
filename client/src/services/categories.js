@@ -25,7 +25,12 @@ export const deleteById = (id) => {
 }
 
 export const all = () => {
-    return requester(api.categories, httpMethods.GET)
+    return fetch(api.categories, {
+        method: httpMethods.GET,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
         .then((res) => res.json())
         .catch((err) => console.error(err));
 }

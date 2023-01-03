@@ -26,6 +26,8 @@ import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
 import AdminRoute from './components/common/AdminRoute';
+import GuestRoute from './components/common/GuestRoute';
+import PrivateRoute from './components/common/PrivateRoute';
 
 import './App.css';
 
@@ -42,25 +44,29 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<Register />} />
-
         <Route path="/blog" element={<ArticlesAll pathToImage={constants.jumbo.BLOG} />} />
-        <Route path="/blog/:id/" element={<ArticleDetails />} />
-        <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.jumbo.USER} />} />
 
-        <Route path="/plan" element={<PlannerDashboard />} />
-        <Route path="/plan/create" element={<CreatePlanner />} />
-        <Route path="/plan/:id" element={<DetailsPlanner />} />
-        <Route path="/plan/edit/:id" element={<UpdatePlanner />} />
+        <Route element={<GuestRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
 
-        <Route path="/:id/guest" element={<GuestsAll />} />
-        <Route path="/:id/budget" element={<AllCosts />} />
-        <Route path="/:id/checklist" element={<ChecklistAll />} />
-        <Route path="/:id/event" element={<EventsAll />} />
-        <Route path="/:id/note" element={<NotesAll />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/blog/:id/" element={<ArticleDetails />} />
+          <Route path="/user/favourite-article" element={<FavouriteArticle pathToImage={constants.jumbo.USER} />} />
+
+          <Route path="/plan" element={<PlannerDashboard />} />
+          <Route path="/plan/create" element={<CreatePlanner />} />
+          <Route path="/plan/:id" element={<DetailsPlanner />} />
+          <Route path="/plan/edit/:id" element={<UpdatePlanner />} />
+
+          <Route path="/:id/guest" element={<GuestsAll />} />
+          <Route path="/:id/budget" element={<AllCosts />} />
+          <Route path="/:id/checklist" element={<ChecklistAll />} />
+          <Route path="/:id/event" element={<EventsAll />} />
+          <Route path="/:id/note" element={<NotesAll />} />
+        </Route>
 
         <Route element={<AdminRoute />}>
           <Route path="/administration" element={

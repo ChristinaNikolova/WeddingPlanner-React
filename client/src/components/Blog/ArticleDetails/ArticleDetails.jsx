@@ -12,7 +12,8 @@ import styles from './ArticleDetails.module.css';
 function ArticleDetails() {
     //todo add comments -> delete + edit??
     //todo constants for errors
-    //todo add guards BE + FE
+    //todo add guards BE
+    //todo test again guards FE
     //todo Home Page => last three articles??
     //todo responsive 
     //todo last test!!!
