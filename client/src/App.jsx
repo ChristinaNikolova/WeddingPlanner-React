@@ -25,6 +25,8 @@ import NotesAll from './components/Note/All/NotesAll';
 import NotFound from './components/NotFound/NotFound';
 import Loading from './components/shared/Loading/Loading';
 
+import AdminRoute from './components/common/AdminRoute';
+
 import './App.css';
 
 const AdminDashboard = lazy(() => import('./components/Administration/Dashboard/Dashboard'));
@@ -60,36 +62,38 @@ function App() {
         <Route path="/:id/event" element={<EventsAll />} />
         <Route path="/:id/note" element={<NotesAll />} />
 
-        <Route path="/administration" element={
-          <Suspense fallback={<Loading />}>
-            <AdminDashboard />
-          </Suspense>
-        } />
-        <Route path="/administration/articles/create" element={
-          <Suspense fallback={<Loading />}>
-            <CreateArticle />
-          </Suspense>
-        } />
-        <Route path="/administration/articles/edit/:id" element={
-          <Suspense fallback={<Loading />}>
-            <UpdateArticle />
-          </Suspense>
-        } />
-        <Route path="/administration/categories" element={
-          <Suspense fallback={<Loading />}>
-            <AllCategories />
-          </Suspense>
-        } />
-        <Route path="/administration/categories/create" element={
-          <Suspense fallback={<Loading />}>
-            <CreateCategory />
-          </Suspense>
-        } />
-        <Route path="/administration/categories/edit/:id" element={
-          <Suspense fallback={<Loading />}>
-            <UpdateCategory />
-          </Suspense>
-        } />
+        <Route element={<AdminRoute />}>
+          <Route path="/administration" element={
+            <Suspense fallback={<Loading />}>
+              <AdminDashboard />
+            </Suspense>
+          } />
+          <Route path="/administration/articles/create" element={
+            <Suspense fallback={<Loading />}>
+              <CreateArticle />
+            </Suspense>
+          } />
+          <Route path="/administration/articles/edit/:id" element={
+            <Suspense fallback={<Loading />}>
+              <UpdateArticle />
+            </Suspense>
+          } />
+          <Route path="/administration/categories" element={
+            <Suspense fallback={<Loading />}>
+              <AllCategories />
+            </Suspense>
+          } />
+          <Route path="/administration/categories/create" element={
+            <Suspense fallback={<Loading />}>
+              <CreateCategory />
+            </Suspense>
+          } />
+          <Route path="/administration/categories/edit/:id" element={
+            <Suspense fallback={<Loading />}>
+              <UpdateCategory />
+            </Suspense>
+          } />
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
