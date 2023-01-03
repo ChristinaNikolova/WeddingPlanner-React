@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { article } from '../../../../utils/constants/model';
+import { category as categoryModel } from '../../../../utils/constants/model';
 import * as helpers from '../../../../utils/helpers/form';
 import * as validator from '../../../../utils/validators/article';
 import * as categoriesService from '../../../../services/categories';
@@ -28,7 +28,7 @@ function FormArticle({
         content: content,
         image: image,
         jumboImage: jumboImage,
-        category: category ? category.id : article.DEFAULT_CATEGORY_SELECTED_ID,
+        category: category ? category.id : categoryModel.DEFAULT_CATEGORY_SELECTED_ID,
     });
 
     const [isDisabled, setIsDisabled] = useState(true);

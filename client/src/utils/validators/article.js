@@ -1,4 +1,4 @@
-import { article } from '../constants/model';
+import { article, category as categoryModel } from '../constants/model';
 
 export const validTitle = (title) => {
     return (title && title.length >= article.TITLE_MIN_LEN && title.length <= article.TITLE_MAX_LEN)
@@ -17,5 +17,5 @@ export const validImage = (image) => {
 }
 
 export const validCategory = (category) => {
-    return category !== article.DEFAULT_CATEGORY_SELECTED_ID ? '' : 'Please select category';
+    return category !== categoryModel.DEFAULT_CATEGORY_SELECTED_ID ? '' : 'Please select category';
 }
