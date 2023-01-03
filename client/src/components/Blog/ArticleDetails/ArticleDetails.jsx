@@ -15,7 +15,7 @@ function ArticleDetails() {
     //todo add guards BE + FE
     //todo Home Page => last three articles??
     //todo responsive 
-    //last test!!!
+    //todo last test!!!
 
     const { userId, isAdmin } = useContext(AuthContext);
     const { id } = useParams();

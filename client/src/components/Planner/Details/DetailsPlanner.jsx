@@ -6,8 +6,6 @@ import * as plannersService from '../../../services/planners';
 import styles from './DetailsPlanner.module.css';
 
 function DetailsPlanner() {
-    //todo calculate on details planner
-
     const { id } = useParams();
     const navigate = useNavigate();
     const plannerRef = useRef(null);
