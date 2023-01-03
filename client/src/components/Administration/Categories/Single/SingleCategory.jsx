@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { article } from '../../../../utils/constants/model';
+import { category } from '../../../../utils/constants/model';
 
 import styles from './SingleCategory.module.css'
 
@@ -12,7 +12,7 @@ function SingleCategory({ id, name, image, onDeleteHandler }) {
             <Link to={`/administration/categories/edit/${id}`}>
                 <i className="fa-solid fa-pen"></i>
             </Link>
-            {id !== article.DEFAULT_CATEGORY_SELECTED_ID && <i className="fa-solid fa-trash" onClick={() => onDeleteHandler(id)}></i>}
+            {id !== category.DEFAULT_CATEGORY_SELECTED_ID && <i className="fa-solid fa-trash" onClick={() => onDeleteHandler(id)}></i>}
         </li>
     );
 }
