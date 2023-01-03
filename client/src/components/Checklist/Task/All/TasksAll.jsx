@@ -14,11 +14,12 @@ import styles from './TasksAll.module.css';
 
 function ChecklistAll() {
     const { id: plannerId } = useParams();
+    const tasksAllRef = useRef(null);
+
     const [tasks, setTasks] = useState([]);
     const [taskId, setTaskId] = useState('');
     const [currentIndex, setCurrentIndex] = useState('');
     const [timespan, setTimespan] = useState('');
-    const tasksAllRef = useRef(null);
 
     useEffect(() => {
         loadTasks();
@@ -42,9 +43,7 @@ function ChecklistAll() {
     const onDeleteHandler = (id) => {
         tasksService
             .deleteById(id)
-            .then(() => {
-                loadTasks();
-            })
+            .then(() => loadTasks())
             .catch((err) => console.error(err));
     }
 

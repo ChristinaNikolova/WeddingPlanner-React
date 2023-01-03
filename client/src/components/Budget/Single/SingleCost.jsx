@@ -2,7 +2,15 @@ import { styleNames, tagNames } from '../../../utils/constants/global';
 
 import styles from './SingleCost.module.css';
 
-function SingleCost({ index, costId, id, title, price, onEditHandler, onDeleteHandler }) {
+function SingleCost({
+    index,
+    costId,
+    id,
+    title,
+    price,
+    onEditHandler,
+    onDeleteHandler
+}) {
     const onMouseEnterHandler = (e) => {
         if (e.target.nodeName !== tagNames.P) {
             return;
@@ -24,12 +32,12 @@ function SingleCost({ index, costId, id, title, price, onEditHandler, onDeleteHa
                 onMouseLeave={onMouseLeaveHandler}
                 className={styles["budget-main-current-category-current-cost-title"]}>
                 {title}
-                <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
+                <span className={styles["budget-main-current-category-current-cost-icons"]} style={{ display: styleNames.NONE }}>
                     {!costId && <i onClick={() => onEditHandler(id, index)} className="fa-solid fa-pen"></i>}
                     <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                 </span>
             </p>
-            <p className="budget-main-current-category-current-cost-price">
+            <p className={styles["budget-main-current-category-current-cost-price"]}>
                 <span className={styles["budget-main-current-category-current-cost-price-unit"]}>$</span>
                 {price}
             </p>

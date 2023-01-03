@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import * as categoriesService from '../../../services/categories';
 import * as costsService from '../../../services/costs';
-import { styleNames } from '../../../utils/constants/global';
+import { addButtonTexts, styleNames } from '../../../utils/constants/global';
 import { category } from '../../../utils/constants/model';
 import { cancelForm } from '../../../utils/helpers/form';
 
@@ -17,16 +17,12 @@ import UpdateCost from '../Update/UpdateCost';
 import styles from './AllCosts.module.css';
 
 function AllCosts() {
-    //todo add guards BE + FE
-    //todo Home Page => last three articles??
-    //todo responsive 
-    //todo check all files with css
-    //todo check all files with files tasks
     //todo test again!!!!
-    const location = useLocation();
-    const { state } = location;
+
     const { id: plannerId } = useParams();
     const costsAllRef = useRef(null);
+    const location = useLocation();
+    const { state } = location;
 
     const [categories, setCategories] = useState([]);
     const [costs, setCosts] = useState([]);
@@ -150,7 +146,7 @@ function AllCosts() {
                             {!costId
                                 && <AddButton
                                     classNames={[]}
-                                    text={'cost'}
+                                    text={addButtonTexts.COST}
                                     isEmptyString={false}
                                     onShowFormHandler={onShowFormHandler}
                                 />

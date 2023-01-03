@@ -12,6 +12,10 @@ import styles from './ArticleDetails.module.css';
 function ArticleDetails() {
     //todo add comments -> delete + edit??
     //todo constants for errors
+    //todo add guards BE + FE
+    //todo Home Page => last three articles??
+    //todo responsive 
+    //last test!!!
 
     const { userId, isAdmin } = useContext(AuthContext);
     const { id } = useParams();
