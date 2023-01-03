@@ -1,3 +1,7 @@
+export const emails = {
+    ADMIN: 'admin@weddingplanner.com',
+};
+
 export const directions = {
     PREV: 'prev',
     NEXT: 'next',

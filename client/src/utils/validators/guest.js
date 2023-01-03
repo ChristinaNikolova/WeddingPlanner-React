@@ -1,7 +1,8 @@
-import { guest } from '../constants/model';
+import { guest as guestModel } from '../constants/model';
+import { global as globalErrors } from '../constants/errors';
 
 export const validName = (name) => {
-    return (name && name.length >= guest.NAME_MIN_LEN && name.length <= guest.NAME_MAX_LEN)
+    return (name && name.length >= guestModel.NAME_MIN_LEN && name.length <= guestModel.NAME_MAX_LEN)
         ? ''
-        : `Name should be between ${guest.NAME_MIN_LEN} and ${guest.NAME_MAX_LEN} characters long`;
+        : globalErrors.NAME(guestModel.NAME_MIN_LEN, guestModel.NAME_MAX_LEN);
 }

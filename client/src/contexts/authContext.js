@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { useSessionStorage } from '../hooks/useSessionStorage';
+import { emails } from '../utils/constants/global';
 
 export const AuthContext = createContext();
 
@@ -27,7 +28,7 @@ export const AuthProvider = ({
             userLogin,
             userLogout,
             isAuthenticated: !!authToken,
-            isAdmin: email === 'admin@weddingplanner.com',
+            isAdmin: email === emails.ADMIN,
             userId: id,
         }}>
             {children}

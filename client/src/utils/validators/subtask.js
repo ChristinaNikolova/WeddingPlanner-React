@@ -1,7 +1,8 @@
-import { subtask } from '../constants/model';
+import { subtask as subtaskModel } from '../constants/model';
+import { global as globalErrors } from '../constants/errors';
 
 export const validDescription = (description) => {
-    return (description && description.length >= subtask.DESC_MIN_LEN && description.length <= subtask.DESC_MAX_LEN)
+    return (description && description.length >= subtaskModel.DESC_MIN_LEN && description.length <= subtaskModel.DESC_MAX_LEN)
         ? ''
-        : `Description should be between ${subtask.DESC_MIN_LEN} and ${subtask.DESC_MAX_LEN} characters long`;
+        : globalErrors.DESC(subtaskModel.DESC_MIN_LEN, subtaskModel.DESC_MAX_LEN);
 }

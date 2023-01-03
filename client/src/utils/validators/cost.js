@@ -1,13 +1,14 @@
-import { cost } from '../constants/model';
+import { cost as costModel } from '../constants/model';
+import { cost as costErrors, global as globalErrors } from '../constants/errors';
 
 export const validTitle = (title) => {
-    return (title && title.length >= cost.TITLE_MIN_LEN && title.length <= cost.TITLE_MAX_LEN)
+    return (title && title.length >= costModel.TITLE_MIN_LEN && title.length <= costModel.TITLE_MAX_LEN)
         ? ''
-        : `Title should be between ${cost.TITLE_MIN_LEN} and ${cost.TITLE_MAX_LEN} characters long`;
+        : globalErrors.TITLE(costModel.TITLE_MIN_LEN, costModel.TITLE_MAX_LEN);
 }
 
 export const validPrice = (price) => {
-    return (price && price >= cost.PRICE_MIN)
+    return (price && price >= costModel.PRICE_MIN)
         ? ''
-        : 'Price should be a positive number';
+        : costErrors.PRICE;
 }

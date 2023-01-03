@@ -1,10 +1,11 @@
-import { event } from '../constants/model';
+import { event as eventModel } from '../constants/model';
+import { event as eventErrors, global as globalErrors } from '../constants/errors';
 import { parseTime } from '../helpers/datetime';
 
 export const validTitle = (title) => {
-    return (title && title.length >= event.TITLE_MIN_LEN && title.length <= event.TITLE_MAX_LEN)
+    return (title && title.length >= eventModel.TITLE_MIN_LEN && title.length <= eventModel.TITLE_MAX_LEN)
         ? ''
-        : `Title should be between ${event.TITLE_MIN_LEN} and ${event.TITLE_MAX_LEN} characters long`;
+        : globalErrors.TITLE(eventModel.TITLE_MIN_LEN, eventModel.TITLE_MAX_LEN);
 }
 
 export const validTime = (start, end) => {
@@ -13,5 +14,5 @@ export const validTime = (start, end) => {
 
     return startTime < endTime
         ? ''
-        : 'End time should be after the start time';
+        : eventErrors.TIME;
 }

@@ -1,11 +1,12 @@
-import { category } from '../constants/model';
+import { category as categoryModel } from '../constants/model';
+import { global as globalErrors } from '../constants/errors';
 
 export const validName = (name) => {
-    return (name && name.length >= category.NAME_MIN_LEN && name.length <= category.NAME_MAX_LEN)
+    return (name && name.length >= categoryModel.NAME_MIN_LEN && name.length <= categoryModel.NAME_MAX_LEN)
         ? ''
-        : `Name should be between ${category.NAME_MIN_LEN} and ${category.NAME_MAX_LEN} characters long`;
+        : globalErrors.NAME(categoryModel.NAME_MIN_LEN, categoryModel.NAME_MAX_LEN);
 }
 
 export const validImage = (image) => {
-    return image ? '' : 'Image is required';
+    return image ? '' : globalErrors.IMAGE;
 }

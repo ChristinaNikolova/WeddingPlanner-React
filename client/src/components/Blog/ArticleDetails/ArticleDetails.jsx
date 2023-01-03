@@ -13,7 +13,8 @@ function ArticleDetails() {
     //todo add comments -> delete + edit??
     //test comments with guards
     //todo constants for errors
-
+    //todo constants for status code
+    //todo add styles{}
 
     //todo Home Page => last three articles??
     //todo responsive 

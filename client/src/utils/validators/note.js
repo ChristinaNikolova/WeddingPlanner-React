@@ -1,7 +1,8 @@
-import { note } from '../constants/model';
+import { note as noteModel } from '../constants/model';
+import { global as globalErrors } from '../constants/errors';
 
 export const validDescription = (description) => {
-    return (description && description.length >= note.DESC_MIN_LEN && description.length <= note.DESC_MAX_LEN)
+    return (description && description.length >= noteModel.DESC_MIN_LEN && description.length <= noteModel.DESC_MAX_LEN)
         ? ''
-        : `Description should be between ${note.DESC_MIN_LEN} and ${note.DESC_MAX_LEN} characters long`;
+        : globalErrors.DESC(noteModel.DESC_MIN_LEN, noteModel.DESC_MAX_LEN);
 }
