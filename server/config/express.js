@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('../middlewares/cors');
+const trimBody = require('../middlewares/trimBody');
 const session = require('../middlewares/session');
 
 module.exports = (app) => {
     app.use(express.json());
     app.use(cors());
-    //todo trimBody
-    //todo test all forms again!!!!
+    app.use(trimBody());
     app.use(session());
 }
