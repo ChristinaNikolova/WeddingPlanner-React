@@ -85,7 +85,7 @@ function SingleGuest({
                     {side}
                 </p>
             </div>
-            <div className="guests-all-info-right">
+            <div className={styles["guests-all-info-right"]}>
                 <p className={styles["guests-all-info"]}>
                     <span className={styles["guests-all-info-title"]}>Table:</span>
                     {table === '' ? 'no info' : table}

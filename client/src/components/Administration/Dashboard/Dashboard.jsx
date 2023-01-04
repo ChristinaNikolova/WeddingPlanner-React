@@ -10,7 +10,7 @@ function Dashboard() {
             </div>
             <div className={styles["dashboard-content-wrapper"]}>
                 <img className={`${styles["dashboard-img"]} img-shadow`} src="./img/groom-505683_1920.jpg" alt="groom" />
-                <ul className="dashboard-ul">
+                <ul className={styles["dashboard-ul"]}>
                     <li className={styles["dashboard-li", "title-li"]}>Articles</li>
                     <li className={styles["dashboard-li"]}>
                         <Link className="navigation-link btn" to="/administration/articles/create">Create Article</Link>

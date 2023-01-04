@@ -41,7 +41,6 @@ function SingleSubtask({ taskId, subtaskId, id, description, isDone, onDoneSubta
                     <i onClick={() => onDeleteHandler(taskId, id)} className="fa-solid fa-trash"></i>
                 </span>
             </p>
-
         </div>
     );
 }

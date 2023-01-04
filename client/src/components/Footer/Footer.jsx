@@ -51,7 +51,6 @@ function Footer() {
                     </li>
                 </ul>
             </nav>
-
         </footer >
     );
 }

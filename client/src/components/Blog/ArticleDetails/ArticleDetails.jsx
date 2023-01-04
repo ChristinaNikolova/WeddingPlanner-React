@@ -10,8 +10,6 @@ import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
-    //todo add styles{}
-
     //todo Home Page => last three articles??
     //todo responsive 
     //todo last test!!!
@@ -78,7 +76,7 @@ function ArticleDetails() {
                 <Link to={`/blog?page=${page}&category=${category.name}`} state={{ category: category }} className="btn">Back</Link>
             </div>
             <div className={styles["article-details-main-content-wrapper"]}>
-                <div className="article-details-list-image">
+                <div className={styles["article-details-list-image"]}>
                     <img className={`${styles["article-details-image"]} img img-shadow`} src={article.image} alt={article.title} />
                     <ul className={styles["article-details-ul"]}>
                         <li className={styles["article-details-li"]}>

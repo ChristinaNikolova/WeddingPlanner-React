@@ -12,7 +12,7 @@ function SingleNote({ id, description, createdAt, isEditIconHidden, onDeleteHand
                     {!isEditIconHidden && <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>}
                 </div>
             </div>
-            <div className="notes-all-info-right">
+            <div className={styles["notes-all-info-right"]}>
                 <p className={styles["notes-all-description"]}>
                     {description}
                 </p>

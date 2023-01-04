@@ -21,10 +21,7 @@ function DetailsPlanner() {
                 plannerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
             })
             .catch((err) => console.error(err));
-
-
     }, []);
-
 
     const onMouseEnterHandler = () => {
         setIsHovering(true);
@@ -67,11 +64,11 @@ function DetailsPlanner() {
                 </div>
                 <div className={`${styles["details-planner-section"]} ${styles["details-planner-border"]}`}>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Date:</span>
                             {planner.date}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Location:</span>
                             {planner.location}
                         </p>
@@ -84,19 +81,19 @@ function DetailsPlanner() {
                         <Link className="btn" to={`/${id}/guest`}>Guests List</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Total guests:</span>
                             {planner.totalGuests}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Confirmed guests:</span>
                             {planner.confirmedGuests}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Bride's guests:</span>
                             {planner.brideGuests}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Groom's guests:</span>
                             {planner.groomGuests}
                         </p>
@@ -113,11 +110,11 @@ function DetailsPlanner() {
                         </Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Target budget:</span>
                             ${planner.budget}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Actual costs:</span>
                             ${planner.actualCosts}
                         </p>
@@ -129,11 +126,11 @@ function DetailsPlanner() {
                         <Link className="btn" to={`/${id}/checklist`}>Checklist</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Total tasks:</span>
                             {planner.totalTasks}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Done tasks:</span>
                             {planner.totalDoneTasks}
                         </p>
@@ -145,11 +142,11 @@ function DetailsPlanner() {
                         <Link className="btn" to={`/${id}/event`}>Plan</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Total events:</span>
                             {planner.totalEvents}
                         </p>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Highlighted events:</span>
                             {planner.highlightedEvents}
                         </p>
@@ -161,7 +158,7 @@ function DetailsPlanner() {
                         <Link className="btn" to={`/${id}/note`}>Notes</Link>
                     </div>
                     <div className={styles["details-planner-content-wrapper"]}>
-                        <p className="details-planner-content">
+                        <p className={styles["details-planner-content"]}>
                             <span className={styles["details-planner-title"]}>Total notes:</span>
                             {planner.notes}
                         </p>
