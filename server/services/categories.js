@@ -1,11 +1,12 @@
 const Category = require("../models/Category");
+const { errors } = require("../utils/constants/global");
 const { categoryViewModel } = require("../utils/mapper/category");
 
 async function create(name, image) {
     let category = await getByName(name);
 
     if (category) {
-        throw new Error('Category name is already taken');
+        throw new Error(errors.NAME_TAKEN);
     }
 
     category = new Category({
@@ -36,7 +37,7 @@ async function update(id, name, image) {
         const result = await getByName(name);
 
         if (result) {
-            throw new Error('Name is already taken');
+            throw new Error(errors.NAME_TAKEN);
         }
     }
 

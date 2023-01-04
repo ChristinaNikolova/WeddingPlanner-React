@@ -1,12 +1,13 @@
 const Article = require("../models/Article");
 const { articleListViewModel, articleDetailsViewModel } = require("../utils/mapper/article");
 const { Types: { ObjectId } } = require('mongoose');
+const { errors } = require("../utils/constants/global");
 
 async function create(title, content, image, jumboImage, category) {
     let article = await getByTitle(title);
 
     if (article) {
-        throw new Error('Title is already taken');
+        throw new Error(errors.TITEL_TAKEN);
     }
 
     article = new Article({
@@ -29,7 +30,7 @@ async function update(id, title, content, image, jumboImage, category) {
         const result = await getByTitle(title);
 
         if (result) {
-            throw new Error('Title already exists');
+            throw new Error(errors.TITEL_TAKEN);
         }
     }
 

@@ -2,13 +2,14 @@ const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { isGuest, hasUser } = require('../middlewares/guards');
 const { register, login, logout } = require('../services/auth');
+const { errors: globalErrors } = require('../utils/constants/global');
 const { user } = require('../utils/constants/model');
 const { mapErrors } = require('../utils/parser');
 
 router.post('/register', isGuest(),
-    body('email').isEmail().withMessage('Invalid email'),
-    body('password').isLength({ min: user.PASSWORD_MIN_LEN }).withMessage(`Password should be between ${user.PASSWORD_MIN_LEN} and ${user.PASSWORD_MAX_LEN} characters long`),
-    body('password').isLength({ max: user.PASSWORD_MAX_LEN }).withMessage(`Password should be between ${user.PASSWORD_MIN_LEN} and ${user.PASSWORD_MAX_LEN} characters long`),
+    body('email').isEmail().withMessage(globalErrors.INVALID_EMAIL),
+    body('password').isLength({ min: user.PASSWORD_MIN_LEN }).withMessage(globalErrors.PASSWORD(user.PASSWORD_MIN_LEN, user.PASSWORD_MAX_LEN)),
+    body('password').isLength({ max: user.PASSWORD_MAX_LEN }).withMessage(globalErrors.PASSWORD(user.PASSWORD_MIN_LEN, user.PASSWORD_MAX_LEN)),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);

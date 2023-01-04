@@ -2,14 +2,13 @@ const { hash, compare } = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const TokenBlacklist = require("../models/TokenBlacklist");
 const User = require("../models/User");
-
-const secret = 'my-very-secret';
+const { errors, important } = require('../utils/constants/global');
 
 async function register(firstName, lastName, email, password) {
     let user = await getUserByEmail(email);
 
     if (user) {
-        throw new Error('Email is already taken');
+        throw new Error(errors.EMAIL_TAKEN);
     }
 
     const hashedPassword = await hash(password, 10);
@@ -30,13 +29,13 @@ async function login(email, password) {
     let user = await getUserByEmail(email);
 
     if (!user) {
-        throw new Error('Incorrect email or password');
+        throw new Error(errors.LOGIN);
     }
 
     const match = await compare(password, user.hashedPassword);
 
     if (!match) {
-        throw new Error('Incorrect email or password');
+        throw new Error(errors.LOGIN);
     }
 
     return createToken(user);
@@ -63,7 +62,7 @@ function createToken(user) {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        accessToken: jwt.sign(payload, secret),
+        accessToken: jwt.sign(payload, important.SECRET),
     };
 }
 
@@ -71,10 +70,10 @@ async function parseToken(token) {
     const result = await TokenBlacklist.find({ token: token });
 
     if (result.token) {
-        throw new Error('Token is blacklisted');
+        throw new Error(errors.TOKEN_EXIST);
     }
 
-    return jwt.verify(JSON.parse(token), secret);
+    return jwt.verify(JSON.parse(token), important.SECRET);
 }
 
 async function getUserByEmail(email) {

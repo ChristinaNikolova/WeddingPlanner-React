@@ -3,10 +3,10 @@ const { body, validationResult } = require('express-validator');
 const { isAdmin } = require('../../middlewares/guards');
 const { create, deleteById, getById, update } = require('../../services/categories');
 const { mapErrors } = require('../../utils/parser');
-const { category } = require('../../utils/constants/global');
+const { category, errors: globalErrors } = require('../../utils/constants/global');
 
 router.post('/', isAdmin(),
-    body('image').isURL().withMessage('Invalid url'),
+    body('image').isURL().withMessage(globalErrors.INVALID_URL),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);
@@ -24,7 +24,7 @@ router.post('/', isAdmin(),
     });
 
 router.put('/:id', isAdmin(),
-    body('image').isURL().withMessage('Invalid url'),
+    body('image').isURL().withMessage(globalErrors.INVALID_URL),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);

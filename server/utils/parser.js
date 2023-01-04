@@ -1,3 +1,5 @@
+const { errors } = require("./constants/global");
+
 function mapErrors(err) {
     if (Array.isArray(err)) {
         return err;
@@ -6,7 +8,7 @@ function mapErrors(err) {
     } else if (typeof err.message == 'string') {
         return [{ msg: err.message }];
     } else {
-        return [{ msg: 'Request error' }];
+        return [{ msg: errors.REQUEST }];
     }
 }
 

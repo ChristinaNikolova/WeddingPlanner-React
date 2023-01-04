@@ -10,7 +10,6 @@ import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
-    //todo constants for errors
     //todo add styles{}
 
     //todo Home Page => last three articles??

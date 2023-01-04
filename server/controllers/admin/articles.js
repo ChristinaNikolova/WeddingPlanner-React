@@ -3,11 +3,11 @@ const { body, validationResult } = require('express-validator');
 const { isAdmin } = require('../../middlewares/guards');
 const { create, deleteById, update } = require('../../services/articles');
 const { mapErrors } = require('../../utils/parser');
-const { category } = require('../../utils/constants/global');
+const { category, errors: globalError } = require('../../utils/constants/global');
 
 router.post('/', isAdmin(),
-    body('image').isURL().withMessage('Invalid url'),
-    body('jumboImage').isURL().withMessage('Invalid url'),
+    body('image').isURL().withMessage(globalError.INVALID_URL),
+    body('jumboImage').isURL().withMessage(globalError.INVALID_URL),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);
@@ -17,7 +17,7 @@ router.post('/', isAdmin(),
             }
 
             if (req.body.category === category.DEFAULT_CATEGORY_SELECTED_ID) {
-                throw new Error('Please select category');
+                throw new Error(globalError.SELECT_CATEGORY);
             }
 
             const article = await create(req.body.title, req.body.content, req.body.image, req.body.jumboImage, req.body.category);
@@ -29,8 +29,8 @@ router.post('/', isAdmin(),
     });
 
 router.put('/:id', isAdmin(),
-    body('image').isURL().withMessage('Invalid url'),
-    body('jumboImage').isURL().withMessage('Invalid url'),
+    body('image').isURL().withMessage(globalError.INVALID_URL),
+    body('jumboImage').isURL().withMessage(globalError.INVALID_URL),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);

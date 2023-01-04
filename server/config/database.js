@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { messages } = require('../utils/constants/global');
+const { messages, errors, important } = require('../utils/constants/global');
 require('../models/Article');
 require('../models/Category');
 require('../models/Cost');
@@ -12,11 +12,9 @@ require('../models/Task');
 require('../models/TokenBlacklist');
 require('../models/User');
 
-const connectionString = 'mongodb://localhost:27017/weddingplanner';
-
 module.exports = async (app) => {
     try {
-        await mongoose.connect(connectionString, {
+        await mongoose.connect(important.CONNECTION_STRING, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -24,11 +22,11 @@ module.exports = async (app) => {
         console.log(messages.DATABASE_CONNECTED);
 
         mongoose.connection.on('error', (err) => {
-            console.error('Database error');
+            console.error(errors.DATABASE);
             console.error(err);
         });
     } catch (err) {
-        console.error('Error connecting to database');
+        console.error(errors.DATABASE_CONNECTION);
         process.exit(1);
     }
 }
