@@ -32,7 +32,7 @@ function SingleCost({
                 onMouseLeave={onMouseLeaveHandler}
                 className={styles["budget-main-current-category-current-cost-title"]}>
                 {title}
-                <span className={styles["budget-main-current-category-current-cost-icons"]} style={{ display: styleNames.NONE }}>
+                <span className="budget-main-current-category-current-cost-icons" style={{ display: styleNames.NONE }}>
                     {!costId && <i onClick={() => onEditHandler(id, index)} className="fa-solid fa-pen"></i>}
                     <i onClick={() => onDeleteHandler(id)} className="fa-solid fa-trash"></i>
                 </span>
