@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { messages } = require('../utils/constants/global');
 require('../models/Article');
 require('../models/Category');
 require('../models/Cost');
@@ -20,7 +21,7 @@ module.exports = async (app) => {
             useUnifiedTopology: true,
         });
 
-        console.log('Database connected');
+        console.log(messages.DATABASE_CONNECTED);
 
         mongoose.connection.on('error', (err) => {
             console.error('Database error');

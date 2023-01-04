@@ -11,7 +11,6 @@ import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
     //todo constants for errors
-    //todo constants for status code
     //todo add styles{}
 
     //todo Home Page => last three articles??
