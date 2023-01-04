@@ -78,7 +78,7 @@ function AllCosts() {
             .toFixed(2);
     }
 
-    const calculateCatgeryActualCosts = (categoryId) => {
+    const calculateCategeryActualCosts = (categoryId) => {
         return (costs
             .filter((c) => c.category === categoryId)
             .reduce((acc, curr) => Number(curr.price) + acc, 0))
@@ -100,7 +100,7 @@ function AllCosts() {
                         <CategoryWrapper
                             name={c.name}
                             image={c.image}
-                            categoryCosts={calculateCatgeryActualCosts(c.id)}
+                            categoryCosts={calculateCategeryActualCosts(c.id)}
                         />
                         <div className={styles["budget-main-current-category-costs-wrapper"]} style={{ display: styleNames.BLOCK }}>
                             {costId
