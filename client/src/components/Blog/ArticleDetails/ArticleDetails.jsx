@@ -10,8 +10,6 @@ import Jumbotron from '../../shared/Jumbotron/Jumbotron';
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
-    //todo add comments -> delete + edit??
-    //test comments with guards
     //todo constants for errors
     //todo constants for status code
     //todo add styles{}

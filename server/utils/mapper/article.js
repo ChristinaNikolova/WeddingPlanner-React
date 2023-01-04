@@ -24,7 +24,6 @@ function articleDetailsViewModel(article) {
         likes: article.likes,
         category: categoryViewModel(article.category),
         createdAt: formatCreatedAt(article.createdAt),
-        //todo comments should be separate
     };
 }
 

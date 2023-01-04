@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 require('../models/Article');
 require('../models/Category');
-require('../models/Comment');
 require('../models/Cost');
 require('../models/Event');
 require('../models/Guest');
