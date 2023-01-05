@@ -1,0 +1,38 @@
+.last-three-articles-section-wrapper {
+  margin-top: 140px;
+  margin-bottom: 140px;
+}
+
+.last-three-artilces-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 100px;
+}
+
+.last-three-articles-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 120px;
+}
+
+.last-three-articles-current-article-wrapper {
+  text-align: center;
+}
+
+.last-three-articles-current-article-image {
+  width: 600px;
+  height: 800px;
+  margin-bottom: 30px;
+}
+
+.last-three-articles-current-article-title {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.last-three-articles-current-article-short-content {
+  font-size: 24px;
+  margin-bottom: 80px;
+}

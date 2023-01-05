@@ -6,6 +6,7 @@ import { AuthContext } from '../../../contexts/authContext';
 import { scrollToTop } from '../../../utils/helpers/form';
 
 import Jumbotron from '../../shared/Jumbotron/Jumbotron';
+import LastThreeArticles from '../../shared/LastThreeArticles/LastThreeArticles';
 
 import styles from './ArticleDetails.module.css';
 
@@ -40,7 +41,7 @@ function ArticleDetails() {
                 }
             })
             .catch((err) => console.error(err));
-    }, [isLiked]);
+    }, [isLiked, id]);
 
     const onDeleteHandler = () => {
         articlesService
@@ -114,7 +115,8 @@ function ArticleDetails() {
             <div className={styles["article-details-btn-wrapper"]}>
                 <Link to={`/blog?page=${page}&category=${category.name}`} state={{ category: category }} className="btn">Back</Link>
             </div>
-        </section >
+            <LastThreeArticles />
+        </section>
     );
 }
 
