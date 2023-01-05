@@ -7,6 +7,7 @@ import styles from './LastThreeArticles.module.css';
 
 function LastThreeArticles() {
     //todo fix section height
+    //todo check ADdButton padding-bottom
 
     const [articles, setArticles] = useState([]);
 

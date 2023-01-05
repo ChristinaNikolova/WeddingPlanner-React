@@ -19,7 +19,7 @@ function Dashboard() {
     }, []);
 
     return (
-        <section className="dashboard section section-background">
+        <section className="dashboard section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Plan you wedding</h2>
             </div>

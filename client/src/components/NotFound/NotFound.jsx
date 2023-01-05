@@ -4,7 +4,7 @@ import styles from './NotFound.module.css';
 
 function NotFound() {
     return (
-        <section className={`${styles["not-found"]} section`}>
+        <section className={styles["not-found"]}>
             <h2 className={styles["not-found-main-title"]}>404</h2>
             <h4 className={styles["not-found-sub-title"]}>Page not found</h4>
             <p className={styles["not-found-content"]}>

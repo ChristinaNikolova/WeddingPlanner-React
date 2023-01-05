@@ -9,7 +9,7 @@ import styles from './Home.module.css';
 
 function Home() {
     return (
-        <section className={`${styles.home} section`}>
+        <section className={styles.home}>
             <Jumbotron
                 pathToImage={constants.jumbo.HOME}
                 isHomePage={true}

@@ -1,5 +1,6 @@
 .all-categories-ul {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  min-height: 60vh;
+  padding-bottom: 40px;
 }

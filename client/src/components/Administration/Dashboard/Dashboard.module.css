@@ -1,5 +1,7 @@
 .dashboard-content-wrapper {
   margin-top: 80px;
+  margin-bottom: 40px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
