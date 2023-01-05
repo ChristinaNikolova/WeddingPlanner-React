@@ -6,8 +6,7 @@ import * as articlesService from '../../../services/articles';
 import styles from './LastThreeArticles.module.css';
 
 function LastThreeArticles() {
-    //todo fix section height
-    //todo check ADdButton padding-bottom
+    //todo extract children
 
     const [articles, setArticles] = useState([]);
 

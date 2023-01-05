@@ -11,7 +11,6 @@ import LastThreeArticles from '../../shared/LastThreeArticles/LastThreeArticles'
 import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
-    //todo Home Page => last three articles??
     //todo responsive 
     //todo last test!!!
 
