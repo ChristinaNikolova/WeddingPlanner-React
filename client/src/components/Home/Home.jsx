@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as constants from '../../utils/constants/images';
 
 import Jumbotron from '../shared/Jumbotron/Jumbotron';
+import LastThreeArticles from '../shared/LastThreeArticles/LastThreeArticles';
 
 import styles from './Home.module.css';
 
@@ -20,6 +21,7 @@ function Home() {
                 </p>
                 <Link to="/plan" className='btn'>Start planning</Link>
             </div>
+            <LastThreeArticles />
         </section>
     );
 }

@@ -1,8 +1,18 @@
 const router = require('express').Router();
 const { hasUser } = require('../middlewares/guards');
-const { all, getTotalCount, getById, like } = require('../services/articles');
+const { all, getTotalCount, getById, like, getLastThree } = require('../services/articles');
 const { pagination } = require('../utils/constants/global');
 const { mapErrors } = require('../utils/parser');
+
+router.get('/', async (req, res) => {
+    try {
+        const articles = await getLastThree();
+        res.json(articles);
+    } catch (error) {
+        const message = mapErrors(error);
+        res.status(400).json({ message });
+    }
+});
 
 router.get('/:page/:category/:query?', async (req, res) => {
     try {

@@ -94,6 +94,14 @@ async function deleteById(id) {
     return Article.findByIdAndDelete(id);
 }
 
+async function getLastThree() {
+    return (await Article
+        .find({})
+        .sort({ createdAt: -1, title: 1 })
+        .limit(3))
+        .map(articleListViewModel);
+}
+
 module.exports = {
     create,
     all,
@@ -102,4 +110,5 @@ module.exports = {
     like,
     deleteById,
     update,
+    getLastThree,
 }
