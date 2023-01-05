@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
-import * as articlesService from '../../../services/articles';
+import * as articlesService from '../../../../services/articles';
+
+import LastSingleArticle from '../LastSingleArticle/LastSingleArticle';
 
 import styles from './LastThreeArticles.module.css';
 
 function LastThreeArticles() {
-    //todo extract children
-
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -22,12 +21,13 @@ function LastThreeArticles() {
             <h3 className={styles["last-three-artilces-title"]}>Recent articles</h3>
             <div className={styles["last-three-articles-wrapper"]}>
                 {articles.map((a) =>
-                    <div key={a.id} className={styles["last-three-articles-current-article-wrapper"]}>
-                        <img className={`${styles["last-three-articles-current-article-image"]} img img-shadow`} src={a.image} alt={a.title} />
-                        <h5 className={styles["last-three-articles-current-article-title"]}>{a.title}</h5>
-                        <p className={styles["last-three-articles-current-article-short-content"]}>{a.shortContent}</p>
-                        <Link className="btn" to={`/blog/${a.id}`}>Read more</Link>
-                    </div>
+                    <LastSingleArticle
+                        key={a.id}
+                        id={a.id}
+                        title={a.title}
+                        shortContent={a.shortContent}
+                        image={a.image}
+                    />
                 )}
             </div>
         </div>

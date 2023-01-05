@@ -6,7 +6,7 @@ import { AuthContext } from '../../../contexts/authContext';
 import { scrollToTop } from '../../../utils/helpers/form';
 
 import Jumbotron from '../../shared/Jumbotron/Jumbotron';
-import LastThreeArticles from '../../shared/LastThreeArticles/LastThreeArticles';
+import LastThreeArticles from '../../shared/Blog/LastThreeArticles/LastThreeArticles';
 
 import styles from './ArticleDetails.module.css';
 

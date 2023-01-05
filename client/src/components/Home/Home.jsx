@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 import * as constants from '../../utils/constants/images';
 
+import LastThreeArticles from '../shared/Blog/LastThreeArticles/LastThreeArticles';
 import Jumbotron from '../shared/Jumbotron/Jumbotron';
-import LastThreeArticles from '../shared/LastThreeArticles/LastThreeArticles';
 
 import styles from './Home.module.css';
 

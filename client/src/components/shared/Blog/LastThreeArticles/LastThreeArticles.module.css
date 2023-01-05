@@ -1,0 +1,18 @@
+.last-three-articles-section-wrapper {
+  margin-top: 140px;
+  margin-bottom: 140px;
+}
+
+.last-three-artilces-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 100px;
+}
+
+.last-three-articles-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 120px;
+}
