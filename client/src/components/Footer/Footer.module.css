@@ -98,12 +98,18 @@
   }
 
   .footer-nav-li a {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .footer ul:first-of-type li a {
-    font-size: 36px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .footer ul:first-of-type li {
+    text-align: center;
   }
 }
