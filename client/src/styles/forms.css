@@ -112,9 +112,15 @@ input:checked {
   font-weight: 400;
 }
 
+@media screen and (max-width: 1150px) {
+  .auth-form {
+    width: 40%;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 950px) {
   .auth-form {
     width: 90%;
-    text-align: center;
   }
 }
