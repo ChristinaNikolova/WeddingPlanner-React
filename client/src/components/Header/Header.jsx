@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/authContext';
 
+import HamburgerHeader from './HamburgerHeader/HamburgerHeader';
+
 import styles from './Header.module.css';
 
 function Header() {
@@ -10,6 +12,24 @@ function Header() {
 
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
+    }
+    //todo use constants
+
+    const showMenu = () => {
+        if (document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display === 'none') {
+            document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = 'block';
+            document.getElementsByTagName("ul")[0].style.height = 'unset';
+            document.getElementsByTagName("ul")[0].style.marginBottom = '12px';
+            document.getElementsByTagName('header')[0].style.height = 'unset';
+        } else {
+            setInitialCssStyles();
+        }
+    }
+
+    const setInitialCssStyles = () => {
+        document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = 'none';
+        document.getElementsByTagName("ul")[0].style.height = '16vh';
+        document.getElementsByTagName('header')[0].style.height = '16vh';
     }
 
     return (
@@ -50,9 +70,18 @@ function Header() {
                             </li>
                         </>
                     }
+                    <li className={styles["header-nav-li-hamburger"]} onClick={showMenu}>
+                        <i className="fa-solid fa-bars"></i>
+                    </li>
                 </ul>
-            </nav>
-        </header>
+                <HamburgerHeader
+                    isAuthenticated={isAuthenticated}
+                    isAdmin={isAdmin}
+                    setNavStyle={setNavStyle}
+                    setInitialCssStyles={setInitialCssStyles}
+                />
+            </nav >
+        </header >
     );
 }
 
