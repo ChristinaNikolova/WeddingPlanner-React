@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/authContext';
@@ -11,15 +11,24 @@ import styles from './Header.module.css';
 function Header() {
     const { isAuthenticated, isAdmin } = useContext(AuthContext);
 
+    useEffect(() => {
+        window.addEventListener("resize", setInitialCssStyles);
+
+        return () => window.removeEventListener("resize", setInitialCssStyles);
+    }, []);
+
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
     }
 
     const showMenu = () => {
-        if (document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display === styleNames.NONE) {
-            document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = styleNames.BLOCK;
-            document.getElementsByTagName("ul")[0].style.height = 'unset';
-            document.getElementsByTagName("ul")[0].style.marginBottom = '12px';
+        const ulHamburgerElement = document.getElementsByClassName("header-nav-ul-hamburger")[0];
+        const ulElement = document.getElementsByTagName("ul")[0];
+
+        if (ulHamburgerElement.style.display === styleNames.NONE) {
+            ulHamburgerElement.style.display = styleNames.BLOCK;
+            ulElement.style.height = 'unset';
+            ulElement.style.marginBottom = '12px';
             document.getElementsByTagName('header')[0].style.height = 'unset';
         } else {
             setInitialCssStyles();
