@@ -62,12 +62,12 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .header-nav-ul {
     justify-content: space-between;
     align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .header-nav-ul .header-nav-li:nth-child(1),
@@ -94,11 +94,6 @@
 }
 
 @media screen and (max-width: 550px) {
-  .header-nav-ul {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .header-nav-ul .header-nav-li:nth-child(3) a {
     font-size: 30px;
   }
