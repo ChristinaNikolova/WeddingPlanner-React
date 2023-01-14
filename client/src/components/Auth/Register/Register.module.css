@@ -14,3 +14,41 @@
   max-width: 30%;
   max-height: 50%;
 }
+
+@media screen and (max-width: 950px) {
+  .register-content-wrapper {
+    flex-direction: column-reverse;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-img {
+    max-width: 50%;
+    max-height: 70%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .register-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #register {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #register {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #register {
+    margin-bottom: 120px;
+  }
+}

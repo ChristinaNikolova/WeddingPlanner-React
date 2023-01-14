@@ -94,7 +94,7 @@ function Register() {
     }
 
     return (
-        <section className="section-background">
+        <section id={styles["register"]} className="section-background">
             {serverError && <ServerError errors={serverError} />}
             <div className="section-title-wrapper">
                 <h2 className="section-title">Register</h2>
