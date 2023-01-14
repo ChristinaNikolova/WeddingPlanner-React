@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/authContext';
+import { styleNames } from '../../utils/constants/global';
 
 import HamburgerHeader from './HamburgerHeader/HamburgerHeader';
 
@@ -13,11 +14,10 @@ function Header() {
     const setNavStyle = ({ isActive }) => {
         return isActive ? styles["header-active-li"] : undefined;
     }
-    //todo use constants
 
     const showMenu = () => {
-        if (document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display === 'none') {
-            document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = 'block';
+        if (document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display === styleNames.NONE) {
+            document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = styleNames.BLOCK;
             document.getElementsByTagName("ul")[0].style.height = 'unset';
             document.getElementsByTagName("ul")[0].style.marginBottom = '12px';
             document.getElementsByTagName('header')[0].style.height = 'unset';
@@ -27,7 +27,7 @@ function Header() {
     }
 
     const setInitialCssStyles = () => {
-        document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = 'none';
+        document.getElementsByClassName("header-nav-ul-hamburger")[0].style.display = styleNames.NONE;
         document.getElementsByTagName("ul")[0].style.height = '16vh';
         document.getElementsByTagName('header')[0].style.height = '16vh';
     }

@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
+import { styleNames } from '../../../utils/constants/global';
+
 import styles from './HamburgerHeader.module.css';
 
 function HamburgerHeader({ isAuthenticated, isAdmin, setNavStyle, setInitialCssStyles }) {
     return (
-        <ul className="header-nav-ul-hamburger" style={{ display: "none" }}>
+        <ul className="header-nav-ul-hamburger" style={{ display: styleNames.NONE }}>
             <li className={styles["header-nav-li-hamburger"]}>
                 <NavLink className={setNavStyle} to="/plan" onClick={setInitialCssStyles}>Plan your wedding</NavLink>
             </li>
