@@ -73,7 +73,7 @@ function Login() {
     };
 
     return (
-        <section className="section-background">
+        <section id={styles["login"]} className="section-background">
             {serverError && <ServerError errors={serverError} />}
             <div className="section-title-wrapper">
                 <h2 className="section-title">Login</h2>
