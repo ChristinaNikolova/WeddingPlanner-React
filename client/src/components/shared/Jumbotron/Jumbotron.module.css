@@ -28,3 +28,38 @@
   font-weight: 300;
   font-size: 70px;
 }
+
+@media screen and (max-width: 950px) {
+  .jumbo-sub-title {
+    font-size: 36px;
+  }
+
+  .jumbo-main-title {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .jumbo-sub-title {
+    font-size: 30px;
+  }
+
+  .jumbo-main-title {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .jumbo-title-wrapper {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .jumbo-sub-title {
+    font-size: 24px;
+  }
+
+  .jumbo-main-title {
+    font-size: 36px;
+  }
+}

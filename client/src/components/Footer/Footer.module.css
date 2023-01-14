@@ -33,3 +33,77 @@
 .footer .logo a {
   font-size: 26px;
 }
+
+@media screen and (max-width: 1500px) {
+  .footer-nav-li a {
+    font-size: 18px;
+  }
+
+  .footer ul:first-of-type li a {
+    font-size: 42px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .footer-nav-li a {
+    font-size: 16px;
+  }
+
+  .footer ul:first-of-type li a {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .footer-nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .footer ul:first-of-type li a {
+    font-size: 44px;
+  }
+
+  .footer-nav-li a {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer ul:first-of-type li a {
+    font-size: 40px;
+  }
+
+  .footer-nav-li a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .footer-nav-li a {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer-nav {
+    gap: 10px;
+  }
+
+  .footer-nav .footer-nav-ul:nth-child(2) {
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: unset;
+  }
+
+  .footer-nav-li a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .footer ul:first-of-type li a {
+    font-size: 36px;
+  }
+}

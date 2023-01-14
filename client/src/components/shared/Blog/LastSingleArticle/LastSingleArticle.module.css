@@ -3,7 +3,7 @@
 }
 
 .last-three-articles-current-article-image {
-  width: 600px;
+  max-width: 100%;
   height: 800px;
   margin-bottom: 30px;
 }
@@ -16,4 +16,38 @@
 .last-three-articles-current-article-short-content {
   font-size: 24px;
   margin-bottom: 80px;
+}
+
+@media screen and (max-width: 1750px) {
+  .last-three-articles-current-article-image {
+    height: 600px;
+  }
+
+  .last-three-articles-current-article-title {
+    font-size: 30px;
+  }
+
+  .last-three-articles-current-article-short-content {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .last-three-articles-current-article-title {
+    font-size: 28px;
+  }
+
+  .last-three-articles-current-article-short-content {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .last-three-articles-current-article-title {
+    font-size: 30px;
+  }
+
+  .last-three-articles-current-article-short-content {
+    font-size: 22px;
+  }
 }
