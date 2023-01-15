@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 50vh;
+  min-height: 50vh;
 }
 
 .dashboard-right-wrapper a {
@@ -43,4 +43,53 @@
 .dashboard-left-link i {
   font-size: 18px;
   margin-right: 12px;
+}
+
+@media screen and (max-width: 1100px) {
+  .dashboard-content-wrapper {
+    flex-direction: column;
+    gap: 80px;
+    padding: 100px 30px 150px 30px;
+  }
+
+  .dashboard-left-title {
+    font-size: 48px;
+  }
+
+  .dashboard-right-wrapper a {
+    padding: 22px 30px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #dashboard {
+    margin-bottom: 100px;
+  }
+
+  .dashboard-content-wrapper {
+    padding-top: 20px;
+  }
+
+  .dashboard-left-title {
+    font-size: 36px;
+  }
+
+  .dashboard-left-link {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboard-content-wrapper {
+    gap: 20px;
+    padding: 20px 30px 70px 30px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .dashboard-right-wrapper a {
+    padding: 18px 26px;
+    font-size: 18px;
+  }
 }

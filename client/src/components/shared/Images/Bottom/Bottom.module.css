@@ -8,6 +8,19 @@
 }
 
 .bottom-img {
-  width: 30%;
-  height: 20%;
+  max-width: 30%;
+  max-height: 20%;
+}
+
+@media screen and (max-width: 800px) {
+  .bottom-img-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bottom-img-wrapper {
+    display: none;
+  }
 }
