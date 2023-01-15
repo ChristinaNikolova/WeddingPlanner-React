@@ -4,3 +4,9 @@
   min-height: 60vh;
   padding-bottom: 40px;
 }
+
+@media screen and (max-width: 1200px) {
+  .all-categories-ul {
+    margin-bottom: 80px;
+  }
+}

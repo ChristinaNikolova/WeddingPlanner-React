@@ -13,6 +13,7 @@ import styles from './ArticleDetails.module.css';
 function ArticleDetails() {
     //todo responsive 
     //todo last test!!!
+    //todo add readme in github
 
     const { userId, isAdmin } = useContext(AuthContext);
     const { id } = useParams();

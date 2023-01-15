@@ -15,7 +15,31 @@
 }
 
 .all-categories-img {
-  width: 60px;
-  height: 60px;
+  max-width: 60px;
+  max-height: 60px;
   margin-left: 80px;
+}
+
+@media screen and (max-width: 600px) {
+  .all-categories-li {
+    font-size: 20px;
+  }
+
+  .all-categories-img {
+    margin-left: 30px;
+  }
+
+  .all-categories-img {
+    max-width: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .all-categories-li {
+    font-size: 18px;
+  }
+
+  .all-categories-img {
+    max-width: 30px;
+  }
 }
