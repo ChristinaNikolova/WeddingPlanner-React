@@ -7,3 +7,15 @@
   width: 500px;
   margin-left: 10px;
 }
+
+@media screen and (max-width: 750px) {
+  .articles-all-search-title input {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .articles-all-search-title input {
+    width: 70%;
+  }
+}

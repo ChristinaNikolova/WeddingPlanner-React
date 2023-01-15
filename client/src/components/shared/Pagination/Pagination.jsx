@@ -6,7 +6,7 @@ import styles from './Pagination.module.css';
 
 function Pagination({ currentPage, pagesCount, selectedCategory, onClickHandler }) {
     return (
-        <div className={styles["pagination-warpper"]}>
+        <div className={styles["pagination-wrapper"]}>
             {currentPage !== 1 &&
                 <Link
                     onClick={() => onClickHandler(directions.PREV)}

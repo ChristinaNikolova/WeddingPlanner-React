@@ -63,7 +63,7 @@ function SingleTask({
                     </div>
                 </div>
             </div>
-            <div className={styles["checklist-all-current-task-info-warpper"]} style={{ display: styleNames.NONE }}>
+            <div className={styles["checklist-all-current-task-info-wrapper"]} style={{ display: styleNames.NONE }}>
                 <p className={styles["checklist-all-current-task-info-desc"]}>
                     {description}
                 </p>
