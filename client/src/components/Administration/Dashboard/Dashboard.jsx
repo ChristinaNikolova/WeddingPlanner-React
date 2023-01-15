@@ -4,7 +4,7 @@ import styles from './Dashboard.module.css';
 
 function Dashboard() {
     return (
-        <section className="section-background">
+        <section id={styles["dashboard"]} className="section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Administration</h2>
             </div>
