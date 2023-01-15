@@ -112,6 +112,12 @@ input:checked {
   font-weight: 400;
 }
 
+@media screen and (max-width: 1200px) {
+  .form-wrapper-center {
+    margin-bottom: 80px;
+  }
+}
+
 @media screen and (max-width: 1150px) {
   .auth-form {
     width: 40%;
@@ -122,5 +128,12 @@ input:checked {
 @media screen and (max-width: 950px) {
   .auth-form {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form-btns-wrapper {
+    flex-direction: column;
+    align-items: unset;
   }
 }
