@@ -1,3 +1,9 @@
 .create-category-form {
   margin-bottom: 200px;
 }
+
+@media screen and (max-width: 1000px) {
+  .create-category-form {
+    margin-bottom: 80px;
+  }
+}
