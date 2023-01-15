@@ -41,7 +41,7 @@ function DetailsPlanner() {
     }
 
     return (
-        <section ref={plannerRef} className={styles["details-planner"]}>
+        <section ref={plannerRef} id={styles["details-planner"]} className={styles["details-planner"]}>
             <div className="section-title-wrapper">
                 <h2 onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className="section-title">
                     {planner.title}

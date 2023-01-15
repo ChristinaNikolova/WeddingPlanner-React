@@ -98,9 +98,17 @@
 
 @media screen and (max-width: 1800px) {
   .article-details-main-content-wrapper {
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
     gap: 100px;
+  }
+
+  .article-details-content {
+    font-size: 22px;
+  }
+
+  .article-details-bold-content {
+    font-size: 24px;
   }
 }
 
@@ -123,6 +131,14 @@
     font-size: 20px;
     padding-left: unset;
   }
+
+  .article-details-content {
+    font-size: 20px;
+  }
+
+  .article-details-bold-content {
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -133,11 +149,11 @@
   }
 
   .article-details-content {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .article-details-bold-content {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .article-details-btn-wrapper {
