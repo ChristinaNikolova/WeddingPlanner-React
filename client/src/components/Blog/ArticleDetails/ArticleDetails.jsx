@@ -12,8 +12,6 @@ import styles from './ArticleDetails.module.css';
 
 function ArticleDetails() {
     //todo responsive 
-    //todo dont forget update article form
-    //todo dont forget create planner form
     //todo last test!!!
 
     const { userId, isAdmin } = useContext(AuthContext);
