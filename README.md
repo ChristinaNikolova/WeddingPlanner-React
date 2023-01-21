@@ -63,6 +63,8 @@ WeddingPlanner can be used to plan and organize your wedding day.
  - CSS
 
  - HTML5
+ 
+ - Responsive Design
 
 ## :gear: Application Configurations
  #### To start the server: 
