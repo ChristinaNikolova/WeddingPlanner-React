@@ -36,3 +36,9 @@ i:hover {
 .note-form-icon {
   margin-right: 200px;
 }
+
+@media screen and (max-width: 1000px) {
+  .guest-form-icon {
+    max-width: 70%;
+  }
+}

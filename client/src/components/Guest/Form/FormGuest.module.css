@@ -1,3 +1,21 @@
 .guest-form {
   width: 24%;
 }
+
+@media screen and (max-width: 1500px) {
+  .guest-form {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .guest-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .guest-form {
+    width: 90%;
+  }
+}

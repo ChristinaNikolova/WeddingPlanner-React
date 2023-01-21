@@ -58,3 +58,56 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+@media screen and (max-width: 1800px) {
+  .guests-all-info-wrapper {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .guests-all-info-wrapper {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .guests-all-info-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 120px;
+  }
+
+  .guests-all-info-left {
+    width: unset;
+  }
+
+  .guests-all-role {
+    font-size: 22px;
+  }
+
+  .guests-all-name {
+    font-size: 38px;
+  }
+
+  .guests-all-side {
+    font-size: 22px;
+  }
+
+  .guests-all-info {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .guests-all-info-wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .guests-all-name {
+    font-size: 34px;
+  }
+}

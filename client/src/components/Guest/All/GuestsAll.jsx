@@ -53,7 +53,7 @@ function GuestsAll() {
     }
 
     return (
-        <section className="section-planner section-background">
+        <section id={styles["guests-all"]} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Guests</h2>
             </div>
