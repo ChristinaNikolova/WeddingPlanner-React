@@ -53,7 +53,7 @@ function NotesAll() {
     }
 
     return (
-        <section className="section-planner section-background">
+        <section id={styles["notes-all"]} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Notes</h2>
             </div>

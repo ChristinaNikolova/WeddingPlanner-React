@@ -34,3 +34,28 @@
   line-height: 1.5;
   text-align: left;
 }
+
+@media screen and (max-width: 1300px) {
+  .notes-all-info-wrapper {
+    margin-left: 70px;
+    margin-right: 70px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .notes-all-info-wrapper {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .notes-all-info-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .notes-all-info-left {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
