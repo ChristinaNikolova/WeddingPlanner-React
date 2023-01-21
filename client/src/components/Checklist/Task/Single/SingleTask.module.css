@@ -69,3 +69,23 @@
   color: var(--clr-gold);
   margin-bottom: 40px;
 }
+
+@media screen and (max-width: 800px) {
+  .checklist-all-current-task-header-title,
+  .checklist-all-current-task-progress,
+  .checklist-all-current-task-delimiter,
+  .checklist-all-current-task-target {
+    font-size: 24px;
+  }
+
+  .checklist-all-current-task-info-desc {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .checklist-all-current-task-header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

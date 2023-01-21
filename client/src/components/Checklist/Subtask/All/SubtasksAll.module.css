@@ -30,3 +30,10 @@
   text-align: right;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 800px) {
+  .checklist-all-current-task-subtasks-title,
+  .checklist-all-empty-subtasks {
+    font-size: 20px;
+  }
+}

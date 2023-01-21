@@ -60,7 +60,7 @@ function ChecklistAll() {
     }
 
     return (
-        <section ref={tasksAllRef} className="section-planner section-background">
+        <section ref={tasksAllRef} id={styles["checklist-all"]} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">The big day</h2>
             </div>

@@ -45,3 +45,14 @@
   margin-left: 12px;
   color: var(--clr-red);
 }
+
+@media screen and (max-width: 600px) {
+  .checklist-all-current-task-current-subtask {
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .checklist-all-current-task-current-subtask-description {
+    font-size: 18px;
+  }
+}

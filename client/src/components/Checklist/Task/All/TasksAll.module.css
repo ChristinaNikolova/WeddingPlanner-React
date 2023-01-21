@@ -42,3 +42,29 @@
   margin-top: 50px;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 1600px) {
+  .checklist-all-main-content-wrapper {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #checklist-all {
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .checklist-all-main-content-wrapper {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .checklist-all-timespan {
+    font-size: 30px;
+  }
+}
