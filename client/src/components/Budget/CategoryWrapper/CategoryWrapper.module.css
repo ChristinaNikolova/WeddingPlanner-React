@@ -32,3 +32,33 @@
   margin-left: 12px;
   margin-right: 2px;
 }
+
+@media screen and (max-width: 1000px) {
+  .budget-main-current-category-info-wrapper {
+    padding-right: 10px;
+  }
+
+  .budget-main-current-category-info-name,
+  .budget-main-current-category-info-right {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .budget-main-current-category-info-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .budget-main-current-category-info-name,
+  .budget-main-current-category-info-right {
+    font-size: 20px;
+  }
+
+  .budget-main-current-category-info-image {
+    width: 30px;
+    height: 30px;
+  }
+}

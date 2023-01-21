@@ -37,3 +37,40 @@
   padding-bottom: 12px;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 1600px) {
+  .budget-main-content-wrapper {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #budget {
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .budget-main-content-wrapper {
+    max-width: 95%;
+  }
+
+  .budget-main-current-category-costs-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .budget-main-current-category-costs-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .budget-main-current-category-costs-titles-cost,
+  .budget-main-current-category-costs-titles-title {
+    display: none;
+  }
+}

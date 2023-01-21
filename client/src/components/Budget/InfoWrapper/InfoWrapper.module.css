@@ -12,3 +12,49 @@
   margin-left: 15px;
   margin-right: 5px;
 }
+
+@media screen and (max-width: 1600px) {
+  .budget-info-wrapper {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .budget-info-wrapper {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .budget-info-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .budget-info-wrapper {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .budget-info-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .budget-info-wrapper {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .budget-info-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .budget-info-wrapper {
+    font-size: 30px;
+  }
+}

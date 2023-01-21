@@ -86,7 +86,7 @@ function AllCosts() {
     }
 
     return (
-        <section ref={costsAllRef} className="section-planner section-background">
+        <section ref={costsAllRef} id={styles["budget"]} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">Budget</h2>
             </div>
