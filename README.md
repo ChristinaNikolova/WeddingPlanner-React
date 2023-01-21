@@ -77,7 +77,7 @@ WeddingPlanner can be used to plan and organize your wedding day.
 
 ## :framed_picture: Screen Shoots
 
-## :handshake: Inspirations
+## Inspirations
 
 - https://sooevents.gr/
 - https://planning.wedding/
