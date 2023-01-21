@@ -17,16 +17,16 @@ WeddingPlanner can be used to plan and organize your wedding day.
     - create wedding planners.
     - see all his own wedding planners, update and delete them.
     - see wedding planner's details.
-    - see list of all guests.
+    - see list of the guests.
     - add, update and delete guests.
-    - see list of all costs.
+    - see list of the costs.
     - add, update and delete costs.
-    - see list of tasks.
+    - see list of the tasks.
     - add, update and delete tasks.
-    - see list of events for the day.
+    - see list of the events for the day.
     - add, update and delete events.
     - highlight events
-    - see list of notes.
+    - see list of the notes.
     - add, update and delete notes.
       
 #### :white_check_mark: Admin futures: 
