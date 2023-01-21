@@ -76,3 +76,8 @@ WeddingPlanner can be used to plan and organize your wedding day.
     - npm run start
 
 ## :framed_picture: Screen Shoots
+
+## :handshake: Inspirations
+
+- https://sooevents.gr/
+- https://planning.wedding/
