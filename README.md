@@ -38,7 +38,15 @@ WeddingPlanner can be used to plan and organize your wedding day.
 
 ## :hammer_and_pick: Build with
 
+ - JavaScript
+
  - Express.js
+ 
+ - Bcrypt
+ 
+ - Express-Validator
+ 
+ - JWT
 
  - MongoDB 
 
@@ -46,22 +54,16 @@ WeddingPlanner can be used to plan and organize your wedding day.
  
  - ReactJS
  
+ - React-Router-Dom
+ 
  - Lazy Loading
-
- - JavaScript
-
+ 
  - FontAwesome
 
  - CSS
 
  - HTML5
- 
- - Bcrypt
- 
- - Express-Validator
- 
- - JWT
- 
+
 ## Application Configurations
  #### To start the server: 
  
