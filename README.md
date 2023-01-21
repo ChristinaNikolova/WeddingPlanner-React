@@ -68,13 +68,11 @@ WeddingPlanner can be used to plan and organize your wedding day.
  #### To start the server: 
  
     - npm install
-    
-    -npm run start
+    - npm run start
     
  #### To start the client: 
  
     - npm install
-    
-    -npm run start
+    - npm run start
 
 ## :framed_picture: Screen Shoots
