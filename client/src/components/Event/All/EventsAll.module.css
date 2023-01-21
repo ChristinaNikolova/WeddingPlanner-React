@@ -3,3 +3,16 @@
   padding-top: 40px;
   text-align: center;
 }
+
+@media screen and (max-width: 1900px) {
+  #events-all {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #events-all {
+    margin-bottom: 120px;
+  }
+}

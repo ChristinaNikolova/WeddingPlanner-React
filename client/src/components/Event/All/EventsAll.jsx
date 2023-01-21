@@ -62,7 +62,7 @@ function EventsAll() {
     }
 
     return (
-        <section className="section-planner section-background">
+        <section id={styles["events-all"]} className="section-planner section-background">
             <div className="section-title-wrapper">
                 <h2 className="section-title">The big day</h2>
             </div>

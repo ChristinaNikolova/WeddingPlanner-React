@@ -1,3 +1,9 @@
 .event-form {
   width: 26%;
 }
+
+@media screen and (max-width: 1800px) {
+  .event-form {
+    width: 80%;
+  }
+}
