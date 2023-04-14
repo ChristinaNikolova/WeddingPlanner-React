@@ -1,5 +1,7 @@
 const important = {
     CONNECTION_STRING: 'mongodb://localhost:27017/weddingplanner',
+    // If connecting fails on your machine, try using 127.0.0.1 instead of localhost
+    // https://mongoosejs.com/docs/connections.html
     SECRET: 'my-very-secret',
 };
 

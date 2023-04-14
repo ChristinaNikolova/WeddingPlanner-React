@@ -1,6 +1,8 @@
 # :hearts::ring::clinking_glasses: WeddingPlanner
 WeddingPlanner is a SPA created with Express.js with ReactJS template.
 
+![Starting picture](./doc/weddingplanner.jpg)
+
 ## :memo: Description
 WeddingPlanner can be used to plan and organize your wedding day.
 
@@ -69,6 +71,8 @@ WeddingPlanner can be used to plan and organize your wedding day.
 ## :gear: Application Configurations
  #### To start the server: 
  
+MongoDB needs to be installed.
+
     - npm install
     - npm run start
     
