@@ -62,6 +62,6 @@ module.exports = {
     create,
     done,
     deleteById,
-    getById,
     update,
+    getById,
 }
