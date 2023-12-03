@@ -55,6 +55,8 @@ WeddingPlanner can be used to plan and organize your wedding day.
  - Mongoose 
  
  - ReactJS
+
+ - Functional components
  
  - React-Router-Dom
  
