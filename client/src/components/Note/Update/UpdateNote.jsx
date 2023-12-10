@@ -5,7 +5,7 @@ import { formNames } from '../../../utils/constants/global';
 
 import FormNote from '../Form/FormNote';
 
-function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadGuests }) {
+function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadNotes }) {
     const formName = formNames.UPDATE;
     const [serverError, setServerError] = useState('');
     const [note, setNote] = useState({});
@@ -30,7 +30,7 @@ function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadGuests }) {
                 }
 
                 onCancelFormHandler();
-                loadGuests();
+                loadNotes();
             })
             .catch((err) => console.error(err));
     };

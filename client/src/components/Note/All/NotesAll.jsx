@@ -77,7 +77,7 @@ function NotesAll() {
                     noteId={noteId}
                     plannerId={plannerId}
                     onCancelFormHandler={onCancelFormHandler}
-                    loadGuests={loadNotes}
+                    loadNotes={loadNotes}
                 />
                 : <CreateNote
                     plannerId={plannerId}
