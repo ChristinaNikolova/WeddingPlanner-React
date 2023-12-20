@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 
 import * as notesService from "../../../services/notes";
-import { addButtonTexts, formNames } from "../../../utils/constants/global";
+import { formNames } from "../../../utils/constants/global";
 
-import AddButton from "../../shared/Buttons/Add/AddButton";
 import FormNote from "../Form/FormNote";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function CreateNote({
-  plannerId,
-  isHidden,
-  onCancelFormHandler,
-  onShowFormHandler,
-  loadNotes,
-}) {
+function CreateNote({ plannerId, isHidden, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {}, [serverError]);
 
@@ -27,28 +22,32 @@ function CreateNote({
           return;
         }
 
-        onCancelFormHandler();
-        loadNotes();
+        finish();
       })
       .catch((err) => console.error(err));
   };
 
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
+
   return (
     <>
-      <AddButton
-        classNames={["note-form-icon"]}
-        text={addButtonTexts.NOTE}
-        isEmptyString={true}
-        onShowFormHandler={onShowFormHandler}
-      />
       {!isHidden && (
         <FormNote
           description={""}
-          formName={formName}
           serverError={serverError}
           onSubmitHandler={onSubmitHandler}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+          checkIsDisabled={checkIsDisabled}
+        >
+          {
+            <FormButton
+              formName={formName}
+              isDisabled={isDisabled}
+              onCancelFormHandler={onCancelFormHandler}
+            />
+          }
+        </FormNote>
       )}
     </>
   );

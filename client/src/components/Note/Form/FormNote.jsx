@@ -6,20 +6,19 @@ import * as helpers from "../../../utils/helpers/form";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import TextArea from "../../shared/Tags/TextArea/TextArea";
-import FormButton from "../../shared/Buttons/Form/FormButton";
 
 function FormNote({
   description,
-  formName,
   serverError,
+  children,
   onSubmitHandler,
-  onCancelFormHandler,
+  checkIsDisabled,
 }) {
   const [values, setValues] = useState({
     description: description,
   });
   const [descriptionError, setDescriptionError] = useState("");
-  const [isDisabled, setIsDisabled] = useState(true);
+
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -42,7 +41,8 @@ function FormNote({
   };
 
   const checkDisabled = () => {
-    setIsDisabled(helpers.isButtonDisabled(values, [descriptionError]));
+    const isDisabled = helpers.isButtonDisabled(values, [descriptionError]);
+    checkIsDisabled(isDisabled);
   };
 
   const onSubmitHelperHandler = (e) => {
@@ -75,11 +75,7 @@ function FormNote({
           />
           {descriptionError && <ClientError error={descriptionError} />}
         </div>
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+        {children}
       </form>
     </div>
   );

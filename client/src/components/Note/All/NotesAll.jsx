@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 
 import * as notesService from "../../../services/notes";
 import { scrollToTop } from "../../../utils/helpers/form";
+import { addButtonTexts } from "../../../utils/constants/global";
 
 import SingleNote from "../Single/SingleNote";
 import CreateNote from "../Create/CreateNote";
 import UpdateNote from "../Update/UpdateNote";
+import AddButton from "../../shared/Buttons/Add/AddButton";
 
 import styles from "./NotesAll.module.css";
 
@@ -52,6 +54,11 @@ function NotesAll() {
       .catch((err) => console.error(err));
   };
 
+  const finish = () => {
+    onCancelFormHandler();
+    loadNotes();
+  };
+
   return (
     <section
       id={styles["notes-all"]}
@@ -82,16 +89,24 @@ function NotesAll() {
           noteId={noteId}
           plannerId={plannerId}
           onCancelFormHandler={onCancelFormHandler}
-          loadNotes={loadNotes}
+          finish={finish}
         />
       ) : (
-        <CreateNote
-          plannerId={plannerId}
-          isHidden={isHidden}
-          onCancelFormHandler={onCancelFormHandler}
-          onShowFormHandler={onShowFormHandler}
-          loadNotes={loadNotes}
-        />
+        <>
+          <AddButton
+            classNames={["note-form-icon"]}
+            text={addButtonTexts.NOTE}
+            isEmptyString={true}
+            onShowFormHandler={onShowFormHandler}
+          />
+          <CreateNote
+            plannerId={plannerId}
+            isHidden={isHidden}
+            onCancelFormHandler={onCancelFormHandler}
+            onShowFormHandler={onShowFormHandler}
+            finish={finish}
+          />
+        </>
       )}
     </section>
   );

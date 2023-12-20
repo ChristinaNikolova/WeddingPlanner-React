@@ -4,11 +4,13 @@ import * as notesService from "../../../services/notes";
 import { formNames } from "../../../utils/constants/global";
 
 import FormNote from "../Form/FormNote";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadNotes }) {
+function UpdateNote({ noteId, plannerId, onCancelFormHandler, finish }) {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState("");
   const [note, setNote] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     notesService
@@ -28,11 +30,14 @@ function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadNotes }) {
           return;
         }
 
-        onCancelFormHandler();
-        loadNotes();
+        finish();
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   if (!note.description) {
     return null;
@@ -41,11 +46,18 @@ function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadNotes }) {
   return (
     <FormNote
       description={note.description}
-      formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      {
+        <FormButton
+          formName={formName}
+          isDisabled={isDisabled}
+          onCancelFormHandler={onCancelFormHandler}
+        />
+      }
+    </FormNote>
   );
 }
 
