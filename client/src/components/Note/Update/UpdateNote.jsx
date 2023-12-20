@@ -1,53 +1,52 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import * as notesService from '../../../services/notes';
-import { formNames } from '../../../utils/constants/global';
+import * as notesService from "../../../services/notes";
+import { formNames } from "../../../utils/constants/global";
 
-import FormNote from '../Form/FormNote';
+import FormNote from "../Form/FormNote";
 
 function UpdateNote({ noteId, plannerId, onCancelFormHandler, loadNotes }) {
-    const formName = formNames.UPDATE;
-    const [serverError, setServerError] = useState('');
-    const [note, setNote] = useState({});
+  const formName = formNames.UPDATE;
+  const [serverError, setServerError] = useState("");
+  const [note, setNote] = useState({});
 
-    useEffect(() => {
-        notesService
-            .getById(plannerId, noteId)
-            .then((res) => setNote(res))
-            .catch((err) => console.error(err));
-    }, [])
+  useEffect(() => {
+    notesService
+      .getById(plannerId, noteId)
+      .then((res) => setNote(res))
+      .catch((err) => console.error(err));
+  }, []);
 
-    useEffect(() => {
-    }, [serverError]);
+  useEffect(() => {}, [serverError]);
 
-    const onSubmitHandler = (description) => {
-        notesService
-            .update(noteId, description)
-            .then((data) => {
-                if (data.message) {
-                    setServerError(data.message);
-                    return;
-                }
+  const onSubmitHandler = (description) => {
+    notesService
+      .update(noteId, description)
+      .then((data) => {
+        if (data.message) {
+          setServerError(data.message);
+          return;
+        }
 
-                onCancelFormHandler();
-                loadNotes();
-            })
-            .catch((err) => console.error(err));
-    };
+        onCancelFormHandler();
+        loadNotes();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    if (!note.description) {
-        return null;
-    }
+  if (!note.description) {
+    return null;
+  }
 
-    return (
-        <FormNote
-            description={note.description}
-            formName={formName}
-            serverError={serverError}
-            onSubmitHandler={onSubmitHandler}
-            onCancelFormHandler={onCancelFormHandler}
-        />
-    );
+  return (
+    <FormNote
+      description={note.description}
+      formName={formName}
+      serverError={serverError}
+      onSubmitHandler={onSubmitHandler}
+      onCancelFormHandler={onCancelFormHandler}
+    />
+  );
 }
 
 export default UpdateNote;

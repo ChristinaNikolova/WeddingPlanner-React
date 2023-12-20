@@ -1,59 +1,59 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-import * as categoriesService from '../../../../services/categories';
-import { formNames } from '../../../../utils/constants/global';
+import * as categoriesService from "../../../../services/categories";
+import { formNames } from "../../../../utils/constants/global";
 
-import FormCategory from '../Form/FormCategory';
+import FormCategory from "../Form/FormCategory";
 
 function UpdateCategory() {
-    const formName = formNames.UPDATE;
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const [category, setCategory] = useState({});
-    const [serverError, setServerError] = useState('');
+  const formName = formNames.UPDATE;
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [category, setCategory] = useState({});
+  const [serverError, setServerError] = useState("");
 
-    useEffect(() => {
-        categoriesService
-            .getById(id)
-            .then((data) => setCategory(data))
-            .catch((err) => console.error(err));
-    }, []);
+  useEffect(() => {
+    categoriesService
+      .getById(id)
+      .then((data) => setCategory(data))
+      .catch((err) => console.error(err));
+  }, []);
 
-    useEffect(() => {
-    }, [serverError]);
+  useEffect(() => {}, [serverError]);
 
-    const submitHandler = (name, image) => {
-        categoriesService.update(id, name, image)
-            .then((data) => {
-                if (data.message) {
-                    setServerError(data.message);
-                    return;
-                }
+  const submitHandler = (name, image) => {
+    categoriesService
+      .update(id, name, image)
+      .then((data) => {
+        if (data.message) {
+          setServerError(data.message);
+          return;
+        }
 
-                onCancelFormHandler();
-            })
-            .catch((err) => console.error(err));
-    };
+        onCancelFormHandler();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    const onCancelFormHandler = () => {
-        navigate('/administration/categories');
-    }
+  const onCancelFormHandler = () => {
+    navigate("/administration/categories");
+  };
 
-    if (!category.name || !category.image) {
-        return null;
-    }
+  if (!category.name || !category.image) {
+    return null;
+  }
 
-    return (
-        <FormCategory
-            formName={formName}
-            name={category.name}
-            image={category.image}
-            serverError={serverError}
-            onSubmitHandler={submitHandler}
-            onCancelFormHandler={onCancelFormHandler}
-        />
-    );
+  return (
+    <FormCategory
+      formName={formName}
+      name={category.name}
+      image={category.image}
+      serverError={serverError}
+      onSubmitHandler={submitHandler}
+      onCancelFormHandler={onCancelFormHandler}
+    />
+  );
 }
 
 export default UpdateCategory;

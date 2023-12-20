@@ -1,16 +1,16 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-import { AuthContext } from '../../contexts/authContext';
+import { AuthContext } from "../../contexts/authContext";
 
 const AdminRoute = ({ children }) => {
-    const { isAdmin } = useContext(AuthContext);
+  const { isAdmin } = useContext(AuthContext);
 
-    if (!isAdmin) {
-        return <Navigate to="/" replace />
-    }
+  if (!isAdmin) {
+    return <Navigate to="/" replace />;
+  }
 
-    return children ? children : <Outlet />
+  return children ? children : <Outlet />;
 };
 
 export default AdminRoute;

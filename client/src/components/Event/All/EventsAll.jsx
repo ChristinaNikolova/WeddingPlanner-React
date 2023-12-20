@@ -1,107 +1,113 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import * as eventsService from '../../../services/events';
-import { scrollToTop } from '../../../utils/helpers/form';
+import * as eventsService from "../../../services/events";
+import { scrollToTop } from "../../../utils/helpers/form";
 
-import CreateEvent from '../Create/CreateEvent';
-import SingleEvent from '../Single/SingleEvent';
-import UpdateEvent from '../Update/UpdateEvent';
+import CreateEvent from "../Create/CreateEvent";
+import SingleEvent from "../Single/SingleEvent";
+import UpdateEvent from "../Update/UpdateEvent";
 
-import styles from './EventsAll.module.css';
+import styles from "./EventsAll.module.css";
 
 function EventsAll() {
-    const { id: plannerId } = useParams();
-    const [events, setEvents] = useState([]);
-    const [eventId, setEventId] = useState('');
-    const [isHidden, setIsHidden] = useState(true);
-    const [isEditIconHidden, setIsEditIconHidden] = useState(false);
+  const { id: plannerId } = useParams();
+  const [events, setEvents] = useState([]);
+  const [eventId, setEventId] = useState("");
+  const [isHidden, setIsHidden] = useState(true);
+  const [isEditIconHidden, setIsEditIconHidden] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
+    loadEvents();
+  }, []);
+
+  const onShowFormHandler = (eventId) => {
+    setIsHidden(!isHidden);
+    eventId ? setEventId(eventId) : setEventId("");
+    setIsEditIconHidden(!isEditIconHidden);
+  };
+
+  const onCancelFormHandler = () => {
+    setIsHidden(true);
+    setEventId("");
+    setIsEditIconHidden(false);
+  };
+
+  const onHeightlightHandler = (eventId) => {
+    eventsService
+      .heightlight(plannerId, eventId)
+      .then(() => {
         loadEvents();
-    }, []);
+      })
+      .catch((err) => console.error(err));
+  };
 
-    const onShowFormHandler = (eventId) => {
-        setIsHidden(!isHidden);
-        eventId ? setEventId(eventId) : setEventId('');
-        setIsEditIconHidden(!isEditIconHidden);
-    }
+  const onDeleteHandler = (eventId) => {
+    eventsService
+      .deleteById(eventId)
+      .then(() => {
+        loadEvents();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    const onCancelFormHandler = () => {
-        setIsHidden(true);
-        setEventId('');
-        setIsEditIconHidden(false);
-    }
+  const loadEvents = () => {
+    eventsService
+      .all(plannerId)
+      .then((res) => {
+        setEvents(res);
+        scrollToTop();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    const onHeightlightHandler = (eventId) => {
-        eventsService
-            .heightlight(plannerId, eventId)
-            .then(() => {
-                loadEvents();
-            })
-            .catch((err) => console.error(err));
-    }
-
-    const onDeleteHandler = (eventId) => {
-        eventsService
-            .deleteById(eventId)
-            .then(() => {
-                loadEvents();
-            })
-            .catch((err) => console.error(err));
-    }
-
-    const loadEvents = () => {
-        eventsService
-            .all(plannerId)
-            .then((res) => {
-                setEvents(res);
-                scrollToTop();
-            })
-            .catch((err) => console.error(err));
-    }
-
-    return (
-        <section id={styles["events-all"]} className="section-planner section-background">
-            <div className="section-title-wrapper">
-                <h2 className="section-title">The big day</h2>
-            </div>
-            <div className={styles["events-all-main-content-wrapper"]}>
-                {events.length
-                    ? events.map((e) =>
-                        <SingleEvent
-                            key={e.id}
-                            id={e.id}
-                            title={e.title}
-                            startTime={e.startTime}
-                            endTime={e.endTime}
-                            duration={e.duration}
-                            isHighlighted={e.isHighlighted}
-                            isEditIconHidden={isEditIconHidden}
-                            onHeightlightHandler={onHeightlightHandler}
-                            onDeleteHandler={onDeleteHandler}
-                            onShowFormHandler={onShowFormHandler}
-                        />)
-                    : <p className="empty empty-planner">No events yet</p>
-                }
-            </div>
-            {eventId
-                ? <UpdateEvent
-                    eventId={eventId}
-                    plannerId={plannerId}
-                    onCancelFormHandler={onCancelFormHandler}
-                    loadEvents={loadEvents}
-                />
-                : <CreateEvent
-                    plannerId={plannerId}
-                    isHidden={isHidden}
-                    onCancelFormHandler={onCancelFormHandler}
-                    onShowFormHandler={onShowFormHandler}
-                    loadEvents={loadEvents}
-                />
-            }
-        </section>
-    );
+  return (
+    <section
+      id={styles["events-all"]}
+      className="section-planner section-background"
+    >
+      <div className="section-title-wrapper">
+        <h2 className="section-title">The big day</h2>
+      </div>
+      <div className={styles["events-all-main-content-wrapper"]}>
+        {events.length ? (
+          events.map((e) => (
+            <SingleEvent
+              key={e.id}
+              id={e.id}
+              title={e.title}
+              startTime={e.startTime}
+              endTime={e.endTime}
+              duration={e.duration}
+              isHighlighted={e.isHighlighted}
+              isEditIconHidden={isEditIconHidden}
+              onHeightlightHandler={onHeightlightHandler}
+              onDeleteHandler={onDeleteHandler}
+              onShowFormHandler={onShowFormHandler}
+            />
+          ))
+        ) : (
+          <p className="empty empty-planner">No events yet</p>
+        )}
+      </div>
+      {eventId ? (
+        <UpdateEvent
+          eventId={eventId}
+          plannerId={plannerId}
+          onCancelFormHandler={onCancelFormHandler}
+          loadEvents={loadEvents}
+        />
+      ) : (
+        <CreateEvent
+          plannerId={plannerId}
+          isHidden={isHidden}
+          onCancelFormHandler={onCancelFormHandler}
+          onShowFormHandler={onShowFormHandler}
+          loadEvents={loadEvents}
+        />
+      )}
+    </section>
+  );
 }
 
-export default EventsAll
+export default EventsAll;

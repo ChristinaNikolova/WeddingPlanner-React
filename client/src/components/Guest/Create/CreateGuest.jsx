@@ -1,59 +1,86 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import * as guestsService from '../../../services/guests';
-import { addButtonTexts, formNames } from '../../../utils/constants/global';
+import * as guestsService from "../../../services/guests";
+import { addButtonTexts, formNames } from "../../../utils/constants/global";
 
-import AddButton from '../../shared/Buttons/Add/AddButton';
-import FormGuest from '../Form/FormGuest';
+import AddButton from "../../shared/Buttons/Add/AddButton";
+import FormGuest from "../Form/FormGuest";
 
-function CreateGuest({ plannerId, isHidden, onCancelFormHandler, onShowFormHandler, loadGuests }) {
-    const formName = formNames.CREATE;
-    const [serverError, setServerError] = useState('');
+function CreateGuest({
+  plannerId,
+  isHidden,
+  onCancelFormHandler,
+  onShowFormHandler,
+  loadGuests,
+}) {
+  const formName = formNames.CREATE;
+  const [serverError, setServerError] = useState("");
 
-    useEffect(() => {
-    }, [serverError]);
+  useEffect(() => {}, [serverError]);
 
-    const onSubmitHandler = (firstName, lastName, gender, age, side, role, table, mainDish, confirmed) => {
-        guestsService.create(plannerId, firstName, lastName, gender, age, side, role, table, mainDish, confirmed)
-            .then((data) => {
-                if (data.message) {
-                    setServerError(data.message);
-                    return;
-                }
+  const onSubmitHandler = (
+    firstName,
+    lastName,
+    gender,
+    age,
+    side,
+    role,
+    table,
+    mainDish,
+    confirmed
+  ) => {
+    guestsService
+      .create(
+        plannerId,
+        firstName,
+        lastName,
+        gender,
+        age,
+        side,
+        role,
+        table,
+        mainDish,
+        confirmed
+      )
+      .then((data) => {
+        if (data.message) {
+          setServerError(data.message);
+          return;
+        }
 
-                onCancelFormHandler();
-                loadGuests();
-            })
-            .catch((err) => console.error(err));
-    };
+        onCancelFormHandler();
+        loadGuests();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    return (
-        <>
-            <AddButton
-                classNames={['guest-form-icon']}
-                text={addButtonTexts.GUEST}
-                isEmptyString={true}
-                onShowFormHandler={onShowFormHandler}
-            />
-            {!isHidden &&
-                <FormGuest
-                    firstName={''}
-                    lastName={''}
-                    gender={'male'}
-                    age={'adult'}
-                    side={'bride'}
-                    role={'bride'}
-                    table={''}
-                    mainDish={'no info'}
-                    confirmed={''}
-                    formName={formName}
-                    serverError={serverError}
-                    onSubmitHandler={onSubmitHandler}
-                    onCancelFormHandler={onCancelFormHandler}
-                />
-            }
-        </>
-    );
+  return (
+    <>
+      <AddButton
+        classNames={["guest-form-icon"]}
+        text={addButtonTexts.GUEST}
+        isEmptyString={true}
+        onShowFormHandler={onShowFormHandler}
+      />
+      {!isHidden && (
+        <FormGuest
+          firstName={""}
+          lastName={""}
+          gender={"male"}
+          age={"adult"}
+          side={"bride"}
+          role={"bride"}
+          table={""}
+          mainDish={"no info"}
+          confirmed={""}
+          formName={formName}
+          serverError={serverError}
+          onSubmitHandler={onSubmitHandler}
+          onCancelFormHandler={onCancelFormHandler}
+        />
+      )}
+    </>
+  );
 }
 
 export default CreateGuest;

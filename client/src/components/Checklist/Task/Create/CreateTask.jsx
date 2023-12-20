@@ -1,42 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import * as tasksService from '../../../../services/tasks';
-import { formNames } from '../../../../utils/constants/global';
+import * as tasksService from "../../../../services/tasks";
+import { formNames } from "../../../../utils/constants/global";
 
-import FormTask from '../Form/FormTask';
+import FormTask from "../Form/FormTask";
 
 function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
-    const formName = formNames.CREATE;
-    const [serverError, setServerError] = useState('');
+  const formName = formNames.CREATE;
+  const [serverError, setServerError] = useState("");
 
-    useEffect(() => {
-    }, [serverError]);
+  useEffect(() => {}, [serverError]);
 
-    const onSubmitHandler = (e, title, description) => {
-        tasksService
-            .create(plannerId, title, description, timespan)
-            .then((data) => {
-                if (data.message) {
-                    setServerError(data.message);
-                    return;
-                }
+  const onSubmitHandler = (e, title, description) => {
+    tasksService
+      .create(plannerId, title, description, timespan)
+      .then((data) => {
+        if (data.message) {
+          setServerError(data.message);
+          return;
+        }
 
-                onCancelFormHandler(e);
-                loadTasks();
-            })
-            .catch((err) => console.error(err));
-    };
+        onCancelFormHandler(e);
+        loadTasks();
+      })
+      .catch((err) => console.error(err));
+  };
 
-    return (
-        <FormTask
-            title={''}
-            description={''}
-            formName={formName}
-            serverError={serverError}
-            onSubmitHandler={onSubmitHandler}
-            onCancelFormHandler={onCancelFormHandler}
-        />
-    );
+  return (
+    <FormTask
+      title={""}
+      description={""}
+      formName={formName}
+      serverError={serverError}
+      onSubmitHandler={onSubmitHandler}
+      onCancelFormHandler={onCancelFormHandler}
+    />
+  );
 }
 
 export default CreateTask;
