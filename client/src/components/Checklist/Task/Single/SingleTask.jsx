@@ -1,8 +1,6 @@
 import { styleNames, tagNames } from "../../../../utils/constants/global";
 import { toggleWithTargetContent } from "../../../../utils/helpers/dropdown";
 
-import SubtasksAll from "../../Subtask/All/SubtasksAll";
-
 import styles from "./SingleTask.module.css";
 
 function SingleTask({
@@ -13,11 +11,9 @@ function SingleTask({
   description,
   progress,
   target,
-  subtasks,
-  loadTasks,
+  children,
   onEditHandler,
   onDeleteHandler,
-  onCancelFormHandler,
 }) {
   const onMouseEnterHandler = (e) => {
     if (e.target.nodeName !== tagNames.H4) {
@@ -108,12 +104,7 @@ function SingleTask({
         <p className={styles["checklist-all-current-task-info-desc"]}>
           {description}
         </p>
-        <SubtasksAll
-          taskId={id}
-          subtasks={subtasks}
-          loadTasks={loadTasks}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+        {children}
       </div>
     </div>
   );

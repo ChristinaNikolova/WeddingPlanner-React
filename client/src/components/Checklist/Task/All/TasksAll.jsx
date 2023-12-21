@@ -13,6 +13,7 @@ import SingleTask from "../Single/SingleTask";
 import CreateTask from "../Create/CreateTask";
 import UpdateTask from "../Update/UpdateTask";
 import AddButton from "../../../shared/Buttons/Add/AddButton";
+import SubtasksAll from "../../Subtask/All/SubtasksAll";
 
 import styles from "./TasksAll.module.css";
 
@@ -64,6 +65,11 @@ function ChecklistAll() {
       .catch((err) => console.error(err));
   };
 
+  const finish = (e) => {
+    onCancelFormHandler(e);
+    loadTasks();
+  };
+
   return (
     <section
       ref={tasksAllRef}
@@ -92,16 +98,16 @@ function ChecklistAll() {
                 <UpdateTask
                   plannerId={plannerId}
                   taskId={taskId}
-                  loadTasks={loadTasks}
                   onCancelFormHandler={onCancelFormHandler}
+                  finish={finish}
                 />
               )}
               {!taskId && (
                 <CreateTask
                   plannerId={plannerId}
                   timespan={timespan}
-                  loadTasks={loadTasks}
                   onCancelFormHandler={onCancelFormHandler}
+                  finish={finish}
                 />
               )}
               <div className={styles["checklist-all-line"]}></div>
@@ -119,12 +125,16 @@ function ChecklistAll() {
                         description={t.description}
                         progress={t.progress}
                         target={t.target}
-                        subtasks={t.subtasks}
-                        loadTasks={loadTasks}
                         onEditHandler={onEditHandler}
                         onDeleteHandler={onDeleteHandler}
-                        onCancelFormHandler={onCancelFormHandler}
-                      />
+                      >
+                        <SubtasksAll
+                          taskId={t.id}
+                          subtasks={t.subtasks}
+                          onCancelFormHandler={onCancelFormHandler}
+                          loadTasks={loadTasks}
+                        />
+                      </SingleTask>
                     ))
                 ) : (
                   <p className={styles["checklist-all-empty-tasks"]}>

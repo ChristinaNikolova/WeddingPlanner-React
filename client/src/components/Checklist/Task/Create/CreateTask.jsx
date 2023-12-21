@@ -4,10 +4,12 @@ import * as tasksService from "../../../../services/tasks";
 import { formNames } from "../../../../utils/constants/global";
 
 import FormTask from "../Form/FormTask";
+import FormButton from "../../../shared/Buttons/Form/FormButton";
 
-function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
+function CreateTask({ plannerId, timespan, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {}, [serverError]);
 
@@ -20,11 +22,14 @@ function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
           return;
         }
 
-        onCancelFormHandler(e);
-        loadTasks();
+        finish(e);
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   return (
     <FormTask
@@ -33,8 +38,14 @@ function CreateTask({ plannerId, timespan, loadTasks, onCancelFormHandler }) {
       formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
+    </FormTask>
   );
 }
 

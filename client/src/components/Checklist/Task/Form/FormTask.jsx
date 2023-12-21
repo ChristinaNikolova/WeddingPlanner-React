@@ -8,22 +8,21 @@ import ServerError from "../../../shared/Errors/ServerError/ServerError";
 import ClientError from "../../../shared/Errors/ClientError/ClientError";
 import Input from "../../../shared/Tags/Input/Input";
 import TextArea from "../../../shared/Tags/TextArea/TextArea";
-import FormButton from "../../../shared/Buttons/Form/FormButton";
 
 function FormTask({
   title,
   description,
   formName,
   serverError,
+  children,
   onSubmitHandler,
-  onCancelFormHandler,
+  checkIsDisabled,
 }) {
   const [values, setValues] = useState({
     title: title,
     description: description,
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
@@ -54,9 +53,11 @@ function FormTask({
   };
 
   const checkDisabled = () => {
-    setIsDisabled(
-      helpers.isButtonDisabled(values, [titleError, descriptionError])
-    );
+    const isDisabled = helpers.isButtonDisabled(values, [
+      titleError,
+      descriptionError,
+    ]);
+    checkIsDisabled(isDisabled);
   };
 
   const onSubmitHelperHandler = (e) => {
@@ -71,11 +72,6 @@ function FormTask({
 
     onSubmitHandler(e, values.title, values.description);
     setInputsToDefaultValues();
-  };
-
-  const onCancelFormHelperHandler = (e) => {
-    setInputsToDefaultValues();
-    onCancelFormHandler(e);
   };
 
   const setInputsToDefaultValues = () => {
@@ -116,11 +112,7 @@ function FormTask({
           />
           {descriptionError && <ClientError error={descriptionError} />}
         </div>
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHelperHandler}
-        />
+        {children}
       </form>
     </div>
   );
