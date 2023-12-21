@@ -103,7 +103,6 @@ function NotesAll() {
             plannerId={plannerId}
             isHidden={isHidden}
             onCancelFormHandler={onCancelFormHandler}
-            onShowFormHandler={onShowFormHandler}
             finish={finish}
           />
         </>
