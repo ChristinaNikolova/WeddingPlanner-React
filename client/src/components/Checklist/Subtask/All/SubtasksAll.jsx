@@ -46,6 +46,12 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
     setSubtaskId("");
   };
 
+  const finish = (e) => {
+    onCancelFormHelperHandler();
+    onCancelFormHandler(e);
+    loadTasks();
+  };
+
   return (
     <div className={styles["checklist-all-current-task-subtasks-wrapper"]}>
       <h6 className={styles["checklist-all-current-task-subtasks-title"]}>
@@ -57,14 +63,14 @@ function SubtasksAll({ taskId, subtasks, loadTasks, onCancelFormHandler }) {
         {subtaskId ? (
           <UpdateSubtask
             subtaskId={subtaskId}
-            loadTasks={loadTasks}
             onCancelFormHelperHandler={onCancelFormHelperHandler}
+            finish={finish}
           />
         ) : (
           <CreateSubtask
             taskId={taskId}
-            loadTasks={loadTasks}
             onCancelFormHandler={onCancelFormHandler}
+            finish={finish}
           />
         )}
       </div>

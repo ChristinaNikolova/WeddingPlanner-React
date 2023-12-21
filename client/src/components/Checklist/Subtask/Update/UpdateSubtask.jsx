@@ -4,11 +4,13 @@ import * as subtasksService from "../../../../services/subtask";
 import { formNames } from "../../../../utils/constants/global";
 
 import FormSubtask from "../Form/FormSubtask";
+import FormButton from "../../../shared/Buttons/Form/FormButton";
 
-function UpdateSubtask({ subtaskId, loadTasks, onCancelFormHelperHandler }) {
+function UpdateSubtask({ subtaskId, onCancelFormHelperHandler, finish }) {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState("");
   const [subtask, setSubtask] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     subtasksService
@@ -28,11 +30,14 @@ function UpdateSubtask({ subtaskId, loadTasks, onCancelFormHelperHandler }) {
           return;
         }
 
-        onCancelFormHelperHandler(e);
-        loadTasks();
+        finish(e);
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   if (!subtask.description) {
     return null;
@@ -44,8 +49,14 @@ function UpdateSubtask({ subtaskId, loadTasks, onCancelFormHelperHandler }) {
       formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHelperHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHelperHandler}
+      />
+    </FormSubtask>
   );
 }
 
