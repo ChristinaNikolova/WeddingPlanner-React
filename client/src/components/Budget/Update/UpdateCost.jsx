@@ -29,7 +29,7 @@ function UpdateCost({ plannerId, costId, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish(e);
       })
       .catch((err) => console.error(err));

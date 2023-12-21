@@ -14,6 +14,7 @@ function FormCost({
   formName,
   serverError,
   children,
+  formCanceled,
   onSubmitHandler,
   checkIsDisabled,
 }) {
@@ -25,6 +26,17 @@ function FormCost({
   const [titleError, setTitleError] = useState("");
   const [priceError, setPriceError] = useState("");
   const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
+
+  useEffect(() => {
+    if (formName !== formNames.UPDATE) {
+      setValues({
+        title: "",
+        price: "",
+      });
+      setTitleError("");
+      setPriceError("");
+    }
+  }, [formCanceled]);
 
   useEffect(() => {
     if (formName === formNames.UPDATE) {
@@ -70,16 +82,6 @@ function FormCost({
     }
 
     onSubmitHandler(e, values.title, values.price);
-    setInputsToDefaultValues();
-  };
-
-  const setInputsToDefaultValues = () => {
-    if (formName !== formNames.UPDATE) {
-      setValues({
-        title: "",
-        price: "",
-      });
-    }
   };
 
   return (

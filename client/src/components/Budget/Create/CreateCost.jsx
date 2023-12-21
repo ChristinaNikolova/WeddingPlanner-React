@@ -10,6 +10,7 @@ function CreateCost({ plannerId, category, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+  const [formCanceled, setFormCanceled] = useState(false);
 
   useEffect(() => {}, [serverError]);
 
@@ -21,15 +22,23 @@ function CreateCost({ plannerId, category, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setFormCanceled(true);
+        setServerError("");
         finish(e);
       })
       .catch((err) => console.error(err));
   };
 
   function checkIsDisabled(disable) {
+    setFormCanceled(false);
     setIsDisabled(!!disable);
   }
+
+  const onCancelForm = (e) => {
+    setFormCanceled(true);
+    setServerError("");
+    onCancelFormHandler(e);
+  };
 
   return (
     <FormCost
@@ -39,11 +48,12 @@ function CreateCost({ plannerId, category, onCancelFormHandler, finish }) {
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
       checkIsDisabled={checkIsDisabled}
+      formCanceled={formCanceled}
     >
       <FormButton
         formName={formName}
         isDisabled={isDisabled}
-        onCancelFormHandler={onCancelFormHandler}
+        onCancelFormHandler={onCancelForm}
       />
     </FormCost>
   );
