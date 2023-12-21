@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 
 import * as eventsService from "../../../services/events";
-import { addButtonTexts, formNames } from "../../../utils/constants/global";
+import { formNames } from "../../../utils/constants/global";
 
-import AddButton from "../../shared/Buttons/Add/AddButton";
 import FormEvent from "../Form/FormEvent";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function CreateEvent({
-  plannerId,
-  isHidden,
-  onCancelFormHandler,
-  onShowFormHandler,
-  loadEvents,
-}) {
+function CreateEvent({ plannerId, isHidden, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {}, [serverError]);
 
@@ -27,31 +22,33 @@ function CreateEvent({
           return;
         }
 
-        onCancelFormHandler();
-        loadEvents();
+        finish();
       })
       .catch((err) => console.error(err));
   };
 
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
+
   return (
     <>
-      <AddButton
-        classNames={["event-form-icon"]}
-        text={addButtonTexts.EVENT}
-        isEmptyString={true}
-        onShowFormHandler={onShowFormHandler}
-      />
       {!isHidden && (
         <FormEvent
           title={""}
           startTime={""}
           endTime={""}
           duration={""}
-          formName={formName}
           serverError={serverError}
           onSubmitHandler={onSubmitHandler}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+          checkIsDisabled={checkIsDisabled}
+        >
+          <FormButton
+            formName={formName}
+            isDisabled={isDisabled}
+            onCancelFormHandler={onCancelFormHandler}
+          />
+        </FormEvent>
       )}
     </>
   );

@@ -4,11 +4,13 @@ import * as eventsService from "../../../services/events";
 import { formNames } from "../../../utils/constants/global";
 
 import FormEvent from "../Form/FormEvent";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function UpdateEvent({ eventId, plannerId, onCancelFormHandler, loadEvents }) {
+function UpdateEvent({ eventId, plannerId, onCancelFormHandler, finish }) {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState("");
   const [event, setEvent] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     eventsService
@@ -28,11 +30,14 @@ function UpdateEvent({ eventId, plannerId, onCancelFormHandler, loadEvents }) {
           return;
         }
 
-        onCancelFormHandler();
-        loadEvents();
+        finish();
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   if (!event.title || !event.startTime || !event.endTime || !event.duration) {
     return null;
@@ -44,11 +49,16 @@ function UpdateEvent({ eventId, plannerId, onCancelFormHandler, loadEvents }) {
       startTime={event.startTime}
       endTime={event.endTime}
       duration={event.duration}
-      formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
+    </FormEvent>
   );
 }
 

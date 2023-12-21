@@ -7,7 +7,6 @@ import * as helpers from "../../../utils/helpers/form";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import Input from "../../shared/Tags/Input/Input";
-import FormButton from "../../shared/Buttons/Form/FormButton";
 
 import styles from "./FormEvent.module.css";
 
@@ -16,10 +15,10 @@ function FormEvent({
   startTime,
   endTime,
   duration,
-  formName,
   serverError,
+  children,
   onSubmitHandler,
-  onCancelFormHandler,
+  checkIsDisabled,
 }) {
   const [values, setValues] = useState({
     title: title,
@@ -28,7 +27,6 @@ function FormEvent({
     duration: duration,
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
   const [titleError, setTitleError] = useState("");
   const [startTimeError, setStartTimeError] = useState("");
   const [endTimeError, setEndTimeError] = useState("");
@@ -71,13 +69,12 @@ function FormEvent({
   };
 
   const checkDisabled = () => {
-    setIsDisabled(
-      helpers.isButtonDisabled(values, [
-        titleError,
-        startTimeError,
-        endTimeError,
-      ])
-    );
+    const isDisabled = helpers.isButtonDisabled(values, [
+      titleError,
+      startTimeError,
+      endTimeError,
+    ]);
+    checkIsDisabled(isDisabled);
   };
 
   const onSubmitHelperHandler = (e) => {
@@ -152,11 +149,7 @@ function FormEvent({
             readOnly
           />
         </div>
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+        {children}
       </form>
     </div>
   );

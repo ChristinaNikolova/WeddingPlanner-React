@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 
 import * as eventsService from "../../../services/events";
 import { scrollToTop } from "../../../utils/helpers/form";
+import { addButtonTexts } from "../../../utils/constants/global";
 
 import CreateEvent from "../Create/CreateEvent";
 import SingleEvent from "../Single/SingleEvent";
 import UpdateEvent from "../Update/UpdateEvent";
+import AddButton from "../../shared/Buttons/Add/AddButton";
 
 import styles from "./EventsAll.module.css";
 
@@ -61,6 +63,11 @@ function EventsAll() {
       .catch((err) => console.error(err));
   };
 
+  const finish = () => {
+    onCancelFormHandler();
+    loadEvents();
+  };
+
   return (
     <section
       id={styles["events-all"]}
@@ -95,16 +102,23 @@ function EventsAll() {
           eventId={eventId}
           plannerId={plannerId}
           onCancelFormHandler={onCancelFormHandler}
-          loadEvents={loadEvents}
+          finish={finish}
         />
       ) : (
-        <CreateEvent
-          plannerId={plannerId}
-          isHidden={isHidden}
-          onCancelFormHandler={onCancelFormHandler}
-          onShowFormHandler={onShowFormHandler}
-          loadEvents={loadEvents}
-        />
+        <>
+          <AddButton
+            classNames={["event-form-icon"]}
+            text={addButtonTexts.EVENT}
+            isEmptyString={true}
+            onShowFormHandler={onShowFormHandler}
+          />
+          <CreateEvent
+            plannerId={plannerId}
+            isHidden={isHidden}
+            onCancelFormHandler={onCancelFormHandler}
+            finish={finish}
+          />
+        </>
       )}
     </section>
   );
