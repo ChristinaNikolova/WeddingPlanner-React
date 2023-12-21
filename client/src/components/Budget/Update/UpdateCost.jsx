@@ -4,11 +4,13 @@ import * as costsService from "../../../services/costs";
 import { formNames } from "../../../utils/constants/global";
 
 import FormCost from "../Form/FormCost";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function UpdateCost({ plannerId, costId, loadCosts, onCancelFormHandler }) {
+function UpdateCost({ plannerId, costId, onCancelFormHandler, finish }) {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState("");
   const [cost, setCost] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     costsService
@@ -28,11 +30,14 @@ function UpdateCost({ plannerId, costId, loadCosts, onCancelFormHandler }) {
           return;
         }
 
-        onCancelFormHandler(e);
-        loadCosts();
+        finish(e);
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   if (!cost.title || !cost.price) {
     return null;
@@ -45,8 +50,14 @@ function UpdateCost({ plannerId, costId, loadCosts, onCancelFormHandler }) {
       formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
+    </FormCost>
   );
 }
 

@@ -88,6 +88,11 @@ function AllCosts() {
       .toFixed(2);
   };
 
+  const finish = (e) => {
+    onCancelFormHandler(e);
+    loadCosts();
+  };
+
   return (
     <section
       ref={costsAllRef}
@@ -117,16 +122,16 @@ function AllCosts() {
                 <UpdateCost
                   plannerId={plannerId}
                   costId={costId}
-                  loadCosts={loadCosts}
                   onCancelFormHandler={onCancelFormHandler}
+                  finish={finish}
                 />
               )}
               {!costId && (
                 <CreateCost
                   plannerId={plannerId}
                   category={c.id}
-                  loadCosts={loadCosts}
                   onCancelFormHandler={onCancelFormHandler}
+                  finish={finish}
                 />
               )}
               <div

@@ -4,7 +4,6 @@ import * as validator from "../../../utils/validators/cost";
 import * as helpers from "../../../utils/helpers/form";
 import { formNames, styleNames } from "../../../utils/constants/global";
 
-import FormButton from "../../shared/Buttons/Form/FormButton";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
@@ -14,15 +13,15 @@ function FormCost({
   price,
   formName,
   serverError,
+  children,
   onSubmitHandler,
-  onCancelFormHandler,
+  checkIsDisabled,
 }) {
   const [values, setValues] = useState({
     title: title,
     price: price,
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
   const [titleError, setTitleError] = useState("");
   const [priceError, setPriceError] = useState("");
   const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
@@ -53,7 +52,11 @@ function FormCost({
   };
 
   const checkDisabled = () => {
-    setIsDisabled(helpers.isButtonDisabled(values, [titleError, priceError]));
+    const isDisabled = helpers.isButtonDisabled(values, [
+      titleError,
+      priceError,
+    ]);
+    checkIsDisabled(isDisabled);
   };
 
   const onSubmitHelperHandler = (e) => {
@@ -68,11 +71,6 @@ function FormCost({
 
     onSubmitHandler(e, values.title, values.price);
     setInputsToDefaultValues();
-  };
-
-  const onCancelFormHelperHandler = (e) => {
-    setInputsToDefaultValues();
-    onCancelFormHandler(e);
   };
 
   const setInputsToDefaultValues = () => {
@@ -113,11 +111,7 @@ function FormCost({
           />
           {priceError && <ClientError error={priceError} />}
         </div>
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHelperHandler}
-        />
+        {children}
       </form>
     </div>
   );

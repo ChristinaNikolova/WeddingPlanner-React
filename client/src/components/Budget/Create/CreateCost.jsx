@@ -4,10 +4,12 @@ import * as costsService from "../../../services/costs";
 import { formNames } from "../../../utils/constants/global";
 
 import FormCost from "../Form/FormCost";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function CreateCost({ plannerId, category, loadCosts, onCancelFormHandler }) {
+function CreateCost({ plannerId, category, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {}, [serverError]);
 
@@ -20,11 +22,14 @@ function CreateCost({ plannerId, category, loadCosts, onCancelFormHandler }) {
           return;
         }
 
-        onCancelFormHandler(e);
-        loadCosts();
+        finish(e);
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   return (
     <FormCost
@@ -33,8 +38,14 @@ function CreateCost({ plannerId, category, loadCosts, onCancelFormHandler }) {
       formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
+    </FormCost>
   );
 }
 
