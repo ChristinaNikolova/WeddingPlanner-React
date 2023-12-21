@@ -29,7 +29,7 @@ function UpdateSubtask({ subtaskId, onCancelFormHelperHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish(e);
       })
       .catch((err) => console.error(err));

@@ -15,6 +15,7 @@ function FormSubtask({
   children,
   onSubmitHandler,
   checkIsDisabled,
+  formCanceled,
 }) {
   const [values, setValues] = useState({
     description: description,
@@ -22,6 +23,15 @@ function FormSubtask({
 
   const [descriptionError, setDescriptionError] = useState("");
   const [currentStyle, setCurrentStyle] = useState(styleNames.NONE);
+
+  useEffect(() => {
+    if (formName !== formNames.UPDATE) {
+      setValues({
+        description: "",
+      });
+      setDescriptionError("");
+    }
+  }, [formCanceled]);
 
   useEffect(() => {
     if (formName === formNames.UPDATE) {
@@ -59,15 +69,6 @@ function FormSubtask({
     }
 
     onSubmitHandler(e, values.description);
-    setInputsToDefaultValues();
-  };
-
-  const setInputsToDefaultValues = () => {
-    if (formName !== formNames.UPDATE) {
-      setValues({
-        description: "",
-      });
-    }
   };
 
   return (
