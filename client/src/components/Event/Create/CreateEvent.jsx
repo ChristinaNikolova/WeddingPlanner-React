@@ -21,7 +21,7 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish();
       })
       .catch((err) => console.error(err));
@@ -29,6 +29,11 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, finish }) {
 
   function checkIsDisabled(disable) {
     setIsDisabled(!!disable);
+  }
+
+  function onCancelForm() {
+    setServerError("");
+    onCancelFormHandler();
   }
 
   return (
@@ -46,7 +51,7 @@ function CreateEvent({ plannerId, isHidden, onCancelFormHandler, finish }) {
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelForm}
           />
         </FormEvent>
       )}

@@ -21,11 +21,16 @@ function CreateNote({ plannerId, isHidden, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish();
       })
       .catch((err) => console.error(err));
   };
+
+  function onCancelForm() {
+    setServerError("");
+    onCancelFormHandler();
+  }
 
   function checkIsDisabled(disable) {
     setIsDisabled(!!disable);
@@ -43,7 +48,7 @@ function CreateNote({ plannerId, isHidden, onCancelFormHandler, finish }) {
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelForm}
           />
         </FormNote>
       )}
