@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 
 import * as guestsService from "../../../services/guests";
 import { scrollToTop } from "../../../utils/helpers/form";
+import { addButtonTexts } from "../../../utils/constants/global";
 
 import CreateGuest from "../Create/CreateGuest";
 import UpdateGuest from "../Update/UpdateGuest";
 import SingleGuest from "../Single/SingleGuest";
+import AddButton from "../../shared/Buttons/Add/AddButton";
 
 import styles from "./GuestsAll.module.css";
 
@@ -20,16 +22,6 @@ function GuestsAll() {
   useEffect(() => {
     loadGuests();
   }, []);
-
-  const loadGuests = () => {
-    guestsService
-      .all(plannerId)
-      .then((res) => {
-        setGuests(res);
-        scrollToTop();
-      })
-      .catch((err) => console.error(err));
-  };
 
   const onCancelFormHandler = () => {
     setIsHidden(true);
@@ -50,6 +42,21 @@ function GuestsAll() {
         loadGuests();
       })
       .catch((err) => console.error(err));
+  };
+
+  const loadGuests = () => {
+    guestsService
+      .all(plannerId)
+      .then((res) => {
+        setGuests(res);
+        scrollToTop();
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const finish = () => {
+    onCancelFormHandler();
+    loadGuests();
   };
 
   return (
@@ -85,16 +92,23 @@ function GuestsAll() {
           guestId={guestId}
           plannerId={plannerId}
           onCancelFormHandler={onCancelFormHandler}
-          loadGuests={loadGuests}
+          finish={finish}
         />
       ) : (
-        <CreateGuest
-          plannerId={plannerId}
-          isHidden={isHidden}
-          onCancelFormHandler={onCancelFormHandler}
-          onShowFormHandler={onShowFormHandler}
-          loadGuests={loadGuests}
-        />
+        <>
+          <AddButton
+            classNames={["guest-form-icon"]}
+            text={addButtonTexts.GUEST}
+            isEmptyString={true}
+            onShowFormHandler={onShowFormHandler}
+          />
+          <CreateGuest
+            plannerId={plannerId}
+            isHidden={isHidden}
+            onCancelFormHandler={onCancelFormHandler}
+            finish={finish}
+          />
+        </>
       )}
     </section>
   );

@@ -4,11 +4,13 @@ import * as guestsService from "../../../services/guests";
 import { formNames } from "../../../utils/constants/global";
 
 import FormGuest from "../Form/FormGuest";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function UpdateGuest({ guestId, plannerId, onCancelFormHandler, loadGuests }) {
+function UpdateGuest({ guestId, plannerId, onCancelFormHandler, finish }) {
   const formName = formNames.UPDATE;
   const [serverError, setServerError] = useState("");
   const [guest, setGuest] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     guestsService
@@ -49,11 +51,14 @@ function UpdateGuest({ guestId, plannerId, onCancelFormHandler, loadGuests }) {
           return;
         }
 
-        onCancelFormHandler();
-        loadGuests();
+        finish();
       })
       .catch((err) => console.error(err));
   };
+
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
 
   if (
     !guest.firstName ||
@@ -81,8 +86,14 @@ function UpdateGuest({ guestId, plannerId, onCancelFormHandler, loadGuests }) {
       formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
-      onCancelFormHandler={onCancelFormHandler}
-    />
+      checkIsDisabled={checkIsDisabled}
+    >
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
+    </FormGuest>
   );
 }
 

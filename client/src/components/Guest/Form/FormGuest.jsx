@@ -4,7 +4,6 @@ import * as global from "../../../utils/constants/global";
 import * as helpers from "../../../utils/helpers/form";
 import * as validator from "../../../utils/validators/guest";
 
-import FormButton from "../../shared/Buttons/Form/FormButton";
 import ClientError from "../../shared/Errors/ClientError/ClientError";
 import ServerError from "../../shared/Errors/ServerError/ServerError";
 import Input from "../../shared/Tags/Input/Input";
@@ -24,8 +23,9 @@ function FormGuest({
   confirmed,
   formName,
   serverError,
+  children,
   onSubmitHandler,
-  onCancelFormHandler,
+  checkIsDisabled,
 }) {
   const [values, setValues] = useState({
     firstName: firstName,
@@ -39,9 +39,9 @@ function FormGuest({
     confirmed: confirmed ? "yes" : "no",
   });
 
-  const [isDisabled, setIsDisabled] = useState(true);
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
+
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -73,9 +73,11 @@ function FormGuest({
       lastName: values.lastName,
     };
 
-    setIsDisabled(
-      helpers.isButtonDisabled(valuesToCheck, [firstNameError, lastNameError])
-    );
+    const isDisabled = helpers.isButtonDisabled(valuesToCheck, [
+      firstNameError,
+      lastNameError,
+    ]);
+    checkIsDisabled(isDisabled);
   };
 
   const onSubmitHelperHandler = (e) => {
@@ -318,11 +320,7 @@ function FormGuest({
             </div>
           </div>
         </div>
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+        {children}
       </form>
     </div>
   );

@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 
 import * as guestsService from "../../../services/guests";
-import { addButtonTexts, formNames } from "../../../utils/constants/global";
+import { formNames } from "../../../utils/constants/global";
 
-import AddButton from "../../shared/Buttons/Add/AddButton";
 import FormGuest from "../Form/FormGuest";
+import FormButton from "../../shared/Buttons/Form/FormButton";
 
-function CreateGuest({
-  plannerId,
-  isHidden,
-  onCancelFormHandler,
-  onShowFormHandler,
-  loadGuests,
-}) {
+function CreateGuest({ plannerId, isHidden, onCancelFormHandler, finish }) {
   const formName = formNames.CREATE;
   const [serverError, setServerError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {}, [serverError]);
 
@@ -48,20 +43,17 @@ function CreateGuest({
           return;
         }
 
-        onCancelFormHandler();
-        loadGuests();
+        finish();
       })
       .catch((err) => console.error(err));
   };
 
+  function checkIsDisabled(disable) {
+    setIsDisabled(!!disable);
+  }
+
   return (
     <>
-      <AddButton
-        classNames={["guest-form-icon"]}
-        text={addButtonTexts.GUEST}
-        isEmptyString={true}
-        onShowFormHandler={onShowFormHandler}
-      />
       {!isHidden && (
         <FormGuest
           firstName={""}
@@ -76,8 +68,14 @@ function CreateGuest({
           formName={formName}
           serverError={serverError}
           onSubmitHandler={onSubmitHandler}
-          onCancelFormHandler={onCancelFormHandler}
-        />
+          checkIsDisabled={checkIsDisabled}
+        >
+          <FormButton
+            formName={formName}
+            isDisabled={isDisabled}
+            onCancelFormHandler={onCancelFormHandler}
+          />
+        </FormGuest>
       )}
     </>
   );

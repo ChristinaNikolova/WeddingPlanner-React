@@ -50,13 +50,11 @@ function UpdateNote({ noteId, plannerId, onCancelFormHandler, finish }) {
       onSubmitHandler={onSubmitHandler}
       checkIsDisabled={checkIsDisabled}
     >
-      {
-        <FormButton
-          formName={formName}
-          isDisabled={isDisabled}
-          onCancelFormHandler={onCancelFormHandler}
-        />
-      }
+      <FormButton
+        formName={formName}
+        isDisabled={isDisabled}
+        onCancelFormHandler={onCancelFormHandler}
+      />
     </FormNote>
   );
 }
