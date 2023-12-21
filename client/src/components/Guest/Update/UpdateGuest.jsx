@@ -83,7 +83,6 @@ function UpdateGuest({ guestId, plannerId, onCancelFormHandler, finish }) {
       table={guest.table}
       mainDish={guest.mainDish}
       confirmed={guest.confirmed}
-      formName={formName}
       serverError={serverError}
       onSubmitHandler={onSubmitHandler}
       checkIsDisabled={checkIsDisabled}

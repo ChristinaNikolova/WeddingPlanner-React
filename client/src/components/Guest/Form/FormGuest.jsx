@@ -21,7 +21,6 @@ function FormGuest({
   table,
   mainDish,
   confirmed,
-  formName,
   serverError,
   children,
   onSubmitHandler,

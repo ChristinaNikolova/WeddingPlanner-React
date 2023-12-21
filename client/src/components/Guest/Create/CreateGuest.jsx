@@ -65,7 +65,6 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, finish }) {
           table={""}
           mainDish={"no info"}
           confirmed={""}
-          formName={formName}
           serverError={serverError}
           onSubmitHandler={onSubmitHandler}
           checkIsDisabled={checkIsDisabled}
