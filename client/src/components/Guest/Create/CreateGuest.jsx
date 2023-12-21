@@ -42,7 +42,7 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish();
       })
       .catch((err) => console.error(err));
@@ -50,6 +50,11 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, finish }) {
 
   function checkIsDisabled(disable) {
     setIsDisabled(!!disable);
+  }
+
+  function onCancelForm() {
+    setServerError("");
+    onCancelFormHandler();
   }
 
   return (
@@ -72,7 +77,7 @@ function CreateGuest({ plannerId, isHidden, onCancelFormHandler, finish }) {
           <FormButton
             formName={formName}
             isDisabled={isDisabled}
-            onCancelFormHandler={onCancelFormHandler}
+            onCancelFormHandler={onCancelForm}
           />
         </FormGuest>
       )}

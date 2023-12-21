@@ -50,7 +50,7 @@ function UpdateGuest({ guestId, plannerId, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish();
       })
       .catch((err) => console.error(err));
