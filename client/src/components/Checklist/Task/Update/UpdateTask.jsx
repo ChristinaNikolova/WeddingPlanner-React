@@ -29,7 +29,7 @@ function UpdateTask({ plannerId, taskId, onCancelFormHandler, finish }) {
           setServerError(data.message);
           return;
         }
-
+        setServerError("");
         finish(e);
       })
       .catch((err) => console.error(err));
