@@ -1,5 +1,5 @@
 # :hearts::ring::clinking_glasses: WeddingPlanner
-WeddingPlanner is a SPA created with Express.js with ReactJS template.
+WeddingPlanner is a SPA created with Express.js with ReactJS template, written in JavaScript.
 
 ![Starting picture](./doc/weddingplanner.jpg)
 
